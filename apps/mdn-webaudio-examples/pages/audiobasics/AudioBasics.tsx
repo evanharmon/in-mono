@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import styles from './AudioBasics.module.css'
 import { ChangeEvent } from 'react'
 
 let audioCtx: AudioContext
