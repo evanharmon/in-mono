@@ -1,9 +1,16 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
-let AudioContext = typeof window !== 'undefined' ? (window.AudioContext || window.webkitAudioContext) : undefined
-let requestAnimFrame = typeof window !== 'undefined' ? (window.requestAnimationFrame || window.webkitRequestAnimationFrame) : undefined
+let AudioContext =
+  typeof window !== 'undefined'
+    ? window.AudioContext || window.webkitAudioContext
+    : undefined
+let requestAnimFrame =
+  typeof window !== 'undefined'
+    ? window.requestAnimationFrame || window.webkitRequestAnimationFrame
+    : undefined
 
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 export default function AudioContextStates() {
   const [audioState, setAudioState] = useState<string | undefined>()
@@ -16,7 +23,9 @@ export default function AudioContextStates() {
 
     const currentTime = audioCtxRef?.current?.currentTime.toFixed(3)
     if (typeof currentTime === 'undefined') return
-    pRef.current.textContent = currentTime ? `Current context time: ${currentTime}` : 'Current context time: No context exists'
+    pRef.current.textContent = currentTime
+      ? `Current context time: ${currentTime}`
+      : 'Current context time: No context exists'
   }
 
   useIsomorphicLayoutEffect(() => {
@@ -30,16 +39,19 @@ export default function AudioContextStates() {
     frameId.current = requestAnimFrame(renderFrame)
 
     return () => {
-      if (frameId?.current)
-        cancelAnimationFrame(frameId.current)
+      if (frameId?.current) cancelAnimationFrame(frameId.current)
     }
   }, [])
 
   const onCreateContext = () => {
     if (typeof AudioContext === 'undefined') return
-    if (typeof audioCtxRef.current !== 'undefined' && audioCtxRef.current.state !== 'closed') return
+    if (
+      typeof audioCtxRef.current !== 'undefined' &&
+      audioCtxRef.current.state !== 'closed'
+    )
+      return
 
-    const audioCtx = new AudioContext
+    const audioCtx = new AudioContext()
     audioCtxRef.current = audioCtx
 
     const oscillator = audioCtx.createOscillator()
@@ -77,9 +89,24 @@ export default function AudioContextStates() {
   return (
     <>
       <h1>AudioContext states demo</h1>
-      <button disabled={audioState && audioState !== 'closed' ? true : false} onClick={onCreateContext}>Create context</button>
-      <button disabled={typeof audioState === 'undefined' || audioState === 'closed'} onClick={onSuspendContext}>Suspend context</button>
-      <button disabled={typeof audioState === 'undefined' || audioState === 'closed'} onClick={onStopContext}>Stop context</button>
+      <button
+        disabled={audioState && audioState !== 'closed' ? true : false}
+        onClick={onCreateContext}
+      >
+        Create context
+      </button>
+      <button
+        disabled={typeof audioState === 'undefined' || audioState === 'closed'}
+        onClick={onSuspendContext}
+      >
+        Suspend context
+      </button>
+      <button
+        disabled={typeof audioState === 'undefined' || audioState === 'closed'}
+        onClick={onStopContext}
+      >
+        Stop context
+      </button>
       <p>current context state: {audioState ?? 'no audio context exists'}</p>
       <p ref={pRef}></p>
     </>
