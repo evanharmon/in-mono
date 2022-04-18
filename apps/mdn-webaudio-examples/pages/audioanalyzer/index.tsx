@@ -5,7 +5,8 @@ declare global {
   let requestAnimFrame: typeof requestAnimationFrame
 }
 
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 let sampleSize = 1024
 let ctx: any
@@ -25,8 +26,7 @@ let analyserNode: AnalyserNode
 let amplitudeArray: Uint8Array
 if (typeof window !== 'undefined') {
   try {
-    audioContext = new (window.webkitAudioContext ||
-      window.AudioContext)()
+    audioContext = new (window.webkitAudioContext || window.AudioContext)()
 
     summingGainNode = audioContext.createGain()
     summingGainNode.gain.value = 1.0
@@ -51,7 +51,7 @@ if (typeof window !== 'undefined') {
       window.requestAnimationFrame ||
       window.webkitRequestAnimationFrame ||
       window.mozRequestAnimationFrame ||
-      function (callback: () => void, element: any) {
+      function (callback: () => void, _element: any) {
         window.setTimeout(callback, 1000 / 60)
       }
     )
@@ -67,7 +67,6 @@ async function loadSound(ctx: AudioContext, url: string) {
   return audioBuffer
 }
 
-// TODO this is a problem bc analyserNode won't be created yet
 // create new AudioBufferSourceNode every time
 let sourceNode: AudioBufferSourceNode
 function playSound() {
@@ -75,7 +74,6 @@ function playSound() {
   sourceNode.connect(summingGainNode)
   sourceNode.buffer = audioBuffer
   sourceNode.onended = () => sourceNode.disconnect()
-
   sourceNode.start(0)
 }
 
@@ -91,7 +89,6 @@ let canvasWidth = 512
 let canvasHeight = 256
 let audioUrl = 'viper.mp3'
 export default function AudioAnalyzer() {
-  const [audioPlaying, setAudioPlaying] = useState<boolean | null>(null)
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const requestIdRef = useRef<number>()
 
@@ -133,22 +130,28 @@ export default function AudioAnalyzer() {
     loadSound(audioContext, audioUrl)
   }, [])
 
-  useEffect(() => {
-    if (audioPlaying === true) playSound()
+  async function onPlayHandler() {
+    if (audioContext.state === 'suspended') {
+      await audioContext.resume()
+    }
+    playSound()
+  }
 
-    if (audioPlaying === false) stopSound()
-  }, [audioPlaying])
+  async function onStopHandler() {
+    if (audioContext.state === 'closed') return
+    stopSound()
+  }
 
   return (
     <main>
       <h1>Audio Analyzer</h1>
       <canvas ref={canvasRef} id='canvas' width='512' height='256'></canvas>
       <p id='controls'>
-        <button id='start_button' onClick={() => setAudioPlaying(true)}>
+        <button id='start_button' onClick={onPlayHandler}>
           Start
         </button>
         &nbsp; &nbsp;
-        <button id='stop_button' onClick={() => setAudioPlaying(false)}>
+        <button id='stop_button' onClick={onStopHandler}>
           Stop
         </button>
       </p>
