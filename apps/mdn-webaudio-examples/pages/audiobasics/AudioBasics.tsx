@@ -107,6 +107,14 @@ export default function AudioBasics() {
 
   return (
     <>
+      <style global jsx>{`
+        body {
+          background-color: var(--white);
+          padding: 4vmax;
+          color: var(--black);
+          margin-top: 8px;
+        }
+      `}</style>
       <div className={styles.boombox}>
         <div className={styles['boombox-handle']}></div>
         <div className={styles['boombox-body']}>
