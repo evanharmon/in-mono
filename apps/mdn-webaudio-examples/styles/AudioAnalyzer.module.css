@@ -1,0 +1,19 @@
+.analyzer#canvas {
+  display: block;
+  background-color: black;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.controls {
+  text-align: center;
+}
+
+.controls#button {
+  font-size: 16pt;
+  appearance: push-button;
+}
+
+.msg {
+  text-align: center;
+}

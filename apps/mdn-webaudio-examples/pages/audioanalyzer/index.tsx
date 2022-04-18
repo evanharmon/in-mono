@@ -1,4 +1,5 @@
 import { useLayoutEffect, useEffect, useRef, useState } from 'react'
+import styles from '../../styles/AudioAnalyzer.module.css'
 
 declare global {
   let audioContext: AudioContext
@@ -144,18 +145,31 @@ export default function AudioAnalyzer() {
 
   return (
     <main>
-      <h1>Audio Analyzer</h1>
-      <canvas ref={canvasRef} id='canvas' width='512' height='256'></canvas>
-      <p id='controls'>
-        <button id='start_button' onClick={onPlayHandler}>
+      <canvas
+        ref={canvasRef}
+        className={styles.analyzer}
+        id={styles.canvas}
+        width='512'
+        height='256'
+      ></canvas>
+      <p className={styles.controls}>
+        <button
+          className={styles.controls}
+          id={styles.button}
+          onClick={onPlayHandler}
+        >
           Start
         </button>
         &nbsp; &nbsp;
-        <button id='stop_button' onClick={onStopHandler}>
+        <button
+          className={styles.controls}
+          id={styles.button}
+          onClick={onStopHandler}
+        >
           Stop
         </button>
       </p>
-      <p id='msg'></p>
+      <p className={styles.msg}></p>
     </main>
   )
 }
