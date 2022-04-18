@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
+import styles from '../../styles/AudioBasics.module.css'
 
 let audioCtx: AudioContext
 let audioBuffer: AudioBuffer
@@ -33,7 +33,7 @@ async function getRawBufferFromUrl(url: string): Promise<ArrayBuffer> {
 // create clip
 // start and stop clip
 // track state of clip playing
-export default function AudioBasics<FC>() {
+export default function AudioBasics() {
   // parked this work on power button
   // was not interested in taking the time to get the audioContext state correctly functioning
   // const [power, setPower] = useState<string | null>(null)
@@ -105,20 +105,19 @@ export default function AudioBasics<FC>() {
     }
   }
 
-  useEffect(() => {
-    console.log(`useEffect log on power: ${power}`)
-  }, [power])
-
   return (
     <>
-      <div id='boombox'>
-        <div className='boombox-handle'></div>
-        <div className='boombox-body'>
-          <section className='master-controls'>
+      <div className={styles.boombox}>
+        <div className={styles['boombox-handle']}></div>
+        <div className={styles['boombox-body']}>
+          <section className={styles['master-controls']}>
             <input
               type='range'
               id='volume'
-              className='control-volume'
+              className={`
+                ${styles['controls-input']}
+                ${styles['control-volume']}
+             `}
               min='0'
               max='1'
               onChange={onVolumeChange}
@@ -130,12 +129,23 @@ export default function AudioBasics<FC>() {
               <option value='0' label='min' />
               <option value='2' label='max' />
             </datalist>
-            <label htmlFor='volume'>VOL</label>
+            <label
+              className={`
+                ${styles['control-volume-label']}
+                `}
+              htmlFor='volume'
+            >
+              VOL
+            </label>
 
             <input
               type='range'
               id='panner'
-              className='control-panner'
+              className={`
+                ${styles['controls']}
+                ${styles['controls-input']}
+                ${styles['control-panner']}
+                `}
               list='pan-vals'
               min='-1'
               max='1'
@@ -148,23 +158,37 @@ export default function AudioBasics<FC>() {
               <option value='-1' label='left' />
               <option value='1' label='right' />
             </datalist>
-            <label htmlFor='panner'>PAN</label>
+            <label
+              className={`
+                ${styles['control-panner-label']}
+              `}
+              htmlFor='panner'
+            >
+              PAN
+            </label>
 
             <button
-              className='control-power'
+              className={styles['control-power']}
               role='switch'
               aria-checked='false'
               data-power={power ?? 'off'}
               onClick={onPowerClickHandler}
             >
-              <span>On/Off</span>
+              <span className={`${styles['control-power-span']}`}>On/Off</span>
             </button>
           </section>
 
-          <section className='tape'>
-            <audio src='outfoxing.mp3' crossOrigin='anonymous'></audio>
+          <section className={styles['tape']}>
+            <audio
+              className={`
+                ${styles.tape}
+                ${styles['tape-audio']}
+              `}
+              src='outfoxing.mp3'
+              crossOrigin='anonymous'
+            ></audio>
             <button
-              className='tape-controls-play'
+              className={styles['tape-controls-play']}
               data-playing={playing ?? false}
               role='switch'
               aria-checked='false'
