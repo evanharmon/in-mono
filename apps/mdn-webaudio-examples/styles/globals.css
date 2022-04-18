@@ -1,9 +1,23 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+:root {
+  --orange: hsla(32, 100%, 50%, 1);
+  --yellow: hsla(49, 99%, 50%, 1);
+  --lime: hsla(82, 90%, 45%, 1);
+  --green: hsla(127, 81%, 41%, 1);
+  --red: hsla(342, 93%, 53%, 1);
+  --pink: hsla(314, 85%, 45%, 1);
+  --blue: hsla(211, 92%, 52%, 1);
+  --purple: hsla(283, 92%, 44%, 1);
+  --cyan: hsla(195, 98%, 55%, 1);
+  --white: hsla(0, 0%, 95%, 1);
+  --black: hsla(0, 0%, 10%, 1);
+
+  /* abstract our colours */
+  --boxMain: var(--blue);
+  --boxSecond: var(--cyan);
+  --boxHigh: var(--orange);
+
+  --border: 1vmin solid var(--black);
+  --borderRad: 2px;
 }
 
 a {
@@ -13,4 +27,17 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
