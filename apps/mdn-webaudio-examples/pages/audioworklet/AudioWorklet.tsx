@@ -1,18 +1,19 @@
-import { useEffect, useRef, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
+import styles from '../../styles/AudioWorklet.module.css'
 
 let AudioContext =
   typeof window !== 'undefined'
     ? window.AudioContext || window.webkitAudioContext
-    : undefined
-let audioContext
-let hissGenNode
+    : null
+let audioContext: AudioContext | null = null
+let hissGenNode: any
 let hissGainRangeDefault = 0.2
 let oscGainRangeDefault = 0.1
 let gainNode: GainNode
-let hissGainParam
+let hissGainParam: any
 
 async function createHissProcessor() {
-  if (typeof audioContext === 'undefined') {
+  if (AudioContext && !audioContext) {
     try {
       audioContext = new AudioContext()
     } catch (e) {
@@ -22,6 +23,7 @@ async function createHissProcessor() {
   }
 
   let processorNode
+  if (!audioContext || audioContext.state === 'closed') return
 
   try {
     processorNode = new AudioWorkletNode(audioContext, 'hiss-generator')
@@ -42,10 +44,15 @@ async function createHissProcessor() {
 
 async function audioDemoStart() {
   hissGenNode = await createHissProcessor()
+
   if (typeof hissGenNode === 'undefined') {
     console.log('unable to create his processor')
     return
   }
+
+  // createHissProcessor creates AudioContext
+  if (!audioContext || audioContext.state === 'closed') return
+
   const soundSource = new OscillatorNode(audioContext)
   gainNode = audioContext.createGain()
   gainNode.gain.value = oscGainRangeDefault
@@ -59,7 +66,7 @@ async function audioDemoStart() {
     .connect(gainNode)
     .connect(hissGenNode)
     .connect(audioContext.destination)
-  console.log(`calling start`)
+
   soundSource.start()
 
   hissGainParam = hissGenNode.parameters.get('gain')
@@ -67,17 +74,57 @@ async function audioDemoStart() {
 }
 
 async function toggleSound() {
-  if (typeof audioContext === 'undefined') {
+  if (!audioContext) {
     await audioDemoStart()
   } else {
     await audioContext.close()
-    audioContext = undefined
+    audioContext = null
   }
 
   return
 }
 
-const styles = `
+export default function AudioWorklet() {
+  const [audioState, setAudioState] = useState<string | null>(null)
+
+  async function onClickToggle() {
+    await toggleSound()
+    if (!audioContext) {
+      setAudioState(null)
+      return
+    }
+
+    audioContext.onstatechange = () =>
+      setAudioState(audioContext?.state || null)
+  }
+
+  function onOscGainChange(event: ChangeEvent<HTMLInputElement>) {
+    if (!audioContext || audioContext.state === 'closed') return
+
+    if (typeof gainNode !== 'undefined') {
+      gainNode.gain.setValueAtTime(
+        parseInt(event?.target?.value),
+        audioContext.currentTime,
+      )
+    }
+
+    return
+  }
+
+  const onHissGainChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (!audioContext || audioContext.state === 'closed') return
+
+    if (typeof hissGainParam !== 'undefined') {
+      hissGainParam.setValueAtTime(
+        event?.target?.value,
+        audioContext.currentTime,
+      )
+    }
+  }
+
+  return (
+    <>
+      <style global jsx>{`
         body {
           font-family: helvetica, arial, sans-serif;
           margin: 2em;
@@ -87,60 +134,7 @@ const styles = `
           font-style: bold;
           color: #330000;
         }
-
-        .control-box {
-          margin-top: 1em;
-          width: 20em;
-          border: 2px solid #333;
-          border-radius: 2em;
-          padding: 1em;
-        }
-
-        .control {
-          margin-bottom: 1em;
-        }
-
-        .control input {
-          width: 14em;
-          left: 20em;
-          float: right;
-        }
-      `
-
-export default function AudioWorklet() {
-  const [audioState, setAudioState] = useState<string | undefined>()
-
-  const onClickToggle = async () => {
-    await toggleSound()
-    if (typeof audioContext === 'undefined') {
-      setAudioState(undefined)
-      return
-    }
-
-    audioContext.onstatechange = () =>
-      setAudioState(audioContext?.state || undefined)
-  }
-
-  const onOscGainChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (typeof audioContext === 'undefined') return
-    if (typeof gainNode !== 'undefined') {
-      gainNode.gain.setValueAtTime(event.target.value, audioContext.currentTime)
-    }
-
-    return
-  }
-
-  const onHissGainChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (typeof audioContext === 'undefined') return
-
-    if (typeof hissGainParam !== 'undefined') {
-      hissGainParam.setValueAtTime(event.target.value, audioContext.currentTime)
-    }
-  }
-
-  return (
-    <>
-      <style jsx>{styles}</style>
+      `}</style>
       <h1>AudioWorklet Demo</h1>
       <p>
         This page is a demo for the <code>AudioWorklet</code> API, which lets
@@ -150,9 +144,9 @@ export default function AudioWorklet() {
         Toggle Sound
       </button>
 
-      <div className='control-box'>
-        <div className='control'>
-          <span className='control-label'>
+      <div className={styles['control-box']}>
+        <div className={styles['control']}>
+          <span className={styles['control-label']}>
             <label htmlFor='osc-gain'>Oscillator gain:</label>
           </span>
           <input
@@ -164,12 +158,12 @@ export default function AudioWorklet() {
             step='0.05'
             defaultValue={oscGainRangeDefault}
             onChange={onOscGainChange}
-            disabled={typeof audioState === 'undefined' ? true : false}
+            disabled={!audioState ? true : false}
           />
         </div>
 
-        <div className='control'>
-          <span className='control-label'>
+        <div className={styles['control']}>
+          <span className={styles['control-label']}>
             <label htmlFor='hiss-gain'>Hiss gain:</label>
           </span>
           <input
@@ -181,11 +175,7 @@ export default function AudioWorklet() {
             step='0.05'
             defaultValue={hissGainRangeDefault}
             onChange={onHissGainChange}
-            disabled={
-              typeof audioState === 'undefined' || audioState !== 'running'
-                ? true
-                : false
-            }
+            disabled={!audioState || audioState !== 'running' ? true : false}
           />
         </div>
       </div>
