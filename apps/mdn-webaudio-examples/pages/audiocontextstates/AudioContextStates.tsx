@@ -88,6 +88,11 @@ export default function AudioContextStates() {
 
   return (
     <>
+      <style global jsx>{`
+        body {
+          font-family: 'Times';
+        }
+      `}</style>
       <h1>AudioContext states demo</h1>
       <button
         disabled={audioState && audioState !== 'closed' ? true : false}
