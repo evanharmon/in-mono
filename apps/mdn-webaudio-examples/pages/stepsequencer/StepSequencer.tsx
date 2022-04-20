@@ -6,6 +6,9 @@ import {
   useState,
 } from 'react'
 import wavetable from './wavetable.js'
+import styles from '../../styles/StepSequencer.module.css'
+import * as constants from './constants'
+import * as types from './types'
 
 let AudioContext =
   typeof window !== 'undefined'
@@ -30,42 +33,6 @@ const wave =
     ? audioContext?.createPeriodicWave(wavetable?.real, wavetable?.imag)
     : null
 
-const DEFAULT_BPM = 120
-const DEFAULT_BPM_STEP = 1
-const MIN_BPM = 60
-const MAX_BPM = 180
-const DEFAULT_ADSR_STEP = 0.1
-const DEFAULT_ATTACK = 0.2
-const MIN_ADSR_RANGE = 0
-const MAX_ADSR_RANGE = 1
-const DEFAULT_RELEASE = 0.2
-
-const DEFAULT_PULSE_HZ = 880
-const DEFAULT_PULSE_HZ_STEP = 1
-const MIN_PULSE_HZ = 660
-const MAX_PULSE_HZ = 1320
-
-const DEFAULT_LFO = 30
-const DEFAULT_LFO_STEP = 1
-const MIN_LFO = 20
-const MAX_LFO = 40
-const DEFAULT_NOISE_DURATION = 1
-const DEFAULT_NOISE_DURATION_STEP = 0.1
-const MIN_NOISE_DURATION = 0
-const MAX_NOISE_DURATION = 2
-const DEFAULT_BAND_HZ = 1000
-const DEFAULT_BAND_HZ_STEP = 5
-const MIN_BAND = 400
-const MAX_BAND = 500
-const DEFAULT_SAMPLE_PLAYBACK_RATE = 1
-const DEFAULT_SAMPLE_PLAYBACK_RATE_STEP = 0.1
-const MIN_RATE = 0.1
-const MAX_RATE = 2
-const DEFAULT_SWEEP_LENGTH = 2
-const DEFAULT_LOOKAHEAD = 25.0
-const DEFAULT_SCHEDULE_AHEAD_TIME = 0.1
-
-const notesInQueue: Array<NoteQueueProps> = []
 let dtmf: AudioBuffer
 // need a way to track what instruments are played on what sequencer steps
 // to avoid using tons of Refs, store parameters in step
@@ -81,21 +48,11 @@ let file = 'dtmf.mp3'
 let currentNote: number
 let nextNoteTime: number
 let timerId: number
-let scheduleAheadTime = DEFAULT_SCHEDULE_AHEAD_TIME
-let lookAhead = DEFAULT_LOOKAHEAD
+let scheduleAheadTime = constants.DEFAULT_SCHEDULE_AHEAD_TIME
+let lookAhead = constants.DEFAULT_LOOKAHEAD
+const notesInQueue: Array<types.NoteQueueProps> = []
 
-// NOTE: yes all the pad types could be made more generic
-// I am being explicit here as it's a learning exercise
-interface playSweepParams {
-  ctx: AudioContext
-  attackTime: number
-  releaseTime: number
-  wave: any
-  time: number
-  sweepLength: number
-}
-
-function playSweep(params: playSweepParams) {
+function playSweep(params: types.playSweepParams) {
   const osc = params.ctx.createOscillator()
   osc.setPeriodicWave(params.wave)
   osc.frequency.value = 380
@@ -114,15 +71,7 @@ function playSweep(params: playSweepParams) {
   osc.stop(params.time + params.sweepLength)
 }
 
-interface playPulseParams {
-  ctx: AudioContext
-  pulseHz: number
-  pulseTime: number
-  lfoHz: number
-  time: number
-}
-
-function playPulse(params: playPulseParams) {
+function playPulse(params: types.playPulseParams) {
   const osc = params.ctx.createOscillator()
   osc.type = 'sine'
   osc.frequency.value = params.pulseHz
@@ -141,14 +90,7 @@ function playPulse(params: playPulseParams) {
   osc.stop(params.time + params.pulseTime)
 }
 
-interface playNoiseParams {
-  ctx: AudioContext
-  time: number
-  noiseDuration: number
-  bandHz: number
-}
-
-function playNoise(params: playNoiseParams) {
+function playNoise(params: types.playNoiseParams) {
   const sampleRate = params.ctx.sampleRate
   const bufferSize = sampleRate + params.noiseDuration
   const buffer = params.ctx.createBuffer(1, bufferSize, sampleRate)
@@ -180,14 +122,7 @@ async function getFile(
   return audioBuffer
 }
 
-interface playSampleParams {
-  ctx: AudioContext
-  audioBuffer: AudioBuffer
-  time: number
-  playbackRate: number
-}
-
-function playSample(params: playSampleParams): AudioBufferSourceNode {
+function playSample(params: types.playSampleParams): AudioBufferSourceNode {
   const sampleSource = params.ctx.createBufferSource()
   sampleSource.buffer = params.audioBuffer
   sampleSource.playbackRate.value = params.playbackRate
@@ -209,29 +144,7 @@ function nextNote() {
   }
 }
 
-interface NoteQueueProps {
-  note: number
-  time: number
-}
-
-interface schedulerParams {
-  ctx: AudioContext
-  noteBeatNumber: number
-  time: number
-  sweepGrid: Map<number, Object>
-  pulseGrid: Map<number, Object>
-  noiseGrid: Map<number, Object>
-  sampleGrid: Map<number, Object>
-  notesInQueue: Array<NoteQueueProps>
-  currentNote: number
-  nextNoteTime: number
-  scheduleAheadTime: number
-  lookAhead: number
-  timerId: number
-  audioBuffer?: AudioBuffer
-}
-
-function scheduler(params: schedulerParams) {
+function scheduler(params: types.schedulerParams) {
   // schedule all notes that need to play before next Interval
   // advance pointer as well
   while (
@@ -244,47 +157,49 @@ function scheduler(params: schedulerParams) {
   params.timerId = window.setTimeout(scheduler, params.lookAhead)
 }
 
-function scheduleNote(params: schedulerParams) {
+function scheduleNote(params: types.schedulerParams) {
   params.notesInQueue.push({ note: params.noteBeatNumber, time: params.time })
 
   const sweepNoteParams = {
     ...params.sweepGrid.get(params.noteBeatNumber),
     wave: wave,
-    sweepLength: DEFAULT_SWEEP_LENGTH,
+    sweepLength: constants.DEFAULT_SWEEP_LENGTH,
   }
   if (typeof sweepNoteParams !== 'undefined')
-    playSweep(sweepNoteParams as playSweepParams)
+    playSweep(sweepNoteParams as types.playSweepParams)
 
   const pulseNoteParams = params.pulseGrid.get(params.noteBeatNumber)
   if (typeof pulseNoteParams !== 'undefined')
-    playPulse(pulseNoteParams as playPulseParams)
+    playPulse(pulseNoteParams as types.playPulseParams)
 
   const noiseNoteParams = params.noiseGrid.get(params.noteBeatNumber)
   if (typeof noiseNoteParams !== 'undefined')
-    playNoise(noiseNoteParams as playNoiseParams)
+    playNoise(noiseNoteParams as types.playNoiseParams)
 
   const sampleNoteParams = params.sampleGrid.get(params.noteBeatNumber)
   if (typeof sampleNoteParams !== 'undefined')
-    playSample(sampleNoteParams as playSampleParams)
+    playSample(sampleNoteParams as types.playSampleParams)
 }
 
 // END: SCHEDULING
 
 export default function StepSequencer() {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   // voice settings
-  const [bpm, setBpm] = useState(DEFAULT_BPM)
-  const [attack, setAttack] = useState(DEFAULT_ATTACK)
-  const [release, setRelease] = useState(DEFAULT_RELEASE)
-  const [pulseHz, setPulseHz] = useState(DEFAULT_PULSE_HZ)
-  const [lfo, setLfo] = useState(DEFAULT_LFO)
-  const [noiseDuration, setNoiseDuration] = useState(DEFAULT_NOISE_DURATION)
-  const [bandHz, setBandHz] = useState(DEFAULT_BAND_HZ)
+  const [bpm, setBpm] = useState(constants.DEFAULT_BPM)
+  const [attack, setAttack] = useState(constants.DEFAULT_ATTACK)
+  const [release, setRelease] = useState(constants.DEFAULT_RELEASE)
+  const [pulseHz, setPulseHz] = useState(constants.DEFAULT_PULSE_HZ)
+  const [lfo, setLfo] = useState(constants.DEFAULT_LFO)
+  const [noiseDuration, setNoiseDuration] = useState(
+    constants.DEFAULT_NOISE_DURATION,
+  )
+  const [bandHz, setBandHz] = useState(constants.DEFAULT_BAND_HZ)
   const [samplePlaybackRate, setSamplePlaybackRate] = useState(
-    DEFAULT_SAMPLE_PLAYBACK_RATE,
+    constants.DEFAULT_SAMPLE_PLAYBACK_RATE,
   )
 
-  const audioContextRef = useRef<AudioContext | null>(audioContext)
   const sweepPadsRef = useRef<HTMLDivElement | null>(null)
   const pulsePadsRef = useRef<HTMLDivElement | null>(null)
   const noisePadsRef = useRef<HTMLDivElement | null>(null)
@@ -296,6 +211,7 @@ export default function StepSequencer() {
     const pulsePads = pulsePadsRef?.current
     const noisePads = noisePadsRef?.current
     const samplePads = samplePadsRef?.current
+
     if (
       sweepPadsRef === null ||
       pulsePadsRef === null ||
@@ -304,11 +220,10 @@ export default function StepSequencer() {
     )
       return
 
-    const audioCtx = audioContextRef?.current
-    if (audioCtx === null) return
+    if (!audioContext) return
 
     let drawNote = lastNoteDrawn
-    const currentTime = audioCtx.currentTime
+    const currentTime = audioContext.currentTime
 
     while (notesInQueue.length && notesInQueue[0].time < currentTime) {
       drawNote = notesInQueue[0].note
@@ -386,25 +301,25 @@ export default function StepSequencer() {
   }, [])
 
   useEffect(() => {
-    if (audioContextRef.current === null) return
+    if (!audioContext) return
 
     async function setupSample(ctx: AudioContext, filePath: string) {
       dtmf = await getFile(ctx, filePath)
+      setIsLoading(false)
     }
-    setupSample(audioContextRef.current, file)
+    setupSample(audioContext, file)
   }, [])
 
   useEffect(() => {
-    const audioCtx = audioContextRef.current
-    if (!audioCtx) return
+    async function initPlay() {
+      if (!audioContext) return
 
-    if (isPlaying) {
-      if (audioCtx.state === 'suspended') audioCtx.resume()
+      if (audioContext.state === 'suspended') await audioContext.resume()
 
       currentNote = 0
-      nextNoteTime = audioCtx.currentTime
+      nextNoteTime = audioContext.currentTime
       scheduler({
-        ctx: audioCtx,
+        ctx: audioContext,
         noteBeatNumber: currentNote,
         timerId,
         time: nextNoteTime,
@@ -419,6 +334,10 @@ export default function StepSequencer() {
         scheduleAheadTime,
         audioBuffer: dtmf,
       })
+    }
+
+    if (isPlaying) {
+      initPlay()
     } else {
       window.clearTimeout(timerId)
     }
@@ -456,252 +375,280 @@ export default function StepSequencer() {
 
   return (
     <>
-      <div id='loading'>
-        <p>Loading...</p>
-      </div>
+      <style global jsx>{`
+        body {
+          background-color: var(--white);
+          padding: 4vmax;
+          font-size: 120%;
+          color: var(--black);
+        }
 
-      <div className='sequencer'>
-        <section className='controls-main'>
+        h2 {
+          font-size: 1.2em;
+        }
+      `}</style>
+      {isLoading ? (
+        <div className={styles.loading}>
+          <p>Loading...</p>
+        </div>
+      ) : null}
+
+      <div className={styles.sequencer}>
+        <section className={styles['controls-main']}>
           <h1>modemDN</h1>
           <label htmlFor='bpm'>BPM</label>
           <input
+            className={styles['input-range']}
             type='range'
-            min={MIN_BPM}
-            max={MAX_BPM}
+            min={constants.MIN_BPM}
+            max={constants.MAX_BPM}
             defaultValue={bpm}
-            step={DEFAULT_BPM_STEP}
+            step={constants.DEFAULT_BPM_STEP}
             onChange={onBpmChange}
           />
           <span id='bpmval'>{bpm}</span>
-          <button data-playing='false' onClick={onPlayButtonClick}>
+          <button
+            className={styles['button-play']}
+            data-playing='false'
+            onClick={onPlayButtonClick}
+          >
             Play
           </button>
         </section>
-      </div>
 
-      <div className='track-one'>
-        <h2>Sweep</h2>
-        <section className='controls'>
-          <label htmlFor='attack'>Att</label>
-          <input
-            type='range'
-            name='attack'
-            id='attack'
-            min={MIN_ADSR_RANGE}
-            max={MAX_ADSR_RANGE}
-            defaultValue={attack}
-            step={DEFAULT_ADSR_STEP}
-            onChange={onAttackChange}
-          />
-          <label htmlFor='release'>Rel</label>
-          <input
-            type='range'
-            name='release'
-            id='release'
-            min={MIN_ADSR_RANGE}
-            max={MAX_ADSR_RANGE}
-            defaultValue={release}
-            step={DEFAULT_ADSR_STEP}
-            onChange={onReleaseChange}
-          />
-        </section>
+        <div id='track-one'>
+          <section className={styles.tracks}>
+            <h2>Sweep</h2>
+            <section className={styles['controls']}>
+              <label htmlFor='attack'>Att</label>
+              <input
+                className={styles['input-range']}
+                type='range'
+                name='attack'
+                id='attack'
+                min={constants.MIN_ADSR_RANGE}
+                max={constants.MAX_ADSR_RANGE}
+                defaultValue={attack}
+                step={constants.DEFAULT_ADSR_STEP}
+                onChange={onAttackChange}
+              />
+              <label htmlFor='release'>Rel</label>
+              <input
+                className={styles['input-range']}
+                type='range'
+                name='release'
+                id='release'
+                min={constants.MIN_ADSR_RANGE}
+                max={constants.MAX_ADSR_RANGE}
+                defaultValue={release}
+                step={constants.DEFAULT_ADSR_STEP}
+                onChange={onReleaseChange}
+              />
+            </section>
 
-        <section ref={sweepPadsRef} className='pads'>
-          <button
-            role='switch'
-            aria-checked='false'
-            onClick={() => onPadClick(0, 0)}
-          >
-            <span>Voice 1, Note 1</span>
-          </button>
-          <button
-            role='switch'
-            aria-checked='false'
-            onClick={() => onPadClick(0, 1)}
-          >
-            <span>Voice 1, Note 2</span>
-          </button>
-          <button
-            role='switch'
-            aria-checked='false'
-            onClick={() => onPadClick(0, 2)}
-          >
-            <span>Voice 1, Note 3</span>
-          </button>
-          <button
-            role='switch'
-            aria-checked='false'
-            onClick={() => onPadClick(0, 3)}
-          >
-            <span>Voice 1, Note 4</span>
-          </button>
-        </section>
-
-        <section className='track-two'>
-          <h2>Pulse</h2>
-          <section className='controls'>
-            <label htmlFor='pulseHz'>Hz</label>
-            <input
-              name='hz'
-              id='hz'
-              type='range'
-              min={MIN_PULSE_HZ}
-              max={MAX_PULSE_HZ}
-              defaultValue={pulseHz}
-              step={DEFAULT_PULSE_HZ_STEP}
-              onChange={onPulseHzChange}
-            />
-            <label htmlFor='lfo'>LFO</label>
-            <input
-              name='lfo'
-              id='lfo'
-              type='range'
-              min={MIN_LFO}
-              max={MAX_LFO}
-              defaultValue={lfo}
-              step={DEFAULT_LFO_STEP}
-              onChange={onLfoChange}
-            />
+            <section ref={sweepPadsRef} className={styles['pads']}>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(0, 0)}
+              >
+                <span>Voice 1, Note 1</span>
+              </button>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(0, 1)}
+              >
+                <span>Voice 1, Note 2</span>
+              </button>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(0, 2)}
+              >
+                <span>Voice 1, Note 3</span>
+              </button>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(0, 3)}
+              >
+                <span>Voice 1, Note 4</span>
+              </button>
+            </section>
           </section>
 
-          <section ref={pulsePadsRef} className='pads'>
-            <button
-              role='switch'
-              aria-checked='false'
-              onClick={() => onPadClick(1, 0)}
-            >
-              <span>Voice 2, Note 1</span>
-            </button>
-            <button
-              role='switch'
-              aria-checked='false'
-              onClick={() => onPadClick(1, 1)}
-            >
-              <span>Voice 2, Note 2</span>
-            </button>
-            <button
-              role='switch'
-              aria-checked='false'
-              onClick={() => onPadClick(1, 2)}
-            >
-              <span>Voice 2, Note 3</span>
-            </button>
-            <button
-              role='switch'
-              aria-checked='false'
-              onClick={() => onPadClick(1, 3)}
-            >
-              <span>Voice 2, Note 4</span>
-            </button>
-          </section>
-        </section>
+          <section id='track-two' className={styles.tracks}>
+            <h2>Pulse</h2>
+            <section className={styles['controls']}>
+              <label htmlFor='pulseHz'>Hz</label>
+              <input
+                className={styles['input-range']}
+                name='hz'
+                id='hz'
+                type='range'
+                min={constants.MIN_PULSE_HZ}
+                max={constants.MAX_PULSE_HZ}
+                defaultValue={pulseHz}
+                step={constants.DEFAULT_PULSE_HZ_STEP}
+                onChange={onPulseHzChange}
+              />
+              <label htmlFor='lfo'>LFO</label>
+              <input
+                className={styles['input-range']}
+                name='lfo'
+                id='lfo'
+                type='range'
+                min={constants.MIN_LFO}
+                max={constants.MAX_LFO}
+                defaultValue={lfo}
+                step={constants.DEFAULT_LFO_STEP}
+                onChange={onLfoChange}
+              />
+            </section>
 
-        <section className='track-three'>
-          <h2>Noise</h2>
-          <section className='controls'>
-            <label htmlFor='duration'>Dur</label>
-            <input
-              name='duration'
-              id='duration'
-              type='range'
-              min={MIN_NOISE_DURATION}
-              max={MAX_NOISE_DURATION}
-              defaultValue={noiseDuration}
-              step={DEFAULT_NOISE_DURATION_STEP}
-              onChange={onNoiseDurationChange}
-            />
-            <label htmlFor='band'>Band</label>
-            <input
-              name='band'
-              id='band'
-              type='range'
-              min={MIN_BAND}
-              max={MAX_BAND}
-              defaultValue={bandHz}
-              step={DEFAULT_BAND_HZ_STEP}
-              onChange={onBandHzChange}
-            />
-          </section>
-
-          <section ref={noisePadsRef} className='pads'>
-            <button
-              role='switch'
-              aria-checked='false'
-              onClick={() => onPadClick(2, 0)}
-            >
-              <span>Voice 3, Note 1</span>
-            </button>
-            <button
-              role='switch'
-              aria-checked='false'
-              onClick={() => onPadClick(2, 1)}
-            >
-              <span>Voice 3, Note 2</span>
-            </button>
-            <button
-              role='switch'
-              aria-checked='false'
-              onClick={() => onPadClick(2, 2)}
-            >
-              <span>Voice 3, Note 3</span>
-            </button>
-            <button
-              role='switch'
-              aria-checked='false'
-              onClick={() => onPadClick(2, 3)}
-            >
-              <span>Voice 3, Note 4</span>
-            </button>
-          </section>
-        </section>
-
-        <section className='track-four'>
-          <h2>DTMF</h2>
-          <section className='controls'>
-            <label htmlFor='rate'>Rate</label>
-            <input
-              name='rate'
-              id='rate'
-              type='range'
-              min={MIN_RATE}
-              max={MAX_RATE}
-              defaultValue={samplePlaybackRate}
-              step={DEFAULT_SAMPLE_PLAYBACK_RATE_STEP}
-              onChange={onSamplePlaybackRateChange}
-            />
+            <section ref={pulsePadsRef} className={styles['pads']}>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(1, 0)}
+              >
+                <span>Voice 2, Note 1</span>
+              </button>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(1, 1)}
+              >
+                <span>Voice 2, Note 2</span>
+              </button>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(1, 2)}
+              >
+                <span>Voice 2, Note 3</span>
+              </button>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(1, 3)}
+              >
+                <span>Voice 2, Note 4</span>
+              </button>
+            </section>
           </section>
 
-          <section ref={samplePadsRef} className='pads'>
-            <button
-              role='switch'
-              aria-checked='false'
-              onClick={() => onPadClick(3, 0)}
-            >
-              <span>Voice 4, Note 1</span>
-            </button>
-            <button
-              role='switch'
-              aria-checked='false'
-              onClick={() => onPadClick(3, 1)}
-            >
-              <span>Voice 4, Note 2</span>
-            </button>
-            <button
-              role='switch'
-              aria-checked='false'
-              onClick={() => onPadClick(3, 2)}
-            >
-              <span>Voice 4, Note 3</span>
-            </button>
-            <button
-              role='switch'
-              aria-checked='false'
-              onClick={() => onPadClick(3, 3)}
-            >
-              <span>Voice 4, Note 4</span>
-            </button>
+          <section id='track-three' className={styles.tracks}>
+            <h2>Noise</h2>
+            <section className={styles['controls']}>
+              <label htmlFor='duration'>Dur</label>
+              <input
+                className={styles['input-range']}
+                name='duration'
+                id='duration'
+                type='range'
+                min={constants.MIN_NOISE_DURATION}
+                max={constants.MAX_NOISE_DURATION}
+                defaultValue={noiseDuration}
+                step={constants.DEFAULT_NOISE_DURATION_STEP}
+                onChange={onNoiseDurationChange}
+              />
+              <label htmlFor='band'>Band</label>
+              <input
+                className={styles['input-range']}
+                name='band'
+                id='band'
+                type='range'
+                min={constants.MIN_BAND}
+                max={constants.MAX_BAND}
+                defaultValue={bandHz}
+                step={constants.DEFAULT_BAND_HZ_STEP}
+                onChange={onBandHzChange}
+              />
+            </section>
+
+            <section ref={noisePadsRef} className={styles['pads']}>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(2, 0)}
+              >
+                <span>Voice 3, Note 1</span>
+              </button>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(2, 1)}
+              >
+                <span>Voice 3, Note 2</span>
+              </button>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(2, 2)}
+              >
+                <span>Voice 3, Note 3</span>
+              </button>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(2, 3)}
+              >
+                <span>Voice 3, Note 4</span>
+              </button>
+            </section>
           </section>
-        </section>
+
+          <section id='track-four' className={styles.tracks}>
+            <h2>DTMF</h2>
+            <section className={styles['controls']}>
+              <label htmlFor='rate'>Rate</label>
+              <input
+                className={styles['input-range']}
+                name='rate'
+                id='rate'
+                type='range'
+                min={constants.MIN_RATE}
+                max={constants.MAX_RATE}
+                defaultValue={samplePlaybackRate}
+                step={constants.DEFAULT_SAMPLE_PLAYBACK_RATE_STEP}
+                onChange={onSamplePlaybackRateChange}
+              />
+            </section>
+
+            <section ref={samplePadsRef} className={styles['pads']}>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(3, 0)}
+              >
+                <span>Voice 4, Note 1</span>
+              </button>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(3, 1)}
+              >
+                <span>Voice 4, Note 2</span>
+              </button>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(3, 2)}
+              >
+                <span>Voice 4, Note 3</span>
+              </button>
+              <button
+                role='switch'
+                aria-checked='false'
+                onClick={() => onPadClick(3, 3)}
+              >
+                <span>Voice 4, Note 4</span>
+              </button>
+            </section>
+          </section>
+        </div>
       </div>
     </>
   )
