@@ -1,0 +1,34 @@
+export const DEFAULT_BPM = 120
+export const DEFAULT_BPM_STEP = 1
+export const MIN_BPM = 60
+export const MAX_BPM = 180
+export const DEFAULT_ADSR_STEP = 0.1
+export const DEFAULT_ATTACK = 0.2
+export const MIN_ADSR_RANGE = 0
+export const MAX_ADSR_RANGE = 1
+export const DEFAULT_RELEASE = 0.2
+
+export const DEFAULT_PULSE_HZ = 880
+export const DEFAULT_PULSE_HZ_STEP = 1
+export const MIN_PULSE_HZ = 660
+export const MAX_PULSE_HZ = 1320
+
+export const DEFAULT_LFO = 30
+export const DEFAULT_LFO_STEP = 1
+export const MIN_LFO = 20
+export const MAX_LFO = 40
+export const DEFAULT_NOISE_DURATION = 1
+export const DEFAULT_NOISE_DURATION_STEP = 0.1
+export const MIN_NOISE_DURATION = 0
+export const MAX_NOISE_DURATION = 2
+export const DEFAULT_BAND_HZ = 1000
+export const DEFAULT_BAND_HZ_STEP = 5
+export const MIN_BAND = 400
+export const MAX_BAND = 500
+export const DEFAULT_SAMPLE_PLAYBACK_RATE = 1
+export const DEFAULT_SAMPLE_PLAYBACK_RATE_STEP = 0.1
+export const MIN_RATE = 0.1
+export const MAX_RATE = 2
+export const DEFAULT_SWEEP_LENGTH = 2
+export const DEFAULT_LOOKAHEAD = 25.0
+export const DEFAULT_SCHEDULE_AHEAD_TIME = 0.1
