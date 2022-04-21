@@ -16,6 +16,10 @@
   --boxSecond: var(--cyan);
   --boxHigh: var(--orange);
 
+  --seq-boxMain: var(--pink);
+  --seq-boxSecond: var(--purple);
+  --seq-boxHigh: var(--yellow);
+
   --border: 1vmin solid var(--black);
   --borderRad: 2px;
 }

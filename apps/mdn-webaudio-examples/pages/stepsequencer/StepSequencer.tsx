@@ -45,70 +45,74 @@ let lastNoteDrawn = 3
 let file = 'dtmf.mp3'
 
 // Scheduler
-let currentNote: number
-let nextNoteTime: number
+let currentNote = 0
+let nextNoteTime = 0.0
 let timerId: number
 let scheduleAheadTime = constants.DEFAULT_SCHEDULE_AHEAD_TIME
 let lookAhead = constants.DEFAULT_LOOKAHEAD
+// const notesInQueue: Array<types.NoteQueueProps> = [{ note: 0, time: 0 }]
 const notesInQueue: Array<types.NoteQueueProps> = []
 
-function playSweep(params: types.playSweepParams) {
-  const osc = params.ctx.createOscillator()
+function playSweep(time: number, params: types.playSweepParams) {
+  if (!audioContext) return
+  const osc = audioContext.createOscillator()
   osc.setPeriodicWave(params.wave)
   osc.frequency.value = 380
 
-  const sweepEnv = params.ctx.createGain()
-  sweepEnv.gain.cancelScheduledValues(params.time)
-  sweepEnv.gain.setValueAtTime(0, params.time)
-  sweepEnv.gain.linearRampToValueAtTime(1, params.time + params.attackTime)
+  const sweepEnv = audioContext.createGain()
+  sweepEnv.gain.cancelScheduledValues(time)
+  sweepEnv.gain.setValueAtTime(0, time)
+  sweepEnv.gain.linearRampToValueAtTime(1, time + params.attackTime)
   sweepEnv.gain.linearRampToValueAtTime(
     0,
-    params.time + params.sweepLength - params.releaseTime,
+    time + params.sweepLength - params.releaseTime,
   )
 
-  osc.connect(sweepEnv).connect(params.ctx.destination)
-  osc.start(params.time)
-  osc.stop(params.time + params.sweepLength)
+  osc.connect(sweepEnv).connect(audioContext.destination)
+  osc.start(time)
+  osc.stop(time + params.sweepLength)
 }
 
-function playPulse(params: types.playPulseParams) {
-  const osc = params.ctx.createOscillator()
+function playPulse(time: number, params: types.playPulseParams) {
+  if (!audioContext) return
+  const osc = audioContext.createOscillator()
   osc.type = 'sine'
   osc.frequency.value = params.pulseHz
 
-  const amp = params.ctx.createGain()
+  const amp = audioContext.createGain()
   amp.gain.value = 1
 
-  const lfo = params.ctx.createOscillator()
+  const lfo = audioContext.createOscillator()
   lfo.type = 'square'
   lfo.frequency.value = params.lfoHz
 
   lfo.connect(amp.gain)
-  osc.connect(amp).connect(params.ctx.destination)
+  osc.connect(amp).connect(audioContext.destination)
   lfo.start()
-  osc.start(params.time)
-  osc.stop(params.time + params.pulseTime)
+  osc.start(time)
+  osc.stop(time + params.pulseTime)
 }
 
-function playNoise(params: types.playNoiseParams) {
-  const sampleRate = params.ctx.sampleRate
+function playNoise(time: number, params: types.playNoiseParams) {
+  if (!audioContext) return
+  const sampleRate = audioContext.sampleRate
   const bufferSize = sampleRate + params.noiseDuration
-  const buffer = params.ctx.createBuffer(1, bufferSize, sampleRate)
+  const buffer = audioContext.createBuffer(1, bufferSize, sampleRate)
   const data = buffer.getChannelData(0)
 
   for (let i = 0; i < bufferSize; i++) {
     data[i] = Math.random() * 2 - 1
   }
 
-  const noise = params.ctx.createBufferSource()
+  const noise = audioContext.createBufferSource()
   noise.buffer = buffer
 
-  const bandpass = params.ctx.createBiquadFilter()
+  const bandpass = audioContext.createBiquadFilter()
   bandpass.type = 'bandpass'
   bandpass.frequency.value = params.bandHz
 
-  noise.connect(bandpass).connect(params.ctx.destination)
-  noise.start(params.time)
+  noise.connect(bandpass).connect(audioContext.destination)
+  noise.start(time)
 }
 
 async function getFile(
@@ -122,19 +126,24 @@ async function getFile(
   return audioBuffer
 }
 
-function playSample(params: types.playSampleParams): AudioBufferSourceNode {
-  const sampleSource = params.ctx.createBufferSource()
+function playSample(
+  time: number,
+  params: types.playSampleParams,
+): AudioBufferSourceNode | null {
+  if (!audioContext) return null
+  const sampleSource = audioContext.createBufferSource()
   sampleSource.buffer = params.audioBuffer
   sampleSource.playbackRate.value = params.playbackRate
-  sampleSource.connect(params.ctx.destination)
-  sampleSource.start(params.time)
+  sampleSource.connect(audioContext.destination)
+  sampleSource.start(time)
 
   return sampleSource
 }
 
 // BEGIN: SCHEDULING
+let tempo = constants.DEFAULT_BPM // hacky but i don't want to pass setBPM all the way here
 function nextNote() {
-  const secondsPerBeat = 60.0
+  const secondsPerBeat = 60.0 / tempo
 
   nextNoteTime += secondsPerBeat
 
@@ -144,41 +153,48 @@ function nextNote() {
   }
 }
 
-function scheduler(params: types.schedulerParams) {
+async function scheduler(params: types.schedulerParams) {
+  if (!audioContext || audioContext.state !== 'running') return
   // schedule all notes that need to play before next Interval
   // advance pointer as well
-  while (
-    params.nextNoteTime <
-    params.ctx.currentTime + params.scheduleAheadTime
-  ) {
-    scheduleNote(params)
+  while (nextNoteTime < audioContext.currentTime + scheduleAheadTime) {
+    scheduleNote(currentNote, nextNoteTime, params)
     nextNote()
   }
-  params.timerId = window.setTimeout(scheduler, params.lookAhead)
+  timerId = window.setTimeout(scheduler, lookAhead)
 }
 
-function scheduleNote(params: types.schedulerParams) {
-  params.notesInQueue.push({ note: params.noteBeatNumber, time: params.time })
+function scheduleNote(
+  note: number,
+  time: number,
+  params: types.schedulerParams,
+) {
+  notesInQueue.push({ note: note, time: time })
+  // console.log(`note`, note, ` time `, time)
+  console.log(note, time)
 
-  const sweepNoteParams = {
-    ...params.sweepGrid.get(params.noteBeatNumber),
-    wave: wave,
-    sweepLength: constants.DEFAULT_SWEEP_LENGTH,
+  const sweepNoteParams = params?.sweepGrid?.get(note)
+  if (typeof sweepNoteParams !== 'undefined') {
+    const extraParams = {
+      ...sweepNoteParams,
+      wave: wave,
+      sweepLength: constants.DEFAULT_SWEEP_LENGTH,
+    }
+
+    playSweep(time, extraParams as types.playSweepParams)
   }
-  if (typeof sweepNoteParams !== 'undefined')
-    playSweep(sweepNoteParams as types.playSweepParams)
 
-  const pulseNoteParams = params.pulseGrid.get(params.noteBeatNumber)
+  const pulseNoteParams = params?.pulseGrid?.get(note)
   if (typeof pulseNoteParams !== 'undefined')
-    playPulse(pulseNoteParams as types.playPulseParams)
+    playPulse(time, pulseNoteParams as types.playPulseParams)
 
-  const noiseNoteParams = params.noiseGrid.get(params.noteBeatNumber)
+  const noiseNoteParams = params?.noiseGrid?.get(note)
   if (typeof noiseNoteParams !== 'undefined')
-    playNoise(noiseNoteParams as types.playNoiseParams)
+    playNoise(time, noiseNoteParams as types.playNoiseParams)
 
-  const sampleNoteParams = params.sampleGrid.get(params.noteBeatNumber)
+  const sampleNoteParams = params?.sampleGrid?.get(note)
   if (typeof sampleNoteParams !== 'undefined')
-    playSample(sampleNoteParams as types.playSampleParams)
+    playSample(time, sampleNoteParams as types.playSampleParams)
 }
 
 // END: SCHEDULING
@@ -229,6 +245,7 @@ export default function StepSequencer() {
       drawNote = notesInQueue[0].note
       notesInQueue.splice(0, 1) // remove note
     }
+
     const sweepPadsChildren = sweepPads?.children
     const pulsePadsChildren = pulsePads?.children
     const noisePadsChildren = noisePads?.children
@@ -246,28 +263,28 @@ export default function StepSequencer() {
       const sweepPadLastNoteDrawn = sweepPadsChildren[
         lastNoteDrawn
       ] as HTMLElement
-      sweepPadLastNoteDrawn.style.borderColor = 'hslaI(0, 0%, 10%, 1)'
+      sweepPadLastNoteDrawn.style.borderColor = 'hsla(0, 0%, 10%, 1)'
       const sweepPadDrawNote = sweepPadsChildren[drawNote] as HTMLElement
       sweepPadDrawNote.style.borderColor = 'hsla(49, 99%, 50%, 1)'
 
       const pulsePadLastNoteDrawn = pulsePadsChildren[
         lastNoteDrawn
       ] as HTMLElement
-      pulsePadLastNoteDrawn.style.borderColor = 'hslaI(0, 0%, 10%, 1)'
+      pulsePadLastNoteDrawn.style.borderColor = 'hsla(0, 0%, 10%, 1)'
       const pulsePadDrawNote = pulsePadsChildren[drawNote] as HTMLElement
       pulsePadDrawNote.style.borderColor = 'hsla(49, 99%, 50%, 1)'
 
       const noisePadLastNoteDrawn = noisePadsChildren[
         lastNoteDrawn
       ] as HTMLElement
-      noisePadLastNoteDrawn.style.borderColor = 'hslaI(0, 0%, 10%, 1)'
+      noisePadLastNoteDrawn.style.borderColor = 'hsla(0, 0%, 10%, 1)'
       const noisePadDrawNote = noisePadsChildren[drawNote] as HTMLElement
       noisePadDrawNote.style.borderColor = 'hsla(49, 99%, 50%, 1)'
 
       const samplePadLastNoteDrawn = samplePadsChildren[
         lastNoteDrawn
       ] as HTMLElement
-      samplePadLastNoteDrawn.style.borderColor = 'hslaI(0, 0%, 10%, 1)'
+      samplePadLastNoteDrawn.style.borderColor = 'hsla(0, 0%, 10%, 1)'
       const samplePadDrawNote = samplePadsChildren[drawNote] as HTMLElement
       samplePadDrawNote.style.borderColor = 'hsla(49, 99%, 50%, 1)'
 
@@ -277,8 +294,9 @@ export default function StepSequencer() {
 
   useIsomorphicUseLayoutEffect(() => {
     if (requestAnimationFrame === null) return
+    if (isPlaying === false) return
 
-    const animate = () => {
+    function animate() {
       if (requestAnimationFrame === null) return
 
       if (
@@ -292,13 +310,12 @@ export default function StepSequencer() {
       renderFrame()
       frameIdRef.current = requestAnimationFrame(animate)
     }
-
     frameIdRef.current = requestAnimationFrame(animate)
 
     return () => {
       if (frameIdRef?.current) cancelAnimationFrame(frameIdRef.current)
     }
-  }, [])
+  }, [isPlaying])
 
   useEffect(() => {
     if (!audioContext) return
@@ -310,44 +327,30 @@ export default function StepSequencer() {
     setupSample(audioContext, file)
   }, [])
 
-  useEffect(() => {
-    async function initPlay() {
-      if (!audioContext) return
+  // Event Handlers
+  function onBpmChange(event: ChangeEvent<HTMLInputElement>) {
+    const val = Number(event?.target?.value)
+    setBpm(val)
+    tempo = val
+  }
+  async function onPlayButtonClick() {
+    if (!audioContext) return
+    if (audioContext.state === 'suspended') await audioContext.resume()
 
-      if (audioContext.state === 'suspended') await audioContext.resume()
-
+    if (isPlaying) {
+      window.clearTimeout(timerId)
+    } else {
       currentNote = 0
       nextNoteTime = audioContext.currentTime
       scheduler({
-        ctx: audioContext,
-        noteBeatNumber: currentNote,
-        timerId,
-        time: nextNoteTime,
         notesInQueue,
-        lookAhead,
-        nextNoteTime,
         sweepGrid,
         pulseGrid,
         noiseGrid,
         sampleGrid,
-        currentNote,
-        scheduleAheadTime,
         audioBuffer: dtmf,
       })
     }
-
-    if (isPlaying) {
-      initPlay()
-    } else {
-      window.clearTimeout(timerId)
-    }
-  }, [isPlaying])
-
-  // Event Handlers
-  function onBpmChange(event: ChangeEvent<HTMLInputElement>) {
-    setBpm(parseInt(event?.target?.value))
-  }
-  function onPlayButtonClick() {
     setIsPlaying(!isPlaying)
   }
   function onAttackChange(event: ChangeEvent<HTMLInputElement>) {
@@ -364,13 +367,13 @@ export default function StepSequencer() {
     setLfo(Number(event.target.value))
   }
   function onNoiseDurationChange(event: ChangeEvent<HTMLInputElement>) {
-    setNoiseDuration(parseFloat(event?.target?.value))
+    setNoiseDuration(Number(event?.target?.value))
   }
   function onBandHzChange(event: ChangeEvent<HTMLInputElement>) {
-    setBandHz(parseInt(event?.target?.value))
+    setBandHz(Number(event?.target?.value))
   }
   function onSamplePlaybackRateChange(event: ChangeEvent<HTMLInputElement>) {
-    setSamplePlaybackRate(parseFloat(event?.target?.value))
+    setSamplePlaybackRate(Number(event?.target?.value))
   }
 
   return (
@@ -380,6 +383,7 @@ export default function StepSequencer() {
           background-color: var(--white);
           padding: 4vmax;
           font-size: 120%;
+          font-family: 'Helvetica';
           color: var(--black);
         }
 
@@ -395,10 +399,10 @@ export default function StepSequencer() {
 
       <div className={styles.sequencer}>
         <section className={styles['controls-main']}>
-          <h1>modemDN</h1>
+          <h1>ModemDN</h1>
           <label htmlFor='bpm'>BPM</label>
           <input
-            className={styles['input-range']}
+            className={styles['inputs-range']}
             type='range'
             min={constants.MIN_BPM}
             max={constants.MAX_BPM}
@@ -409,7 +413,7 @@ export default function StepSequencer() {
           <span id='bpmval'>{bpm}</span>
           <button
             className={styles['button-play']}
-            data-playing='false'
+            data-playing={isPlaying}
             onClick={onPlayButtonClick}
           >
             Play
@@ -422,7 +426,7 @@ export default function StepSequencer() {
             <section className={styles['controls']}>
               <label htmlFor='attack'>Att</label>
               <input
-                className={styles['input-range']}
+                className={styles['inputs-range']}
                 type='range'
                 name='attack'
                 id='attack'
@@ -434,7 +438,7 @@ export default function StepSequencer() {
               />
               <label htmlFor='release'>Rel</label>
               <input
-                className={styles['input-range']}
+                className={styles['inputs-range']}
                 type='range'
                 name='release'
                 id='release'
@@ -483,7 +487,7 @@ export default function StepSequencer() {
             <section className={styles['controls']}>
               <label htmlFor='pulseHz'>Hz</label>
               <input
-                className={styles['input-range']}
+                className={styles['inputs-range']}
                 name='hz'
                 id='hz'
                 type='range'
@@ -495,7 +499,7 @@ export default function StepSequencer() {
               />
               <label htmlFor='lfo'>LFO</label>
               <input
-                className={styles['input-range']}
+                className={styles['inputs-range']}
                 name='lfo'
                 id='lfo'
                 type='range'
@@ -544,7 +548,7 @@ export default function StepSequencer() {
             <section className={styles['controls']}>
               <label htmlFor='duration'>Dur</label>
               <input
-                className={styles['input-range']}
+                className={styles['inputs-range']}
                 name='duration'
                 id='duration'
                 type='range'
@@ -556,7 +560,7 @@ export default function StepSequencer() {
               />
               <label htmlFor='band'>Band</label>
               <input
-                className={styles['input-range']}
+                className={styles['inputs-range']}
                 name='band'
                 id='band'
                 type='range'
@@ -605,7 +609,7 @@ export default function StepSequencer() {
             <section className={styles['controls']}>
               <label htmlFor='rate'>Rate</label>
               <input
-                className={styles['input-range']}
+                className={styles['inputs-range']}
                 name='rate'
                 id='rate'
                 type='range'
