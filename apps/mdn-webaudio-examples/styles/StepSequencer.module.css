@@ -38,14 +38,14 @@
   max-width: 900px;
   min-width: 600px;
   margin: 0 auto;
-  background-color: var(--boxMain);
+  background-color: var(--seq-boxMain);
   border: var(--border);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~ top section */
 .controls-main {
   padding: 2vw;
-  background-color: var(--boxSecond);
+  background-color: var(--seq-boxSecond);
   border-bottom: var(--border);
   display: grid;
   grid-template-rows: auto;
@@ -67,7 +67,7 @@
   align-self: stretch;
   border: var(--border);
   border-radius: var(--borderRad);
-  background-color: var(--boxSecond);
+  background-color: var(--seq-boxSecond);
   cursor: pointer;
 }
 
@@ -142,7 +142,7 @@
 }
 
 .pads > button[aria-checked='true'] {
-  background-color: var(--boxHigh);
+  background-color: var(--seq-boxHigh);
 }
 
 .pads button span {
@@ -171,7 +171,7 @@
   width: 2vw;
   border: 0.5vmin solid var(--black);
   border-radius: var(--borderRad);
-  background-color: var(--boxSecond);
+  background-color: var(--seq-boxSecond);
   cursor: pointer;
 }
 
@@ -180,7 +180,7 @@
   width: 2vw;
   border: 0.5vmin solid var(--black);
   border-radius: var(--borderRad);
-  background-color: var(--boxSecond);
+  background-color: var(--seq-boxSecond);
   cursor: pointer;
 }
 
@@ -189,7 +189,7 @@
   width: 2vw;
   border: 0.5vmin solid var(--black);
   border-radius: var(--borderRad);
-  background-color: var(--boxSecond);
+  background-color: var(--seq-boxSecond);
   cursor: pointer;
 }
 
@@ -219,13 +219,13 @@
 }
 
 .inputs-range:focus::-webkit-slider-thumb {
-  background-color: var(--boxHigh);
+  background-color: var(--seq-boxHigh);
 }
 
 .inputs-range:focus::-moz-range-thumb {
-  background-color: var(--boxHigh);
+  background-color: var(--seq-boxHigh);
 }
 
 .inputs-range:focus::-ms-thumb {
-  background-color: var(--boxHigh);
+  background-color: var(--seq-boxHigh);
 }
