@@ -2,11 +2,11 @@
 repo:
   - '*'
 
-@evanharmon/config:
-- packages/config/*
+evanharmon/config:
+  - packages/config/*
 
-@evanharmon/tsconfig:
-- packages/tsconfig/*
+evanharmon/tsconfig:
+  - packages/tsconfig/*
 
 mdn-webaudio-examples:
-- apps/mdn-webaudio-examples/*
+  - apps/mdn-webaudio-examples/*
