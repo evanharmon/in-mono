@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "main": "index.js",
   "license": "MIT",
+  "author": "Evan Harmon",
   "files": [
     "eslint-preset.js"
   ],
