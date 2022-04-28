@@ -1,12 +1,9 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
-repo:
-  - '*'
+🚀 CI / CD:
+  - .github/workflows/*
 
-evanharmon/config:
-  - packages/config/*
+📦 packages:
+  - packages/**/*
 
-evanharmon/tsconfig:
-  - packages/tsconfig/*
-
-mdn-webaudio-examples:
-  - apps/mdn-webaudio-examples/*
+🦊 mdn-webaudio-examples:
+  - apps/mdn-webaudio-examples/**/*
