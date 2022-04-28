@@ -1,5 +1,6 @@
 import {
   ChangeEvent,
+  MouseEvent,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -153,17 +154,6 @@ function nextNote() {
   }
 }
 
-async function scheduler(params: types.schedulerParams) {
-  if (!audioContext || audioContext.state !== 'running') return
-  // schedule all notes that need to play before next Interval
-  // advance pointer as well
-  while (nextNoteTime < audioContext.currentTime + scheduleAheadTime) {
-    scheduleNote(currentNote, nextNoteTime, params)
-    nextNote()
-  }
-  timerId = window.setTimeout(scheduler, lookAhead)
-}
-
 function scheduleNote(
   note: number,
   time: number,
@@ -171,7 +161,6 @@ function scheduleNote(
 ) {
   notesInQueue.push({ note: note, time: time })
   // console.log(`note`, note, ` time `, time)
-  console.log(note, time)
 
   const sweepNoteParams = params?.sweepGrid?.get(note)
   if (typeof sweepNoteParams !== 'undefined') {
@@ -180,7 +169,6 @@ function scheduleNote(
       wave: wave,
       sweepLength: constants.DEFAULT_SWEEP_LENGTH,
     }
-
     playSweep(time, extraParams as types.playSweepParams)
   }
 
@@ -197,6 +185,17 @@ function scheduleNote(
     playSample(time, sampleNoteParams as types.playSampleParams)
 }
 
+async function scheduler(params: types.schedulerParams) {
+  if (!audioContext || audioContext.state !== 'running') return
+  // schedule all notes that need to play before next Interval
+  // advance pointer as well
+  while (nextNoteTime < audioContext.currentTime + scheduleAheadTime) {
+    scheduleNote(currentNote, nextNoteTime, params)
+    nextNote()
+  }
+  timerId = window.setTimeout(scheduler, lookAhead, params)
+}
+
 // END: SCHEDULING
 
 export default function StepSequencer() {
@@ -207,7 +206,7 @@ export default function StepSequencer() {
   const [attack, setAttack] = useState(constants.DEFAULT_ATTACK)
   const [release, setRelease] = useState(constants.DEFAULT_RELEASE)
   const [pulseHz, setPulseHz] = useState(constants.DEFAULT_PULSE_HZ)
-  const [lfo, setLfo] = useState(constants.DEFAULT_LFO)
+  const [lfoHz, setLfoHz] = useState(constants.DEFAULT_LFO_HZ)
   const [noiseDuration, setNoiseDuration] = useState(
     constants.DEFAULT_NOISE_DURATION,
   )
@@ -342,8 +341,8 @@ export default function StepSequencer() {
     } else {
       currentNote = 0
       nextNoteTime = audioContext.currentTime
+      // console.log(`sweepGrid`, sweepGrid)
       scheduler({
-        notesInQueue,
         sweepGrid,
         pulseGrid,
         noiseGrid,
@@ -359,12 +358,57 @@ export default function StepSequencer() {
   function onReleaseChange(event: ChangeEvent<HTMLInputElement>) {
     setRelease(Number(event.target.value))
   }
-  function onPadClick(voice: number, note: number) {} // TODO implement
+  function onPadClick(
+    e: MouseEvent<HTMLButtonElement>,
+    voice: number,
+    note: number,
+  ) {
+    console.log(voice, note)
+    const chk = e?.currentTarget?.getAttribute('aria-checked')
+    e.currentTarget.setAttribute(
+      'aria-checked',
+      chk === 'false' ? 'true' : 'false',
+    )
+
+    switch (voice) {
+      case 0:
+        sweepGrid.get(note) === undefined
+          ? sweepGrid.set(note, { attackTime: attack, releaseTime: release })
+          : sweepGrid.delete(note)
+        break
+      case 1:
+        pulseGrid.get(note) === undefined
+          ? pulseGrid.set(note, {
+              pulseHz,
+              pulseTime: constants.DEFAULT_PULSE_TIME,
+              lfoHz,
+            })
+          : pulseGrid.delete(note)
+        break
+      case 2:
+        noiseGrid.get(note) === undefined
+          ? noiseGrid.set(note, {
+              noiseDuration,
+              bandHz,
+            })
+          : noiseGrid.delete(note)
+        break
+      case 3:
+        sampleGrid.get(note) === undefined
+          ? sampleGrid.set(note, {
+              playbackRate: samplePlaybackRate,
+            })
+          : sampleGrid.delete(note)
+        break
+      default:
+        break
+    }
+  }
   function onPulseHzChange(event: ChangeEvent<HTMLInputElement>) {
     setPulseHz(Number(event.target.value))
   }
-  function onLfoChange(event: ChangeEvent<HTMLInputElement>) {
-    setLfo(Number(event.target.value))
+  function onLfoHzChange(event: ChangeEvent<HTMLInputElement>) {
+    setLfoHz(Number(event.target.value))
   }
   function onNoiseDurationChange(event: ChangeEvent<HTMLInputElement>) {
     setNoiseDuration(Number(event?.target?.value))
@@ -454,28 +498,28 @@ export default function StepSequencer() {
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(0, 0)}
+                onClick={e => onPadClick(e, 0, 0)}
               >
                 <span>Voice 1, Note 1</span>
               </button>
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(0, 1)}
+                onClick={e => onPadClick(e, 0, 1)}
               >
                 <span>Voice 1, Note 2</span>
               </button>
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(0, 2)}
+                onClick={e => onPadClick(e, 0, 2)}
               >
                 <span>Voice 1, Note 3</span>
               </button>
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(0, 3)}
+                onClick={e => onPadClick(e, 0, 3)}
               >
                 <span>Voice 1, Note 4</span>
               </button>
@@ -505,9 +549,9 @@ export default function StepSequencer() {
                 type='range'
                 min={constants.MIN_LFO}
                 max={constants.MAX_LFO}
-                defaultValue={lfo}
+                defaultValue={lfoHz}
                 step={constants.DEFAULT_LFO_STEP}
-                onChange={onLfoChange}
+                onChange={onLfoHzChange}
               />
             </section>
 
@@ -515,28 +559,28 @@ export default function StepSequencer() {
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(1, 0)}
+                onClick={e => onPadClick(e, 1, 0)}
               >
                 <span>Voice 2, Note 1</span>
               </button>
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(1, 1)}
+                onClick={e => onPadClick(e, 1, 1)}
               >
                 <span>Voice 2, Note 2</span>
               </button>
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(1, 2)}
+                onClick={e => onPadClick(e, 1, 2)}
               >
                 <span>Voice 2, Note 3</span>
               </button>
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(1, 3)}
+                onClick={e => onPadClick(e, 1, 3)}
               >
                 <span>Voice 2, Note 4</span>
               </button>
@@ -576,28 +620,28 @@ export default function StepSequencer() {
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(2, 0)}
+                onClick={e => onPadClick(e, 2, 0)}
               >
                 <span>Voice 3, Note 1</span>
               </button>
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(2, 1)}
+                onClick={e => onPadClick(e, 2, 1)}
               >
                 <span>Voice 3, Note 2</span>
               </button>
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(2, 2)}
+                onClick={e => onPadClick(e, 2, 2)}
               >
                 <span>Voice 3, Note 3</span>
               </button>
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(2, 3)}
+                onClick={e => onPadClick(e, 2, 3)}
               >
                 <span>Voice 3, Note 4</span>
               </button>
@@ -625,28 +669,28 @@ export default function StepSequencer() {
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(3, 0)}
+                onClick={e => onPadClick(e, 3, 0)}
               >
                 <span>Voice 4, Note 1</span>
               </button>
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(3, 1)}
+                onClick={e => onPadClick(e, 3, 1)}
               >
                 <span>Voice 4, Note 2</span>
               </button>
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(3, 2)}
+                onClick={e => onPadClick(e, 3, 2)}
               >
                 <span>Voice 4, Note 3</span>
               </button>
               <button
                 role='switch'
                 aria-checked='false'
-                onClick={() => onPadClick(3, 3)}
+                onClick={e => onPadClick(e, 3, 3)}
               >
                 <span>Voice 4, Note 4</span>
               </button>

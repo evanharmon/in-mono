@@ -10,10 +10,11 @@ export const DEFAULT_RELEASE = 0.2
 
 export const DEFAULT_PULSE_HZ = 880
 export const DEFAULT_PULSE_HZ_STEP = 1
+export const DEFAULT_PULSE_TIME = 1
 export const MIN_PULSE_HZ = 660
 export const MAX_PULSE_HZ = 1320
 
-export const DEFAULT_LFO = 30
+export const DEFAULT_LFO_HZ = 30
 export const DEFAULT_LFO_STEP = 1
 export const MIN_LFO = 20
 export const MAX_LFO = 40
