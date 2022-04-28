@@ -131,11 +131,12 @@ function playSample(
   time: number,
   params: types.playSampleParams,
 ): AudioBufferSourceNode | null {
-  if (!audioContext) return null
+  if (!audioContext || !params.audioBuffer) return null
   const sampleSource = audioContext.createBufferSource()
   sampleSource.buffer = params.audioBuffer
   sampleSource.playbackRate.value = params.playbackRate
   sampleSource.connect(audioContext.destination)
+  sampleSource.onended = () => sampleSource.disconnect()
   sampleSource.start(time)
 
   return sampleSource
@@ -180,6 +181,7 @@ function scheduleNote(
   if (typeof noiseNoteParams !== 'undefined')
     playNoise(time, noiseNoteParams as types.playNoiseParams)
 
+  console.log(params?.sampleGrid)
   const sampleNoteParams = params?.sampleGrid?.get(note)
   if (typeof sampleNoteParams !== 'undefined')
     playSample(time, sampleNoteParams as types.playSampleParams)
@@ -341,7 +343,6 @@ export default function StepSequencer() {
     } else {
       currentNote = 0
       nextNoteTime = audioContext.currentTime
-      // console.log(`sweepGrid`, sweepGrid)
       scheduler({
         sweepGrid,
         pulseGrid,
@@ -363,7 +364,6 @@ export default function StepSequencer() {
     voice: number,
     note: number,
   ) {
-    console.log(voice, note)
     const chk = e?.currentTarget?.getAttribute('aria-checked')
     e.currentTarget.setAttribute(
       'aria-checked',
@@ -379,25 +379,26 @@ export default function StepSequencer() {
       case 1:
         pulseGrid.get(note) === undefined
           ? pulseGrid.set(note, {
-              pulseHz,
-              pulseTime: constants.DEFAULT_PULSE_TIME,
-              lfoHz,
-            })
+            pulseHz,
+            pulseTime: constants.DEFAULT_PULSE_TIME,
+            lfoHz,
+          })
           : pulseGrid.delete(note)
         break
       case 2:
         noiseGrid.get(note) === undefined
           ? noiseGrid.set(note, {
-              noiseDuration,
-              bandHz,
-            })
+            noiseDuration,
+            bandHz,
+          })
           : noiseGrid.delete(note)
         break
       case 3:
         sampleGrid.get(note) === undefined
           ? sampleGrid.set(note, {
-              playbackRate: samplePlaybackRate,
-            })
+            playbackRate: samplePlaybackRate,
+            audioBuffer: dtmf
+          })
           : sampleGrid.delete(note)
         break
       default:
