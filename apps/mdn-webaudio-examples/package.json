@@ -19,5 +19,9 @@
     "next-transpile-modules": "^9.0.0",
     "tsconfig": "*",
     "typescript": "4.6.3"
+  },
+  "dependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   }
 }
