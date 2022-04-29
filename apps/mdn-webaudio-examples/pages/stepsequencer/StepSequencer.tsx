@@ -214,7 +214,6 @@ function scheduleNote(
     playNoise(time, fullParams as types.playNoiseParams)
   }
 
-  console.log(params?.sampleGrid)
   const sampleNoteParams = params?.sampleGrid?.get(note)
   if (typeof sampleNoteParams !== 'undefined') {
     // diff audioBuffer per note not supported yet
