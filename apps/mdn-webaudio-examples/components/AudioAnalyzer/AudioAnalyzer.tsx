@@ -1,4 +1,4 @@
-import { useLayoutEffect, useEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useEffect, useRef } from 'react'
 import styles from '../../styles/AudioAnalyzer.module.css'
 
 declare global {
@@ -91,7 +91,7 @@ let canvasHeight = 256
 let audioUrl = 'viper.mp3'
 export default function AudioAnalyzer() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  const requestIdRef = useRef<number>()
+  const requestIdRef = useRef<number | null>(null)
 
   const renderFrame = () => {
     if (!canvasRef.current) return
@@ -110,7 +110,7 @@ export default function AudioAnalyzer() {
 
   useIsomorphicLayoutEffect(() => {
     const animate = () => {
-      if (!canvasRef.current) return
+      if (canvasRef.current === null || requestIdRef.current === null) return
 
       renderFrame()
       requestIdRef.current = requestAnimFrame(animate)

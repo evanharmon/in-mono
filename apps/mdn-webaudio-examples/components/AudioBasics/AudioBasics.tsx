@@ -36,7 +36,6 @@ async function getRawBufferFromUrl(url: string): Promise<ArrayBuffer> {
 export default function AudioBasics() {
   // parked this work on power button
   // was not interested in taking the time to get the audioContext state correctly functioning
-  // const [power, setPower] = useState<string | null>(null)
   const [power, setPower] = useState<string>('on')
   const [playing, setPlaying] = useState<boolean>(false)
 
@@ -54,9 +53,8 @@ export default function AudioBasics() {
       sourceNode.buffer = audioBuffer
       sourceNode.connect(summingNode)
       sourceNode.start(0)
-      // setClip(clip)
       setPlaying(true)
-    } catch (err) {}
+    } catch (err) { }
   }
 
   const stop = () => {
@@ -64,7 +62,7 @@ export default function AudioBasics() {
     try {
       sourceNode.stop(0)
       setPlaying(false)
-    } catch (err) {}
+    } catch (err) { }
   }
 
   const onClickHandler = () => {
