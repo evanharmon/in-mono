@@ -593,4 +593,5 @@ const wavetable = {
   real: Float32Array.from(wavetableSource.real),
   imag: Float32Array.from(wavetableSource.imag),
 }
+
 export default wavetable

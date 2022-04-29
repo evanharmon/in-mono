@@ -1,1 +1,1 @@
-export { default } from './AudioWorklet'
+export { default } from '../../components/AudioWorklet'

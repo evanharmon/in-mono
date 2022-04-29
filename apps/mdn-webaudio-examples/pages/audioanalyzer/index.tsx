@@ -1,1 +1,1 @@
-export { default } from './AudioAnalyzer'
+export { default } from '../../components/AudioAnalyzer'

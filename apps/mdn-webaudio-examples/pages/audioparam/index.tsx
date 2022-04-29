@@ -1,1 +1,1 @@
-export { default } from './AudioParam'
+export { default } from '../../components/AudioParam'
