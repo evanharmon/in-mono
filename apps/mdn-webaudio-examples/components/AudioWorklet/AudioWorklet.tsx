@@ -12,18 +12,20 @@ let oscGainRangeDefault = 0.1
 let gainNode: GainNode
 let hissGainParam: any
 
-async function createHissProcessor() {
-  if (AudioContext && audioContext === null) {
+function initAudio() {
+  if (AudioContext !== null && audioContext === null) {
     try {
       audioContext = new AudioContext()
     } catch (e) {
       console.log(e)
-      return null
+      return
     }
   }
+}
 
-  let processorNode
+async function createHissProcessor() {
   if (audioContext === null || audioContext.state === 'closed') return
+  let processorNode
 
   try {
     processorNode = new AudioWorkletNode(audioContext, 'hiss-generator')
@@ -43,15 +45,13 @@ async function createHissProcessor() {
 }
 
 async function audioDemoStart() {
+  if (audioContext === null || audioContext.state === 'closed') return
   hissGenNode = await createHissProcessor()
 
   if (typeof hissGenNode === 'undefined') {
     console.log('unable to create his processor')
     return
   }
-
-  // createHissProcessor creates AudioContext
-  if (audioContext === null || audioContext.state === 'closed') return
 
   const soundSource = new OscillatorNode(audioContext)
   gainNode = audioContext.createGain()
@@ -73,29 +73,24 @@ async function audioDemoStart() {
   hissGainParam.setValueAtTime(hissGainRangeDefault, audioContext.currentTime)
 }
 
-async function toggleSound() {
-  if (!audioContext) {
-    await audioDemoStart()
-  } else {
-    await audioContext.close()
-    audioContext = null
-  }
-
-  return
-}
-
 export default function AudioWorklet() {
   const [audioState, setAudioState] = useState<string | null>(null)
 
   async function onClickToggle() {
-    await toggleSound()
-    if (audioContext === null) {
-      setAudioState(null)
+    if (audioContext?.state === 'running') {
+      audioContext.suspend()
       return
     }
+    initAudio()
 
-    audioContext.onstatechange = () =>
-      setAudioState(audioContext?.state || null)
+    if (audioContext !== null) {
+      audioContext.onstatechange = () => {
+        console.log(audioContext?.state)
+        setAudioState(audioContext?.state || null)
+      }
+    }
+
+    await audioDemoStart()
   }
 
   function onOscGainChange(event: ChangeEvent<HTMLInputElement>) {
@@ -179,6 +174,7 @@ export default function AudioWorklet() {
               audioState === null || audioState !== 'running' ? true : false
             }
           />
+          <p>audioState {audioState}</p>
         </div>
       </div>
     </>
