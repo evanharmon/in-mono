@@ -13,7 +13,7 @@ let gainNode: GainNode
 let hissGainParam: any
 
 async function createHissProcessor() {
-  if (AudioContext && !audioContext) {
+  if (AudioContext && audioContext === null) {
     try {
       audioContext = new AudioContext()
     } catch (e) {
@@ -23,7 +23,7 @@ async function createHissProcessor() {
   }
 
   let processorNode
-  if (!audioContext || audioContext.state === 'closed') return
+  if (audioContext === null || audioContext.state === 'closed') return
 
   try {
     processorNode = new AudioWorkletNode(audioContext, 'hiss-generator')
@@ -51,7 +51,7 @@ async function audioDemoStart() {
   }
 
   // createHissProcessor creates AudioContext
-  if (!audioContext || audioContext.state === 'closed') return
+  if (audioContext === null || audioContext.state === 'closed') return
 
   const soundSource = new OscillatorNode(audioContext)
   gainNode = audioContext.createGain()
@@ -89,7 +89,7 @@ export default function AudioWorklet() {
 
   async function onClickToggle() {
     await toggleSound()
-    if (!audioContext) {
+    if (audioContext === null) {
       setAudioState(null)
       return
     }
@@ -99,7 +99,7 @@ export default function AudioWorklet() {
   }
 
   function onOscGainChange(event: ChangeEvent<HTMLInputElement>) {
-    if (!audioContext || audioContext.state === 'closed') return
+    if (audioContext === null || audioContext.state === 'closed') return
 
     if (typeof gainNode !== 'undefined') {
       gainNode.gain.setValueAtTime(
@@ -112,7 +112,7 @@ export default function AudioWorklet() {
   }
 
   const onHissGainChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (!audioContext || audioContext.state === 'closed') return
+    if (audioContext === null || audioContext.state === 'closed') return
 
     if (typeof hissGainParam !== 'undefined') {
       hissGainParam.setValueAtTime(
@@ -158,7 +158,7 @@ export default function AudioWorklet() {
             step='0.05'
             defaultValue={oscGainRangeDefault}
             onChange={onOscGainChange}
-            disabled={!audioState ? true : false}
+            disabled={audioState === null ? true : false}
           />
         </div>
 
@@ -175,7 +175,9 @@ export default function AudioWorklet() {
             step='0.05'
             defaultValue={hissGainRangeDefault}
             onChange={onHissGainChange}
-            disabled={!audioState || audioState !== 'running' ? true : false}
+            disabled={
+              audioState === null || audioState !== 'running' ? true : false
+            }
           />
         </div>
       </div>

@@ -1,11 +1,15 @@
 import { useLayoutEffect, useEffect, useRef } from 'react'
 import styles from '../../styles/AudioAnalyzer.module.css'
 
-declare global {
-  let audioContext: AudioContext
-  let requestAnimFrame: typeof requestAnimationFrame
-}
+let AudioContext =
+  typeof window !== 'undefined'
+    ? window.webkitAudioContext || window.AudioContext
+    : null
 
+let requestAnimationFrame =
+  typeof window !== 'undefined'
+    ? window.requestAnimationFrame || window.webkitRequestAnimationFrame
+    : null
 const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
@@ -21,13 +25,13 @@ let ctx: any
 
 // create audioContext with long living summingNode
 // decouples analyserNode from sourceNode which is single use
-let audioContext: AudioContext
+let audioContext: AudioContext | null
 let summingGainNode: GainNode
 let analyserNode: AnalyserNode
 let amplitudeArray: Uint8Array
-if (typeof window !== 'undefined') {
+if (AudioContext !== null) {
   try {
-    audioContext = new (window.webkitAudioContext || window.AudioContext)()
+    audioContext = new AudioContext()
 
     summingGainNode = audioContext.createGain()
     summingGainNode.gain.value = 1.0
@@ -45,20 +49,6 @@ if (typeof window !== 'undefined') {
   }
 }
 
-let requestAnimFrame: typeof requestAnimationFrame
-if (typeof window !== 'undefined') {
-  requestAnimFrame = (function () {
-    return (
-      window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      function (callback: () => void, _element: any) {
-        window.setTimeout(callback, 1000 / 60)
-      }
-    )
-  })()
-}
-
 let audioBuffer: AudioBuffer
 async function loadSound(ctx: AudioContext, url: string) {
   const response = await fetch(url)
@@ -71,6 +61,8 @@ async function loadSound(ctx: AudioContext, url: string) {
 // create new AudioBufferSourceNode every time
 let sourceNode: AudioBufferSourceNode
 function playSound() {
+  if (audioContext === null) return
+
   sourceNode = audioContext.createBufferSource()
   sourceNode.connect(summingGainNode)
   sourceNode.buffer = audioBuffer
@@ -94,29 +86,32 @@ export default function AudioAnalyzer() {
   const requestIdRef = useRef<number | null>(null)
 
   const renderFrame = () => {
-    if (!canvasRef.current) return
+    if (canvasRef === null || canvasRef.current === null) return
 
     analyserNode.getByteTimeDomainData(amplitudeArray)
     ctx = canvasRef.current.getContext('2d')
     ctx.clearRect(0, 0, canvasWidth, canvasHeight)
     for (let i = 0; i < amplitudeArray.length; i++) {
-      // if (i === 0) console.log(amplitudeArray[i])
       let value = amplitudeArray[i] / 256
       let y = canvasHeight - canvasHeight * value - 1
-      ctx.fillStyle = '#000000'
+      ctx.fillStyle = '#ffffff'
       ctx.fillRect(i, y, 1, 1)
     }
   }
 
   useIsomorphicLayoutEffect(() => {
+    if (requestAnimationFrame == null) return
+
     const animate = () => {
+      if (requestAnimationFrame == null) return
+
       if (canvasRef.current === null || requestIdRef.current === null) return
 
       renderFrame()
-      requestIdRef.current = requestAnimFrame(animate)
+      requestIdRef.current = requestAnimationFrame(animate)
     }
 
-    requestIdRef.current = requestAnimFrame(animate)
+    requestIdRef.current = requestAnimationFrame(animate)
     return () => {
       if (requestIdRef.current) {
         cancelAnimationFrame(requestIdRef.current)
@@ -127,11 +122,13 @@ export default function AudioAnalyzer() {
   useEffect(() => {
     // remixjs / nextjs also render server side from same file.
     // do not attempt to access `window` object server side
-    if (typeof window == 'undefined') return
+    if (audioContext === null) return
     loadSound(audioContext, audioUrl)
   }, [])
 
   async function onPlayHandler() {
+    if (audioContext === null) return
+
     if (audioContext.state === 'suspended') {
       await audioContext.resume()
     }
@@ -139,7 +136,7 @@ export default function AudioAnalyzer() {
   }
 
   async function onStopHandler() {
-    if (audioContext.state === 'closed') return
+    if (audioContext === null || audioContext.state === 'closed') return
     stopSound()
   }
 

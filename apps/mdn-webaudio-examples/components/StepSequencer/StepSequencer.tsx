@@ -29,7 +29,6 @@ let requestAnimationFrame =
 const useIsomorphicUseLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
-
 let dtmf: AudioBuffer
 // need a way to track what instruments are played on what sequencer steps
 // to avoid using tons of Refs, store parameters in step
@@ -54,14 +53,14 @@ const notesInQueue: Array<types.NoteQueueProps> = []
 
 // global params
 const wave =
-  typeof audioContext !== 'undefined'
+  audioContext !== null
     ? audioContext?.createPeriodicWave(wavetable?.real, wavetable?.imag)
     : null
 let globalAttackTime = constants.DEFAULT_ATTACK
 let globalReleaseTime = constants.DEFAULT_RELEASE
-let sweepLength = constants.DEFAULT_SWEEP_LENGTH
+let globalSweepLength = constants.DEFAULT_SWEEP_LENGTH
 function playSweep(time: number, params: types.playSweepParams) {
-  if (!audioContext) return
+  if (audioContext === null) return
   const osc = audioContext.createOscillator()
   osc.setPeriodicWave(params.wave)
   osc.frequency.value = 380
@@ -84,7 +83,7 @@ let globalPulseHz = constants.DEFAULT_PULSE_HZ
 let globalPulseTime = constants.DEFAULT_PULSE_TIME
 let globalLfoHz = constants.DEFAULT_LFO_HZ
 function playPulse(time: number, params: types.playPulseParams) {
-  if (!audioContext) return
+  if (audioContext === null) return
   const osc = audioContext.createOscillator()
   osc.type = 'sine'
   osc.frequency.value = params.pulseHz
@@ -106,7 +105,7 @@ function playPulse(time: number, params: types.playPulseParams) {
 let globalNoiseDuration = constants.DEFAULT_NOISE_DURATION
 let globalBandHz = constants.DEFAULT_BAND_HZ
 function playNoise(time: number, params: types.playNoiseParams) {
-  if (!audioContext) return
+  if (audioContext === null) return
   const sampleRate = audioContext.sampleRate
   const bufferSize = sampleRate * params.noiseDuration
   const buffer = audioContext.createBuffer(1, bufferSize, sampleRate)
@@ -143,7 +142,7 @@ function playSample(
   time: number,
   params: types.playSampleParams,
 ): AudioBufferSourceNode | null {
-  if (!audioContext || !params.audioBuffer) return null
+  if (audioContext === null || !params.audioBuffer) return null
   const sampleSource = audioContext.createBufferSource()
   sampleSource.buffer = params.audioBuffer
   sampleSource.playbackRate.value = params.playbackRate
@@ -175,61 +174,77 @@ function scheduleNote(
   notesInQueue.push({ note: note, time: time })
   // console.log(`note`, note, ` time `, time)
 
-  const sweepNoteParams = params?.sweepGrid?.get(note)
-  if (typeof sweepNoteParams !== 'undefined') {
+  const sweepNoteParams = params?.sweepGrid?.get(note) || null
+  if (sweepNoteParams !== null) {
     const globalParams = {
       attackTime: globalAttackTime,
       releaseTime: globalReleaseTime,
       wave: wave,
-      sweepLength: constants.DEFAULT_SWEEP_LENGTH,
+      sweepLength: globalSweepLength,
     }
-    const fullParams = paramLocksOn === true ? {
-      globalParams, ...sweepNoteParams
-    } : globalParams
+    const fullParams =
+      paramLocksOn === true
+        ? {
+            globalParams,
+            ...sweepNoteParams,
+          }
+        : globalParams
     playSweep(time, fullParams as types.playSweepParams)
   }
 
-  const pulseNoteParams = params?.pulseGrid?.get(note)
-  if (typeof pulseNoteParams !== 'undefined') {
+  const pulseNoteParams = params?.pulseGrid?.get(note) || null
+  if (pulseNoteParams !== null) {
     const globalParams = {
       pulseHz: globalPulseHz,
       pulseTime: globalPulseTime,
-      lfoHz: globalLfoHz
+      lfoHz: globalLfoHz,
     }
-    const fullParams = paramLocksOn === true ? {
-      globalParams, ...pulseNoteParams
-    } : globalParams
+    const fullParams =
+      paramLocksOn === true
+        ? {
+            globalParams,
+            ...pulseNoteParams,
+          }
+        : globalParams
     playPulse(time, fullParams as types.playPulseParams)
   }
 
-  const noiseNoteParams = params?.noiseGrid?.get(note)
-  if (typeof noiseNoteParams !== 'undefined') {
+  const noiseNoteParams = params?.noiseGrid?.get(note) || null
+  if (noiseNoteParams !== null) {
     const globalParams = {
       noiseDuration: globalNoiseDuration,
       bandHz: globalBandHz,
     }
-    const fullParams = paramLocksOn === true ? {
-      globalParams, ...noiseNoteParams
-    } : globalParams
+    const fullParams =
+      paramLocksOn === true
+        ? {
+            globalParams,
+            ...noiseNoteParams,
+          }
+        : globalParams
     playNoise(time, fullParams as types.playNoiseParams)
   }
 
-  const sampleNoteParams = params?.sampleGrid?.get(note)
-  if (typeof sampleNoteParams !== 'undefined') {
+  const sampleNoteParams = params?.sampleGrid?.get(note) || null
+  if (sampleNoteParams !== null) {
     // diff audioBuffer per note not supported yet
     const globalParams = {
       playbackRate: globalSamplePlaybackRate,
-      audioBuffer: dtmf
+      audioBuffer: dtmf,
     }
-    const fullParams = paramLocksOn === true ? {
-      globalParams, ...sampleNoteParams
-    } : globalParams
+    const fullParams =
+      paramLocksOn === true
+        ? {
+            globalParams,
+            ...sampleNoteParams,
+          }
+        : globalParams
     playSample(time, fullParams as types.playSampleParams)
   }
 }
 
 async function scheduler(params: types.schedulerParams) {
-  if (!audioContext || audioContext.state !== 'running') return
+  if (audioContext === null || audioContext.state !== 'running') return
   // schedule all notes that need to play before next Interval
   // advance pointer as well
   while (nextNoteTime < audioContext.currentTime + scheduleAheadTime) {
@@ -250,12 +265,10 @@ export default function StepSequencer() {
   const [release, setRelease] = useState(globalReleaseTime)
   const [pulseHz, setPulseHz] = useState(globalPulseHz)
   const [lfoHz, setLfoHz] = useState(globalLfoHz)
-  const [noiseDuration, setNoiseDuration] = useState(
-    globalNoiseDuration
-  )
+  const [noiseDuration, setNoiseDuration] = useState(globalNoiseDuration)
   const [bandHz, setBandHz] = useState(globalBandHz)
   const [samplePlaybackRate, setSamplePlaybackRate] = useState(
-    globalSamplePlaybackRate
+    globalSamplePlaybackRate,
   )
 
   const sweepPadsRef = useRef<HTMLDivElement | null>(null)
@@ -278,7 +291,7 @@ export default function StepSequencer() {
     )
       return
 
-    if (!audioContext) return
+    if (audioContext === null) return
 
     let drawNote = lastNoteDrawn
     const currentTime = audioContext.currentTime
@@ -360,7 +373,7 @@ export default function StepSequencer() {
   }, [isPlaying])
 
   useEffect(() => {
-    if (!audioContext) return
+    if (audioContext === null) return
 
     async function setupSample(ctx: AudioContext, filePath: string) {
       dtmf = await getFile(ctx, filePath)
@@ -376,7 +389,8 @@ export default function StepSequencer() {
     globalTempo = val
   }
   async function onPlayButtonClick() {
-    if (!audioContext) return
+    if (audioContext === null) return
+
     if (audioContext.state === 'suspended') await audioContext.resume()
 
     if (isPlaying) {
@@ -419,34 +433,34 @@ export default function StepSequencer() {
       case 0:
         sweepGrid.get(note) === undefined
           ? sweepGrid.set(note, {
-            attackTime: attack,
-            releaseTime: release
-          })
+              attackTime: attack,
+              releaseTime: release,
+            })
           : sweepGrid.delete(note)
         break
       case 1:
         pulseGrid.get(note) === undefined
           ? pulseGrid.set(note, {
-            pulseHz,
-            pulseTime: constants.DEFAULT_PULSE_TIME,
-            lfoHz,
-          })
+              pulseHz,
+              pulseTime: constants.DEFAULT_PULSE_TIME,
+              lfoHz,
+            })
           : pulseGrid.delete(note)
         break
       case 2:
         noiseGrid.get(note) === undefined
           ? noiseGrid.set(note, {
-            noiseDuration,
-            bandHz,
-          })
+              noiseDuration,
+              bandHz,
+            })
           : noiseGrid.delete(note)
         break
       case 3:
         sampleGrid.get(note) === undefined
           ? sampleGrid.set(note, {
-            playbackRate: samplePlaybackRate,
-            audioBuffer: dtmf
-          })
+              playbackRate: samplePlaybackRate,
+              audioBuffer: dtmf,
+            })
           : sampleGrid.delete(note)
         break
       default:
@@ -457,7 +471,6 @@ export default function StepSequencer() {
     const val = Number(event.target.value)
     setPulseHz(val)
     globalPulseHz = val
-
   }
   function onLfoHzChange(event: ChangeEvent<HTMLInputElement>) {
     const val = Number(event.target.value)

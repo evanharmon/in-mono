@@ -3,18 +3,18 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 let AudioContext =
   typeof window !== 'undefined'
     ? window.AudioContext || window.webkitAudioContext
-    : undefined
+    : null
 let requestAnimFrame =
   typeof window !== 'undefined'
     ? window.requestAnimationFrame || window.webkitRequestAnimationFrame
-    : undefined
+    : null
 
 const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 export default function AudioContextStates() {
-  const [audioState, setAudioState] = useState<string | undefined>()
-  const audioCtxRef = useRef<AudioContext | undefined>()
+  const [audioState, setAudioState] = useState<string | null>(null)
+  const audioCtxRef = useRef<AudioContext | null>(null)
   const pRef = useRef<HTMLParagraphElement | null>(null)
   const frameId = useRef<number>()
 
@@ -29,10 +29,10 @@ export default function AudioContextStates() {
   }
 
   useIsomorphicLayoutEffect(() => {
-    if (typeof requestAnimFrame === 'undefined') return
+    if (requestAnimFrame === null) return
 
     const animate = () => {
-      if (!pRef.current || typeof requestAnimFrame === 'undefined') return
+      if (!pRef.current || requestAnimFrame === null) return
       renderFrame()
       frameId.current = requestAnimFrame(animate)
     }
@@ -44,10 +44,11 @@ export default function AudioContextStates() {
   }, [])
 
   const onCreateContext = () => {
-    if (typeof AudioContext === 'undefined') return
+    if (AudioContext === null) return
+
     if (
-      typeof audioCtxRef.current !== 'undefined' &&
-      audioCtxRef.current.state !== 'closed'
+      audioCtxRef.current !== null &&
+      audioCtxRef?.current?.state !== 'closed'
     )
       return
 
@@ -71,18 +72,21 @@ export default function AudioContextStates() {
 
   const onSuspendContext = () => {
     const audioCtx = audioCtxRef.current
-    if (typeof audioCtx === 'undefined') return
+    if (audioCtx === null) return
 
-    if (audioCtx.state === 'running') audioCtx.suspend()
+    if (audioCtx.state === 'running') {
+      audioCtx.suspend()
+    }
 
-    if (audioCtx.state === 'suspended') audioCtx.resume()
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume()
+    }
   }
 
   const onStopContext = () => {
     const audioCtx = audioCtxRef.current
-    if (typeof audioCtx === 'undefined') return
+    if (audioCtx === null || audioCtx.state === 'closed') return
 
-    if (audioCtx.state === 'closed') return
     audioCtx.close()
   }
 
@@ -101,13 +105,13 @@ export default function AudioContextStates() {
         Create context
       </button>
       <button
-        disabled={typeof audioState === 'undefined' || audioState === 'closed'}
+        disabled={audioState === null || audioState === 'closed'}
         onClick={onSuspendContext}
       >
         Suspend context
       </button>
       <button
-        disabled={typeof audioState === 'undefined' || audioState === 'closed'}
+        disabled={audioState === null || audioState === 'closed'}
         onClick={onStopContext}
       >
         Stop context

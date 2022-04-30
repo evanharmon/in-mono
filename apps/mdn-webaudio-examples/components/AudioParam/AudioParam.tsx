@@ -42,7 +42,7 @@ export default function AudioParam() {
   const [files, setFiles] = useState<Array<AudioFile>>([])
 
   async function onPlayClickHandler(buffer: AudioBuffer) {
-    if (!audioContext || audioContext.state === 'closed') return
+    if (audioContext === null || audioContext.state === 'closed') return
 
     if (audioContext.state !== 'running') await audioContext.resume()
 
@@ -71,7 +71,7 @@ export default function AudioParam() {
   }
 
   function onLinearRampClickHandler(val: number, time = 2) {
-    if (!audioContext || audioContext.state === 'closed') return
+    if (audioContext === null || audioContext.state === 'closed') return
 
     if (val < 0) {
       console.warn('gain value must be between 0 and 1')
@@ -84,7 +84,7 @@ export default function AudioParam() {
   }
 
   function onExpRampClickHandler(val: number, time = 2) {
-    if (!audioContext || audioContext.state === 'closed') return
+    if (audioContext === null || audioContext.state === 'closed') return
 
     if (val < 0.01 || val > 1) {
       console.warn('gain value must be between 0.01 and 1')
@@ -97,7 +97,7 @@ export default function AudioParam() {
   }
 
   function onAtTimeClickHandler(val: number, time = 1, coeff = 0.5) {
-    if (!audioContext || audioContext.state === 'closed') return
+    if (audioContext === null || audioContext.state === 'closed') return
 
     if (val < 0 || val > 1) {
       console.warn('gain value must be between 0 and 1')
@@ -111,26 +111,26 @@ export default function AudioParam() {
   }
 
   function onValueCurveClickHandler(wave: Float32Array, coeff = 2) {
-    if (!audioContext || audioContext.state === 'closed') return
+    if (audioContext === null || audioContext.state === 'closed') return
 
     gainNode.gain.setValueCurveAtTime(wave, audioContext.currentTime, coeff)
   }
 
   async function onClickPowerOn() {
-    if (!audioContext || audioContext.state === 'closed') return
+    if (audioContext === null || audioContext.state === 'closed') return
 
     await audioContext.resume()
   }
 
   async function onClickPowerOff() {
-    if (!audioContext || audioContext.state === 'closed') return
+    if (audioContext === null || audioContext.state === 'closed') return
 
     await audioContext.suspend()
   }
 
   useEffect(() => {
     async function loadFileToAudioBuffer(url: string) {
-      if (!audioContext || audioContext.state === 'closed') return
+      if (audioContext === null || audioContext.state === 'closed') return
 
       // safari doesn't support some file types like .ogg
       try {

@@ -54,7 +54,7 @@ export default function AudioBasics() {
       sourceNode.connect(summingNode)
       sourceNode.start(0)
       setPlaying(true)
-    } catch (err) { }
+    } catch (err) {}
   }
 
   const stop = () => {
@@ -62,7 +62,7 @@ export default function AudioBasics() {
     try {
       sourceNode.stop(0)
       setPlaying(false)
-    } catch (err) { }
+    } catch (err) {}
   }
 
   const onClickHandler = () => {
