@@ -1,1 +1,1 @@
-export { default } from './AudioBasics'
+export { default } from '../../components/AudioBasics'

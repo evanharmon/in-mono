@@ -1,1 +1,1 @@
-export { default } from './AudioBuffer'
+export { default } from '../../components/AudioBuffer'

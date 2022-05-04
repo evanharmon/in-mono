@@ -1,1 +1,1 @@
-export { default } from './StepSequencer'
+export { default } from '../../components/StepSequencer'
