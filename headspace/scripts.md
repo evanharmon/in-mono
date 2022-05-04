@@ -6,9 +6,10 @@ Notes on writing linux scripts
 
 ## Resources
 
-[Linter](http://www.shellcheck.net)
-[Single Quote Double Quote In Scripts](http://mywiki.wooledge.org/Quotes)
-[Exit Status](https://www.tldp.org/LDP/abs/html/exit-status.html)
+- [Linter](http://www.shellcheck.net)
+- [Single Quote Double Quote In Scripts](http://mywiki.wooledge.org/Quotes)
+- [Exit Status](https://www.tldp.org/LDP/abs/html/exit-status.html)
+- [Bash One Liners](https://github.com/onceupon/Bash-Oneliner)
 
 ## Safe Way To Run Bash
 

@@ -1,22 +1,44 @@
 # MONGODB
 
 ## SERVER
+
 ### Start Mongodb Server
-Assumes you've created the root `/data/db` directory
-`$ mongod`
+
+Assumes you've created a database folder `$HOME/data/db` directory
+
+```console
+mkdir -p $HOME/data/db
+mongod
+```
 
 ### Start Mongo and specify a user /data/db
-`$ mongod --dbpath $HOME/data/db`
+
+```console
+mongod --dbpath $HOME/data/db
+```
 
 ## CLI
+
 ### Start Mongodb Command Line
-`$ mongo`
+
+```console
+mongo
+```
 
 ### Create Database
-`$ use databasename`
+
+```console
+use databasename
+```
 
 ### Show Databases
-`$ show dbs`
+
+```console
+show dbs
+```
 
 ### Show Collections (Tables)
-`$ show collections`
+
+```console
+show collections
+```

@@ -9,6 +9,7 @@ Notes on using flex box with CSS
 - [Cheat Sheet Websites](https://yoksel.github.io/flex-cheatsheet/)
 - [Making Flexbox Less Scary](https://benweiser.com/making-flexbox-less-scary/)
 - [Flexbox Zombies Game](https://mastery.games/flexboxzombies)
+- [Complete Guide / Cheat Sheet](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 ### Flex Direction
 

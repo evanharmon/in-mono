@@ -19,3 +19,8 @@ return (
   </>
 )
 ```
+
+## Root equivalent
+
+In react, the `<div id='root'>` below the `<body />` is used in CSS for styling.
+The nextjs equivalent is `<div id='__next'>`
