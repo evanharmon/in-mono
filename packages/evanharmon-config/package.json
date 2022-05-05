@@ -1,5 +1,5 @@
 {
-  "name": "config",
+  "name": "@evanharmon/config",
   "description": "configuration files",
   "version": "0.0.0",
   "main": "index.js",
@@ -8,6 +8,14 @@
   "files": [
     "eslint-preset.js"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evanharmon/in-mono",
+    "directory": "packages/evanharmon-tsconfig"
+  },
   "dependencies": {
     "eslint-config-next": "12.1.4",
     "eslint-config-prettier": "8.5.0",
