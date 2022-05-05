@@ -4,6 +4,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "export": {
+      "dependsOn": ["build"],
+      "outputs": ["out/**"]
+    },
     "lint": {
       "outputs": []
     },
