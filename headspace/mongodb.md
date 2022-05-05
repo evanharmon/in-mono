@@ -42,3 +42,10 @@ show dbs
 ```console
 show collections
 ```
+
+### Check Connetions
+
+```console
+use admin
+db.serverStatus().connections
+```

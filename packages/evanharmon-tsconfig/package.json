@@ -1,0 +1,20 @@
+{
+  "name": "@evanharmon/tsconfig",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Evan Harmon",
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "react-library.json"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evanharmon/in-mono",
+    "directory": "packages/evanharmon-tsconfig"
+  }
+}
