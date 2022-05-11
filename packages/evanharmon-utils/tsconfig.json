@@ -1,0 +1,5 @@
+{
+  "extends": "@evanharmon/tsconfig/nextjs.json",
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "files": ["declarations.d.ts"]
+}
