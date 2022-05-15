@@ -1,7 +1,16 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: 'Pull Request Labeler'
+
 on:
-  - pull_request_target
+  pull_request_target:
+    branches:
+      - 'main'
+    paths-ignore:
+      - 'docs/**'
+      - '.vscode/**'
+      - '*.md'
+      - 'apps/**/*.md'
+      - 'packages/**/*.md'
 
 jobs:
   label:
