@@ -10,16 +10,19 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next && rm -rf out"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^1.8.0",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0"
   },
   "devDependencies": {
+    "@evanharmon/config": "*",
+    "@evanharmon/tsconfig": "*",
     "@types/node": "17.0.33",
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.4",
     "eslint": "8.15.0",
-    "eslint-config-next": "12.1.6",
+    "next-transpile-modules": "^9.0.0",
     "typescript": "4.6.4"
   }
 }
