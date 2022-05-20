@@ -12,15 +12,23 @@ const filterEntries = (obj, filterVal) =>
 
 const turboDeps = filterEntries(pkg.dependencies || {}, '*')
 const turboDevDeps = filterEntries(pkg.devDependencies || {}, '*')
+/* END: grab '*' turbo package dependencies to track */
 
+const withPlugins = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')([
   ...turboDeps,
   ...turboDevDeps,
 ])
-/* END: grab '*' turbo package dependencies to track */
+const withSvgr = require('next-plugin-svgr')
 
-const nextConfig = withTM({
-  reactStrictMode: true,
-})
+const nextConfig = withPlugins([
+  withTM({
+    reactStrictMode: true,
+    compiler: {
+      styledComponents: true,
+    },
+  }),
+  withSvgr,
+])
 
 module.exports = nextConfig

@@ -1,21 +1,27 @@
+:root {
+  --black: hsl(180, 2%, 8%);
+  --gray: hsl(210, 4%, 29%);
+  --dark-gray: hsl(210, 3%, 15%);
+  --light-gray: hsl(216, 3%, 29%);
+  --white: hsl(223, 10%, 87%);
+
+  --bg: var(--dark-gray);
+  --bg-accent: var(--light-gray);
+  --text-color: var(--white);
+  --nav-size: 60px;
+  --border: 1px solid var(--gray);
+  --border-radius: 8px;
+  --speed: 500ms;
+}
+
 html,
 body {
   padding: 0;
-  background: hsl(180, 2%, 8%);
+  background: var(--black);
   margin: 0;
   font-family: roboto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-:root {
-  --bg: hsl(210, 3%, 15%);
-  --bg-accent: hsl(216, 3%, 29%);
-  --text-color: hsl(223, 10%, 87%);
-  --nav-size: 60px;
-  --border: 1px solid hsl(210, 4%, 29%);
-  --border-radius: 8px;
-  --speed: 500ms;
 }
 
 ul {

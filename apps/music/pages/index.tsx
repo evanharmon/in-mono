@@ -1,18 +1,34 @@
-import { useUser } from '@auth0/nextjs-auth0'
+import styled from 'styled-components'
+import { NavBar, NavItem } from '../components/NavBar'
+import ArrowIcon from '../public/icons/arrow.svg'
+import BellIcon from '../public/icons/bell.svg'
+import BoltIcon from '../public/icons/bolt.svg'
+import CaretIcon from '../public/icons/caret.svg'
+import ChevronIcon from '../public/icons/chevron.svg'
+import CogIcon from '../public/icons/cog.svg'
+import MessengerIcon from '../public/icons/messenger.svg'
+import PlusIcon from '../public/icons/plus.svg'
+
+const iconStyles = {
+  fill: 'var(--text-color)',
+  width: '20px',
+  height: '20px',
+}
+
+const StyledPlusIcon = styled(PlusIcon)({ ...iconStyles })
+const StyledBellIcon = styled(BellIcon)({ ...iconStyles })
+const StyledMessengerIcon = styled(MessengerIcon)({ ...iconStyles })
 
 export default function Index() {
-  const { user, error, isLoading } = useUser()
+  return (
+    <>
+      <NavBar>
+        <NavItem icon={<StyledPlusIcon />} />
+        <NavItem icon={<StyledBellIcon />} />
+        <NavItem icon={<StyledMessengerIcon />} />
 
-  if (isLoading) return <div>Loading...</div>
-  if (error) return <div>{error.message}</div>
-
-  if (user) {
-    return (
-      <div>
-        Welcome {user.name}! <a href='/api/auth/logout'>Logout</a>
-      </div>
-    )
-  }
-
-  return <a href='/api/auth/login'>Login</a>
+        {/* <NavItem icon={<CaretIcon />}></NavItem> */}
+      </NavBar>
+    </>
+  )
 }
