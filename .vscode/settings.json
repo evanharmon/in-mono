@@ -3,5 +3,10 @@
   "editor.autoClosingQuotes": "always",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "on"
+  },
   "typescript.suggest.completeFunctionCalls": true
 }
