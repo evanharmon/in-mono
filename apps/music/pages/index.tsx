@@ -27,7 +27,7 @@ export default function Index() {
         <NavItem icon={<StyledBellIcon />} />
         <NavItem icon={<StyledMessengerIcon />} />
 
-        {/* <NavItem icon={<CaretIcon />}></NavItem> */}
+        <NavItem icon={<CaretIcon />}></NavItem>
       </NavBar>
     </>
   )
