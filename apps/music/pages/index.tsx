@@ -22,30 +22,6 @@ const StyledMessengerIcon = styled(MessengerIcon)({ ...iconStyles })
 export default function Index() {
   return (
     <>
-      {/* <nav className='navbar'>
-        <ul className='navbar-nav'>
-          <li className='nav-item'>
-            <a href='#' className='icon-button'>
-              <StyledPlusIcon />
-            </a>
-          </li>
-          <li className='nav-item'>
-            <StyledNavIconButton href='#'>
-              <StyledBellIcon />
-            </StyledNavIconButton>
-          </li>
-          <StyledItem>
-            <StyledNavIconButton href='#'>
-              <StyledMessengerIcon />
-            </StyledNavIconButton>
-          </StyledItem>
-        </ul>
-      </nav> */}
-      {/* WORKING NavItem */}
-      {/* <nav className='navbar'>
-        <NavItem icon={<StyledBellIcon />} />
-      </nav> */}
-      {/* WORKING NavBar */}
       <NavBar>
         <NavItem icon={<StyledPlusIcon />} />
         <NavItem icon={<StyledBellIcon />} />
