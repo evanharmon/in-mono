@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react'
 import styled from 'styled-components'
-import { StyledNavIconButton } from '../styled'
+import { IconButtonStyles } from '../styled'
 
 export const StyledNav = styled.nav`
   height: var(--nav-size);
@@ -22,6 +22,13 @@ export const StyledItem = styled.li`
   align-items: center;
   justify-content: center;
 `
+
+export const StyledNavIconButton = styled.a({
+  ...IconButtonStyles,
+  '&:hover': {
+    filter: 'brightness(2)',
+  },
+})
 
 type NavItemProps = {
   children?: ReactNode

@@ -1,18 +1,29 @@
 import { ReactNode, useRef, useState } from 'react'
 import styled from 'styled-components'
-import {
-  IconButtonStyles,
-  StyledDropdownDiv,
-  StyledDropdownItemButton,
-} from '../styled'
+import { IconButtonStyles } from '../styled'
 
-interface DropdownItemProps {
-  leftIcon: ReactNode | string
-  children: ReactNode
-  rightIcon: ReactNode | string
-  goToMenu?: string
-  onClick: () => {}
+export const StyledDropdownItemButton = styled.a({
+  height: '50px',
+  display: 'flex',
+  alignItems: 'center',
+  borderRadius: 'var(--border-radius)',
+  transition: 'background var(--speed)',
+  padding: '0.5rem',
+  '&:hover': {
+    backgroundColor: 'hsl(228, 3%, 33%)',
+  },
+})
+
+interface StyledDropdownDiv {
+  height: string
 }
+
+export const StyledDropdownDiv = styled.div<StyledDropdownDiv>(
+  {},
+  ({ height }) => ({
+    height: height,
+  }),
+)
 
 const LeftIconButton = styled.span({
   ...IconButtonStyles,
@@ -24,6 +35,14 @@ const RightIconButton = styled.span({
   marginLeft: 'auto',
   '&:hover': { filter: 'none' },
 })
+
+interface DropdownItemProps {
+  leftIcon: ReactNode | string
+  children: ReactNode
+  rightIcon: ReactNode | string
+  goToMenu?: string
+  onClick: () => {}
+}
 
 export function DropdownMenu() {
   const [activeMenu, setActiveMenu] = useState('0px')
@@ -40,6 +59,7 @@ export function DropdownMenu() {
     return (
       <>
         <StyledDropdownItemButton
+          href='#'
           onClick={() => goToMenu && setActiveMenu(goToMenu)}
         >
           <LeftIconButton>{leftIcon}</LeftIconButton>

@@ -1,4 +1,12 @@
 import styled from 'styled-components'
+import ArrowIcon from '../public/icons/arrow.svg'
+import BellIcon from '../public/icons/bell.svg'
+import BoltIcon from '../public/icons/bolt.svg'
+import CaretIcon from '../public/icons/caret.svg'
+import ChevronIcon from '../public/icons/chevron.svg'
+import CogIcon from '../public/icons/cog.svg'
+import MessengerIcon from '../public/icons/messenger.svg'
+import PlusIcon from '../public/icons/plus.svg'
 
 export const IconButtonStyles = {
   '--button-size': 'calc(var(--nav-size) * 0.5)',
@@ -14,38 +22,17 @@ export const IconButtonStyles = {
   transition: 'filter 300ms',
 }
 
-interface ItemButtonAttrs {
-  href: string
+const iconStyles = {
+  fill: 'var(--text-color)',
+  width: '20px',
+  height: '20px',
 }
 
-export const StyledNavIconButton = styled.a({
-  ...IconButtonStyles,
-  '&:hover': {
-    filter: 'brightness(2)',
-  },
-})
-
-export const StyledDropdownItemButton = styled.a.attrs<ItemButtonAttrs>({
-  href: '#',
-})({
-  height: '50px',
-  display: 'flex',
-  alignItems: 'center',
-  borderRadius: 'var(--border-radius)',
-  transition: 'background var(--speed)',
-  padding: '0.5rem',
-  '&:hover': {
-    backgroundColor: 'hsl(228, 3%, 33%)',
-  },
-})
-
-interface StyledDropdownDiv {
-  height: string
-}
-
-export const StyledDropdownDiv = styled.div<StyledDropdownDiv>(
-  {},
-  ({ height }) => ({
-    height: height,
-  }),
-)
+export const StyledArrowIcon = styled(ArrowIcon)({ ...iconStyles })
+export const StyledBoltIcon = styled(BoltIcon)({ ...iconStyles })
+export const StyledBellIcon = styled(BellIcon)({ ...iconStyles })
+export const StyledChevronIcon = styled(ChevronIcon)({ ...iconStyles })
+export const StyledCogIcon = styled(CogIcon)({ ...iconStyles })
+export const StyledPlusIcon = styled(PlusIcon)({ ...iconStyles })
+export const StyledCaretIcon = styled(CaretIcon)({ ...iconStyles })
+export const StyledMessengerIcon = styled(MessengerIcon)({ ...iconStyles })
