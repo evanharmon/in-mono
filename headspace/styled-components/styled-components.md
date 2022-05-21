@@ -4,6 +4,7 @@
 
 - [Docs](https://styled-components.com/docs)
 - [Advanced Selectors & Tricks](https://paulie.dev/posts/2020/08/styled-components-style-objects/)
+- [To use or not to use blog](https://medium.com/building-crowdriff/styled-components-to-use-or-not-to-use-a6bb4a7ffc21)
 
 ## Style any component
 
