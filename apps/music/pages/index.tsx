@@ -8,6 +8,13 @@ import ChevronIcon from '../public/icons/chevron.svg'
 import CogIcon from '../public/icons/cog.svg'
 import MessengerIcon from '../public/icons/messenger.svg'
 import PlusIcon from '../public/icons/plus.svg'
+import {
+  IconButtonStyles,
+  StyledNav,
+  StyledList,
+  StyledItem,
+  StyledNavIconButton,
+} from '../components/styled'
 
 const iconStyles = {
   fill: 'var(--text-color)',
@@ -18,26 +25,6 @@ const iconStyles = {
 const StyledPlusIcon = styled(PlusIcon)({ ...iconStyles })
 const StyledBellIcon = styled(BellIcon)({ ...iconStyles })
 const StyledMessengerIcon = styled(MessengerIcon)({ ...iconStyles })
-
-export const IconButtonStyles = {
-  '--button-size': 'calc(var(--nav-size) * 0.5)',
-  width: 'var(--button-size)',
-  height: 'var(--button-size)',
-  backgroundColor: 'var(--light-gray)',
-  borderRadius: '50%',
-  padding: '5px',
-  margin: '2px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  transition: 'filter 300ms',
-}
-export const StyledNavIconButton = styled.a({
-  ...IconButtonStyles,
-  '&:hover': {
-    filter: 'brightness(2)',
-  },
-})
 
 export default function Index() {
   return (
@@ -54,6 +41,11 @@ export default function Index() {
               <StyledBellIcon />
             </StyledNavIconButton>
           </li>
+          <StyledItem>
+            <StyledNavIconButton href='#'>
+              <StyledMessengerIcon />
+            </StyledNavIconButton>
+          </StyledItem>
         </ul>
       </nav>
       {/* <NavBar>

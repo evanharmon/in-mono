@@ -39,9 +39,7 @@ interface ItemButtonAttrs {
   href: string
 }
 
-export const StyledNavIconButton = styled.a.attrs<ItemButtonAttrs>({
-  href: '#',
-})({
+export const StyledNavIconButton = styled.a({
   ...IconButtonStyles,
   '&:hover': {
     filter: 'brightness(2)',

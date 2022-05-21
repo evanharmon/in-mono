@@ -116,7 +116,7 @@ a {
 }
 
 .icon-button:hover {
-  filter: brightness(1.2);
+  filter: brightness(2);
 }
 
 .icon-button svg {
