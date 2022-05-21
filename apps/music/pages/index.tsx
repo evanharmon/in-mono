@@ -29,8 +29,12 @@ export default function Index() {
               <StyledPlusIcon />
             </a>
           </li>
+          <NavItem icon={<StyledBellIcon />} />
         </ul>
       </nav>
+      {/* <NavBar>
+        <NavItem icon={<StyledBellIcon />} />
+      </NavBar> */}
     </>
   )
   // return (

@@ -44,7 +44,7 @@ export const StyledNavIconButton = styled.a.attrs<ItemButtonAttrs>({
 })({
   ...IconButtonStyles,
   '&:hover': {
-    filter: 'brightness(1.2)',
+    filter: 'brightness(2)',
   },
 })
 

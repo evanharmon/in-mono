@@ -1,4 +1,4 @@
-/* :root {
+:root {
   --black: hsl(180, 2%, 8%);
   --gray: hsl(210, 4%, 29%);
   --dark-gray: hsl(210, 3%, 15%);
@@ -37,23 +37,23 @@ a {
 
 * {
   box-sizing: border-box;
-} */
+}
 
 /* DEBUGGING USE */
-body {
+/* body {
   margin: 0;
   background: #151616;
   font-family: roboto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
 
-:root {
+/* :root {
   --bg: #242526;
   --bg-accent: #484a4d;
   --text-color: #dadce1;
@@ -61,18 +61,18 @@ code {
   --border: 1px solid #474a4d;
   --border-radius: 8px;
   --speed: 500ms;
-}
+} */
 
-ul {
+/* ul {
   list-style: none;
   margin: 0;
   padding: 0;
-}
+} */
 
-a {
+/* a {
   color: var(--text-color);
   text-decoration: none;
-}
+} */
 
 /* Top Navigation Bar */
 
