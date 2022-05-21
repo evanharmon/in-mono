@@ -1,10 +1,27 @@
 import { ReactNode, useState } from 'react'
-import {
-  StyledNav,
-  StyledList,
-  StyledItem,
-  StyledNavIconButton,
-} from '../styled'
+import styled from 'styled-components'
+import { StyledNavIconButton } from '../styled'
+
+export const StyledNav = styled.nav`
+  height: var(--nav-size);
+  background-color: var(--bg);
+  padding: 0 1rem;
+  border-bottom: var(--border);
+`
+
+export const StyledList = styled.ul`
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+`
+
+export const StyledItem = styled.li`
+  width: calc(var(--nav-size) * 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 type NavItemProps = {
   children?: ReactNode
@@ -17,7 +34,7 @@ export function NavItem({ children, icon }: NavItemProps) {
   return (
     <>
       <StyledItem>
-        <StyledNavIconButton onClick={() => setOpen(!open)}>
+        <StyledNavIconButton href='#' onClick={() => setOpen(!open)}>
           {icon}
         </StyledNavIconButton>
         {open && children}

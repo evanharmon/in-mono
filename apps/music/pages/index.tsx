@@ -8,13 +8,6 @@ import ChevronIcon from '../public/icons/chevron.svg'
 import CogIcon from '../public/icons/cog.svg'
 import MessengerIcon from '../public/icons/messenger.svg'
 import PlusIcon from '../public/icons/plus.svg'
-import {
-  IconButtonStyles,
-  StyledNav,
-  StyledList,
-  StyledItem,
-  StyledNavIconButton,
-} from '../components/styled'
 
 const iconStyles = {
   fill: 'var(--text-color)',
@@ -52,21 +45,13 @@ export default function Index() {
       {/* <nav className='navbar'>
         <NavItem icon={<StyledBellIcon />} />
       </nav> */}
-      {/* WORKING NavBar single item ??? */}
+      {/* WORKING NavBar */}
       <NavBar>
+        <NavItem icon={<StyledPlusIcon />} />
         <NavItem icon={<StyledBellIcon />} />
+        <NavItem icon={<StyledMessengerIcon />} />
+        <NavItem icon={<CaretIcon />}></NavItem>
       </NavBar>
     </>
   )
-  // return (
-  //   <>
-  //     <NavBar>
-  //       <NavItem icon={<StyledPlusIcon />} />
-  //       <NavItem icon={<StyledBellIcon />} />
-  //       <NavItem icon={<StyledMessengerIcon />} />
-
-  //       <NavItem icon={<CaretIcon />}></NavItem>
-  //     </NavBar>
-  //   </>
-  // )
 }

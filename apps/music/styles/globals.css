@@ -77,31 +77,31 @@ a {
 /* Top Navigation Bar */
 
 /* <nav> */
-.navbar {
+/* .navbar {
   height: var(--nav-size);
   background-color: var(--bg);
   padding: 0 1rem;
   border-bottom: var(--border);
-}
+} */
 
 /* <ul> */
-.navbar-nav {
+/* .navbar-nav {
   max-width: 100%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
-}
+} */
 
 /* <li> */
-.nav-item {
+/* .nav-item {
   width: calc(var(--nav-size) * 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 /* Icon Button */
-.icon-button {
+/* .icon-button {
   --button-size: calc(var(--nav-size) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
@@ -123,11 +123,11 @@ a {
   fill: var(--text-color);
   width: 20px;
   height: 20px;
-}
+} */
 
 /* Dropdown Menu */
 
-.dropdown {
+/* .dropdown {
   position: absolute;
   top: 58px;
   width: 300px;
@@ -138,64 +138,64 @@ a {
   padding: 1rem;
   overflow: hidden;
   transition: height var(--speed) ease;
-}
+} */
 
-.menu {
+/* .menu {
   width: 100%;
-}
+} */
 
-.menu-item {
+/* .menu-item {
   height: 50px;
   display: flex;
   align-items: center;
   border-radius: var(--border-radius);
   transition: background var(--speed);
   padding: 0.5rem;
-}
+} */
 
-.menu-item .icon-button {
+/* .menu-item .icon-button {
   margin-right: 0.5rem;
-}
+} */
 
-.menu-item .icon-button:hover {
+/* .menu-item .icon-button:hover {
   filter: none;
-}
+} */
 
-.menu-item:hover {
+/* .menu-item:hover {
   background-color: #525357;
-}
+} */
 
-.icon-right {
+/* .icon-right {
   margin-left: auto;
-}
+} */
 
 /* CSSTransition classes  */
-.menu-primary-enter {
+/* .menu-primary-enter {
   position: absolute;
   transform: translateX(-110%);
-}
-.menu-primary-enter-active {
+} */
+/* .menu-primary-enter-active {
   transform: translateX(0%);
   transition: all var(--speed) ease;
-}
-.menu-primary-exit {
+} */
+/* .menu-primary-exit {
   position: absolute;
-}
-.menu-primary-exit-active {
+} */
+/* .menu-primary-exit-active {
   transform: translateX(-110%);
   transition: all var(--speed) ease;
-}
+} */
 
-.menu-secondary-enter {
+/* .menu-secondary-enter {
   transform: translateX(110%);
-}
-.menu-secondary-enter-active {
+} */
+/* .menu-secondary-enter-active {
   transform: translateX(0%);
   transition: all var(--speed) ease;
-}
-.menu-secondary-exit {
-}
-.menu-secondary-exit-active {
+} */
+/* .menu-secondary-exit {
+} */
+/* .menu-secondary-exit-active {
   transform: translateX(110%);
   transition: all var(--speed) ease;
-}
+} */
