@@ -19,6 +19,26 @@ const StyledPlusIcon = styled(PlusIcon)({ ...iconStyles })
 const StyledBellIcon = styled(BellIcon)({ ...iconStyles })
 const StyledMessengerIcon = styled(MessengerIcon)({ ...iconStyles })
 
+export const IconButtonStyles = {
+  '--button-size': 'calc(var(--nav-size) * 0.5)',
+  width: 'var(--button-size)',
+  height: 'var(--button-size)',
+  backgroundColor: 'var(--light-gray)',
+  borderRadius: '50%',
+  padding: '5px',
+  margin: '2px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  transition: 'filter 300ms',
+}
+export const StyledNavIconButton = styled.a({
+  ...IconButtonStyles,
+  '&:hover': {
+    filter: 'brightness(2)',
+  },
+})
+
 export default function Index() {
   return (
     <>
@@ -29,7 +49,11 @@ export default function Index() {
               <StyledPlusIcon />
             </a>
           </li>
-          <NavItem icon={<StyledBellIcon />} />
+          <li className='nav-item'>
+            <StyledNavIconButton href='#'>
+              <StyledBellIcon />
+            </StyledNavIconButton>
+          </li>
         </ul>
       </nav>
       {/* <NavBar>
