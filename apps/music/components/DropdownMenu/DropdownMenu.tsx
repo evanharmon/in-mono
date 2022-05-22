@@ -1,8 +1,27 @@
 import { ReactNode, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { IconButtonStyles } from '../styled'
+import { IconButtonStyles, StyledChevronIcon, StyledCogIcon } from '../styled'
 
-export const StyledDropdownItemButton = styled.a({
+interface StyledDropdownDiv {
+  height: string
+}
+
+const StyledDropdownDiv = styled.div<StyledDropdownDiv>(({ height }) => ({
+  // height: height,
+  position: 'absolute',
+  top: '58px',
+  width: '300px',
+  transform: 'translateX(-45%)',
+  backgroundColor: 'var(--bg)',
+  border: 'var(--border)',
+  borderRadius: 'var(--border-radius)',
+  padding: '1rem',
+  overflow: 'hidden',
+}))
+
+const StyledDropdownItemDiv = styled.div({ width: '100%' })
+
+const StyledDropdownItemButton = styled.a({
   height: '50px',
   display: 'flex',
   alignItems: 'center',
@@ -14,34 +33,24 @@ export const StyledDropdownItemButton = styled.a({
   },
 })
 
-interface StyledDropdownDiv {
-  height: string
-}
-
-export const StyledDropdownDiv = styled.div<StyledDropdownDiv>(
-  {},
-  ({ height }) => ({
-    height: height,
-  }),
-)
-
-const LeftIconButton = styled.span({
+const StyledLeftIconButton = styled.span({
   ...IconButtonStyles,
   marginRight: '0.5rem',
   '&:hover': { filter: 'none' },
 })
-const RightIconButton = styled.span({
+
+const StyledRightIconButton = styled.span({
   ...IconButtonStyles,
   marginLeft: 'auto',
   '&:hover': { filter: 'none' },
 })
 
 interface DropdownItemProps {
-  leftIcon: ReactNode | string
-  children: ReactNode
-  rightIcon: ReactNode | string
+  leftIcon?: ReactNode | string
+  children?: ReactNode | string
+  rightIcon?: ReactNode | string
   goToMenu?: string
-  onClick: () => {}
+  onClick?: () => {}
 }
 
 export function DropdownMenu() {
@@ -62,9 +71,9 @@ export function DropdownMenu() {
           href='#'
           onClick={() => goToMenu && setActiveMenu(goToMenu)}
         >
-          <LeftIconButton>{leftIcon}</LeftIconButton>
+          <StyledLeftIconButton>{leftIcon}</StyledLeftIconButton>
           {children}
-          <RightIconButton>{rightIcon}</RightIconButton>
+          <StyledRightIconButton>{rightIcon}</StyledRightIconButton>
         </StyledDropdownItemButton>
       </>
     )
@@ -72,10 +81,20 @@ export function DropdownMenu() {
 
   return (
     <>
-      <StyledDropdownDiv
-        ref={dropdownRef}
-        height={menuHeight}
-      ></StyledDropdownDiv>
+      <StyledDropdownDiv ref={dropdownRef} height={menuHeight}>
+        <StyledDropdownItemDiv>
+          <DropdownItem>My Profile</DropdownItem>
+        </StyledDropdownItemDiv>
+        <StyledDropdownItemDiv>
+          <DropdownItem
+            leftIcon={<StyledCogIcon />}
+            rightIcon={<StyledChevronIcon />}
+            goToMenu='Settings'
+          >
+            Settings
+          </DropdownItem>
+        </StyledDropdownItemDiv>
+      </StyledDropdownDiv>
     </>
   )
 }

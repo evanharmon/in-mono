@@ -1,3 +1,4 @@
+import DropdownMenu from '../components/DropdownMenu'
 import { NavBar, NavItem } from '../components/NavBar'
 import {
   StyledBellIcon,
@@ -13,7 +14,9 @@ export default function Index() {
         <NavItem icon={<StyledPlusIcon />} />
         <NavItem icon={<StyledBellIcon />} />
         <NavItem icon={<StyledMessengerIcon />} />
-        <NavItem icon={<StyledCaretIcon />}></NavItem>
+        <NavItem icon={<StyledCaretIcon />}>
+          <DropdownMenu />
+        </NavItem>
       </NavBar>
     </>
   )
