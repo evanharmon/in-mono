@@ -12,16 +12,17 @@ import primaryStyles from './DropdownMenuPrimary.module.css'
 import secondaryStyles from './DropdownMenuPrimary.module.css'
 
 const StyledDropdownDiv = styled.div<{ height: string }>`
+  background-color: var(--bg);
+  border-radius: var(--border-radius);
+  border: var(--border);
   height: ${props => props.height};
+  overflow: hidden;
+  padding: 1rem;
   position: absolute;
   top: 58px;
-  width: 300px;
   transform: translateX(-45%);
-  background-color: var(--bg);
-  border: var(--border);
-  border-radius: var(--border-radius);
-  padding: 1rem;
-  overflow: hidden;
+  transition: height var(--speed) ease;
+  width: 300px;
 `
 
 const StyledMenuPrimaryDiv = styled.div`
