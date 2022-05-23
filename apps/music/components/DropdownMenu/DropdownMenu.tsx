@@ -124,13 +124,13 @@ export function DropdownMenu() {
           >
             Settings
           </DropdownItem>
-          {/* <DropdownItem
+          <DropdownItem
             leftIcon='🦧'
             rightIcon={<StyledChevronIcon />}
             goToMenu='animals'
           >
             Animals
-          </DropdownItem> */}
+          </DropdownItem>
         </StyledMenuPrimaryDiv>
       </CSSTransition>
 
