@@ -51,7 +51,6 @@ const StyledLeftIconButton = styled.span`
 `
 
 const StyledRightIconButton = styled.span`
-  ${{ ...IconButtonStyles }};
   margin-left: auto;
   &:hover {
     filter: none;
