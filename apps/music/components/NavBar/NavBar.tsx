@@ -39,14 +39,12 @@ export function NavItem({ children, icon }: NavItemProps) {
   const [open, setOpen] = useState(false)
 
   return (
-    <>
-      <StyledItem>
-        <StyledNavIconButton href='#' onClick={() => setOpen(!open)}>
-          {icon}
-        </StyledNavIconButton>
-        {open && children}
-      </StyledItem>
-    </>
+    <StyledItem>
+      <StyledNavIconButton href='#' onClick={() => setOpen(!open)}>
+        {icon}
+      </StyledNavIconButton>
+      {open && children}
+    </StyledItem>
   )
 }
 
@@ -56,10 +54,8 @@ type NavBarProps = {
 
 export function NavBar({ children }: NavBarProps) {
   return (
-    <>
-      <StyledNav>
-        <StyledList>{children}</StyledList>
-      </StyledNav>
-    </>
+    <StyledNav>
+      <StyledList>{children}</StyledList>
+    </StyledNav>
   )
 }

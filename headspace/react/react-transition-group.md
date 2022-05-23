@@ -1,4 +1,4 @@
-# CSS TRANSITION
+# REACT TRANSITION GROUP
 
 ## Resources
 

@@ -1,7 +1,13 @@
-import { ReactNode, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import styled from 'styled-components'
-import { IconButtonStyles, StyledChevronIcon, StyledCogIcon } from '../styled'
+import {
+  IconButtonStyles,
+  StyledArrowIcon,
+  StyledBoltIcon,
+  StyledChevronIcon,
+  StyledCogIcon,
+} from '../styled'
 import primaryStyles from './DropdownMenuPrimary.module.css'
 import secondaryStyles from './DropdownMenuPrimary.module.css'
 
@@ -60,10 +66,26 @@ interface DropdownItemProps {
 }
 
 export function DropdownMenu() {
-  const [activeMenu, setActiveMenu] = useState('0px')
+  const [activeMenu, setActiveMenu] = useState('main')
   const [menuHeight, setMenuHeight] = useState('0px')
-
   const dropdownRef = useRef<HTMLDivElement | null>(null)
+  const mainMenuRef = useRef(null)
+  const settingsMenuRef = useRef(null)
+  const animalsMenuRef = useRef(null)
+
+  useEffect(() => console.log(activeMenu), [activeMenu])
+  useEffect(() => {
+    if (dropdownRef.current !== null) {
+      const el = dropdownRef.current?.firstChild as HTMLElement
+      const height = el.offsetHeight || 0
+      setMenuHeight(`${height}px`)
+    }
+  }, [])
+
+  function calcHeight(el: HTMLElement) {
+    const height = el.offsetHeight || 0
+    setMenuHeight(`${height}px`)
+  }
 
   function DropdownItem({
     leftIcon,
@@ -72,52 +94,83 @@ export function DropdownMenu() {
     goToMenu,
   }: DropdownItemProps) {
     return (
-      <>
-        <StyledDropdownItemButton
-          href='#'
-          onClick={() => goToMenu && setActiveMenu(goToMenu)}
-        >
-          <StyledLeftIconButton>{leftIcon}</StyledLeftIconButton>
-          {children}
+      <StyledDropdownItemButton
+        href='#'
+        onClick={() => goToMenu && setActiveMenu(goToMenu)}
+      >
+        <StyledLeftIconButton>{leftIcon}</StyledLeftIconButton>
+        {children}
+        {rightIcon && (
           <StyledRightIconButton>{rightIcon}</StyledRightIconButton>
-        </StyledDropdownItemButton>
-      </>
+        )}
+      </StyledDropdownItemButton>
     )
   }
 
   return (
-    <>
-      <StyledDropdownDiv ref={dropdownRef} height={menuHeight}>
-        <CSSTransition
-          in={activeMenu === 'main'}
-          timeout={500}
-          classNames={{ ...primaryStyles }}
-        >
-          <>
-            <StyledMenuPrimaryDiv>
-              <DropdownItem>My Profile</DropdownItem>
-            </StyledMenuPrimaryDiv>
-            <StyledMenuPrimaryDiv>
-              <DropdownItem
-                leftIcon={<StyledCogIcon />}
-                rightIcon={<StyledChevronIcon />}
-                goToMenu='Settings'
-              >
-                Settings
-              </DropdownItem>
-            </StyledMenuPrimaryDiv>
-            <StyledMenuPrimaryDiv>
-              <DropdownItem
-                leftIcon='🦧'
-                rightIcon={<StyledChevronIcon />}
-                goToMenu='animals'
-              >
-                Animals
-              </DropdownItem>
-            </StyledMenuPrimaryDiv>
-          </>
-        </CSSTransition>
-      </StyledDropdownDiv>
-    </>
+    <StyledDropdownDiv ref={dropdownRef} height={menuHeight}>
+      <CSSTransition
+        nodeRef={mainMenuRef}
+        in={activeMenu === 'main'}
+        timeout={500}
+        classNames={{ ...primaryStyles }}
+        onEnter={calcHeight}
+      >
+        <StyledMenuPrimaryDiv>
+          <DropdownItem>My Profile</DropdownItem>
+          <DropdownItem
+            leftIcon={<StyledCogIcon />}
+            rightIcon={<StyledChevronIcon />}
+            goToMenu='settings'
+          >
+            Settings
+          </DropdownItem>
+          <DropdownItem
+            leftIcon='🦧'
+            rightIcon={<StyledChevronIcon />}
+            goToMenu='animals'
+          >
+            Animals
+          </DropdownItem>
+        </StyledMenuPrimaryDiv>
+      </CSSTransition>
+
+      <CSSTransition
+        nodeRef={settingsMenuRef}
+        in={activeMenu === 'settings'}
+        timeout={500}
+        classNames={{ ...secondaryStyles }}
+        unmountOnExit
+        onEnter={calcHeight}
+      >
+        <StyledMenuPrimaryDiv>
+          <DropdownItem goToMenu='main' leftIcon={<StyledArrowIcon />}>
+            <h2>My Tutorial</h2>
+          </DropdownItem>
+          <DropdownItem leftIcon={<StyledBoltIcon />}>HTML</DropdownItem>
+          <DropdownItem leftIcon={<StyledBoltIcon />}>CSS</DropdownItem>
+          <DropdownItem leftIcon={<StyledBoltIcon />}>JavaScript</DropdownItem>
+          <DropdownItem leftIcon={<StyledBoltIcon />}>Awesome!</DropdownItem>
+        </StyledMenuPrimaryDiv>
+      </CSSTransition>
+      <CSSTransition
+        nodeRef={animalsMenuRef}
+        in={activeMenu === 'animals'}
+        timeout={500}
+        classNames={{ ...secondaryStyles }}
+        unmountOnExit
+        onEnter={calcHeight}
+      >
+        <StyledMenuPrimaryDiv>
+          <DropdownItem goToMenu='main' leftIcon={<StyledArrowIcon />}>
+            <h2>Animals</h2>
+          </DropdownItem>
+          <DropdownItem leftIcon='🦘'>Kangaroo</DropdownItem>
+          <DropdownItem leftIcon='🐸'>Frog</DropdownItem>
+          <DropdownItem leftIcon='🦋'>Horse?</DropdownItem>
+          <DropdownItem leftIcon='🦔'>Hedgehog</DropdownItem>
+        </StyledMenuPrimaryDiv>
+      </CSSTransition>
+    </StyledDropdownDiv>
   )
 }
