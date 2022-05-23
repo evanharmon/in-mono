@@ -100,9 +100,7 @@ export function DropdownMenu() {
       >
         <StyledLeftIconButton>{leftIcon}</StyledLeftIconButton>
         {children}
-        {rightIcon && (
-          <StyledRightIconButton>{rightIcon}</StyledRightIconButton>
-        )}
+        <StyledRightIconButton>{rightIcon}</StyledRightIconButton>
       </StyledDropdownItemButton>
     )
   }
@@ -125,17 +123,17 @@ export function DropdownMenu() {
           >
             Settings
           </DropdownItem>
-          <DropdownItem
+          {/* <DropdownItem
             leftIcon='🦧'
             rightIcon={<StyledChevronIcon />}
             goToMenu='animals'
           >
             Animals
-          </DropdownItem>
+          </DropdownItem> */}
         </StyledMenuPrimaryDiv>
       </CSSTransition>
 
-      <CSSTransition
+      {/* <CSSTransition
         nodeRef={settingsMenuRef}
         in={activeMenu === 'settings'}
         timeout={500}
@@ -152,8 +150,9 @@ export function DropdownMenu() {
           <DropdownItem leftIcon={<StyledBoltIcon />}>JavaScript</DropdownItem>
           <DropdownItem leftIcon={<StyledBoltIcon />}>Awesome!</DropdownItem>
         </StyledMenuPrimaryDiv>
-      </CSSTransition>
-      <CSSTransition
+      </CSSTransition> */}
+
+      {/* <CSSTransition
         nodeRef={animalsMenuRef}
         in={activeMenu === 'animals'}
         timeout={500}
@@ -165,12 +164,12 @@ export function DropdownMenu() {
           <DropdownItem goToMenu='main' leftIcon={<StyledArrowIcon />}>
             <h2>Animals</h2>
           </DropdownItem>
-          <DropdownItem leftIcon='🦘'>Kangaroo</DropdownItem>
-          <DropdownItem leftIcon='🐸'>Frog</DropdownItem>
-          <DropdownItem leftIcon='🦋'>Horse?</DropdownItem>
-          <DropdownItem leftIcon='🦔'>Hedgehog</DropdownItem>
+          <DropdownItem leftIcon="🦘">Kangaroo</DropdownItem>
+          <DropdownItem leftIcon="🐸">Frog</DropdownItem>
+          <DropdownItem leftIcon="🦋">Horse?</DropdownItem>
+          <DropdownItem leftIcon="🦔">Hedgehog</DropdownItem>
         </StyledMenuPrimaryDiv>
-      </CSSTransition>
+      </CSSTransition> */}
     </StyledDropdownDiv>
   )
 }
