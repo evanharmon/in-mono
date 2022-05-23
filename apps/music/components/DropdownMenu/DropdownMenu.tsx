@@ -12,7 +12,7 @@ import primaryStyles from './DropdownMenuPrimary.module.css'
 import secondaryStyles from './DropdownMenuPrimary.module.css'
 
 const StyledDropdownDiv = styled.div<{ height: string }>`
-  height: $height;
+  height: ${props => props.height};
   position: absolute;
   top: 58px;
   width: 300px;
@@ -73,7 +73,8 @@ export function DropdownMenu() {
   const settingsMenuRef = useRef(null)
   const animalsMenuRef = useRef(null)
 
-  useEffect(() => console.log(activeMenu), [activeMenu])
+  useEffect(() => console.log(`activeMenu`, activeMenu), [activeMenu])
+  useEffect(() => console.log(`menuHeight`, menuHeight), [menuHeight])
   useEffect(() => {
     if (dropdownRef.current !== null) {
       const el = dropdownRef.current?.firstChild as HTMLElement
