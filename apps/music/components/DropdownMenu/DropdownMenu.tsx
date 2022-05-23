@@ -73,8 +73,8 @@ export function DropdownMenu() {
   const settingsMenuRef = useRef(null)
   const animalsMenuRef = useRef(null)
 
-  useEffect(() => console.log(`activeMenu`, activeMenu), [activeMenu])
-  useEffect(() => console.log(`menuHeight`, menuHeight), [menuHeight])
+  // useEffect(() => console.log(`activeMenu`, activeMenu), [activeMenu])
+
   useEffect(() => {
     if (dropdownRef.current !== null) {
       const el = dropdownRef.current?.firstChild as HTMLElement
@@ -108,12 +108,14 @@ export function DropdownMenu() {
 
   return (
     <StyledDropdownDiv ref={dropdownRef} height={menuHeight}>
+      {/* NOTE: current implementation only fires main menu CSS Transition when menu changed away from it */}
       <CSSTransition
         nodeRef={mainMenuRef}
         in={activeMenu === 'main'}
         timeout={500}
+        unmountOnExit
         classNames={{ ...primaryStyles }}
-        onEnter={calcHeight}
+        onEnter={() => mainMenuRef?.current && calcHeight(mainMenuRef.current)}
       >
         <StyledMenuPrimaryDiv>
           <DropdownItem>My Profile</DropdownItem>
@@ -134,13 +136,19 @@ export function DropdownMenu() {
         </StyledMenuPrimaryDiv>
       </CSSTransition>
 
-      {/* <CSSTransition
+      <CSSTransition
         nodeRef={settingsMenuRef}
         in={activeMenu === 'settings'}
         timeout={500}
         classNames={{ ...secondaryStyles }}
         unmountOnExit
-        onEnter={calcHeight}
+        // onEnter={() => settingsMenuRef?.current && calcHeight(settingsMenuRef.current)}
+        onEnter={() => {
+          if (settingsMenuRef?.current) calcHeight(settingsMenuRef.current)
+          console.log(`onEnter settingsMenuRef`)
+        }}
+        onEntering={() => console.log(`onEntering settingsMenuRef`)}
+        onEntered={() => console.log(`onEntered settingsMenuRef`)}
       >
         <StyledMenuPrimaryDiv>
           <DropdownItem goToMenu='main' leftIcon={<StyledArrowIcon />}>
@@ -151,26 +159,32 @@ export function DropdownMenu() {
           <DropdownItem leftIcon={<StyledBoltIcon />}>JavaScript</DropdownItem>
           <DropdownItem leftIcon={<StyledBoltIcon />}>Awesome!</DropdownItem>
         </StyledMenuPrimaryDiv>
-      </CSSTransition> */}
+      </CSSTransition>
 
-      {/* <CSSTransition
+      <CSSTransition
         nodeRef={animalsMenuRef}
         in={activeMenu === 'animals'}
         timeout={500}
         classNames={{ ...secondaryStyles }}
         unmountOnExit
-        onEnter={calcHeight}
+        // onEnter={() => animalsMenuRef?.current && calcHeight(animalsMenuRef.current)}
+        onEnter={() => {
+          if (animalsMenuRef?.current) calcHeight(animalsMenuRef.current)
+          console.log(`onEnter animalsMenuRef`)
+        }}
+        onEntering={() => console.log(`onEntering animalsMenuRef`)}
+        onEntered={() => console.log(`onEntered animalsMenuRef`)}
       >
         <StyledMenuPrimaryDiv>
           <DropdownItem goToMenu='main' leftIcon={<StyledArrowIcon />}>
             <h2>Animals</h2>
           </DropdownItem>
-          <DropdownItem leftIcon="🦘">Kangaroo</DropdownItem>
-          <DropdownItem leftIcon="🐸">Frog</DropdownItem>
-          <DropdownItem leftIcon="🦋">Horse?</DropdownItem>
-          <DropdownItem leftIcon="🦔">Hedgehog</DropdownItem>
+          <DropdownItem leftIcon='🦘'>Kangaroo</DropdownItem>
+          <DropdownItem leftIcon='🐸'>Frog</DropdownItem>
+          <DropdownItem leftIcon='🦋'>Horse?</DropdownItem>
+          <DropdownItem leftIcon='🦔'>Hedgehog</DropdownItem>
         </StyledMenuPrimaryDiv>
-      </CSSTransition> */}
+      </CSSTransition>
     </StyledDropdownDiv>
   )
 }
