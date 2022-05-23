@@ -1,49 +1,55 @@
 import { ReactNode, useRef, useState } from 'react'
+import { CSSTransition } from 'react-transition-group'
 import styled from 'styled-components'
 import { IconButtonStyles, StyledChevronIcon, StyledCogIcon } from '../styled'
+import primaryStyles from './DropdownMenuPrimary.module.css'
+import secondaryStyles from './DropdownMenuPrimary.module.css'
 
-interface StyledDropdownDiv {
-  height: string
-}
+const StyledDropdownDiv = styled.div<{ height: string }>`
+  height: $height;
+  position: absolute;
+  top: 58px;
+  width: 300px;
+  transform: translateX(-45%);
+  background-color: var(--bg);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  overflow: hidden;
+`
 
-const StyledDropdownDiv = styled.div<StyledDropdownDiv>(({ height }) => ({
-  // height: height,
-  position: 'absolute',
-  top: '58px',
-  width: '300px',
-  transform: 'translateX(-45%)',
-  backgroundColor: 'var(--bg)',
-  border: 'var(--border)',
-  borderRadius: 'var(--border-radius)',
-  padding: '1rem',
-  overflow: 'hidden',
-}))
+const StyledMenuPrimaryDiv = styled.div`
+  width: '100%';
+`
 
-const StyledDropdownItemDiv = styled.div({ width: '100%' })
+const StyledDropdownItemButton = styled.a`
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 0.5rem;
 
-const StyledDropdownItemButton = styled.a({
-  height: '50px',
-  display: 'flex',
-  alignItems: 'center',
-  borderRadius: 'var(--border-radius)',
-  transition: 'background var(--speed)',
-  padding: '0.5rem',
-  '&:hover': {
-    backgroundColor: 'hsl(228, 3%, 33%)',
-  },
-})
+  &:hover {
+    background-color: hsl(228, 3%, 33%);
+  }
+`
 
-const StyledLeftIconButton = styled.span({
-  ...IconButtonStyles,
-  marginRight: '0.5rem',
-  '&:hover': { filter: 'none' },
-})
+const StyledLeftIconButton = styled.span`
+  ${{ ...IconButtonStyles }};
+  margin-right: 0.5rem;
+  &:hover {
+    filter: none;
+  }
+`
 
-const StyledRightIconButton = styled.span({
-  ...IconButtonStyles,
-  marginLeft: 'auto',
-  '&:hover': { filter: 'none' },
-})
+const StyledRightIconButton = styled.span`
+  ${{ ...IconButtonStyles }};
+  margin-left: auto;
+  &:hover {
+    filter: none;
+  }
+`
 
 interface DropdownItemProps {
   leftIcon?: ReactNode | string
@@ -82,18 +88,35 @@ export function DropdownMenu() {
   return (
     <>
       <StyledDropdownDiv ref={dropdownRef} height={menuHeight}>
-        <StyledDropdownItemDiv>
-          <DropdownItem>My Profile</DropdownItem>
-        </StyledDropdownItemDiv>
-        <StyledDropdownItemDiv>
-          <DropdownItem
-            leftIcon={<StyledCogIcon />}
-            rightIcon={<StyledChevronIcon />}
-            goToMenu='Settings'
-          >
-            Settings
-          </DropdownItem>
-        </StyledDropdownItemDiv>
+        <CSSTransition
+          in={activeMenu === 'main'}
+          timeout={500}
+          classNames={{ ...primaryStyles }}
+        >
+          <>
+            <StyledMenuPrimaryDiv>
+              <DropdownItem>My Profile</DropdownItem>
+            </StyledMenuPrimaryDiv>
+            <StyledMenuPrimaryDiv>
+              <DropdownItem
+                leftIcon={<StyledCogIcon />}
+                rightIcon={<StyledChevronIcon />}
+                goToMenu='Settings'
+              >
+                Settings
+              </DropdownItem>
+            </StyledMenuPrimaryDiv>
+            <StyledMenuPrimaryDiv>
+              <DropdownItem
+                leftIcon='🦧'
+                rightIcon={<StyledChevronIcon />}
+                goToMenu='animals'
+              >
+                Animals
+              </DropdownItem>
+            </StyledMenuPrimaryDiv>
+          </>
+        </CSSTransition>
       </StyledDropdownDiv>
     </>
   )
