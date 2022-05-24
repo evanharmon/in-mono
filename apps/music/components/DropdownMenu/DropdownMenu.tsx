@@ -9,7 +9,7 @@ import {
   StyledCogIcon,
 } from '../styled'
 import primaryStyles from './DropdownMenuPrimary.module.css'
-import secondaryStyles from './DropdownMenuPrimary.module.css'
+import secondaryStyles from './DropdownMenuSecondary.module.css'
 
 const StyledDropdownDiv = styled.div<{ height: string }>`
   background-color: var(--bg);
@@ -73,20 +73,27 @@ export function DropdownMenu() {
   const settingsMenuRef = useRef(null)
   const animalsMenuRef = useRef(null)
 
-  // useEffect(() => console.log(`activeMenu`, activeMenu), [activeMenu])
-
-  useEffect(() => {
-    if (dropdownRef.current !== null) {
-      const el = dropdownRef.current?.firstChild as HTMLElement
-      const height = el.offsetHeight || 0
-      setMenuHeight(`${height}px`)
-    }
-  }, [])
-
   function calcHeight(el: HTMLElement) {
-    const height = el.offsetHeight || 0
+    const height = el.offsetHeight
+    console.log(`calcHeight height`, height, `el`, el)
     setMenuHeight(`${height}px`)
   }
+
+  function calcDropdownRefHeight() {
+    if (dropdownRef.current !== null) {
+      const el = dropdownRef.current?.firstChild as HTMLElement
+      const height = el.offsetHeight
+      console.log(`calcHeight height`, height, `el`, el)
+      setMenuHeight(`${height}px`)
+    }
+  }
+
+  // useEffect(() => console.log(`activeMenu`, activeMenu), [activeMenu])
+  // useEffect(() => console.log(`menuHeight`, menuHeight), [menuHeight])
+
+  useEffect(() => {
+    calcDropdownRefHeight()
+  }, [])
 
   function DropdownItem({
     leftIcon,
@@ -108,16 +115,23 @@ export function DropdownMenu() {
 
   return (
     <StyledDropdownDiv ref={dropdownRef} height={menuHeight}>
-      {/* NOTE: current implementation only fires main menu CSS Transition when menu changed away from it */}
+      {/* NOTE: current implementation only fires main menu CSS Transition when menu changed away from 'main' */}
       <CSSTransition
         nodeRef={mainMenuRef}
         in={activeMenu === 'main'}
         timeout={500}
         unmountOnExit
         classNames={{ ...primaryStyles }}
-        onEnter={() => mainMenuRef?.current && calcHeight(mainMenuRef.current)}
+        // onEnter={() => mainMenuRef?.current && calcHeight(mainMenuRef.current)}
+        // onEnter={() => calcDropdownRefHeight()}
+        onEntering={() => console.log(`onEntering mainMenuRef`)}
+        onEntered={() => console.log(`onEntered mainMenuRef`)}
+        onExit={() => console.log(`onExit mainMenuRef`)}
+        onExiting={() => console.log(`onExiting mainMenuRef`)}
+        onExited={() => console.log(`onExited mainMenuRef`)}
       >
         <StyledMenuPrimaryDiv>
+          {/* <StyledMenuPrimaryDiv ref={mainMenuRef}> */}
           <DropdownItem>My Profile</DropdownItem>
           <DropdownItem
             leftIcon={<StyledCogIcon />}
@@ -142,15 +156,18 @@ export function DropdownMenu() {
         timeout={500}
         classNames={{ ...secondaryStyles }}
         unmountOnExit
-        // onEnter={() => settingsMenuRef?.current && calcHeight(settingsMenuRef.current)}
-        onEnter={() => {
-          if (settingsMenuRef?.current) calcHeight(settingsMenuRef.current)
-          console.log(`onEnter settingsMenuRef`)
-        }}
-        onEntering={() => console.log(`onEntering settingsMenuRef`)}
-        onEntered={() => console.log(`onEntered settingsMenuRef`)}
+        onEnter={() =>
+          settingsMenuRef?.current && calcHeight(settingsMenuRef.current)
+        }
+        // onEnter={() => {
+        //   console.log(`onEnter settingsMenuRef`, settingsMenuRef?.current)
+        //   if (settingsMenuRef?.current) calcHeight(settingsMenuRef.current)
+        // }}
+        // onEntering={() => console.log(`onEntering settingsMenuRef`)}
+        // onEntered={() => console.log(`onEntered settingsMenuRef`)}
       >
-        <StyledMenuPrimaryDiv>
+        {/* <StyledMenuPrimaryDiv > */}
+        <StyledMenuPrimaryDiv ref={settingsMenuRef}>
           <DropdownItem goToMenu='main' leftIcon={<StyledArrowIcon />}>
             <h2>My Tutorial</h2>
           </DropdownItem>
@@ -161,7 +178,7 @@ export function DropdownMenu() {
         </StyledMenuPrimaryDiv>
       </CSSTransition>
 
-      <CSSTransition
+      {/* <CSSTransition
         nodeRef={animalsMenuRef}
         in={activeMenu === 'animals'}
         timeout={500}
@@ -169,8 +186,8 @@ export function DropdownMenu() {
         unmountOnExit
         // onEnter={() => animalsMenuRef?.current && calcHeight(animalsMenuRef.current)}
         onEnter={() => {
+          console.log(`onEnter animalsMenuRef`, animalsMenuRef?.current)
           if (animalsMenuRef?.current) calcHeight(animalsMenuRef.current)
-          console.log(`onEnter animalsMenuRef`)
         }}
         onEntering={() => console.log(`onEntering animalsMenuRef`)}
         onEntered={() => console.log(`onEntered animalsMenuRef`)}
@@ -184,7 +201,7 @@ export function DropdownMenu() {
           <DropdownItem leftIcon='🦋'>Horse?</DropdownItem>
           <DropdownItem leftIcon='🦔'>Hedgehog</DropdownItem>
         </StyledMenuPrimaryDiv>
-      </CSSTransition>
+      </CSSTransition> */}
     </StyledDropdownDiv>
   )
 }
