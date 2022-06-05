@@ -7,6 +7,17 @@ import primaryStyles from './DropdownMenuPrimary.module.css'
 
 const StyledLogoutButton = styled.a``
 
+// TODO use relative values instead of hard-coded pixels
+const StyledDropdownContainer = styled.div`
+  position: absolute;
+  height: 150px; // TODO make dynamic
+  top: 60px;
+  width: 125px;
+  right: 0px; // avoids negative values which push nav out of place on mobile
+  background-color: lightslategrey;
+  overflow: hidden;
+`
+
 interface DropdownItemProps {}
 
 export function DropdownMenu() {
@@ -15,8 +26,8 @@ export function DropdownMenu() {
   if (!user) return <></>
 
   return (
-    <>
+    <StyledDropdownContainer>
       <StyledLogoutButton href='/api/auth/logout'>Logout</StyledLogoutButton>
-    </>
+    </StyledDropdownContainer>
   )
 }
