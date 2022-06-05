@@ -1,12 +1,22 @@
 {
+  "breadcrumbs.enabled": false,
   "editor.autoClosingBrackets": "always",
   "editor.autoClosingQuotes": "always",
-  "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.folding": false,
+  "editor.formatOnSave": true,
+  "editor.glyphMargin": false,
   "editor.quickSuggestions": {
     "other": "on",
     "comments": "off",
     "strings": "on"
   },
-  "typescript.suggest.completeFunctionCalls": true
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "reactSnippets.settings.importReactOnTop": false,
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }
