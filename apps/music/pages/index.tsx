@@ -3,6 +3,9 @@ import { NavBar, NavItem, NavLink } from '../components/NavBar'
 import { StyledUserIcon, StyledAdvancedOptionsIcon } from '../components/Icons'
 import { useUser } from '@auth0/nextjs-auth0'
 import { useEffect, useState } from 'react'
+import styled from 'styled-components'
+
+const loginUrl = '/api/auth/login'
 
 const Loading = () => (
   <>
@@ -10,9 +13,11 @@ const Loading = () => (
   </>
 )
 
+const UserIconLink = styled(NavLink)``
+UserIconLink.displayName = 'UserIconLink'
+
 export default function Index() {
   const { user, isLoading } = useUser()
-  const [linkHref] = useState(user ? '#' : '/api/auth/login')
 
   if (isLoading) {
     return <Loading />
@@ -21,8 +26,11 @@ export default function Index() {
   return (
     <>
       <NavBar>
-        <NavItem icon={<StyledAdvancedOptionsIcon />}></NavItem>
-        <NavLink icon={<StyledUserIcon />} href={linkHref}></NavLink>
+        {/* TODO move advanced options inside main dropdown */}
+        {/* <NavItem icon={<StyledAdvancedOptionsIcon />}></NavItem> */}
+        <UserIconLink icon={<StyledUserIcon />} href={user ? '#' : loginUrl}>
+          <DropdownMenu />
+        </UserIconLink>
       </NavBar>
     </>
   )

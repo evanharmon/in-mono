@@ -21,10 +21,14 @@ type NavLinkProps = {
 }
 
 export function NavLink({ children, icon, href }: NavLinkProps) {
+  const [open, setOpen] = useState(false)
+
   return (
     <StyledListItem>
-      <StyledNavIconLink href={href}>{icon}</StyledNavIconLink>
-      {children}
+      <StyledNavIconLink href={href} onClick={() => setOpen(open => !open)}>
+        {icon}
+      </StyledNavIconLink>
+      {open && children}
     </StyledListItem>
   )
 }
