@@ -40,13 +40,14 @@ function DropdownItem({
 
 // TODO use relative values instead of hard-coded pixels
 const StyledDropdownContainer = styled.div`
-  position: absolute;
+  background-color: var(--bg);
   height: 150px; // TODO make dynamic
-  top: 60px;
-  width: 125px;
-  right: 0px; // avoids negative values which push nav out of place on mobile
-  background-color: lightslategrey;
   overflow: hidden;
+  padding: 1rem;
+  position: absolute;
+  top: 60px;
+  transform: translateX(-45%);
+  width: 325px;
 `
 
 const StyledMenuContainer = styled.div`
