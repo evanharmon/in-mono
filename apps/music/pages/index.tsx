@@ -1,8 +1,7 @@
 import DropdownMenu from '../components/DropdownMenu'
-import { NavBar, NavItem, NavLink } from '../components/NavBar'
+import { NavBar, NavLink } from '../components/NavBar'
 import { StyledUserIcon, StyledAdvancedOptionsIcon } from '../components/Icons'
 import { useUser } from '@auth0/nextjs-auth0'
-import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const loginUrl = '/api/auth/login'
