@@ -1,9 +1,7 @@
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { useUser } from '@auth0/nextjs-auth0'
-import { CSSTransition } from 'react-transition-group'
 import styled from 'styled-components'
 import { StyledChevronsLeftIcon } from '../Icons'
-import primaryStyles from './DropdownMenuPrimary.module.css'
 
 const StyledLogoutButton = styled.a``
 
