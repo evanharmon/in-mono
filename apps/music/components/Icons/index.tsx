@@ -28,12 +28,19 @@ export const StyledChevronsLeftIcon = styled(ChevronsLeftIcon)({
 
 const defaultButtonStyle = {
   '--button-size': 'calc(var(--nav-size) * 0.5)',
-  width: 'var(--nav-button-size)',
-  height: 'var(--nav-button-size)',
+  alignItems: 'center',
   backgroundColor: 'var(--light-gray)',
   borderRadius: '50%',
-  padding: '5px',
+  display: 'flex',
+  height: 'var(--nav-button-size)',
+  justifyContent: 'center',
   margin: '2px',
+  padding: '10px',
+  transition: 'filter 300ms',
+  '&:hover': {
+    filter: 'brightness(2)',
+  },
+  width: 'var(--nav-button-size)',
 }
 
 export const StyledIconButton = styled.button`
