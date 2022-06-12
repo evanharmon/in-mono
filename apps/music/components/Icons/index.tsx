@@ -28,7 +28,7 @@ export const StyledChevronsLeftIcon = styled(ChevronsLeftIcon)({
   fill: 'none',
 })
 
-const defaultButtonStyle = {
+export const DefaultButtonStyle = {
   '--button-size': 'calc(var(--nav-size) * 0.5)',
   alignItems: 'center',
   backgroundColor: 'var(--light-gray)',
@@ -46,9 +46,9 @@ const defaultButtonStyle = {
 }
 
 export const StyledIconButton = styled.button`
-  ${{ ...defaultButtonStyle }};
+  ${{ ...DefaultButtonStyle }};
 `
 
 export const StyledIconLink = styled.a`
-  ${{ ...defaultButtonStyle }};
+  ${{ ...DefaultButtonStyle }};
 `
