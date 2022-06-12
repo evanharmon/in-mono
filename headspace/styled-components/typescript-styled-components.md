@@ -18,3 +18,18 @@ const StyledDropdownDiv = styled.div<{ height: string }>`
   overflow: hidden;
 `
 ```
+
+## Conditionally render CSS if prop exists
+
+```tsx
+const StyledDropdownItemIconButton = styled.span<{
+  marginLeft?: string
+  marginRight?: string
+}>`
+  ${props => props.marginRight && `margin-right: ${props.marginRight}`};
+  ${props => props.marginLeft && `margin-left: ${props.marginLeft}`};
+  &:hover {
+    filter: none;
+  }
+`
+```
