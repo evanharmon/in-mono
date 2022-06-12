@@ -1,9 +1,9 @@
 import DropdownMenu from '../components/DropdownMenu'
 import { NavBar, NavLink } from '../components/NavBar'
-import { StyledUserIcon } from '../components/Icons'
+import { StyledAdvancedOptionsIcon, StyledLoginIcon } from '../components/Icons'
 import { useUser } from '@auth0/nextjs-auth0'
 
-const loginUrl = '/api/auth/login'
+const LOGIN_URL = '/api/auth/login'
 
 const Loading = () => (
   <>
@@ -14,14 +14,15 @@ const Loading = () => (
 export default function Index() {
   const { user, isLoading } = useUser()
 
-  if (isLoading) {
-    return <Loading />
-  }
+  if (isLoading) <Loading />
 
   return (
     <>
       <NavBar>
-        <NavLink icon={<StyledUserIcon />} href={user ? '#' : loginUrl}>
+        <NavLink
+          icon={user ? <StyledAdvancedOptionsIcon /> : <StyledLoginIcon />}
+          href={user ? '#' : LOGIN_URL}
+        >
           <DropdownMenu />
         </NavLink>
       </NavBar>
