@@ -61,11 +61,13 @@ export function DropdownMenu() {
   return (
     <StyledDropdownContainer>
       {/* Main Dropdown Menu Item List */}
-      <StyledMenuContainer>
-        <DropdownItem goToMenu='Profile' setActiveMenu={setActiveMenu}>
-          My Profile
-        </DropdownItem>
-      </StyledMenuContainer>
+      {activeMenu === 'Main' && (
+        <StyledMenuContainer>
+          <DropdownItem goToMenu='Profile' setActiveMenu={setActiveMenu}>
+            My Profile
+          </DropdownItem>
+        </StyledMenuContainer>
+      )}
 
       {/* My Profile Dropdown Menu */}
       {activeMenu === 'Profile' ? (
