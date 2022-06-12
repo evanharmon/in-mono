@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Auth0AdvancedOptionsIcon from '../../public/icons/icon-advanced-options.svg'
 import ChevronsLeftIcon from '../../public/icons/chevrons-left.svg'
+import Auth0LoginIcon from '../../public/icons/icon-login.svg'
 import Auth0SettingsIcon from '../../public/icons/icon-settings.svg'
 import Auth0UserIcon from '../../public/icons/icon-user.svg'
 
@@ -14,6 +15,7 @@ const defaultIconStyle = {
 export const StyledAdvancedOptionsIcon = styled(Auth0AdvancedOptionsIcon)({
   ...defaultIconStyle,
 })
+export const StyledLoginIcon = styled(Auth0LoginIcon)({ ...defaultIconStyle })
 export const StyledUserIcon = styled(Auth0UserIcon)({ ...defaultIconStyle })
 export const StyledSettingsIcon = styled(Auth0SettingsIcon)({
   ...defaultIconStyle,
