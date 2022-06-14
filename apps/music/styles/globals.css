@@ -1,13 +1,36 @@
+:root {
+  --black: hsl(180, 2%, 8%);
+  --gray: hsl(210, 4%, 29%);
+  --dark-gray: hsl(210, 3%, 15%);
+  --light-gray: hsl(216, 3%, 29%);
+  --white: hsl(223, 10%, 87%);
+
+  --bg: var(--dark-gray);
+  --bg-accent: var(--light-gray);
+  --text-color: var(--white);
+  --border: 1px solid var(--gray);
+  --border-radius: 8px;
+  --speed: 500ms;
+}
+
 html,
 body {
   padding: 0;
+  background: var(--black);
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: roboto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-  color: inherit;
+  color: var(--text-color);
   text-decoration: none;
 }
 

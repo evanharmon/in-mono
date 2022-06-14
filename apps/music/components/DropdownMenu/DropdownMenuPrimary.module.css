@@ -1,0 +1,32 @@
+/* LEAVING IN AS EXAMPLE FOR https://github.com/evanharmon/in-mono/issues/21 */
+/* CSSTransition classes  */
+.enter {
+  /* position: absolute; */
+  /* transform: translateX(-110%); */
+}
+.enterActive {
+  /* transform: translateX(0%); */
+  /* transition: all var(--speed) ease; */
+}
+.exit {
+  /* position: absolute; */
+}
+.exitActive {
+  /* transform: translateX(-110%); */
+  /* transition: all var(--speed) ease; */
+}
+
+/* CSSTransition secondary classes saved for ref */
+/* .enter {
+  transform: translateX(110%);
+}
+.enterActive {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.exit {
+}
+.exitActive {
+  transform: translateX(110%);
+  transition: all var(--speed) ease;
+} */

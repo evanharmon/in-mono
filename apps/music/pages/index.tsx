@@ -1,18 +1,31 @@
+import DropdownMenu from '../components/DropdownMenu'
+import { NavBar, NavLink } from '../components/NavBar'
+import { StyledAdvancedOptionsIcon, StyledLoginIcon } from '../components/Icons'
 import { useUser } from '@auth0/nextjs-auth0'
 
+const LOGIN_URL = '/api/auth/login'
+
+const Loading = () => (
+  <>
+    <h1>Loading...</h1>
+  </>
+)
+
 export default function Index() {
-  const { user, error, isLoading } = useUser()
+  const { user, isLoading } = useUser()
 
-  if (isLoading) return <div>Loading...</div>
-  if (error) return <div>{error.message}</div>
+  if (isLoading) <Loading />
 
-  if (user) {
-    return (
-      <div>
-        Welcome {user.name}! <a href='/api/auth/logout'>Logout</a>
-      </div>
-    )
-  }
-
-  return <a href='/api/auth/login'>Login</a>
+  return (
+    <>
+      <NavBar>
+        <NavLink
+          icon={user ? <StyledAdvancedOptionsIcon /> : <StyledLoginIcon />}
+          href={user ? '#' : LOGIN_URL}
+        >
+          <DropdownMenu />
+        </NavLink>
+      </NavBar>
+    </>
+  )
 }
