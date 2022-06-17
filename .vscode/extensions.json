@@ -2,7 +2,10 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "dsznajder.es7-react-js-snippets",
+    "ms-vsliveshare.vsliveshare",
     "esbenp.prettier-vscode",
-    "styled-components.vscode-styled-components"
+    "eamodio.gitlens",
+    "styled-components.vscode-styled-components",
+    "vscodevim.vim"
   ]
 }
