@@ -1,3 +1,15 @@
-IN-MONO
+Mono repo using turborepo for all my work
 
-Mono repo for all my work
+## Getting Started
+
+run all apps in
+
+```console
+npm run dev
+```
+
+run a single app
+
+```console
+npx turbo run dev --filter=music...
+```
