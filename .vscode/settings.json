@@ -1,6 +1,7 @@
 {
   "breadcrumbs.enabled": false,
   "gitlens.statusBar.enabled": false,
+  "gitlens.plusFeatures.enabled": false,
   "liveshare.audio.startCallOnShare": true,
   "editor.minimap.enabled": false,
   "editor.autoClosingBrackets": "always",
@@ -21,5 +22,7 @@
   "emmet.triggerExpansionOnTab": true,
   "reactSnippets.settings.importReactOnTop": false,
   "typescript.suggest.completeFunctionCalls": true,
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.sideBar.location": "right",
+  "workbench.activityBar.visible": false
 }
