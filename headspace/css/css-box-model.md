@@ -26,3 +26,13 @@ content area: dimensions are content width and content height. Bounded by conten
 `box-sizing: content-box` is the default. `width and height of your element go out the window as soon as padding and borders are added`
 
 `box-sizing: box-sizing` is present day standard. `element's width and height not affected by padding or borders`
+
+
+## Debugging trick
+
+```css
+* {
+    box-sizing: border-box;
+    background: rgb(0 100 0 / 0.1) !important;
+}
+```
