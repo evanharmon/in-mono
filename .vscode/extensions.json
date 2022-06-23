@@ -6,6 +6,7 @@
     "esbenp.prettier-vscode",
     "github.codespaces",
     "ms-vsliveshare.vsliveshare",
+    "ms-vscode-remote.remote-containers",
     "styled-components.vscode-styled-components",
     "vscodevim.vim"
   ]
