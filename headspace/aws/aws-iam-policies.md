@@ -13,51 +13,9 @@ Notes on managing policies in AWS
 In the AWS Console, click on the policy's tab `Policy Usage`. This will list
 where the policy is attached.
 
-## Allow users to manage their own MFA
+## Allow users to manage their own credentials
 
-- create a customer managed policy
-- add to users / groups as necessary
+[AWS Doc with policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws_my-sec-creds-self-manage-no-mfa.html)
+[AWS Docs policy with MFA enforcement](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws_my-sec-creds-self-manage.html)
 
-example statements to add - NOT a full policy
-
-```json
-        {
-            "Sid": "AllowViewAccountInfo",
-            "Effect": "Allow",
-            "Action": [
-                "iam:GetAccountPasswordPolicy",
-                "iam:GetAccountSummary",
-                "iam:ListVirtualMFADevices"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Sid": "AllowManageOwnPasswords",
-            "Effect": "Allow",
-            "Action": [
-                "iam:ChangePassword",
-                "iam:GetUser"
-            ],
-            "Resource": "arn:aws:iam::*:user/${aws:username}"
-        },
-        {
-            "Sid": "AllowManageOwnVirtualMFADevice",
-            "Effect": "Allow",
-            "Action": [
-                "iam:CreateVirtualMFADevice",
-                "iam:DeleteVirtualMFADevice"
-            ],
-            "Resource": "arn:aws:iam::*:mfa/${aws:username}"
-        },
-        {
-            "Sid": "AllowManageOwnUserMFA",
-            "Effect": "Allow",
-            "Action": [
-                "iam:DeactivateMFADevice",
-                "iam:EnableMFADevice",
-                "iam:ListMFADevices",
-                "iam:ResyncMFADevice"
-            ],
-            "Resource": "arn:aws:iam::*:user/${aws:username}"
-        }
-```
+I prefer the second which also enforces MFA for long term creds like access keys
