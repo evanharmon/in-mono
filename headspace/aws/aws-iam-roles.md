@@ -1,9 +1,5 @@
-# IAM ROLES
-
-## Summary
-
+# AWS IAM ROLES
 ## Resources
-
 - [Creating Roles For Web Identity](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html)
 
 ### Why Use Roles?

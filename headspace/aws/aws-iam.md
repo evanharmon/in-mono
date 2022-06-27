@@ -1,7 +1,4 @@
 # AWS IAM
-
-## Summary
-
 Notes on AWS Identity And Access Management
 
 ## Policies
@@ -11,8 +8,7 @@ Notes on AWS Identity And Access Management
 - [Policy Evaluation Logic](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policies_evaluation_example)
 
 ## Best Practices
-
-[AWS](http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
+- [AWS](http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
 
 - lock away your AWS account (root) access keys
 - create individual IAM users
@@ -29,17 +25,14 @@ Notes on AWS Identity And Access Management
 - video presentation about IAM best practices
 
 ## Roles
-
 Users can explicitly switch roles to perform tasks
 Roles are universal - can use across any region
 MFA can be added to specific roles
 
 ### Trust Policy
-
 Assume a role as an IAM user
 
 example trust relationship policy
-
 ```json
 {
   "Version": "2012-10-17",
@@ -65,11 +58,9 @@ example trust relationship policy
 ```
 
 ### Permissions Policy
-
 allowed actions and resources
 
 ## Instance Roles
-
 - provides access key information in output
 - more secure than using access keys on instances
 
@@ -78,18 +69,15 @@ $ curl http://169.254.169.254/latest/meta-data/iam/security-credentials/role-nam
 ```
 
 ### Assignment
-
 Can only be assigned at instance creation
 
 ## Implicit Denial
-
 An implicit denial occurs when there is no applicable Deny statement but also
 no applicable Allow statement. Because an IAM user, role, or federated user is
 denied access by default, they must be explicitly allowed to perform an action.
 Otherwise, they are implicitly denied access.
 
 ## Explicit Denial
-
 A request results in an explicit deny if an applicable policy includes a Deny
 statement. If policies that apply to a request include an Allow statement and a
 Deny statement, the Deny statement trumps the Allow statement. The request is
