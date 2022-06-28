@@ -1,11 +1,7 @@
 ## AWS STS WEB IDENTITY FEDERATION
-
-## Summary
-
 Notes on doing web identity federation with AWS and the `sts` service
 
 ## Resources
-
 - [Inline Session Policies](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html)
 
 ## Flow
@@ -38,7 +34,7 @@ Notes on doing web identity federation with AWS and the `sts` service
    `AWS_SECRET_ACCESS_KEY`, and `AWS_SESSION_TOKEN`
 3. Run `aws sts get-caller-identity` to see what account id and role is being assumed
 
-```javascript
+```json
 {
     "UserId": "ABBBBBBBBBBBBBBBBBBBB:CognitoIdentityCredentials",
     "Account": "111111111111",
