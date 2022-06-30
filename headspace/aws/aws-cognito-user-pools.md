@@ -17,7 +17,47 @@ facebook, google, and amazon
 - [List Of Cognito Trigger Sources For Lambda](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html#cognito-user-identity-pools-working-with-aws-lambda-trigger-sources)
 - [Facebook Example](https://www.integralist.co.uk/posts/cognito/)
 - [User Pool Auth Flow](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-authentication-flow.html)
+- [Link Multiple Accounts Same Email](https://forums.aws.amazon.com/thread.jspa?threadID=261470)
+- [Passwordless Email Authentication](https://aws.amazon.com/blogs/mobile/implementing-passwordless-email-authentication-with-amazon-cognito/)
 
+## User Pools
+
+#### Multiple Account / Identities
+
+- [Link Existing User Account With Identity From External Provider](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html)
+
+#### User Pool Setup
+
+- create sms role if you want sms
+- if using email, create SES verified identity. Log in to email to verify
+
+## Identity Pools
+
+Each unauthenticated user has a unique identity in the identity pool, even though they haven't been individually logged in and authenticated
+
+## Server Side Token Check
+
+Cognito Identity Pools DO NOT check against the user pool by default. This
+means a user can be disabled / deleted in the User Pool and their identity pool
+authorization creds will STILL WORK
+
+#### Turn On Server Side Token Check
+
+```console
+aws cognito-identity update-identity-pool \
+  --identity-pool-id \
+  --identity-pool-name \
+  --allow-unauthenticated-identities \
+  --cognito-identity-providers ProviderName=,ClientId=,ServerSideTokenCheck=<true|false>
+```
+
+#### Mobile Setup NOTE!!
+
+If your app uses Google and will be available on multiple mobile platforms,
+you should configure it as an OpenID Connect Provider, adding all created
+client IDs as additional audience values to allow for better integration. To
+learn more about Google's cross-client identity model, see Cross-client
+Identity.
 ### Scopes
 
 The phone, email, and profile scopes can only be requested if openid is also requested.
@@ -30,10 +70,6 @@ authorization code grant can’t be used. This exposes the user pool tokens.
 However, if your setup doesn’t contain any server-side logic, you may want to
 use the implicit grant to prevent refresh tokens from being exposed to the
 client, as the implicit grant does not generate refresh tokens.
-
-### Grant Types
-
-- [AWS Blog](https://aws.amazon.com/blogs/mobile/understanding-amazon-cognito-user-pool-oauth-2-0-grants/)
 
 #### Authorization Code Grant
 

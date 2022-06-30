@@ -13,6 +13,7 @@ single sign on service in AWS to centrally manage SSO to AWS accounts and cloud 
 - has no impact on user, roles, or policies already managed in IAM
 - no additional cost
 - supports any SAML 2.0 IdP such as Azure AD, Okta Universal Directory, etc
+- supports apple touch ID as MFA!!!
 
 ## Basic setup
 From mgmt account, with all features enabled:
@@ -24,3 +25,4 @@ From mgmt account, with all features enabled:
 - [x] Assign Administrators to MGMT account with admin permissions set
 - [x] confirm successful login
 - [x] confirm admin permissions
+- [x] after login to SSO, setup MFA
