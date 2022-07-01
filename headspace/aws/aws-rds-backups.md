@@ -1,5 +1,8 @@
 # AWS RDS BACKUPS
 
+## Resources
+- [AWS RDS Backups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html)
+
 ## Limitations
 max storage is 35 days for backups
 

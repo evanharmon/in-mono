@@ -1,7 +1,4 @@
 # AWS RDS AURORA
-
-## Summary
-
 Notes on using aurora (mysql / postgres) on RDS
 
 ## Resources

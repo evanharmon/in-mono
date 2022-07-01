@@ -1,9 +1,5 @@
 # AWS RDS PROXY
 
-## Summary
-
-Notes on using the RDS proxy
-
 ## Resources
 
 - [RDS Proxy AWS Blog](https://aws.amazon.com/blogs/aws/amazon-rds-proxy-now-generally-available/)
