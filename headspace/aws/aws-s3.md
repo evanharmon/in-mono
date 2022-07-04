@@ -1,9 +1,4 @@
 # AWS S3
-
-Storage is theoretically unlimited
-
-## Summary
-
 ## Resources
 
 - [Stream Upload To S3 In Golang](https://stackoverflow.com/questions/34177137/stream-file-upload-to-aws-s3-using-go)

@@ -1,9 +1,4 @@
 # AWS S3 SELECT
-
-## Summary
-
-Notes on using s3 select to grab object content
-
 ## Resources
 
 - [AWS CLI DOCS](https://docs.aws.amazon.com/cli/latest/reference/s3api/select-object-content.html)

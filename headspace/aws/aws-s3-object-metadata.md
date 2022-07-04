@@ -1,8 +1,4 @@
-# AWS S3 OBJECTS
-
-## Summary
-
-Notes on using S3 Object metadata
+# AWS S3 OBJECT METADATA
 
 ## Resources
 

@@ -1,7 +1,5 @@
 # AWS S3API CLI
 
-## Resources
-
 ## Delete Objects In A Bucket
 
 ```console

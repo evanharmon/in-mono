@@ -2,8 +2,6 @@
 
 Delete markers are replicated
 
-## Summary
-
 ## Resources
 
 - [Same Region Replication](https://aws.amazon.com/about-aws/whats-new/2019/09/amazon-s3-introduces-same-region-replication/)
@@ -19,12 +17,6 @@ replication to the destination bucket
 - requires versioning enabled on source bucket
 - only affects new uploads
 - no daisy chaining
-
-## Cross Account Role Action Permissions
-
-```json
-
-```
 
 ## Required S3 Bucket Policy
 
@@ -42,5 +34,5 @@ replication to the destination bucket
 
 To use priorities, XML V2 Replication is required. A `schema upgrade` must be
 completed and has an effect on how
-[delete markers](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations)
-are handled.
+- [delete markers](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations)
+are handled

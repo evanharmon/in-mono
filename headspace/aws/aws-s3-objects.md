@@ -1,9 +1,5 @@
 # AWS S3 OBJECTS
 
-## Summary
-
-Notes on using S3 Objects
-
 ## Resources
 
 - [Pres-signed Url Max Expiration](https://aws.amazon.com/premiumsupport/knowledge-center/presigned-url-s3-bucket-expiration/)
