@@ -1,9 +1,5 @@
 # AWS ELASTIC BLOCK STORAGE
 
-## Summary
-
-Notes on using elastic block storage
-
 ## Resources
 
 - [Fast Snapshot Restore](https://aws.amazon.com/blogs/aws/new-amazon-ebs-fast-snapshot-restore-fsr/)

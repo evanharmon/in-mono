@@ -1,8 +1,8 @@
 # AWS EC2 VPC SECURITY GROUPS
 
-## Summary
-
-Notes on working with security groups in AWS
+## Resources
+- [EC2 Security Groups for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)
+- [VPC Security Group Docs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
 
 ## Overview
 
@@ -30,8 +30,8 @@ ex: you can attach the same SG to the private and public subnet instances
 
 ## Defaults
 
-- outbound traffic defaults to all allowed
-- inbound traffic defaults to none allowed
+- no inbound traffic allowed
+- all outbound traffic allowed
 
 ## Communication Between Security Groups
 

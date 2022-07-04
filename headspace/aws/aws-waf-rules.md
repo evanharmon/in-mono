@@ -1,7 +1,7 @@
-# AWS WAF WEB APPLICATION FIREWALL
+# AWS WAF Rules
 
-## General
-Used with CloudFront
+## Resources
+- [AWS WAF Rules](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rules.html)
 
 ## Allow All Requests Except Specific
 Serve from public website but block requests from attackers

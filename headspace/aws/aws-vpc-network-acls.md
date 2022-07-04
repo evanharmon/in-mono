@@ -1,5 +1,7 @@
 # AWS VPC ACLS
-Second layer of defense after security groups
+
+## Resources
+- [AWS VPC Network ACLs Docs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html)
 
 ## Features
 - act on the subnet
@@ -7,8 +9,7 @@ Second layer of defense after security groups
 - span multiple subnets
 
 ### Defaults On New ACLs
-When you create a new ACL, All traffic inbound and unbound defaults to DENY
-No subnet is assigned until you explicitly assign one to the ACL
+- inbound and unbound traffic defaults to DENY
 
 ### Can Override A Security Group Rule
 Ex. security group allows port 80 from anywhere 0.0.0.0/0. ACL denies access to
@@ -29,7 +30,7 @@ ex. Rule 500 TCP Port:9923 0.0.0.0/0 DENY
     Rule 600 TCP Port:9000 to 65535 0.0.0.0/0 ALLOW
 
 ## Limitations
+- only for use on CIDRs
 - do not affect traffic on cidr block 169.254.0.0/16
 - can only be deleted if no subnets are associated with it
 - default network acl cannot be deleted
-

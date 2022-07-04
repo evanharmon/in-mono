@@ -1,5 +1,5 @@
 # AWS CLOUDFRONT
-
+AWS Shield standard on by default
 - like a CDN, serves to users based on their IP region
 - supports an entire website: dynamic, static, streaming, interactive content
 

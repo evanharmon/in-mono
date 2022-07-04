@@ -1,9 +1,5 @@
 # AWS VPC
 
-## Summary
-
-Notes on working with vpc's in AWS
-
 ## Resources
 
 - [DNS Support](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support)

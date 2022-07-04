@@ -1,9 +1,5 @@
 # AWS VPC ENDPOINTS
 
-## Summary
-
-Notes on setting up and using VPC Endpoints
-
 ## Resources
 
 - [Setting Up ECS / ECR / S3 VPC Endpoints](https://aws.amazon.com/blogs/compute/setting-up-aws-privatelink-for-amazon-ecs-and-amazon-ecr/)

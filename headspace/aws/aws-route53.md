@@ -1,8 +1,8 @@
 # AWS ROUTE 53
+AWS Shield on by default
 
-## Summary
-
-Notes on using Route53
+## Resources
+- [AWS Route 53 Docs](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)
 
 ## Best Practice For Testing
 

@@ -1,5 +1,8 @@
 # AWS SECURITY WHITEPAPER
 
+## Resources
+- [AWS Best Practices for DDoS Resiliency](https://docs.aws.amazon.com/whitepapers/latest/aws-best-practices-ddos-resiliency/welcome.html?did=wp_card&trk=wp_card)
+
 ## Infrastructure as a Service (IaaS)
 requires customer security configuration
 os updates, security patches
@@ -10,7 +13,9 @@ AWS handles security, updates, etc
 RDS, Redshift, etc.
 
 ## Distributed Denial Of Service (DDoS)
-AWS has proprietary techniques against DDoS attacks
+- AWS has proprietary techniques against DDoS attacks
+- best practice is to separate static resources to S3 / cloudfront and dynamic to
+other services
 
 ## Man in the Middle (MITM)
 Amazon EC2 AMIs auto generate new SSH certs on boot to prevent MITM Attacks
@@ -18,47 +23,47 @@ Amazon EC2 AMIs auto generate new SSH certs on boot to prevent MITM Attacks
 ## Spoofed Network Traffic
 EC2 instances cannot send spoofed network traffic
 
-# Port Scanning
+## Port Scanning
 You must submit a request for permission to conduct vulnerability scans and
 they must be limited to your own instances
 
-# Packet Sniffing
+## Packet Sniffing
 A virtual instance running in promiscuous mode cannot receive/sniff traffic from
 a diff virtual instance. EC2 not susceptible to ARP cache poisoning
 
-# Access Keys
+## Access Keys
 digitally signed requests to AWS APIs
 crytpo hash created from secret key text
 protects against in transit, and potential replay attacks
 15 minute request length
 HMAC-SHA256 used
 
-# Key Pairs
+## Key Pairs
 SSH in to EC2 instances
 CloudFront creation of signed URLs
 
-# X.509 Certificates
+## X.509 Certificates
 Digitally sign SOAP requests to AWS APIs
 SSL server certs for HTTPS
 
-## Credentials
+### Credentials
 If credentials are lost/forgotten, they cannot be recovered / re-downloaded.
 Have to create new
 
-# Passwords
+## Passwords
 max 128 chars
 
-# MFA
+## MFA
 hardware and virtual supported
 can be enforced on API usage as well
 
-# Custom EC2
+## Custom EC2
 X.509 required for customized instance-backed AMI
 
-# Secure HTTPS
+## Secure HTTPS
 several services use Elliptic curve Diffie-Hellman Ephemeral (ECDHE) protocol.
 Provides Perfect Forward Secrecy with ephemeral keys
 
-# Logs
+## Logs
 AWS says are just as important as credentials / encrypted endpoints. CloudTrail
 helps here
