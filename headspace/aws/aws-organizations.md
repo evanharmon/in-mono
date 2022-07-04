@@ -10,3 +10,7 @@ Notes on using aws organizations
 
 ## Limitations
 existing accounts not created by the management account must enable all features to get SCP support
+
+## Root User
+- [Accessing a member account as root user](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+to login as root user, password recovery must be completed
