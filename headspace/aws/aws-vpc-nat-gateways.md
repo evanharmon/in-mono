@@ -1,12 +1,8 @@
 # AWS VPC NAT GATEWAY
 
-## Summary
-
-Notes on using VPC nag gateways
-
 ## Resources
 
-[Testing](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-testing)
+- [AWS VPC NAT Gateway Testing](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-testing)
 
 ## Limitations
 

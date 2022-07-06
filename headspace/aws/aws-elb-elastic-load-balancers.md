@@ -1,4 +1,8 @@
-# AWS ELASTIC LOAD BALANCERS
+# AWS ELASTIC LOAD BALANCING
+
+## Resources
+- [AWS Elastic Load Balancing Docs](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html)
+- [AWS ELB Request Routing Algorithms](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#request-routing)
 
 ## In / Out of Service
 dependent on health checks
@@ -9,19 +13,9 @@ Always use Subnets property when working in a VPC
 ## Security Best Practice
 use security groups instead of IPs where possible
 
-## Classic Load Balancer
-Layer 4 routing (TCP)
-
-## Application Load Balancer
-Layer 7 routing
-Has Target Groups
-
 ## End User Browser Experience
 Monitor the latency of the elb
 
 ## Metrics For Scaling
 SurgeQueueLength
 SpillOverCount - actively being rejected
-
-## SSL Certificates
-DOES NOT support multiple SSL certs to host multiple sites

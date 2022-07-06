@@ -1,16 +1,37 @@
 # AWS API GATEWAY
 
-## Summary
-
-Notes on using API gateway
-
 ## Resources
 
-- [Restful API](https://cloudonaut.io/create-a-serverless-restful-api-with-api-gateway-cloudformation-lambda-and-dynamodb/)
-- [CloudFormation Setup](https://cloudonaut.io/api-gateway-custom-authorization-with-lambda-dynamodb-and-cloudformation/)
+- [AWS API Gateway Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html)
+- [AWS API Gateway REST or HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html)
 
-## Testing Custom Auth On Postman Example
+## Features
+- per-client throttling
+- request validation
+- authorization
+- WAF integration
+- private API endpoints
+- SSL cert support with Route53 CNAME
 
-add header:
-'Authorization': ''
-JSON in body
+## Integrations
+- HTTP
+- Lambda
+- AWS Service (ex. expose Step function, post to sqs, etc)
+
+## Limitations
+- 29 second timeout
+- 10 MB max payload size
+
+## Endpoint Types
+- edge-optimized (default)
+- regional
+- private
+
+## API Types
+- REST (more features)
+- vanilla HTTP without features (regional)
+
+## Logging
+CloudWatch Logs
+- can log full request / response by turning additional feature
+Kinesis Data Firehose

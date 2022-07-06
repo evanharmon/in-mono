@@ -1,11 +1,12 @@
 # AWS EC2
 
+## Resources
+- [AWS EC2 Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)
+- [Instance Recovery](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html)
+
 ## Check Metadata While SSH'd In To Instance
 NO SUCH THING as user-data for an instance as a curl
 `$ curl http://169.254.169.254/latest/meta-data`
-
-## Get Private IP Of EC2 Instance
-`$ curl http://169.254.169.254/latest/meta-data/local-ipv4`
 
 ## View Script Of Userdata On Instance
 `$ cat /var/lib/cloud/instance/scripts/part-001`

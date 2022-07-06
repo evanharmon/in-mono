@@ -5,10 +5,17 @@ AWS Shield standard on by default
 
 ## Resources
 
+- [AWS CloudFront Docs](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
+- [AWS CloudFront Logging](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/logging.html)
 - [Namecheap, Route53, S3, Cloudfront Guide](https://benjamincongdon.me/blog/2017/06/13/How-to-Deploy-a-Secure-Static-Site-to-AWS-with-S3-and-CloudFront/)
 - [Header Caching](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html)
 - [Improve Edge Cache Hits](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-hit-ratio.html)
 - [Secure Private Web Apps Behind CF](https://aws.amazon.com/blogs/networking-and-content-delivery/authorizationedge-using-cookies-protect-your-amazon-cloudfront-content-from-being-downloaded-by-unauthenticated-users/?nc1=b_rp)
+
+
+## Logging
+- S3 for non real-time
+- real-time Kinesis data streams / fire hose
 
 ## Possible Origins
 
@@ -32,14 +39,6 @@ Origin ID Must be Unique
 
 collection of Edge Locations
 
-## Cache
-
-can be cleared but you are charged for the action
-
-## Allowed HTTP Methods
-
-PUT, POST, PATCH, DELETE
-
 ## Path Pattern
 
 Uses RegEx
@@ -48,22 +47,10 @@ Uses RegEx
 
 can use signed URLs or signed cookies
 
-## Web Application Firewall (WAF)
-
-can use web application firewall ACL
-
 ## Alternate CNAMES
 
 example cdn.harmonsoftwaresolutions.com
 If using Alternate CNAMES, you have to upload your own SSL certificate
-
-## Invalidations
-
-A way to remove objects from the CDN but you pay for it
-
-## Grant Read Permissions On Bucket
-
-If yes, updates the S3 files in the new CDN bucket to have read access
 
 ## S3 Logging Bucket Settings
 
@@ -98,4 +85,4 @@ Origin
 
 ## Error Pages on Single Page Apps
 
-SPAs must have 404 index.html error settings set up in CloudFront
+SPAs must have 404 index.html 200 response error settings set up in CloudFront

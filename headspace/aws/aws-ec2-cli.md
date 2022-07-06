@@ -1,7 +1,6 @@
 # AWS EC2 CLI
 do not confuse START-INSTANCES which starts a stopped instance
 
-# CLI
 ## Create An Instance
 `$ aws ec2 run-instances`
 

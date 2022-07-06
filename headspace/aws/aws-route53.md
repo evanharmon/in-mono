@@ -3,6 +3,7 @@ AWS Shield on by default
 
 ## Resources
 - [AWS Route 53 Docs](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)
+- [AWS Route 53 Logging, Monitoring, Tagging](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/integration-with-other-services.html#integration-logging-monitoring-tagging)
 
 ## Best Practice For Testing
 
@@ -13,6 +14,12 @@ requests to other groups / IT for dns work, etc.
 ## Limitations
 
 50 Domains per AWS account - request for higher limit
+
+## Logging
+- CloudTrail
+
+## Monitoring
+- CloudWatch
 
 ## Load Balancers
 
