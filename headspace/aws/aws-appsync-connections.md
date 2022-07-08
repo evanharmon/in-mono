@@ -1,9 +1,5 @@
 # AWS APPSYNC SCHEMA CONNECTIONS
 
-## Summary
-
-Notes on using schema connected queries in AppSync GraphQL
-
 ## Resources
 
 - [AWS Bottom Of Page](https://docs.aws.amazon.com/appsync/latest/devguide/configuring-resolvers.html)

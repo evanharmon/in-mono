@@ -1,16 +1,14 @@
 # AWS CONFIGURE CLI
 
-## Summary
-
 Notes on using the configure command to interact with shared credential files
 
 ## Resources
 
-[Docs](https://docs.aws.amazon.com/cli/latest/reference/configure/index.html#cli-aws-configure)
+- [AWS CLI Docs](https://docs.aws.amazon.com/cli/latest/reference/configure/index.html#cli-aws-configure)
 
 # Configure mfa session token
 
-[MFA Docs](https://aws.amazon.com/premiumsupport/knowledge-center/authenticate-mfa-cli/)
+- [MFA Docs](https://aws.amazon.com/premiumsupport/knowledge-center/authenticate-mfa-cli/)
 
 ```console
 aws sts get-session-token \
@@ -56,7 +54,7 @@ aws configure set aws_session_token
 
 ## List Config Location For Profile
 
-```yaml
+```sh
 aws configure list --profile myprofile
 ```
 

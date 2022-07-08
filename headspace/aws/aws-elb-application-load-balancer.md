@@ -17,6 +17,7 @@ client asks for specific server name in SSL handshake
 
 ## Uses
 - HTTP, HTTPS, WebSockets
+- great for routing some requests to ECS and others to Lambda
 
 ## Target Group Sources
 - EC2 instances

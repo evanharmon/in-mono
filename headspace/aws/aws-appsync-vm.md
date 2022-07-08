@@ -1,9 +1,5 @@
 # APPSYNC VTL
 
-## Summary
-
-Notes on using VTL with appsync
-
 ## Resources
 
 - [Resolver VTL Programming](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-programming-guide.html)

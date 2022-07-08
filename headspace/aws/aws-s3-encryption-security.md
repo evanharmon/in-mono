@@ -1,5 +1,15 @@
 # AWS S3 SECURITY
 
+## Resources
+
+- [AWS S3 Server Side Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html)
+- [AWS S3 Client Side Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html)
+
+
+## Limitations
+
+- sse-kms will lower scalability as KMS quota limits will throttle before S3 limits
+
 ## Securing Access tools
 Bucket Policies
 Access Control Lists (ACL)

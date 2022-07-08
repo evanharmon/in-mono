@@ -1,9 +1,5 @@
 # AWS APPSYNC
 
-## Summary
-
-Notes on using aws appsync
-
 ## Resources
 
 - [Security](https://docs.aws.amazon.com/appsync/latest/devguide/security.html)

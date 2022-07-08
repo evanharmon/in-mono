@@ -29,3 +29,21 @@ aws glacier describe-job \
   --job-id="xDz3o8fk0xDr1d5hkbgX1rYaaD-HiUMXWh4tMD1VwUJKb7BjfFPf2GILEKrsCEPPzJNMZ--hAmmbR6FS3CI1vQM0q48q" \
   --vault-name="eph-music.education.dmp" 
 ```
+
+third, get job output
+
+```console
+aws glacier get-job-output \
+  --account-id=$AWS_ACCOUNT_ID \
+  --job-id="xDz3o8fk0xDr1d5hkbgX1rYaaD-HiUMXWh4tMD1VwUJKb7BjfFPf2GILEKrsCEPPzJNMZ--hAmmbR6FS3CI1vQM0q48q" \
+  --vault-name="eph-music.education.dmp" outfile.json
+```
+
+fourth, get archiveId's from json output file and delete each archive in the vault
+
+```console
+aws glacier delete-archive \
+  --account-id=$AWS_ACCOUNT_ID \
+  --archive-id="4n--r9_juUZHFlTLfarGcrkUD8qyVrWI-ZgGrZjdCZrQsl31Qrwf2vcGzFa78NQ-O6kYUzcNDrSP0JQTAuefkqTgqUSnuUl-A8HAJlFj5BsTwuSasRzOkKPHr47aGg9YqRNgMO9zcQ" \
+  --vault-name="eph-music.education.dmp"
+```

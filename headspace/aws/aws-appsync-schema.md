@@ -1,13 +1,6 @@
 # AWS APPSYNC SCHEMA
 
-## Summary
-
-Notes on working with Appsync GraphQL Schemas
-
-## Resources
-
 ## Refactoring
-
 ### Review Schema Use
 
 - Web Apps

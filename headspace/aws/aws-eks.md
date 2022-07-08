@@ -1,9 +1,5 @@
 # AWS EKS
 
-## Summary
-
-Notes on using AWS EKS kubernetes service
-
 ## Requirements
 
 [AWS IAM AUTHENTICATOR](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html)

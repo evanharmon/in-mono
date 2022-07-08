@@ -1,9 +1,5 @@
 # APPSYNC VTL
 
-## Summary
-
-Notes on using VTL with appsync
-
 ## Resources
 
 - [Context](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-context-reference.html)

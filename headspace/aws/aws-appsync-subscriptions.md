@@ -1,11 +1,5 @@
 # AWS APPSYNC SUBSCRIPTIONS
 
-## Summary
-
-Notes on using aws appsync subscriptions
-
-## Resources
-
 ## Subscriptions
 
 ### Subscription Spam
