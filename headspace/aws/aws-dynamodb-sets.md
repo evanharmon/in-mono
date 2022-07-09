@@ -1,16 +1,10 @@
 # AWS DYNAMODB SETS
 
-## Summary
+## Resources
 
-Notes on using sets with DynamoDB
+- [AWS DynamoDB Upsert Sets](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.UpdateExpressions.html#Expressions.UpdateExpressions.ADD)
 
-# Resources
-
-- [Upsert Sets](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.UpdateExpressions.html#Expressions.UpdateExpressions.ADD)
-
-## Write
-
-### ADD
+## ADD
 
 Upsert Sets
 

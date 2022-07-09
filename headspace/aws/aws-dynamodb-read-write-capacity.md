@@ -1,10 +1,8 @@
-# AWS DYNAMODB READ WRITE
-
-## Summary
-
-Notes on read and write capacity units in DynamodB
+# AWS DYNAMODB READ WRITE CAPACITY
 
 ## Resources
+
+- [AWS DynamoDB Read Write Capacity Modes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html)
 
 ## Capacity Units / Throughput
 

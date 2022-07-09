@@ -2,10 +2,6 @@
 
 Cheap for reads - expensive for writes
 
-## Summary
-
-Notes on dynamodb pricing
-
 ## On Demand
 No scaling setup necessary
 Remember not to specify read or write capacity units on global indexes if table

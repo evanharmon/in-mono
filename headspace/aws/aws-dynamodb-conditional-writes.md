@@ -1,4 +1,5 @@
 # AWS DYNAMODB CONDITIONAL WRITES
+
 Use conditional writes when data is crucial - no margin of error
 
 ## Write Capacity Units (WCU)

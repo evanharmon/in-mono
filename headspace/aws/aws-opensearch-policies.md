@@ -4,6 +4,7 @@
 (https://blogs.aws.amazon.com/security/post/Tx3VP208IBVASUQ/How-to-Control-Access-to-Your-Amazon-Elasticsearch-Service-Domain)
 
 ### Policy for specific IP access
+
 ```
 {
   "Version": "2012-10-17",
@@ -26,8 +27,10 @@
     }
   ]
 }
+```
 
 ### Identity-based Policy ESADMIN
+
 ```
 {
   "Version": "2012-10-17",
@@ -44,6 +47,7 @@
 ```
 
 ## Power User Policy
+
 ```
 {
   "Version": "2012-10-17",
@@ -64,6 +68,7 @@
 ```
 
 # Analytics Viewer Policy
+
 ```
 {
   "Version": "2012-10-17",

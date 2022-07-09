@@ -8,7 +8,6 @@
 ## KMS
 KMS encryption available at rest for EBS volumes and snapshots
 
-## 
 ## DB's supporting encryption on AWS
 MySQL
 Oracle

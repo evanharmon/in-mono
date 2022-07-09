@@ -1,9 +1,5 @@
 # AWS RDS AURORA
 
-## Summary
-
-Notes on using rds proxy IAM mode on postgres
-
 ## Resources
 
 - [RDS Signer](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/RDS/Signer.html)

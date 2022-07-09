@@ -1,13 +1,6 @@
 # AWS DYNAMODB CONDITIONAL EXPRESSIONS
 
-## Summary
+## Resources
 
-Notes on using conditional expressions with dynamodb
-
-## List of Functions
-
-[Docs](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.OperatorsAndFunctions.html)
-
-## List of \$util Methods
-
-[Docs](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-util-reference.html)
+- [AWS DynamoDB Conditional Expressions Functions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.OperatorsAndFunctions.html)
+- [AWS DynamoDB Conditional Expressions $util Methods](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-util-reference.html)

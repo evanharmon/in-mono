@@ -1,13 +1,9 @@
 # AWS DYNAMODB LOCAL
 
-## Summary
-
-Notes on using dynamodb local with Docker
-
 ## Resources
 
-[Docs](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html)
-[Image](https://hub.docker.com/r/amazon/dynamodb-local)
+- [AWS DynamoDB Local Docs](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html)
+- [AWS DynamoDB Local Image](https://hub.docker.com/r/amazon/dynamodb-local)
 
 ## Start Locally
 
@@ -17,7 +13,7 @@ docker run -p 8000:8000 amazon/dynamodb-local
 
 ## Local Web GUI
 
-[github repo](https://github.com/deptno/dynamon)
+- [AWS DynamoDB Local github repo](https://github.com/deptno/dynamon)
 
 use:
 

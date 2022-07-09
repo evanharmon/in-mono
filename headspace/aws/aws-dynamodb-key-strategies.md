@@ -1,13 +1,11 @@
 # AWS DYNAMODB KEY STRATEGIES
 
-## Summary
-
-Notes on efficient (or not efficient) key strategies for DynamoDB
-
 ## Resources
 
-- [Sort Keys Best Practices](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-sort-keys.html)
-- [Overloading GSI](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-gsi-overloading.html)
+- [AWS DynamoDB Sort Keys Best Practices](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-sort-keys.html)
+- [AWS DynamoDB Partition Key Design](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-partition-key-design.html)
+- [AWS DynamoDB Overloading GSI](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-gsi-overloading.html)
+- [AWS DynamoDB Adjacency List many-to-many relationships](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-adjacency-graphs.html)
 
 ## Composite Sort Keys For One
 

@@ -2,16 +2,17 @@
 
 ## Resources
 
-- [RDS VPC Scenarios](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Scenarios.html#USER_VPC.Scenario1)
+- [AWS RDS Docs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html)
+- [AWS RDS VPC Scenarios](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Scenarios.html#USER_VPC.Scenario1)
 
-## List Of Relational Databases Available On AWS
+## Supported RDMB
 
-MariaDB
-Aurora
-MS Sql Server
-Oracle
-MySQL
-PostGRES
+- MariaDB
+- Aurora
+- MS Sql Server
+- Oracle
+- MySQL
+- PostGRES
 
 ## Scaling
 
@@ -19,29 +20,6 @@ PostGRES
 - very manual process
 - you can really only scale up
 - can scale out for reads but NOT writes
-
-## Limitations
-
-### Vendor Limits
-
-MySQL/Oracle max db storage size of 6TB
-Oracle: 1
-
-### Instances
-
-Up to 40
-Up to 10 Oracle
-up to 10 SQL Server. Can go up to 30 if bring your own license
-
-### SQL Server Storage Size
-
-Increasing Storage on RDS NOT supported on SQL Server
-
-## DMS (Database Migration Service)
-
-Uses Schema migration tool to migrate from one database tool to a different
-database (ex. Oracle to Aurora). Works with functions, stored procedures,
-functions, etc
 
 ## Data Warehousing on AWS
 
@@ -57,13 +35,3 @@ Limited # of records
 
 Redshift is much better for analyzing large amount of information, lots of
 queries, large # of records
-
-## Reserved Instances
-
-Reservedb by region not by az
-
-## Best Practices
-
-### Upgrade To New Versions
-
-make a snapshot, launch new from snapshot

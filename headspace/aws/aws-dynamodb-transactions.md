@@ -1,24 +1,20 @@
 # AWS DYNAMODB TRANSACTIONS
 
-## Summary
-
-Notes on doing transactions in DynamoDB
-
 ## Resources
 
 - [AWS Blog On DynamoDB Transactions](https://aws.amazon.com/blogs/aws/new-amazon-dynamodb-transactions/)
-- [AWS Docs](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transactions.html)
-- [Appsync Support](https://aws.amazon.com/blogs/mobile/appsync-caching-transactions/)
+- [AWS DynamoDB Transactions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transactions.html)
+- [AWS DynamoDB Transactions Appsync Support](https://aws.amazon.com/blogs/mobile/appsync-caching-transactions/)
 
-### Limitations
+## Features
+
+- supported across multiple tables
+
+## Limitations
 
 - global tables not supported
 
-### Tables
-
-- transactions support multiple tables
-
-### Locking
+## Locking
 
 Items are not locked - an edit on an item will abort the transaction
 

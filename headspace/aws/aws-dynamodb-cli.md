@@ -1,5 +1,9 @@
 # AWS DYNAMODB CLI
 
+## Resources
+
+- [AWS DynamoDB CLI](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.CLI.html)
+
 ## Variables
 
 Entered with colon
@@ -8,26 +12,34 @@ Entered with colon
 
 ## GetItem
 
-`$ aws dynamodb get-item --table-name mytable --key file://key.json`
+```console
+aws dynamodb get-item --table-name mytable --key file://key.json
+```
+
 or
 
-```
-$ aws dynamodb get-item \
-    --table-name note \
-    --key '{ "id": {"S": "1"}, "author": {"S": "Evan Harmon"} }'
+```console
+aws dynamodb get-item \
+  --table-name note \
+  --key '{ "id": {"S": "1"}, "author": {"S": "Evan Harmon"} }'
 ```
 
 ## Describe Table
 
-`$ aws dynamodb describe-table --table-name mytable`
+```console
+aws dynamodb describe-table --table-name mytable
+```
 
 ## Table Scan
 
-`$ aws dynamodb scan --table-name mytable`
+```console
+aws dynamodb scan --table-name mytable
+```
 
 ## Create Table
-
-`aws dynamodb create-table --cli-input-json file://table.json`
+```console
+aws dynamodb create-table --cli-input-json file://table.json
+```
 
 ### CLI Skeleton JSON
 
