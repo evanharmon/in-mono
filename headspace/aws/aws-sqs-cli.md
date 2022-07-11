@@ -1,12 +1,9 @@
 # AWS SQS CLI
 
-## Summary
-
-Notes on using the SQS cli tool
-
 ## Resources
 
-- [CLI Docs](https://docs.aws.amazon.com/cli/latest/reference/sqs/)
+- [AWS SQS CLI Docs](https://docs.aws.amazon.com/cli/latest/reference/sqs/)
+- [AWS SQS CLI TOOL Copy Messages Between Queues](https://github.com/scottjbarr/sqsmv)
 
 ### Queues
 

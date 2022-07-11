@@ -1,16 +1,9 @@
 # AWS SQS
 
-## Summary
-
-Notes on using the aws SQS service
-
 ## Resources
 
-- [IAM Policy Lambda -> SNS](https://stackoverflow.com/questions/32211246/aws-sqs-permissions-for-aws-lambda)
-- [Monitoring](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-monitoring-using-cloudwatch.html)
-- [Cloudwatch Alarm Suggestions](https://www.bluematador.com/blog/how-to-monitor-amazon-sqs-with-cloudwatch)
-- [SQS FIFO -> LAMBDA](https://aws.amazon.com/blogs/compute/new-for-aws-lambda-sqs-fifo-as-an-event-source/)
-- [CLI TOOL Copy Messages Between Queues](https://github.com/scottjbarr/sqsmv)
+- [AWS SQS Docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+- [AWS SQS IAM Policy Lambda -> SNS](https://stackoverflow.com/questions/32211246/aws-sqs-permissions-for-aws-lambda)
 
 ## Use
 
@@ -26,19 +19,8 @@ Notes on using the aws SQS service
 
 ## Limitations
 
-- 256KB text limit
-- does not Guarantee First In, First Out (FIFO) delivery of messages
+- max 256KB text limit (use s3 pointer for larger messages)
 - Single request can have from 1 to 10 messages
-
-## Billing
-
-- billed at 64kb chunks
-- first 1 million SQS requests per month are free
-- \$0.50 per 1 million per month after free amount
-
-## Delivery
-
-SQS never pushes out - apps have to pull
 
 ## Timeout of Messages
 
@@ -69,7 +51,7 @@ You should use two separate SQS queues and have your app pull from the
 
 ## Polling Methods
 
-[AWS Doc](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html)
+- [AWS SQS Long Polling](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html)
 
 `WaitTimeSeconds` settings between 1 and 20 takes priority over
 `ReceiveMessageWaitTimeSeconds` settings
@@ -89,31 +71,3 @@ queries all servers
 helps reduce costs
 eliminates false empty responses
 Set ReceiveMessageWaitTime to betweeen 1 and 20 seconds
-
-## SQS Messages Arriving Slowly
-
-[Delay Seconds Docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-delay-queues.html)
-
-Check the delivery delay. `DelaySeconds` is probably 90 seconds instead of 0 seconds
-
-## SQS Message Being Processed Too Many Times
-
-[Visiliby Timeout Docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-
-Adjust the `VisibilityTimeout`. If the processing application / lambda takes 60
-seconds to process the message, the default setting of `VisibilityTimeout: 30s`
-will result in the message being processed multiple times.
-
-## SQS ReceiveMessages API Call Taking Too Long
-
-adjust the `waitTimeSeconds` to 1 second, so the api call will return in 1
-second with any messages. 0 seconds will return messages in the queue
-immediately.
-
-## CloudWatch Metrics
-
-Monitor `NumberOfMessagesSent` to determine if producer of messages has stopped
-working.
-
-Monitor `ApproximateAgeOfOldestMessage` to determine if messages are not being
-processed quickly enough.

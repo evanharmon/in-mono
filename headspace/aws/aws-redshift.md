@@ -1,41 +1,26 @@
 # AWS REDSHIFT
+
+based on PostgreSQL but is OLAP analytics and data warehousing
+
+## Resources
+
+- [AWS Redshift Getting Started](https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html)
+- [AWS Redshift Database Developer Guide](https://docs.aws.amazon.com/redshift/latest/dg/welcome.html)
+- [AWS Redshift Pricing](https://aws.amazon.com/redshift/pricing/)
+
+## Features
+
 - massively Parallel Processing (MPP) - automatically distributes data/query
 loads across all nodes
 - easy to add nodes
 - RedShift chooses compression scheme based on sampling of data
+- can scale to PBs of data
+- columnar storage
+- integrates with AWS Quicksight or Tableau
+- up to 16 TB of storage space per node
 
 ## Limitations
-only available in 1 AZ
-Block Size 1MB or 1024KB
 
-## Encryption
-SSL in transit
-AES-256 at rest
-
-## Key Management
-AWS Key Management Service or your own keys through HSM
-
-## Billing
-- per hour
-- scales from $0.25/hr up to $1,000+ per terabyte per year
-- charged for backups
-- charged for data transfer within VPC
-- not charged for data transfer outside of VPC
-
-### Compute Node Hours
-Charged for compute nodes only - not leader nodes
-Total # of hours across all nodes
-1 unit per node per hour
-Ex. 3-node warehouse cluster would incur 2,160 instance hours
-
-## Nodes
-### Single Node
-160gb
-
-### Leader Node (Multi-Node)
-Communicator
-manages client connections and receives queries
-
-### Compute Node (Multi-Node)
-store data and perform queries/computations
-up to 128 compute nodes
+- only available in 1 AZ NOT multi AZ
+- block Size 1MB (1024KB)
+- requires provisioning - use Athena for transient needs

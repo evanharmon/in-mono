@@ -4,9 +4,9 @@
 
 - [AWS Lambda Docs](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
 - [AWS Sample Events Published](https://docs.aws.amazon.com/lambda/latest/dg/eventsources.html#eventsources-api-gateway-request)
-- [Unzip Large Files In Lambda With Streaming](https://medium.com/@johnpaulhayes/how-extract-a-huge-zip-file-in-an-amazon-s3-bucket-by-using-aws-lambda-and-python-e32c6cf58f06)
-- [Configuration Docs](https://docs.aws.amazon.com/lambda/latest/dg/configuration-console.html)
-- [Investigating Spikes](https://aws.amazon.com/blogs/compute/investigating-spikes-in-aws-lambda-function-concurrency/)
+- [AWS Lambda Unzip Large Files In Lambda With Streaming](https://medium.com/@johnpaulhayes/how-extract-a-huge-zip-file-in-an-amazon-s3-bucket-by-using-aws-lambda-and-python-e32c6cf58f06)
+- [AWS Lambda Configuration Docs](https://docs.aws.amazon.com/lambda/latest/dg/configuration-console.html)
+- [AWS Lambda Investigating Spikes](https://aws.amazon.com/blogs/compute/investigating-spikes-in-aws-lambda-function-concurrency/)
 
 ## Limitations
 
