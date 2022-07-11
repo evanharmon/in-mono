@@ -1,19 +1,9 @@
 # AWS CLOUDWATCH
-create Dashboards
-Logs - aggregate, monitor, store logs
 
-## Monitoring
-Standard Monitoring = 5 Minutes (Free)
-Detailed Monitoring = 1 Minute (Pay Extra)
+## Resources
 
-## Alarms
-- create alarms - like for auto scaling
-- can be created from graphs. This prepopulates a lot of fields for you
+- [AWS CloudWatch Docs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
 
-## Logs
-Good for PCI-DSS
-search inside logs with `JSON.stringify()`
+## Features
 
-# Events
-respond to state changes in AWS resources
-- trigger actions / notifications
+- basic monitoring enabled for almost all services for free

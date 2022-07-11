@@ -1,18 +1,15 @@
 # AWS ELASTIC NETWORK INTERFACES
 
-## Summary
-
-Notes on working with aws elastic network interfaces (eni)
-
 ## Resources
 
-- [AWS Max Interfaces By EC2 Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html)
-- [Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
-- [Find and Delete Lambda ENI](https://aws.amazon.com/premiumsupport/knowledge-center/lambda-eni-find-delete/)
-- [AWS Support Tools Repo](https://github.com/awslabs/aws-support-tools)
+- [AWS ENI Max Interfaces By EC2 Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html)
+- [AWS ENI Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
+- [AWS ENI Find and Delete Lambda ENI](https://aws.amazon.com/premiumsupport/knowledge-center/lambda-eni-find-delete/)
+- [AWS ENI AWS Support Tools Repo](https://github.com/awslabs/aws-support-tools)
 
 ## Lambda ENI Cannot Be Deleted
-[KB Article](https://forums.aws.amazon.com/thread.jspa?messageID=968480)
+
+- [AWS ENI KB Article](https://forums.aws.amazon.com/thread.jspa?messageID=968480)
 Could have an event source mapping
 
 ```console

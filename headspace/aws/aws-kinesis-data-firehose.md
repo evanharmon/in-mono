@@ -6,12 +6,18 @@ load streaming data from producers, transforms, and writes to destinations
 
 - [AWS Kinesis Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
 - [AWS Kinesis Data Firehose Data Delivery](https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html)
+- [AWS Kinesis Data Firehose Using Kinesis Agent](https://docs.aws.amazon.com/firehose/latest/dev/writing-with-agents.html)
 
-## Limitations
+## Features
 
 - fully managed so no scaling work
 - near real time
+- support for EC2 / CloudWatch Logs ingestion via Kinesis Agent
+
+## Limitations
+
 - no data storage or replay
+- no way to send data directly from S3 events
 - 60 seconds lowest latency for non full batches 
 OR
 - 1 MB of data

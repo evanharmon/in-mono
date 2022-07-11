@@ -1,13 +1,17 @@
 # AWS XRAY
 
-## Summary
-
-Notes on using xray tracing in AWS
-
 ## Resources
 
-- [SNS Tracing](https://docs.aws.amazon.com/xray/latest/devguide/xray-services-sns.html)
-- [Instrument NodeJS](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-tracing.html)
+- [AWS XRAY SNS Tracing](https://docs.aws.amazon.com/xray/latest/devguide/xray-services-sns.html)
+- [AWS XRAY Instrument NodeJS](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-tracing.html)
+
+## Features
+
+- supports EC2 via agent
+- supports ECS via agent
+- Lambda
+- API Gateway
+- Beanstalk (agent automatically installs)
 
 ## Lambda
 

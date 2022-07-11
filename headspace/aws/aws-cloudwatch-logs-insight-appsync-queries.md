@@ -6,7 +6,7 @@ Saved queries for reuse on cloudwatch insight
 
 ## Resources
 
-- [Example AWS Blog Appsync CW Insight Queries](https://aws.amazon.com/blogs/mobile/getting-more-visibility-into-graphql-performance-with-aws-appsync-logs/)
+- [AWS CloudWatch Example AWS Blog Appsync CW Insight Queries](https://aws.amazon.com/blogs/mobile/getting-more-visibility-into-graphql-performance-with-aws-appsync-logs/)
 
 ## Filter By Field Name And Mapping
 
