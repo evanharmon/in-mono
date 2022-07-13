@@ -1,12 +1,8 @@
 # AWS CODEBUILD LOCAL
 
-## Summary
-
-Notes on using AWS Codebuild docker image locally
-
 ## Resources
 
-- [GitHub](https://github.com/aws/aws-codebuild-docker-images/tree/master/local_builds)
+- [AWS CodeBuild Local GitHub](https://github.com/aws/aws-codebuild-docker-images/tree/master/local_builds)
 
 ## Get Docker Image
 
@@ -16,7 +12,7 @@ docker pull amazon/aws-codebuild-local:latest
 
 ## Use CodeBuild Local Script
 
-- [Download Script](https://github.com/aws/aws-codebuild-docker-images/blob/master/local_builds/codebuild_build.sh)
+- [AWS CodeBuild Local Download Script](https://github.com/aws/aws-codebuild-docker-images/blob/master/local_builds/codebuild_build.sh)
 
 ```console
 sh codebuild_build.sh \

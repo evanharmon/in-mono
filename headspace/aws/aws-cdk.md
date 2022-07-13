@@ -9,7 +9,12 @@
 ## Bootstrapping
 
 - [Bootstrapping Steps](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html#getting_started_bootstrap)
+
 Each region in an AWS account region must be bootstrapped
+
+## Features
+
+- uses CloudFormation stacks in the background
 
 ## Limitations
 

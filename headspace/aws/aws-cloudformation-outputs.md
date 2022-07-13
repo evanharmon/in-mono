@@ -1,16 +1,20 @@
 # AWS CLOUDFORMATION OUTPUTS
 
 ## Use
+
 declares values to be used in cross-stack references
 viewable in CloudFormation console
 
 ## LIMITS
+
 60 Parameters
 60 Outputs
 
 ## GetAtt workaround
+
 GetAtt and ImportValue can't work together - export every property you need
-```
+
+```yaml
   TransientVPC:
     Description: Transient VPC
     Value: !Ref TransientVPC

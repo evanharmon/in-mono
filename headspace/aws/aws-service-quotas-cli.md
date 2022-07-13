@@ -1,12 +1,8 @@
 # AWS SERVICE QUOTAS CLI
 
-## Summary
-
-Notes on using the service-quotas cli
-
 ## Resources
 
-- [Docs](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/index.html#cli-aws-service-quotas)
+- [AWS Service Quotas CLI Docs](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/index.html#cli-aws-service-quotas)
 
 ## List Services
 

@@ -1,8 +1,11 @@
 # AWS CLOUDFORMATION PARAMETERS
-[AWS Blog Examples]
-(https://aws.amazon.com/blogs/devops/using-the-new-cloudformation-parameter-types/)
+
+## Resources
+
+- [AWS CloudFormation Parameter Types AWS Blog Examples](https://aws.amazon.com/blogs/devops/using-the-new-cloudformation-parameter-types/)
 
 ## List
+
 String – A literal string
 Number – An integer or float
 List<Number> – An array of integers or floats
@@ -16,7 +19,8 @@ List<AWS::EC2::SecurityGroup::Id> – An array of security group IDs
 List<AWS::EC2::Subnet::Id> – An array of subnet IDs
 
 ## Selection List
-```
+
+```yaml
   Environment:
     Default: Development
     Type: String
@@ -26,7 +30,8 @@ List<AWS::EC2::Subnet::Id> – An array of subnet IDs
 ```
 
 ## Comma-Delimited-List
-```
+
+```yaml
 Parameters:
   DbSubnetIpBlocks:
     Description: "Comma-delimited list of three CIDR blocks"
@@ -35,6 +40,7 @@ Parameters:
 ```
 
 ## IPv4 /26 CIDR Block
-```
+
+```yaml
 AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])).(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])).(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])).([0]|[6][4]|[1][2][8])/26$
 ```

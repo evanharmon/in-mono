@@ -1,12 +1,8 @@
 # AWS ECS AGENT
 
-## Summary
-
-Notes on using the ecs agent on ec2
-
 ## Resources
 
-- [Using Cloudwatch Logs On ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_cloudwatch_logs.html)
+- [AWS ECS Agent Using Cloudwatch Logs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_cloudwatch_logs.html)
 
 ### Updating ECS Agent On ECS AMI
 

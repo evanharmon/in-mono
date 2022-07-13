@@ -1,19 +1,23 @@
 # AWS CLOUDFORMATION CROSS STACKS
 
-[Walkthrough]
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/walkthrough-crossstackref.html)
+coordinate stacks with different lifecycles
+
+## Resources
+- [AWS CloudFormation Cross Stack Walkthrough](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/walkthrough-crossstackref.html)
 
 ## Limitations
-Stack cannot be deleted if another stack references one of its outputs
-You can't modify or remove the output value as long as it's referenced in another
-stack
+
+- stack cannot be deleted if another stack references one of its outputs
+- can't modify or remove output value if referenced in another stack
 
 ## Export Names
+
 - for each AWS Account, must be unique name across region
 - value of the 'name' property cannot use functions like `Ref` or `GetAtt` that
 depend on a resource
 
 ## Import Value
+
 value of the 'name' property cannot use functions like `Ref` or `GetAtt` that
 depend on a resource
 `!ImportValue PublicSubnet1`
@@ -21,7 +25,8 @@ depend on a resource
 `Fn::ImportValue: !Sub "${NetworkStackNameParameter}-PublicSubnet1`
 
 ## Export Example
-```
+
+```json
   "Outputs" : {
     "VPCId" : {
       "Description" : "VPC ID",

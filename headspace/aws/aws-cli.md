@@ -1,12 +1,8 @@
 # AWS CLI
 
-## Summary
-
-Notes on working with the AWS cli
-
 ## Resources
 
-- [Install V2 CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+- [AWS CLI Install V2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
 ## V1 CLI INSTALL
 

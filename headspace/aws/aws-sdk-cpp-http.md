@@ -1,12 +1,8 @@
 # AWS SDK CPP HTTP
 
-## Summary
-
-Notes on making http requests in C++ with sdk
-
 ## Resources
 
-- [SO Example](https://stackoverflow.com/questions/40457692/aws-sdk-cpp-how-to-use-curlhttpclient)
+- [AWS SDK CPP SO Example](https://stackoverflow.com/questions/40457692/aws-sdk-cpp-how-to-use-curlhttpclient)
 
 ## Example Request
 

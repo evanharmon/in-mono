@@ -1,7 +1,8 @@
 # AWS CODE DEPLOY APP SPEC
 
 ## Example Spec
-```
+
+```yaml
 ---
 version: 0.0
 os: linux
@@ -36,6 +37,7 @@ hooks:
 
 ```
 ## Example Scripts
+
 deploy/install.sh
 ```
 #!/usr/bin/env bash

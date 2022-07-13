@@ -1,19 +1,15 @@
 # AWS CODEBUILD
 
-## Summary
-
-Notes on using aws codebuild
-
 ## Resources
 
-- [Env Variables Available](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-env-vars.html)
-- [Docker Cache Re-Use Improve Build Times](https://aws.amazon.com/blogs/devops/reducing-docker-image-build-time-on-aws-codebuild-using-an-external-cache/)
+- [AWS CodeBuild Env Variables Available](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-env-vars.html)
+- [AWS CodeBuild Docker Cache Re-Use Improve Build Times](https://aws.amazon.com/blogs/devops/reducing-docker-image-build-time-on-aws-codebuild-using-an-external-cache/)
 
 ## Errors
 
 #### BUILD_CONTAINER_UNABLE_TO_PULL_IMAGE
 
-- [Fix](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-ecr.html)
+- [AWS CodeBuild ECR Fix](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-ecr.html)
 
 Add a resource policy similar to the below to your ECR repository
 
@@ -39,8 +35,9 @@ Add a resource policy similar to the below to your ECR repository
 
 #### Docker Daemon Not Running
 
-- [Doc](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker-custom-image.html#sample-docker-custom-image-files)
-  Need to start dockerd - might be in `/usr/local/bin` or `/usr/bin`
+- [AWS CodeBuild Docker Daemon Doc](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker-custom-image.html#sample-docker-custom-image-files)
+
+Need to start dockerd - might be in `/usr/local/bin` or `/usr/bin`
 
 ```console
 nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&

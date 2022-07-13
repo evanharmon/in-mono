@@ -1,10 +1,12 @@
 # AWS AUTO SCALING CLOUDFORMATION
 
 ## GOTCHAS
+
 Do not use property 'LaunchBalancerNames' with V2 App ELBs
 
 ## Example
-```
+
+```yaml
 ---
 AWSTemplateFormatVersion: !!str 2010-09-09
 

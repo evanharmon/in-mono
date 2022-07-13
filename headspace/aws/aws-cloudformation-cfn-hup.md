@@ -1,9 +1,11 @@
 # AWS CLOUDFORMATION CFN-HUP
 
 ## Sample cfn-hup autoloader files
+
 Adjust path and action for actual ec2/launch config instance name
 If using configsets like install_all, edit action
-```
+
+```yaml
  /etc/cfn/cfn-hup.conf:
               content: !Sub |
                 [main]
@@ -24,7 +26,8 @@ If using configsets like install_all, edit action
 ```
 
 ## Sample cfn-hup autoloader services startup
-```
+
+```yaml
 services:
             sysvinit:
               cfn-hup:

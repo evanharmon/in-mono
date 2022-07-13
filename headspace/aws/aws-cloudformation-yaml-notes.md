@@ -1,8 +1,10 @@
 # AWS CLOUDFORMATION YAML NOTES
 
 ## UserData Bash Script Base64 and Sub
+
 one of the intrinsic functions has to be the full version and not the ! short form
-```
+
+```yaml
 UserData:
   Fn::Base64:
     !Sub |
@@ -12,7 +14,8 @@ UserData:
 ```
 
 ## Init File content
-```
+
+```yaml
 Files:
   /etc/yum.repos.d/:
     content: !Sub |
@@ -25,14 +28,16 @@ Files:
 ```
 
 ## Sub with Refs
-```
+
+```yaml
 Name: !Sub
   - www.${Domain}
   - { Domain: !Ref RootDomainName }
 ```
 
 ## S3 Example
-```
+
+```yaml
   S3Endpoint:
     Type: AWS::EC2::VPCEndpoint
     Properties:
@@ -54,8 +59,10 @@ Name: !Sub
 ```
 
 ## Get First Availability zone in region
+
 Select from GetAZs function
-```
+
+```yaml
 AvailabilityZone:
   Fn::Select:
     - 0

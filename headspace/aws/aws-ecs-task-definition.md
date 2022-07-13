@@ -1,14 +1,11 @@
 # AWS ECS TASK DEFINITION
 
-## Summary
-
-Notes on working with ECS task definitions in AWS
-
 ## Resources
 
-- [ECS Secrets](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data-secrets.html)
+- [AWS ECS Task Definition Secrets Manager](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data-secrets.html)
 
 ## Secrets
+
 pull key value from secrets manager
 
 ```json
@@ -23,6 +20,7 @@ pull key value from secrets manager
 ```
 
 ## Support Exec In To Farge
+
 ```json
 "linuxParameters": {
   "initProcessEnabled": true

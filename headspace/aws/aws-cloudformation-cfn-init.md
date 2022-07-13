@@ -1,20 +1,22 @@
 # AWS CLOUDFORMATION CFN-INIT
 
 ## Order
+
 The cfn-init helper script processes these configuration sections in the
 following order:
-packages
-groups
-users
-sources
-files
-commands
-services
+- packages
+- groups
+- users
+- sources
+- files
+- commands
+- services
 
 If you require a different order, separate your sections into different config
 keys, and then use a configset that specifies the order in which the config
 keys should be processed
-```
+
+```yaml
 UserData:
   Fn::Base64:
     !Sub |
@@ -24,7 +26,8 @@ UserData:
 ```
 
 ## Install cfn-init Scripts In CentOS7
-```
+
+```console
 cd /opt
 curl -O https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
 tar -xvpf aws-cfn-bootstrap-latest.tar.gz
@@ -47,6 +50,7 @@ ln -s /usr/bin/cfn-send-cmd-result /opt/aws/bin/cfn-send-cmd-result
 ```
 
 ## Check CFN-INIT Script
-```
+
+```console
 cat /var/lib/cfn-init/data/metadata.json
 ```

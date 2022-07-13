@@ -1,14 +1,17 @@
 # AWS PARAMETER STORE
 
 ## Resources
+
 - [AWS Parameter Store Docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html)
 - [AWS Parameter Store Tiers Standard / Advanced](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html)
 - [AWS Parameter Store Parameter Policies](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html)
+
 ## Tip
 
 Don't enter in strings in quotes. Not necessary and makes parsing more difficult
 
 ## Advanced Tier
+
 - offers expiration (TTL)
 
 ### Get Parameters

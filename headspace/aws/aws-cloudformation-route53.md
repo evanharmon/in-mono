@@ -1,8 +1,10 @@
 # AWS CLOUDFORMATION ROUTE 53
 
 ## Alias Record For S3 Bucket
+
 DNSName is the s3 region endpoint
-```
+
+```yaml
 wwwRecordSet:
   Type: AWS::Route53::RecordSet
   Properties:

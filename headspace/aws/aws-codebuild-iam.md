@@ -1,7 +1,13 @@
 # AWS CODE BUILD IAM
 
+## Resources
+
+- [AWS CodeBuild AWS IAM](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control.html)
+
 ## Troubleshooting
+
 ### Access Denied On S3
+
 add your s3 bucket for artifacts
 add build folder
 ```javascript

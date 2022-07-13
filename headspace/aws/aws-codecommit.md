@@ -1,5 +1,9 @@
 # AWS CODE COMMIT
 
+## Resources
+
+- [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+
 ## Steps To Add HTTPS Git User
 
 - create IAM user
@@ -8,7 +12,7 @@
 
 ## HTTPS Git Usage on Mac OS and Linux
 
-- [guide](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html#setting-up-https-unixes-credential-helper)
+- [AWS CodeCommit Git Credential Helper guide](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html#setting-up-https-unixes-credential-helper)
 
 ```console
 git config --local credential.helper '!aws codecommit credential-helper $@'
@@ -23,7 +27,7 @@ git config --local credential.UseHttpPath true
 - copy IAM user tab `security credentials` SSH Key ID for below
 - add the below to your `~/.ssh/config` with SSH Key ID from above
 
-```
+```txt
 Host git-codecommit.*.amazonaws.com
 User Your-IAM-SSH-Key-ID-Here
 IdentityFile ~/.ssh/Your-Private-Key-File-Name-Here

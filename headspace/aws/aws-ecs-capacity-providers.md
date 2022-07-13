@@ -1,9 +1,5 @@
 # AWS ECS CAPACITY PROVIDERS
 
-## Summary
-
-Notes on scaling ECS with capacity providers
-
 ## Resources
 
 - [AWS ECS Capacity Provider Docs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-capacity-providers.html)
