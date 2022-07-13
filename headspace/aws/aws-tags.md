@@ -1,9 +1,9 @@
 # AWS TAGS
 
-Notes on using tags in AWS
-
 ## Resources
+
 - [AWS Tags Tagging Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html?id=docs_gateway)
+- [AWS Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/tag-editor.html)
 
 ## Automation Tagging
 

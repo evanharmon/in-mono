@@ -36,5 +36,6 @@ From getting started guide:
 - set patch group to patch baseline
 - create maintenance window
 - register targets for maintenance window
-- register task for maintenance window
+- register task for maintenance window including AWS-RunPatchBaseline Run Command
+- setup the rate control and error settings for task
 - verify patch compliance report
