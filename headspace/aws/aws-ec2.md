@@ -1,36 +1,35 @@
 # AWS EC2
 
 ## Resources
+
 - [AWS EC2 Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)
-- [Instance Recovery](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html)
+- [AWS EC2 Instance Recovery](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html)
 
-## Check Metadata While SSH'd In To Instance
-NO SUCH THING as user-data for an instance as a curl
-`$ curl http://169.254.169.254/latest/meta-data`
+## Limitations
 
-## View Script Of Userdata On Instance
-`$ cat /var/lib/cloud/instance/scripts/part-001`
-`$ cat /var/lib/cloud/instances/$INSTANCE_ID/user-data.txt`
-
-## cloud-init Log File
-`$ cat /var/log/cloud-init.log`
-
-## Termination / Delete
+- instances do NOT retain their private IP unless re-using separately created ENI
 - termination protection is turned off by default
 - EBS-backed instance, default action is for root EBS volume to be deleted
-when instance is terminated
+  when instance is terminated
 
-## Reserved Instances
-Can be transferred between AZs
-CANNOT be transferred between Regions
+## Instances In Public Subnets
+
+instances cannot send traffic to the internet unless:
+
+- have a public IPv4 address or an elastic ip address (EIP)
+- attached to an ELB (Elastic Load Balancer)
 
 ## Admin Access
+
 you have admin access to the underlying resources / os
 
 # Encryption
+
 use third party tool (bit locker, etc) to encrypt root volume
+
 - root volumes cannot be encrypted by default
 - cant encrypt device where OS is installed
 
-## Dedicated Hosts
-Used for .GOV
+## Auto-Assign Public IP
+
+Only available on new network interface with device index eth0

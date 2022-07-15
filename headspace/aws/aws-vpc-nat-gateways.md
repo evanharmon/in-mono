@@ -4,15 +4,24 @@
 
 - [AWS VPC NAT Gateway Testing](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-testing)
 
+## Features
+
+- natgateway with status of 'failed' is deleted in about an hour automatically
+- can be TCP, UDP, or ICMP protocol
+
 ## Limitations
 
 - cannot be associated with a security group
 - do not support ClassicLink connections
 - natgateway with a status of pending, deleting, or available counts against the
   limit
-- natgateway with status of 'failed' is deleted in about an hour automatically
-- can be TCP, UDP, or ICMP protocol
 - does not support port forwarding, bastion servers, or traffic metrics
+- elastic network interface (ENI) is created upon NAT creation and cannot be modified
+
+## Best Practice
+
+- create a NAT per AZ for failover tolerance
+- Use ACLs to control traffic to / from subnets
 
 ## IAM
 
@@ -30,19 +39,15 @@
 
 STATEFUL
 
-- cannot send traffic over VPC endpoints, VPN Connections, AWS Direct Connect,
-  or VPC Peering Connections
-- cannot route traffic through gateway to VPC Peering Connection, VPN
-  Connection, or AWS Direct Connect
-- adjust the subnets route table to route directly to these resources. Works bc
-  the resource routing will be more specific than the nat routing 0.0.0.0/0
+- cannot send traffic over VPC endpoints, VPN Connections, AWS Direct Connect, or VPC Peering Connections
+- cannot route traffic through gateway to VPC Peering Connection, VPN Connection, or AWS Direct Connect
+- adjust the subnets route table to route directly to these resources. Works bc the resource routing will be more specific than the nat routing 0.0.0.0/0
 
 ## Communication Across AZ's
 
 - communicate across AZ's but are based in a single AZ
 - if that AZ goes down, internet access goes down to instances/resources using
   that NAT from other AZs
-- create a NAT per AZ for failover tolerance
 
 ## BURST
 
@@ -55,18 +60,9 @@ subnets
 Cannot be disassociated from a NAT instance after it's created. You would have
 to terminate the NAT instance to free that elastic ip
 
-## Securing Traffic
-
-Use ACLs to control traffic to/from subnets
-
 ## Ports
 
 NATs use ports 1024 - 65535
-
-## Network Interface
-
-elastic network interface (ENI) is created upon a NAT creation. This ENI cannot
-be modified
 
 ## Testing
 

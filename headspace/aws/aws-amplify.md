@@ -1,9 +1,5 @@
 # AWS AMPLIFY
 
-## Summary
-
-Notes on using aws amplify sdk's, cli, etc
-
 ## Resources
 
 - [AWS Blog Analytics None DataSource Subscriptions](https://aws.amazon.com/blogs/mobile/visualizing-big-data-with-aws-appsync-amazon-athena-and-aws-amplify/)

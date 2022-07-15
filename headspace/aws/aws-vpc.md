@@ -2,27 +2,21 @@
 
 ## Resources
 
-- [DNS Support](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support)
+- [AWS VPC Docs](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 
 ## Limitations
 
-- allowed 5 VPCs Per Region
-- allowed 200 Subnets Per VPC
-- size of vpc CANNOT be changed after it is created
-- max # of Security Groups per Instance is 5
+- VPC CIDR blocks CANNOT be changed
+- min IPv4 CIDR block is /28
+- max IPv4 CIDR block range is /16
+- max 5 VPCs per region
+- max 200 subnets per VPC
 
-## Deleting A VPC
+## Deleting VPC
 
-all instances must be terminated first
+all EC2 instances must be terminated first
 
 ## Availability Zones
 
 names of AZs are randomly applied. 'eu-west-1b' may not be the same location
 between different accounts
-
-## EnableDnsHostnames and EnableDnsSupport
-
-When both set to true:
-
-- instances with a public IP address receive corresponding public DNS hostnames
-- Amazon-provided DNS server can resolve Amazon-provided private DNS hostnames
