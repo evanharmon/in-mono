@@ -8,6 +8,13 @@ works via agent
 - [AWS Datasync Docs](https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html)
 - [AWS Datasync Tasks](https://docs.aws.amazon.com/datasync/latest/userguide/working-with-tasks.html)
 
+## Features
+
+- fully automated
+- up to 10x speed of CLI tools
+- uses purpose build network protocol
+- includes retry and network resiliency mechanisms
+
 ## Supported Sources
 
 - NFS
@@ -24,6 +31,7 @@ works via agent
 lowest interval is 1 hour
 
 intervals:
+
 - hourly
 - daily
 - weekly

@@ -2,9 +2,8 @@
 
 ## Resources
 
-- [API Gateway DOCS Use Authorizer](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html)
-- [API Gateway Cognito Input Shape](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-lambda-authorizer-input.html)
-
+- [AWS API Gateway DOCS Use Authorizer](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html)
+- [AWS API Gateway Cognito Input Shape](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-lambda-authorizer-input.html)
 
 ### Lambda Authorizers
 

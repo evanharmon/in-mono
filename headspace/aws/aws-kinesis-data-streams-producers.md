@@ -14,7 +14,3 @@
 - AWS SDK
 - Kinesis Producer Library (KPL)
 - Kinesis Agent
-
-## Kinesis Agent
-
-- supports sending to data streams and firehose

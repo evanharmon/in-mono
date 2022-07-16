@@ -1,10 +1,15 @@
 # AWS EBS PROVISIONED IOPS SSD
+
 high performance for mission-critical, low-latency, or high-throughput workloads
 EBS multi-attach supported
 
 ## Resources
 
 - [AWS EBS Provisioned IOPS SSD](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#EBSVolumeTypes_piops)
+
+## Limitations
+
+- max possible IOPs per volume is 256K with io2 block express
 
 ## io1 / io2 Use Cases
 
@@ -18,6 +23,7 @@ EBS multi-attach supported
 - over 1,000 MiB/s throughput
 
 ## io1 / io2 Common
+
 use instances built on the Nitro system
 
 Volume size: 4 GiB - 16 TiB

@@ -15,6 +15,7 @@ real-time streaming ingestion service
 ## Limitations
 
 - have to manage scaling yourself
+- limit of 1 MB / s write to a shard
 
 ## Scaling
 

@@ -18,8 +18,8 @@ load streaming data from producers, transforms, and writes to destinations
 
 - no data storage or replay
 - no way to send data directly from S3 events
-- 60 seconds lowest latency for non full batches 
-OR
+- 60 seconds lowest latency for non full batches
+  OR
 - 1 MB of data
 
 ## S3 as Source Features
@@ -32,6 +32,7 @@ buffer interval: 60 - 900 seconds
 can also copy original data to diff s3 bucket than transforms
 
 supports:
+
 - S3 Bucket
 - Redshift via S3 copy
 - OpenSearch
