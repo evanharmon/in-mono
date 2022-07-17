@@ -1,11 +1,5 @@
 # CSS WIDTH
 
-## Summary
-
-Notes on setting width in CSS
-
-## Resources
-
 ## Auto
 
 - [SO](https://stackoverflow.com/questions/27098675/set-default-width-and-min-width-property)
