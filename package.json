@@ -20,11 +20,11 @@
   },
   "engines": {
     "npm": "8.14.0",
-    "node": "18.6.0"
+    "node": "18.4.0"
   },
   "packageManager": "npm@8.14.0",
   "volta": {
-    "node": "18.6.0",
+    "node": "18.4.0",
     "npm": "8.14.0"
   }
 }
