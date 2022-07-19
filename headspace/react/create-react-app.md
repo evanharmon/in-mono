@@ -1,9 +1,5 @@
 # CREATE REACT APP
 
-## Summary
-
-Notes on working with the `create-react-app` npm package
-
 ## Resources
 
 - [Github](https://github.com/facebook/create-react-app)

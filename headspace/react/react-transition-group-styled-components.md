@@ -2,7 +2,7 @@
 
 ## Resources
 
-- [Transition component with styled-components](https://dev.to/terrierscript/styled-component--react-transition-group--very-simple-transition-jja)
+- [React Transition Group component with styled-components](https://dev.to/terrierscript/styled-component--react-transition-group--very-simple-transition-jja)
 
 ## CSSTransition
 

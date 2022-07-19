@@ -1,26 +1,22 @@
 # REACT CONTEXT
 
-## Summary
-
-Notes on using react context
-
 ## Resources
 
-[Docs useContext](https://reactjs.org/docs/hooks-reference.html#usecontext)
+- [React Docs useContext](https://reactjs.org/docs/hooks-reference.html#usecontext)
 
 ## Export useContext
 
 ```javascript
-import React, { useContext } from "react";
+import React, { useContext } from 'react'
 
-const MyStateContext = React.createContext();
+const MyStateContext = React.createContext()
 
 function useMyState() {
-  const context = useContext(MyStateContext);
-  return context;
+  const context = useContext(MyStateContext)
+  return context
 }
 
-export { useMyState };
+export { useMyState }
 ```
 
 ## Import Exported useContext
@@ -29,6 +25,6 @@ export { useMyState };
 
 ```javascript
 function MyComponent() {
-  const state = useMyState();
+  const state = useMyState()
 }
 ```

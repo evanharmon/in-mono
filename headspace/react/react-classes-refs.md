@@ -1,14 +1,14 @@
 # REACT REFS
+
 Requires stateful component
 
-## Summary
-Notes on the use of refs in React
-
 ## Resources
+
 - [React Doc](https://reactjs.org/docs/refs-and-the-dom.html)
 
 ## Get DOM Node of component
-```
+
+```jsx
 class Hand extends React.Component {
      componentDidMount() {
           const canvas = this.refs.canvas;
@@ -21,8 +21,10 @@ class Hand extends React.Component {
 ```
 
 ## Provide input node value inside component
+
 using immutablejs / redux in this example
-```
+
+```jsx
 class ItemApp extends React.Component {
      render() {
           <div>

@@ -2,7 +2,7 @@
 
 ## Resources
 
-- [Docs](https://reactcommunity.org/react-transition-group/transition)
+- [React Transition Group](https://reactcommunity.org/react-transition-group/transition)
 
 ## Styling
 

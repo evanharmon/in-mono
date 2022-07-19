@@ -1,21 +1,20 @@
 # REACT TESTING LIBRARY
 
-## Summary
-
-Overview of using react-testing-library to test react apps
-
 ## Resources
 
-[Docs](https://testing-library.com/docs/intro)
-[FAQs](https://testing-library.com/docs/react-testing-library/faq)
-[Use With Jest](https://jestjs.io/docs/en/tutorial-react#dom-testing)
-[Dom Testing Example Docs](https://testing-library.com/docs/dom-testing-library/example-intro)
-[React Testing Example Docs](https://testing-library.com/docs/react-testing-library/example-intro)
-[Cypress Dom Testing Integration](https://testing-library.com/docs/cypress-testing-library/intro)
+- [React Testing Library Docs](https://testing-library.com/docs/intro)
+- [React Testing Library FAQs](https://testing-library.com/docs/react-testing-library/faq)
+- [React Testing Library Use With Jest](https://jestjs.io/docs/en/tutorial-react#dom-testing)
+- [React Testing Library Dom Testing Example Docs](https://testing-library.com/docs/dom-testing-library/example-intro)
+- [React Testing Shallow Renderer](https://reactjs.org/docs/shallow-renderer.html)
+- [React Testing Library Example Docs](https://testing-library.com/docs/react-testing-library/example-intro)
+- [React Testing Library Advanced Hooks](https://react-hooks-testing-library.com/usage/advanced-hooks)
+- [Kent C Dodds Testing Javascript Course](https://testingjavascript.com)
+- [Cypress Dom Testing Integration](https://testing-library.com/docs/cypress-testing-library/intro)
 
 ## Show DOM / React Component
 
-[Docs](https://testing-library.com/docs/react-testing-library/api#debug)
+- [Debug Docs](https://testing-library.com/docs/react-testing-library/api#debug)
 
 ```javascript
 const HelloWorld = () => <h1>Hello World</h1>
@@ -27,7 +26,7 @@ debug()
 
 `getByLabelText` will be driven by `aria-label` on `<button />`
 
-```javascript
+```jsx
 <label for="my-button" />
 <button
   id="my-button"
@@ -44,7 +43,7 @@ debug()
 
 test:
 
-```javascript
+```jsx
 const { getByLabelText } = render(<AwesomeForm />)
 
 fireEvent.click(getByLabelText(/create-button/i))
@@ -52,7 +51,7 @@ fireEvent.click(getByLabelText(/create-button/i))
 
 ## Fire Input Date
 
-[GH Issue](https://github.com/testing-library/react-testing-library/issues/337)
+- [GH Issue](https://github.com/testing-library/react-testing-library/issues/337)
 
 remember the browser stores the value as `yyyy-MM-dd` not `12/31/2019`!!
 
@@ -63,7 +62,7 @@ working version `https://codesandbox.io/s/rln7q07o0m`
 Provides support for `.toHaveTextContent` and other dom expects
 in package.json
 
-```javascript
+```json
 "jest": {
   "setupFilesAfterEnv": [
     "jest-dom/extend-expect",
@@ -78,13 +77,13 @@ use dispatchEvent instead
 
 ```javascript
 cancelBtn.dispatchEvent(
-  new MouseEvent('click', { bubbles: true, cancelable: true })
+  new MouseEvent('click', { bubbles: true, cancelable: true }),
 )
 ```
 
 ## Test Hook With Initial Render Changes
 
-```javascript
+```jsx
 const wrapper = ({ children }) => (
   <AuthProvider>
     <MainProvider>{children}</MainProvider>

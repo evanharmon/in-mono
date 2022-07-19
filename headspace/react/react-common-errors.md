@@ -1,12 +1,8 @@
 # REACT COMMON ERRORS
 
-## Summary
-
-Notes on common errors in React
-
 ## Resources
 
-[RWeiruch UnMounted Component Set State Warning](https://www.robinwieruch.de/react-warning-cant-call-setstate-on-an-unmounted-component/)
+- [React RWeiruch UnMounted Component Set State Warning](https://www.robinwieruch.de/react-warning-cant-call-setstate-on-an-unmounted-component/)
 
 ## React must be in scope
 

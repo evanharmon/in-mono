@@ -1,9 +1,5 @@
 # REACT LIFECYCLE
 
-## Summary
-
-Notes around using the react lifecyle in react component class
-
 ## Mounting
 
 ### `componentWillMount()`

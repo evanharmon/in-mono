@@ -1,16 +1,12 @@
 # REACT FRAGMENTS
 
-## Summary
-
-Notes on using React Fragments
-
 ## Resources
 
-- [Docs](https://reactjs.org/docs/fragments.html)
+- [React Fragements](https://reactjs.org/docs/fragments.html)
 
 ## Shorthand Style
 
-```javascript
+```jsx
 <>
   <h1>TEST</h1>
 </>

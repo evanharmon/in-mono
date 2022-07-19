@@ -1,15 +1,14 @@
 # REACT NATIVE
 
-## Summary
-Document outline react native
-
 ## Requirements
+
 - Homebrew
 - Nodejs
 - Xcode installed
 - Xcode Simular downloaded and installed
 
 ## Getting Started With [Expo](https://docs.expo.io/versions/v31.0.0/workflow/up-and-running)
+
 Use EXPO CLI (formerly create react native app). I suggest using the tabs
 template project
 

@@ -1,13 +1,9 @@
 # REACT FORMS
 
-## Summary
-
-Notes on creating html forms in React
-
 ## Resources
 
-- [Kent C Dodds Example Form](https://kentcdodds.com/blog/understanding-reacts-key-prop)
-- [Uncontrolled Components Docs](https://reactjs.org/docs/uncontrolled-components.html)
+- [React Kent C Dodds Example Form](https://kentcdodds.com/blog/understanding-reacts-key-prop)
+- [React Uncontrolled Components Docs](https://reactjs.org/docs/uncontrolled-components.html)
 
 ## Best Practices
 

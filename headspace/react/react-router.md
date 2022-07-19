@@ -1,17 +1,13 @@
 # REACT-ROUTER
 
-## Summary
-
-Notes on using react router
-
 ## Resources
 
-[Docs](https://reacttraining.com/react-router/web/guides/quick-start)
-[History Docs](https://github.com/ReactTraining/history/blob/master/docs/GettingStarted.md)
-[RWeiruch UnMounted Component Set State Warning](https://www.robinwieruch.de/react-warning-cant-call-setstate-on-an-unmounted-component/)
-[React Hooks And Context Router](https://medium.com/trabe/implementing-private-routes-with-react-router-and-hooks-ed38d0cf93d5)
-[React Router Amplify Auth](https://www.rockyourcode.com/custom-react-hook-use-aws-amplify-auth/)
-[GH Testing](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/testing.md)
+- [React Router Docs](https://reacttraining.com/react-router/web/guides/quick-start)
+- [React Router History Docs](https://github.com/ReactTraining/history/blob/master/docs/GettingStarted.md)
+- [React Router RWeiruch UnMounted Component Set State Warning](https://www.robinwieruch.de/react-warning-cant-call-setstate-on-an-unmounted-component/)
+- [React Hooks And Context Router](https://medium.com/trabe/implementing-private-routes-with-react-router-and-hooks-ed38d0cf93d5)
+- [React Router Amplify Auth](https://www.rockyourcode.com/custom-react-hook-use-aws-amplify-auth/)
+- [React Router GH Testing](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/testing.md)
 
 ## Index Route
 
@@ -23,8 +19,8 @@ Notes on using react router
 - Renders as an <a> anchor element
 - css classes can be passed to Link
 
-```javascript
-<Link to="/cart" className="btn btn-success">
+```jsx
+<Link to='/cart' className='btn btn-success'>
   Cart
 </Link>
 ```
@@ -33,7 +29,7 @@ Notes on using react router
 
 use `<Redirect />` in combination with `setState()`
 
-```javascript
+```jsx
 class Login extends React.Component {
   state = {
     redirectToReferrer: false,
@@ -50,7 +46,7 @@ class Login extends React.Component {
 
     // here is the important part
     if (redirectToReferrer) {
-      return <Redirect to="/" />
+      return <Redirect to='/' />
     }
     //
 
@@ -66,15 +62,15 @@ class Login extends React.Component {
 
 ## Authenticated Routes
 
-[Docs Example](https://reacttraining.com/react-router/web/example/auth-workflow)
+- [Docs Example](https://reacttraining.com/react-router/web/example/auth-workflow)
 
 ## Auth Api Call PrivateRoute
 
-[SO](https://stackoverflow.com/questions/49309071/react-private-router-with-async-fetch-request)
+- [SO](https://stackoverflow.com/questions/49309071/react-private-router-with-async-fetch-request)
 
 ## Pass Router Information Through Custom Component
 
-```javascript
+```jsx
 const MyRouteComponent = ({ ...options }) => (
   <>
     <MyComponent {...options} />
@@ -84,19 +80,19 @@ const MyRouteComponent = ({ ...options }) => (
 
 ## Simple Example
 
-```javascript
+```jsx
 ReactDOM.render(
   <Router>
     <div>
-      <Route exact path="/">
+      <Route exact path='/'>
         <Home />
       </Route>
-      <Route path="/news">
+      <Route path='/news'>
         <NewsFeed />
       </Route>
     </div>
   </Router>,
-  node
+  node,
 )
 ```
 
@@ -117,7 +113,7 @@ test('renders without failing', () => {
   renderer.render(
     <MemoryRouter>
       <Records />
-    </MemoryRouter>
+    </MemoryRouter>,
   )
   const result = renderer.getRenderOutput()
   expect(result).toBeTruthy()
@@ -137,20 +133,20 @@ make sure you don't have MULTIPLE <BrowserRouter>'s. Example, one in
 
 ## Debugging
 
-[SO Debug Example](https://stackoverflow.com/questions/34093913/how-to-debug-react-router)
+- [SO Debug Example](https://stackoverflow.com/questions/34093913/how-to-debug-react-router)
 
-```javascript
+```jsx
 class DebugRouter extends Router {
   constructor(props) {
     super(props)
     console.log('initial history is: ', JSON.stringify(this.history, null, 2))
     this.history.listen((location, action) => {
       console.log(
-        `The current URL is ${location.pathname}${location.search}${location.hash}`
+        `The current URL is ${location.pathname}${location.search}${location.hash}`,
       )
       console.log(
         `The last navigation action was ${action}`,
-        JSON.stringify(this.history, null, 2)
+        JSON.stringify(this.history, null, 2),
       )
     })
   }
@@ -161,8 +157,8 @@ class App extends Component {
     return (
       <DebugRouter>
         <Switch>
-          <Route exact path="/login" name="Login Page" component={Login} />
-          <Route path="/" name="Home" component={DefaultComponent} />
+          <Route exact path='/login' name='Login Page' component={Login} />
+          <Route path='/' name='Home' component={DefaultComponent} />
         </Switch>
       </DebugRouter>
     )
@@ -172,7 +168,7 @@ class App extends Component {
 
 ## Listen To History Changes
 
-```javascript
+```jsx
 useEffect(() => {
   const unlisten = history.listen((location, action) => {
     // location is an object like window.location

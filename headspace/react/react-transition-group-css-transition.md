@@ -2,8 +2,8 @@
 
 ## Resources
 
-- [CSSTransition Docs](https://reactcommunity.org/react-transition-group/css-transition)
-- [Inherited features from Transitions](https://reactcommunity.org/react-transition-group/transition)
+- [React Transition Group CSSTransition Docs](https://reactcommunity.org/react-transition-group/css-transition)
+- [React Transition Group Inherited features from Transitions](https://reactcommunity.org/react-transition-group/transition)
 
 ## Styling
 

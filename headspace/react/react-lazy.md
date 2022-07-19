@@ -1,9 +1,5 @@
 # REACT LAZY
 
-## Summary
-
-Lazy loading in React
-
 ## Resources
 
 ### Lazy Import By Env

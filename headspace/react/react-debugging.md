@@ -1,12 +1,8 @@
 # REACT DEBUGGING
 
-## Summary
-
-Notes on debugging React
-
 ## Resources
 
-- [Github Why Did You Render](https://github.com/welldone-software/why-did-you-render)
+- [React Debugging Github Why Did You Render](https://github.com/welldone-software/why-did-you-render)
 
 ## Debugging Renders
 

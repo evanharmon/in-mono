@@ -1,7 +1,8 @@
-# REACT BINDINGS
+# REACT CLASSES BINDINGS
 
 ## Bind function
-```
+
+```jsx
 class App extends Component {
   constructor(props) {
     super(props);
