@@ -21,6 +21,7 @@ load streaming data from producers, transforms, and writes to destinations
 - 60 seconds lowest latency for non full batches
   OR
 - 1 MB of data
+- CANNOT send directly to DynamoDB
 
 ## S3 as Source Features
 

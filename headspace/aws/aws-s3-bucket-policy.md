@@ -5,7 +5,8 @@
 - [Bucket policies and user policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html)
 
 ## Limitations
-- SourceIP condition CANNOT be a private IP
+
+- aws:SourceIP condition CANNOT be a private IP aka from inside a VPC
 - sourceVPC or sourceVPCEndpoint both require VPC endpoint
 
 ## List Of Actions
@@ -18,7 +19,6 @@ differs from IAM!
 - [Allow Cross-Account Bucket Access](https://aws.amazon.com/premiumsupport/knowledge-center/cross-account-access-s3/)
 - [Enforce Object Ownership To Bucket Owner](https://aws.amazon.com/blogs/aws/amazon-s3-update-three-new-security-access-control-features/)
 
-
 ## Prevent Bucket Lockout
 
 S3 Buckets can be locked out by incorrect / inadvertent changes to the bucket policy
@@ -27,6 +27,7 @@ S3 Buckets can be locked out by incorrect / inadvertent changes to the bucket po
 
 - Keep a base policy in at all times to prevent lockout
 - Use a separate AWS account for testing where you have ROOT access
+
 ## Invalid Action Errors
 
 #### `s3:PutAccountPublicAccessBlock` and `s3:GetAccountPublicAccessBlock`.

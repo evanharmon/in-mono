@@ -14,6 +14,10 @@
 - supports publish to CloudWatch Logs
 - can query with Athena when published to S3
 
+## Limitations
+
+- cannot be used to check packet loss
+
 ## Supported Levels
 
 can specify logs for the below levels:

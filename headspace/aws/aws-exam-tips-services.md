@@ -3,6 +3,7 @@
 ## IAM
 
 - PowerUserAccess = AdministrativeAcess - IAM
+- least privilege means NO admin access policy
 
 ## Cross Account Roles
 
@@ -40,4 +41,14 @@
 
 ## Transfer Family
 
-- only supports S3 - NOT EFS
+- only supports S3
+
+## Service Control Policies
+
+- affect the root user
+- DO NOT affect service-linked roles
+
+## Snowball Edge
+
+- for bandwidth contrained offline data transfers
+- does not support automated / accelerated online data transfers bc not the use case

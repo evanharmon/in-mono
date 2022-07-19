@@ -26,6 +26,8 @@ includes:
 
 ## Access Logs
 
+logs about who accessed your API and how it was accessed
+
 you decide the access logging details such as:
 
 - $context variables

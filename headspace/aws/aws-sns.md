@@ -15,6 +15,9 @@ pub sub push notification serverless service
 ## Limitations
 
 - no data retention
+- standard topic limits max 30,000 messages per second (us-east n. virginia)
+- standard topic limits max 9,000 messages per second (us-west oregon)
+- standard topic limits max 1,500 messages per second (us-east ohio)
 
 ## Delivery Options
 
