@@ -4,6 +4,7 @@
 
 - [Nextjs Routing Introduction](https://nextjs.org/docs/routing/introduction)
 - [Nextjs next/router](https://nextjs.org/docs/api-reference/next/router)
+- [Nextjs next/link](https://nextjs.org/docs/api-reference/next/link)
 
 ## Features
 
@@ -12,3 +13,13 @@
 - nested
 - dynamic
 - fallback
+
+## Custom Anchor Tag Styling
+
+```jsx
+<>
+  <Link href='mylink'>
+    <a className={classes.myClass}>Click Here</a>
+  </Link>
+</>
+```

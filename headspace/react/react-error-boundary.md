@@ -1,9 +1,17 @@
 # REACT ERROR BOUNDARY
 
+just use the NPM package
+
 ## Resources
 
 - [React Error Boundaries](https://reactjs.org/docs/error-boundaries.html)
-- [NPM react-error-boundary package](https://www.npmjs.com/package/react-error-boundary)
+- [React Error Boundary NPM react-error-boundary package](https://github.com/bvaughn/react-error-boundary#readme)
+
+## Features
+
+- don't have to write a class component
+- accepts prop resetErroBoundary
+- accepts prop resetKeys to reset error state with child button click
 
 ## Limitations
 
