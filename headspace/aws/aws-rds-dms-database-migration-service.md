@@ -3,7 +3,7 @@
 ## Resources
 
 - [AWS RDS Database Migration Service](https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
-- [AWS RDS DMS Best Practices]
+- [AWS RDS DMS Best Practices](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_BestPractices.html)
 
 ## Features
 
@@ -14,22 +14,6 @@
 ## Limitations
 
 - requires creating a Replication Instance (EC2)
-
-## Supported database sources
-
-on-premise or EC2 instances databases
-
-- Oracle
-- SQL Server
-- Azure SQL / Managed Instance
-- Google Cloud MySQL
-- PostgreSQL
-- SAP ASE
-- MongoDB
-- Amazon DocumentDB
-- Amazon S3
-- IBM Db2 linux, Unix, Windows (LUW)
-- IBM Db2 for z/OS
 
 ## Schema Migration Tool (SCT)
 

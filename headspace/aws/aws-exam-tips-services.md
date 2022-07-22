@@ -19,13 +19,16 @@
 
 - incremental backups so can minimize downtime on server migrations
 
-## Kinesis
+## SNS
 
-- agent cannot be configured to send to data streams AND firehose at same time
+- PUSH model so no batching of records to Lambda
 
-## Kinesis Data Streams
+## SQS
 
-- limit of 1 MB / s write to a shard
+- use visibility timeout to reduce chance of picking up twice
+- use `ChangeMessageVisibility` on a message with a heartbeat process to prevent re-pick up
+- visibility timeout hides message AFTER pickup
+- delay queues IMMEDIATELY hides message for period of time
 
 ## Lambda
 
@@ -52,3 +55,20 @@
 
 - for bandwidth contrained offline data transfers
 - does not support automated / accelerated online data transfers bc not the use case
+
+## Data Lifecycle Manager
+
+- useful for managing creation, retention, deletion of EBS snapshots
+- supports automated cross-account EBS snapshots
+
+## EBS
+
+- stored in S3 but NOT visible to you
+
+## SnowBall Edge
+
+- max storage is 80 TB
+
+## Database Migration Service
+
+- have to manage an EC2 instance for replication!!

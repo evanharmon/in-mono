@@ -9,12 +9,14 @@ perform real-time analytics on streams using SQL
 - [AWS Kinesis Data Analytics Output Streams](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html)
 - [AWS Kinesis Data Analytics Examples](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/examples.html)
 - [AWS Kinesis Data Analytics Reference Data](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/app-add-reference-data.html)
+- [AWS Kinesis Data Analytics Detecting Anomalies on a Stream](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/app-anomaly-detection.html)
 
 ## Use Cases
 
 - streaming ETL
 - Continuous metric generation like a gaming leaderboard
 - response analytics to build alerting and filtering
+- anomaly detection
 
 ## Features
 

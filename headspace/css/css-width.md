@@ -2,7 +2,7 @@
 
 ## Auto
 
-- [SO](https://stackoverflow.com/questions/27098675/set-default-width-and-min-width-property)
+- [CSS Width SO](https://stackoverflow.com/questions/27098675/set-default-width-and-min-width-property)
   Auto and min-width can be set at the same time
 
 ```css

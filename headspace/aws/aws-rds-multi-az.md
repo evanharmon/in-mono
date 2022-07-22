@@ -1,15 +1,22 @@
 # AWS RDS MULTI-AZ
 
-## Multi-AZ Snapshots
-Snapshots are taken from read replicas
+## Resources
 
-## Multi-AZ Database Use
-For Disaster Recovery only
-NOT used for improving performance
-NOT for scaling
-Standy/Secondary CANNOT be used independently
+- [AWS RDS Multi AZ](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html)
+
+## Features
+
+- sync replication
+- For Disaster Recovery only
+- Standy / Secondary CANNOT be used independently
+
+## Limitations
+
+- NOT used for improving performance
+- NOT for scaling
 
 ## Available On
+
 SQL Server
 Oracle
 MySQL Server

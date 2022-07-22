@@ -15,7 +15,6 @@ hub and spoke connections
 - traffic automatically encrypted
 - traffic never traverses public internet
 - can be shared cross-account with Resource Access Manager
-- supports connecting to AWS Direct Connect Gateway
 - can peer multiple transit gateways that are in diff regions
 
 ## Limitations

@@ -1,5 +1,5 @@
 # AWS IAM DYNAMIC POLICIES
-Notes on working with dynamic IAM policies
 
 ## Resources
-- [Token Machine](https://aws.amazon.com/blogs/apn/isolating-saas-tenants-with-dynamically-generated-iam-policies/)
+
+- [AWS IAM Token Machine](https://aws.amazon.com/blogs/apn/isolating-saas-tenants-with-dynamically-generated-iam-policies/)
