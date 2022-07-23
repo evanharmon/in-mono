@@ -16,6 +16,7 @@
 ## Features
 
 - multi AZ
+- multi AZ replication is ASYNCHRONOUS
 - storage grows automatically in increments of 10 GB
 - max storage 128 TB
 - automatically stores 6 copies across AZs

@@ -14,9 +14,3 @@
 ## Limitations
 
 - requires creating a Replication Instance (EC2)
-
-## Schema Migration Tool (SCT)
-
-Uses Schema migration tool to migrate from one database tool to a different
-database (ex. Oracle to Aurora). Works with functions, stored procedures,
-functions, etc

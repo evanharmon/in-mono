@@ -4,6 +4,10 @@
 
 - [AWS CloudFront Origins Restrict access to Application Load Balancer](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/restrict-access-to-load-balancer.html)
 
+## Limitations
+
+- ALB must be publicly accessible from edge location
+
 ## Steps
 
 - configure CloudFront to add custom HTTP header with secret value to requests
@@ -17,10 +21,6 @@ allow the CloudFront IPs
 
 prefix group can be used to avoid brittleness to static ip list
 `com.amazonaws.global.cloudfront.origin-facing`
-
-## Limitations
-
-- ALB must be publicly accessible from edge location
 
 ## Headers
 
@@ -37,4 +37,4 @@ Not worth the headache of host header rewrites as the ALB Hostname will NOT matc
 the SSL cert
 
 - remember that when an ALB is in use, CloudFront origin must match ALB
-hostname and SSL Cert
+  hostname and SSL Cert

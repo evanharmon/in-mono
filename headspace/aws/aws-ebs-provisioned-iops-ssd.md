@@ -10,6 +10,7 @@ EBS multi-attach supported
 ## Limitations
 
 - max possible IOPs per volume is 256K with io2 block express
+- non-Nitro instances max out at 32,000 IOPS
 
 ## io1 / io2 Use Cases
 
@@ -53,7 +54,3 @@ lots of limitations on io2 volumes with Block Express - read the docs above
 - volume size 4 GiB - 64 TiB
 - durability is 99.999%
 - max throughput per volume up to 4,000 MiB / s
-
-## Limitations
-
-- non-Nitro instances max out at 32,000 IOPS

@@ -10,6 +10,11 @@ user initiated manual backups that survive after RDS deletion
 
 - manual snapshots do not expire
 
+## Limitations
+
+- manual snaphots can be shared with up to 20 aws accounts
+- encryped snapshots CANNOT be shared if created with default KMS key of AWS Account
+
 ## Recommendations
 
 long-term backups should be exported to S3

@@ -7,6 +7,10 @@ migrates specific tables, views, and schemas
 - [AWS RDS DMS Tasks](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
 - [AWS RDS DMS Continuous Replication Tasks](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Task.CDC.html)
 
+## Features
+
+- supports data validation from source to target
+
 ## Migration Methods
 
 - migrating data to the target database

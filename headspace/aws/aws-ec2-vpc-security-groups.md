@@ -7,6 +7,7 @@ stateful, return traffic allowed automatically, regardless of any rules
 
 - [AWS EC2 Security Groups for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)
 - [AWS VPC Security Group Docs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
+- [AWS VPC EC2 Default and custom security groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/default-custom-security-groups.html)
 
 ## Features
 
@@ -32,9 +33,12 @@ stateful, return traffic allowed automatically, regardless of any rules
 
 attached to DeviceIndex 0 (eth0)
 
-## Communication Between Security Groups
+## Default VPC Security Group
 
-- default security group has rules to allow communication between instances
-  assigned to this group
+- default security group allows communication between network interfaces and instances assigned to this group
+- actual inbound rule has it's own security group id with allow all protocol / range
+
+## Custom Security Group
+
 - manually created Security Groups DO NOT have this rule and it must be added
   explicitly in order for instances to communicate with another Security Group

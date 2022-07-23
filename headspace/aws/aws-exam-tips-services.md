@@ -1,16 +1,5 @@
 # AWS EXAM TIPS SERVICES
 
-## IAM
-
-- PowerUserAccess = AdministrativeAcess - IAM
-- least privilege means NO admin access policy
-
-## Cross Account Roles
-
-- remember that the CROSS account creates the role and trusts the other account
-- NO aws account can create a role in its own IAM to control another AWS account
-- answers should not just mention the role but say something about ASSUMING role
-
 ## VM Import / Export
 
 - involves downtime as VMs are stopped to create OVA files
@@ -22,13 +11,6 @@
 ## SNS
 
 - PUSH model so no batching of records to Lambda
-
-## SQS
-
-- use visibility timeout to reduce chance of picking up twice
-- use `ChangeMessageVisibility` on a message with a heartbeat process to prevent re-pick up
-- visibility timeout hides message AFTER pickup
-- delay queues IMMEDIATELY hides message for period of time
 
 ## Lambda
 
@@ -55,20 +37,23 @@
 
 - for bandwidth contrained offline data transfers
 - does not support automated / accelerated online data transfers bc not the use case
+- max storage is 80 TB
 
 ## Data Lifecycle Manager
 
 - useful for managing creation, retention, deletion of EBS snapshots
 - supports automated cross-account EBS snapshots
 
-## EBS
+## VPC
 
-- stored in S3 but NOT visible to you
+default security group has rule to allow all inbound to itself for network interfaces / instances
+launch config instance tenancy overrides vpc instance tenancy
 
-## SnowBall Edge
+## RDS Replication
 
-- max storage is 80 TB
+Multi-AZ: Synchronous
+Replica: Asynchronous
 
-## Database Migration Service
+## Aurora Replication
 
-- have to manage an EC2 instance for replication!!
+multi-AZ AND Replica are Asynchronous!
