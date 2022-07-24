@@ -4,17 +4,9 @@
 
 - involves downtime as VMs are stopped to create OVA files
 
-## SMS
+## Server Migration Service (SMS) now under Application Migration Service
 
 - incremental backups so can minimize downtime on server migrations
-
-## SNS
-
-- PUSH model so no batching of records to Lambda
-
-## Lambda
-
-- use reserved concurrency limit processing speed
 
 ## Storage Gateway Volumes
 
@@ -23,6 +15,7 @@
 ## OpsWorks
 
 - cannot be used for automating patching!
+- Replatform strategy
 
 ## Transfer Family
 
@@ -38,22 +31,39 @@
 - for bandwidth contrained offline data transfers
 - does not support automated / accelerated online data transfers bc not the use case
 - max storage is 80 TB
+- good for TB to Petabytes (PB) of data
+
+## Snowmobile
+
+- EXABYTES of data
 
 ## Data Lifecycle Manager
 
 - useful for managing creation, retention, deletion of EBS snapshots
 - supports automated cross-account EBS snapshots
 
-## VPC
-
-default security group has rule to allow all inbound to itself for network interfaces / instances
-launch config instance tenancy overrides vpc instance tenancy
-
-## RDS Replication
-
-Multi-AZ: Synchronous
-Replica: Asynchronous
-
 ## Aurora Replication
 
 multi-AZ AND Replica are Asynchronous!
+
+## Redshift
+
+- You select node(s) and Redshift manages the underlying EC2 instances!
+- scaling is managed for you
+
+## CodeDeploy
+
+- pre and post traffic test functions help detect problems before deployment is completed
+
+## EFS
+
+- can be mounted to on-premise over DX or VPN
+- cost is $0.30 per GB-month
+
+## Direct Connect (DX)
+
+- if encryption needed, use DX Plus VPN to get IPSec
+
+## Global Accelerator
+
+- avoids DNS caching issues

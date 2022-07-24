@@ -14,6 +14,7 @@ user initiated manual backups that survive after RDS deletion
 
 - manual snaphots can be shared with up to 20 aws accounts
 - encryped snapshots CANNOT be shared if created with default KMS key of AWS Account
+- automatic snapshots CANNOT be shared with other AWS Accounts
 
 ## Recommendations
 

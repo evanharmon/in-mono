@@ -9,3 +9,4 @@ lift-and-shift
 ## Features
 
 - no application code is changed
+- no cloud optimizations

@@ -23,6 +23,18 @@ load streaming data from producers, transforms, and writes to destinations
 - 1 MB of data
 - CANNOT send directly to DynamoDB
 
+## Supported Sources
+
+- Kinesis Data Streams
+- Kinesis Agent
+- CloudWatch Logs
+- CloudWatch Events
+- IoT
+
+## Lambda
+
+- use reserved concurrency limit processing speed
+
 ## S3 as Source Features
 
 buffer size: 1 - 128 MB

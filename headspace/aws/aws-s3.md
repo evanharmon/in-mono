@@ -4,15 +4,12 @@
 
 - [AWS Simple Storage Service S3 Docs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
 
-## General Info
-
-Key / Value Pair
-Object based storage - not an OS or Database
-
 # Features
 
-Availability: 99.99%
-Durability: 11 9's - 99.99999999999%
+- Key / Value Pair
+- Availability: 99.99%
+- Durability: 11 9's - 99.99999999999%
+- Object based storage - not an OS or Database
 
 ## Headers
 
@@ -35,10 +32,13 @@ x-amz-security-token
 Names must be lowercase
 Universal Namespace (like DNS)
 
+## Features
+
 ## Limitations
 
 - 100 buckets by default
 - PUT limited to 0 Byte to 5GB
+- not block store, so does not support file append
 
 ## Invalid Bucket Names
 

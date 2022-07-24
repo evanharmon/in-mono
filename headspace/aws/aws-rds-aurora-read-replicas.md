@@ -12,4 +12,4 @@ note: AWS now recommends Aurora global databases instead of cross region read re
 - up to 15 read replicas
 - reader endpoint for all read replicas
 - supports cross region read replicas for entire DB
-- asynchronous replication
+- asynchronous replication on read replicas

@@ -27,6 +27,9 @@ real-time streaming ingestion service
 
 - realtime analytics
 - high frequency event data such as clickstream data
+- multiple apps consuming same stream concurrently
+- consuming same records against a few hours later
+- routing related records to same record processor (MapReduce)
 
 ## Supported AWS Service Sources
 

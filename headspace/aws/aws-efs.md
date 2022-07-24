@@ -1,4 +1,4 @@
-# AWS ELASTIC FILE SYSTEM
+# AWS ELASTIC FILE SYSTEM (EFS)
 
 ## Resources
 
@@ -7,6 +7,8 @@
 - [AWS EFS Blog Automate](https://aws.amazon.com/blogs/storage/automate-mounting-amazon-efs-file-systems-from-the-ec2-launch-instance-wizard/)
 
 ## Features
+
+- POSIX compliant
 - multi-AZ support
 - support for VPC Peering
 - supports on-premise over Direct Connect (DX) or VPN
@@ -15,6 +17,7 @@
 - can scale up to petabytes
 - supports thousands of concurrent NFS connections
 - read after write consistency
+- file locking
 
 ## Targets
 
@@ -25,6 +28,7 @@
 - Lambda
 
 ## Pricing
+
 pay per GB used
 about 3x the cost of gp2
 
@@ -37,10 +41,12 @@ file server - apply both file level and directory level permissions
 open up port 2049
 
 ## Mounting
+
 VPC: can use dns to mount to EC2
 On-premise: must use IPv4 of the ENI
 
 ## Security
+
 uses security group to control access
 
 ## Limitations

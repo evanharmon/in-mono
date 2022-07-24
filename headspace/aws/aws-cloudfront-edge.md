@@ -11,12 +11,14 @@
 lightweight for high-scale, latency-sensitive CDN customization
 
 use cases:
+
 - cache key normalization to create optimal cache key
 - header manipulation
 - URL redirects or rewrites
 - request authorization
 
 features:
+
 - only supports javascript
 - only supports viewer request / response
 - no network access
@@ -33,6 +35,7 @@ also works for doing a serverless dynamic API where lambda@edge talks to
 DynamodB for example
 
 use cases:
+
 - inspect cookies and rewrite URLs for A / B testing
 - return different objects based on User-Agent or Referer header
 - adjust response based on cookie
@@ -41,6 +44,7 @@ use cases:
 - make network calls to external resources to customize response
 
 features:
+
 - supports Node.js or Python
 - supports viewer request / response
 - supports origin request / response

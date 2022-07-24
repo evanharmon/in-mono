@@ -1,15 +1,12 @@
-# AWS CLOUD TRAIL
-
-## Summary
-
-Notes on using cloudtrail for auditing, logging
+# AWS CLOUDTRAIL
 
 ## Resources
 
-- [Receive Logs From Multiple Accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html)
-- [Turning On Cloudtrail In Multiple Accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/turn-on-cloudtrail-in-additional-accounts.html)
+- [AWS CloudTrail Docs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
+- [AWS CloudTrail Receive Logs From Multiple Accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html)
+- [AWS CloudTrail Turning On Cloudtrail In Multiple Accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/turn-on-cloudtrail-in-additional-accounts.html)
 - [S3 Server Access Logging vs CloudTrail](https://www.netskope.com/blog/aws-s3-logjam-server-access-logging-vs-object-level-logging)
-- [S3 Bucket Policy For CloudTrail Multiple Accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-set-bucket-policy-for-multiple-accounts.html)
+- [AWS CloudTrail S3 Bucket Policy For CloudTrail Multiple Accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-set-bucket-policy-for-multiple-accounts.html)
 
 ## Logging CloudTrails To Other Accounts
 

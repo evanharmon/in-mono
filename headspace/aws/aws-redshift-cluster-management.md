@@ -9,8 +9,6 @@
 - leader: query planning and result aggregation
 - computer: performs queries and passes results to leader
 
-## Nodes
-
 ### Single Node
 
 160gb

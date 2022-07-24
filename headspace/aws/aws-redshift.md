@@ -11,7 +11,7 @@ based on PostgreSQL but is OLAP analytics and data warehousing
 ## Features
 
 - massively Parallel Processing (MPP) - automatically distributes data/query
-loads across all nodes
+  loads across all nodes
 - easy to add nodes
 - RedShift chooses compression scheme based on sampling of data
 - can scale to PBs of data

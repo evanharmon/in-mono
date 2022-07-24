@@ -8,5 +8,6 @@ OLD agent, use the unified one from now on
 
 ## Limitations
 
+- less metric data than unified CloudWatch Agent
 - can only send to CloudWatch Logs
 - cannot send logs to Kinesis

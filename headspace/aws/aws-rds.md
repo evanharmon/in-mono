@@ -5,6 +5,10 @@
 - [AWS RDS Docs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html)
 - [AWS RDS VPC Scenarios](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Scenarios.html#USER_VPC.Scenario1)
 
+## Limitations
+
+- database cloning not supported
+
 ## Supported RDMB
 
 - MariaDB

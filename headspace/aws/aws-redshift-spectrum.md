@@ -10,6 +10,8 @@ query data in S3 without loading
 ## Features
 
 - supports S3 access point alias
+- data does not have to be loaded in to Redshift tables
+- resides on RedShift servers independent of your cluster
 
 ## Limitations
 

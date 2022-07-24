@@ -24,3 +24,10 @@ used to capture modifications to tables. Both modes can exist on a table
 - Kinesis Data Streams
 - Kinesis Adapter (your own app)
 - Lambda
+
+## Supported stream Record Views
+
+- KEYS_ONLY: key attributes of modified item
+- NEW_IMAGE: entire item after modifications
+- OLD_IMAGE: entire item pre-modifications
+- NEW_AND_OLD_IMAGES: both entire items
