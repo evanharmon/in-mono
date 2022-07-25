@@ -1,0 +1,38 @@
+/* FIGMA FILE LINK
+https://www.figma.com/file/dGPcL6Ym2avOt4736aHb2B/conquer-responsive-layout-week-1-final-challenge
+ */
+
+.page {
+  font-family: Roboto;
+  background: hsla(192, 36%, 21%, 1);
+  padding: 9em 7.5em;
+}
+
+.pageContainer {
+  max-width: 850px;
+  font-size: 1.35rem;
+}
+
+.introContent {
+  width: 80%;
+  color: white;
+}
+
+.introSubContent {
+  opacity: 85%;
+  font-size: 1.35rem;
+}
+
+.pageButton {
+  margin: 2em 0;
+  padding: 1em 2.5em;
+  background: hsl(184, 68%, 53%);
+  border-radius: 2rem;
+}
+
+.learnLink {
+  font-family: Roboto;
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
