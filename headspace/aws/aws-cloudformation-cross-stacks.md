@@ -3,6 +3,7 @@
 coordinate stacks with different lifecycles
 
 ## Resources
+
 - [AWS CloudFormation Cross Stack Walkthrough](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/walkthrough-crossstackref.html)
 
 ## Limitations
@@ -14,7 +15,7 @@ coordinate stacks with different lifecycles
 
 - for each AWS Account, must be unique name across region
 - value of the 'name' property cannot use functions like `Ref` or `GetAtt` that
-depend on a resource
+  depend on a resource
 
 ## Import Value
 

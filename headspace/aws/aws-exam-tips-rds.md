@@ -9,3 +9,7 @@ Replica: Asynchronous
 
 - only MANUAL snapshots are limited to share with up to 20 AWS Accounts
 - Automatic snapshots CANNOT be shared with other AWS Accounts, have to copy it over
+
+## Aurora Replication
+
+multi-AZ AND Replica are Asynchronous!

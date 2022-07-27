@@ -21,7 +21,7 @@ resilient to high traffic valume, network congestion, DDoS attacks
 ## Features
 
 - uses AWS internal network to route application
-- uses 2 Anycast to send traffic to edge locations then on to your app
+- uses 2 static IP with Anycast to send traffic to edge locations then on to your app
 - more consistent performance
 - supports IP address preservation for Application Load Balancers (ALB) and EC2 instances
 - supports IP address preservation for custom routing accelerators

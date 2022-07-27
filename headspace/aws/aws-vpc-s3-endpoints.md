@@ -2,9 +2,23 @@
 
 ## Resources
 
-- [AWS VPC S3 Endpoints Docs](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html)
-- [AWS S3 VPC Endpoint Troubleshoot](https://aws.amazon.com/premiumsupport/knowledge-center/connect-s3-vpc-endpoint/)
+- [AWS VPC S3 Gateway Endpoints Docs](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html)
+- [AWS VPC S3 Gateway Endpoint Troubleshoot](https://aws.amazon.com/premiumsupport/knowledge-center/connect-s3-vpc-endpoint/)
 - [Testing VPC Endpoint for S3 via traceroute](https://blogs.vmware.com/cloud/2017/12/04/using-aws-vpc-endpoint-access-data-s3-spark-vmware-cloud-aws-2/#:~:text=Testing%20the%20VPC%20Endpoint%20for,virtual%20machines%20in%20your%20SDDC.)
+
+## Gateway Endpoint
+
+- public traffic
+- DOES NOT allow on-premise access
+- DOES NOT allow access from another region
+- no charge
+
+## Interface Endpoint
+
+- private traffic
+- supports on-premise
+- supports access from another region via VPC Peering or Transit Gateway
+- extra billing charges
 
 ## Example Bucket Policy Limiting Access to VPC Endpoint
 

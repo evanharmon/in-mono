@@ -20,3 +20,7 @@ use for restricted access to MULTIPLE files
 
 - unlike headers, CloudFront removes cookies not on allowed Forwarding list
 - use cookies only on dynamic content caches
+
+## Custom Origins
+
+- good use case to reduce traffic spikes on website servers WITHOUT significant dev effort

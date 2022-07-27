@@ -9,8 +9,8 @@
 - [AWS EFS File System Policies](https://docs.aws.amazon.com/efs/latest/ug/create-file-system-policy.html)
 - [AWS EFS Security Groups](https://docs.aws.amazon.com/efs/latest/ug/accessing-fs-create-security-groups.html)
 
-
 ## Encryption at rest
+
 uses KMS. NOT enabled by default
 
 - can only be enabled when creating EFS
@@ -18,6 +18,7 @@ uses KMS. NOT enabled by default
 - limited to symmetric key when using KMS customer managed key
 
 ## Encryption in transit
+
 use the EFS mount helper and make sure to install and upgrade the stunnel program is installed on instance
 
 - can be enabled on mount

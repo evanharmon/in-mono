@@ -42,14 +42,11 @@
 - useful for managing creation, retention, deletion of EBS snapshots
 - supports automated cross-account EBS snapshots
 
-## Aurora Replication
-
-multi-AZ AND Replica are Asynchronous!
-
 ## Redshift
 
 - You select node(s) and Redshift manages the underlying EC2 instances!
 - scaling is managed for you
+- faster at complex queries compared to Athena
 
 ## CodeDeploy
 
@@ -59,11 +56,35 @@ multi-AZ AND Replica are Asynchronous!
 
 - can be mounted to on-premise over DX or VPN
 - cost is $0.30 per GB-month
+- great for static data across multi - AZ as immediately available
 
 ## Direct Connect (DX)
 
 - if encryption needed, use DX Plus VPN to get IPSec
+- for PCI-DSS - NO PUBLIC INTERFACES
 
 ## Global Accelerator
 
 - avoids DNS caching issues
+
+## ACM
+
+- ACM manages private key, so no exporting an ACM cert for use on EC2 instances
+
+## CloudTrail
+
+- use log file integrity validation for extra security
+- use S3 MFA delete bucket policy for additional security
+- DO NOT use bucket versioning as this would allow / encourage log file changes
+
+## Gateway Load Balancers
+
+only used to deploy virtual appliances!!!
+
+## CloudFormation
+
+- StackSets are for deploying to multiple regions / accounts!
+
+## NAT Gateway
+
+- provides static IP address (duh)

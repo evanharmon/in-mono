@@ -14,10 +14,6 @@ dependent on health checks
 
 Always use Subnets property when working in a VPC
 
-## Security Best Practice
-
-use security groups instead of IPs where possible
-
 ## End User Browser Experience
 
 Monitor the latency of the elb

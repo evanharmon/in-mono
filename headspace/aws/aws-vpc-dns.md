@@ -7,8 +7,10 @@
 
 ## Amazon VPC DNS Server
 
-Always Located Plus Two
-VPC 10.1.111.0/24 will have DNS server at 10.1.111.2
+resides at `169.254.169.253`
+Always Located Plus Two of VPC
+Example 1: VPC 10.1.111.0/24 will have DNS server at 10.1.111.2
+Example 2: VPC 10.0.0.0/16 DNS server at 10.0.0.2
 
 ## EnableDnsHostnames and EnableDnsSupport
 

@@ -12,3 +12,11 @@ outbound is OUT from on-premise
 - Outbound Resolver Endpoint: resolves TO VPC from on-premise
 - only External uses forwarding resolver rules
 - Resolver Rules decide whether to route to on-premise or to stay in VPC
+
+## Public Hosted Zones
+
+- NOT great for on-premise communication as bypasses VPN / DX
+
+## Privated Hosted Zones
+
+- good for on-premise to VPC via resolver endpoints

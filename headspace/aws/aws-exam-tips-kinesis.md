@@ -8,6 +8,12 @@
 
 - limit of 1 MB / s write to a shard
 - DynamoDB, Aurora, CloudWatch, IoT Core can send data directly Kinesis Data Streams
+- KDS CANNOT write straight to S3
+
+## KCL
+
+- only DynamoDB supported for lease table to track checkpoints!
+- each application MUST have its own DynamoDB lease table
 
 ## Kinesis Data Firehose
 

@@ -1,13 +1,25 @@
 # AWS S3 HOSTING
 
+## Resources
+
+- [AWS S3 Static Website Hosting](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html)
+
+## Limitations
+
+- AWS account owning the bucket MUST own the objects as well
+
 ## Bucket Hosting URL
-(https://s3.eu-west-2.amazonaws.com/mybucketname)
+
+https://s3.eu-west-2.amazonaws.com/mybucketname
 
 ## S3 Website URL
-(http://mybucketname.s3-website.eu-west-2.amazonaws.com)
+
+http://mybucketname.s3-website.eu-west-2.amazonaws.com
 
 ## Bucket Policy For Public Read Access
+
 Fixes 403 forbidden / access denied errors
+
 ```json
 {
   "Version": "2012-10-17",
@@ -26,20 +38,12 @@ Fixes 403 forbidden / access denied errors
     },
     {
       "Effect": "Allow",
-      "Resource": [
-      "arn:aws:s3:::codepipeline-us-east-1-*"
-      ],
-      "Action": [
-        "s3:PutObject",
-        "s3:GetObject",
-        "s3:GetObjectVersion"
-      ]
+      "Resource": ["arn:aws:s3:::codepipeline-us-east-1-*"],
+      "Action": ["s3:PutObject", "s3:GetObject", "s3:GetObjectVersion"]
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "ssm:GetParameters"
-      ],
+      "Action": ["ssm:GetParameters"],
       "Resource": "arn:aws:ssm:us-east-1:111111111111:parameter/CodeBuild/*"
     },
     {
@@ -48,10 +52,7 @@ Fixes 403 forbidden / access denied errors
         "arn:aws:s3:::www.harmonsoftwaresolutions.com-artifacts/*",
         "arn:aws:s3:::www.harmonsoftwaresolutions.com/*"
       ],
-      "Action": [
-        "s3:PutObject",
-        "s3:DeleteObject"
-      ]
+      "Action": ["s3:PutObject", "s3:DeleteObject"]
     }
   ]
 }

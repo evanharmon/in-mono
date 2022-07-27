@@ -19,6 +19,8 @@ on-premise file system mount on Amazon S3
 ## Limitations
 
 - must have IAM role or IAM user permissions
+- cache isn't updated when uploading directly to S3!
+- use `RefreshCache` if files are uploaded directly to S3 and file gateway is out of sync
 
 ## Requirements
 

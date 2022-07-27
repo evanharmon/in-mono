@@ -37,3 +37,7 @@
 
 - create new OU
 - move accounts in one at a time or in a small number to ensure users aren't locked out of services
+
+## Permission Boundaries
+
+- do not override SCPs but boundary must also allow action

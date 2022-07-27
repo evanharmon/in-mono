@@ -1,8 +1,17 @@
 # AWS EXAM TIPS S3
 
+## Bucket Creation
+
+- takes up to 24 hours for bucket to propogate to all regions - use regional endpoint!!
+- watch out for HTTP 307 - means the bucket hasn't propogated - use regional endpoint!!
+
 ## Classes
 
 - `Standard-IA`, `Intelligent-Tiering`, `One Zone-IA` is min 30 days storage cost!
+
+## Glacier Classes
+
+S3 Glacier Instant Retrieval is 68% cheaper than `Standard-IA`
 
 ## Pricing
 
@@ -21,3 +30,11 @@
 
 - notification configuration can be specific to PUT / POST / COPY / Delete
 - DOES NOT show permissions level setting of object, for that use CloudTrail / CloudWatch Event / SNS
+
+## Client File Isolation
+
+valid strategy is to create an IAM user for each client and set the IAM policy to only allow their IAM name prefix for bucket
+
+## Parallel Querying
+
+- keep the file sizes at least 128MB!!

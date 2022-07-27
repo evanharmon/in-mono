@@ -10,6 +10,9 @@
 assumes Consumer Enhanced Fan-Out
 
 - 2 MB / s reads per shard, per enhanced consumer (push)
+- only DynamoDB supported for Lease Table
+
+## Checkpoints
 
 ## Consumer Options
 
@@ -26,3 +29,13 @@ assumes Consumer Enhanced Fan-Out
 - uses leases to coordinate
 - checkpoints processed records
 - balanced shard-worker associations (leases)
+
+## Lease
+
+binding between worker and a shard
+
+## Lease Table
+
+unique DynamoDB table - only DynamodB supported!
+
+- tracks what shards are leased and processed by workers

@@ -19,10 +19,9 @@
 - can only specify one LaunchConfiguration per Auto Scaling Group
 - scaling activites are NOT simultaneously done together to replace unhealthy instances
 
-## Termination
+## Cooldown
 
-If multi az, goes in to az with most instances and
-Terminates oldest config or closest to billing hour
+- default cooldown period is 300 seconds
 
 ## Scaling / Elasticity
 

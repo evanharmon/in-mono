@@ -5,6 +5,7 @@ connect vpcs over AWS network
 ## Resources
 
 - [AWS VPC Peering](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html)
+- [AWS VPC Peering Basics](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html)
 - [AWS VPC Peering Unsupported Peering Configurations](https://docs.aws.amazon.com/vpc/latest/peering/invalid-peering-configurations.html)
 
 ## Features
@@ -19,6 +20,11 @@ connect vpcs over AWS network
 - cannot have ANY overlapping CIDRs
 - subnets have to be adjusted as well to communicate to other vpc peer
 - cannot access VPN, internet gateway, or gateway VPC endpoints that exist in the vpc peer
+
+## Inte-Region Limitations
+
+- cannot create security group rule that references a peer VPC security group
+- MUST enable DNS resolution support for private DNS hostnames of peered VPC
 
 ## No Edge to Edge Routing
 
