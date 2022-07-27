@@ -14,3 +14,11 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
 # [Optional] Uncomment if you want to install more global node packages
 # RUN su node -c "npm install -g <your-package-list -here>"
+
+# Add Exercism CLI for local code challenge work
+RUN curl -Lo /tmp/exercism.tar.gz https://github.com/exercism/cli/releases/download/v3.0.13/exercism-3.0.13-linux-x86_64.tar.gz && \
+    mkdir /tmp/exercism && \
+    tar -xf /tmp/exercism.tar.gz -C /tmp/exercism && \
+    mv /tmp/exercism/exercism /usr/local/bin && \
+    chmod +x /usr/local/bin/exercism && \
+    chown 0:0 /usr/local/bin/exercism
