@@ -2,37 +2,46 @@
 https://www.figma.com/file/dGPcL6Ym2avOt4736aHb2B/conquer-responsive-layout-week-1-final-challenge
  */
 
-.page {
+.hero {
   font-family: Roboto;
   background: hsla(192, 36%, 21%, 1);
-  padding: 9em 7.5em;
-}
-
-.pageContainer {
-  max-width: 850px;
-  font-size: 1.35rem;
-}
-
-.introContent {
-  width: 80%;
+  padding: 6.5em 0;
   color: white;
-}
-
-.introSubContent {
-  opacity: 85%;
   font-size: 1.35rem;
 }
 
-.pageButton {
-  margin: 2em 0;
-  padding: 1em 2.5em;
-  background: hsl(184, 68%, 53%);
-  border-radius: 2rem;
+.container {
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+  /* border: 2px solid yellow; */
 }
 
-.learnLink {
+.heroText {
+  width: 60%;
+  /* border: 1px solid pink; */
+}
+
+.heroText h1 {
+  font-size: 3rem;
+}
+
+.heroText p {
+  margin-bottom: 3em;
+}
+
+.btn {
+  display: inline-block;
+  background: hsl(184, 68%, 53%);
   font-family: Roboto;
   font-size: 1.35rem;
   font-weight: 700;
   text-transform: uppercase;
+  border-radius: 2em;
+  padding: 0.75em 2em;
+}
+
+.btn:hover,
+.btn:focus {
+  background: hsla(184, 68%, 53%, 0.8);
 }
