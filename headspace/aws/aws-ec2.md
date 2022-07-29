@@ -23,7 +23,7 @@ instances cannot send traffic to the internet unless:
 
 you have admin access to the underlying resources / os
 
-# Encryption
+## Encryption
 
 use third party tool (bit locker, etc) to encrypt root volume
 
@@ -33,3 +33,11 @@ use third party tool (bit locker, etc) to encrypt root volume
 ## Auto-Assign Public IP
 
 Only available on new network interface with device index eth0
+
+## Moving Instance To Different Subnet
+
+instance cannot be moved to a new subnet. Tied to eth0 interface so requires:
+
+creating AMI from old instance
+launching new instance in correct subnet
+use route53 to switch over requests to go to new instance / terminate old

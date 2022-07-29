@@ -11,3 +11,11 @@ business intelligence (BI) service to deliver insights / visualization dashboard
 
 - supports lots of AWS service data sources
 - supports many third-party data sources as well
+
+## Hook up to RDS
+
+vpc connection creates an ENI and attaches to Quicksight
+
+- create new private subnet in same vpc
+- create new SG with inbound rules for Quicksight
+- Log in Quicksight as admin and create new vpc connection

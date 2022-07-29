@@ -88,3 +88,11 @@ only used to deploy virtual appliances!!!
 ## NAT Gateway
 
 - provides static IP address (duh)
+
+## MQ
+
+remember it is NOT serverless
+
+## Inspector
+
+good for scanning for open ports / specific ports on instances

@@ -16,22 +16,26 @@ stateless firewalls that act on subnets
 
 ## Limitations
 
+- MUST be directly associated with subnets
 - only for use on CIDRs
 - do not affect traffic on CIDR block 169.254.0.0/16
-- can only be deleted if no subnets are associated with it
 - default network acl cannot be deleted
 - return traffic must be explicitly allowed by a rule since stateless
 
-### Best Practices
+## Caveats
+
+- can only be deleted if no subnets are associated with it
+
+## Best Practices
 
 - increment rule #'s by 100
 
-### Can Override A Security Group Rule
+## Can Override A Security Group Rule
 
 Ex. security group allows port 80 from anywhere 0.0.0.0/0. ACL denies access to
 port 80. Instance will not be able to access port 80 in/out from 0.0.0.0/0
 
-### Disassociating Subnets
+## Disassociating Subnets
 
 When you disassociate a subnet, it is re-associated with a default ACL
 

@@ -1,8 +1,8 @@
-# Typescript Types
-
-Notes on the different types and type checking in Typescript
+# TYPESCRIPT TYPES
 
 ## Resources
+
+- [Typescript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
 
 ## Single Type Invariant
 
