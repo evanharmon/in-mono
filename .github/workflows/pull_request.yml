@@ -11,6 +11,8 @@ on:
       - '*.md'
       - 'apps/**/*.md'
       - 'packages/**/*.md'
+      - 'challenges/**'
+      - 'headspace/**'
     types: [opened, ready_for_review]
 
 # Security Note: intentionally using actions that do not require a git checkout
