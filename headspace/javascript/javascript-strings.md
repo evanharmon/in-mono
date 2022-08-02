@@ -1,11 +1,5 @@
 # JAVASCRIPT STRINGS
 
-## Summary
-
-Notes on working with strings in Javascript
-
-## Resources
-
 ## Get decimal value of a string
 
 `"↵".charCodeAt(0)`
@@ -40,10 +34,7 @@ prints `"email = \"eharmon@gmail.com"\"`
 ## Reverse A String
 
 ```javascript
-const reverse = str =>
-  Array.from(str)
-    .reverse()
-    .join('')
+const reverse = str => Array.from(str).reverse().join('')
 ```
 
 ## Check File Extension

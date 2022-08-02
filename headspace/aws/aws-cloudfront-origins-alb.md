@@ -3,6 +3,7 @@
 ## Resources
 
 - [AWS CloudFront Origins Restrict access to Application Load Balancer](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/restrict-access-to-load-balancer.html)
+- [Blog Configuring CloudFront with ALB correctly](https://aws.plainenglish.io/configuring-aws-alb-with-cloudfront-you-are-probably-doing-it-wrong-4f0cbf86030d)
 
 ## Limitations
 

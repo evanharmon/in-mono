@@ -1,7 +1,5 @@
 # AWS COST EXPLORER
 
-view and analyze costs and usage
-
 ## Resources
 
 - [AWS Cost Explorer](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html)

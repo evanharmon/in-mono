@@ -1,9 +1,5 @@
 # REGULAR EXPRESSIONS
 
-## Summary
-
-Notes on using regular expressions (regex)
-
 ## Syntax
 
 ### Or
@@ -33,13 +29,11 @@ Notes on using regular expressions (regex)
 
 ### Match 0 Or More Occurrences
 
-*
-`ab*c` matches ac, abc, abbc, etc
+- `ab*c` matches ac, abc, abbc, etc
 
 ### Match 1 Or More Occurrences
 
-+
-`ab+c` matches abc, abbc, but not ac
+- `ab+c` matches abc, abbc, but not ac
 
 ### Match Exactly N Times
 

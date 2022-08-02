@@ -4,6 +4,10 @@
 
 - [Typescript Record Type](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)
 
+## Features
+
+- returns undefined if record does not contain item
+
 ## Hashmap example
 
 ```typescript

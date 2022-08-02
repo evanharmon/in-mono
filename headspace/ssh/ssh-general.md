@@ -1,6 +1,6 @@
 # SSH
 
-[AWS Guide](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
+- [AWS Guide](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
 
 ## .SSH Folder
 
