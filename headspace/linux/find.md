@@ -1,12 +1,8 @@
 # Find Command
 
-## Summary
-
-Notes on using the find command
-
 ## Resources
 
-- [Tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-find-and-locate-to-search-for-files-on-a-linux-vps)
+- [Find Tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-find-and-locate-to-search-for-files-on-a-linux-vps)
 
 ## Search for filename recursively
 

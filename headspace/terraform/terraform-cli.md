@@ -1,13 +1,9 @@
 # TERRAFORM CLI
 
-## Summary
-
-Notes on using the terraform CLI
-
 ## Resources
 
-- [Blog](https://ryaneschinger.com/blog/terraform-state-move/)
-- [TF Plan](https://www.terraform.io/docs/commands/plan.html)
+- [Terraform State Move Blog](https://ryaneschinger.com/blog/terraform-state-move/)
+- [Terraform Plan Docs](https://www.terraform.io/docs/commands/plan.html)
 
 ## State
 

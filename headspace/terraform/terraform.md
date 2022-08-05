@@ -1,21 +1,17 @@
 # TERRAFORM
 
-## Summary
-
-General notes on terraform
-
 ## Resources
 
-- [Automation](https://learn.hashicorp.com/terraform/development/running-terraform-in-automation)
+- [Terraform Getting Started](https://www.terraform.io/intro/getting-started/install.html)
+- [Terraform Automation](https://learn.hashicorp.com/terraform/development/running-terraform-in-automation)
 - [Terraform Version Manager](https://warrensbox.github.io/terraform-switcher/)
+- [Terraform AWS Provider](https://www.terraform.io/docs/providers/aws/index.html)
 
 ## Installation
 
-- [Getting Started](https://www.terraform.io/intro/getting-started/install.html)
-
 Steps:
 
-- [Download](https://www.terraform.io/downloads.html) terraform in to the
+- [Terraform Download](https://www.terraform.io/downloads.html) terraform in to the
   `$HOME/Downloads` folder
 
 - Make a directory, unzip / copy the binary
@@ -37,13 +33,9 @@ export PATH=$HOME/bin:$PATH
 brew install warrensbox/tap/tfswitch
 ```
 
-## Documentation
-
-[AWS](https://www.terraform.io/docs/providers/aws/index.html)
-
 ## Tutorials / Learning
 
-[Best Course - Learn DevOps: Infrastructure Automation With Terraform](https://www.udemy.com/learn-devops-infrastructure-automation-with-terraform/learn/v4/content)
+- [Terraform Best Course - Learn DevOps: Infrastructure Automation With Terraform](https://www.udemy.com/learn-devops-infrastructure-automation-with-terraform/learn/v4/content)
 
 ## Examples
 
@@ -54,11 +46,11 @@ brew install warrensbox/tap/tfswitch
 
 ### cidrsubnet
 
-- [Article](http://blog.itsjustcode.net/blog/2017/11/18/terraform-cidrsubnet-deconstructed/)
+- [Terraform CIDR Subnet Article](http://blog.itsjustcode.net/blog/2017/11/18/terraform-cidrsubnet-deconstructed/)
 
 ### Route Table Associations
 
-- [Count](https://stackoverflow.com/questions/51739482/terraform-how-to-associate-multiple-subnet-to-route-table)
+- [Terraform Count](https://stackoverflow.com/questions/51739482/terraform-how-to-associate-multiple-subnet-to-route-table)
 
 ### Tags For Autoscaling Groups
 

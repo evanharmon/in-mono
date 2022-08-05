@@ -1,16 +1,12 @@
 # TERRAFORM RECIPES
 
-## Summary
-
-Delicious
-
 ## Resources
 
-- [v12 Changes](https://www.hashicorp.com/blog/hashicorp-terraform-0-12-preview-for-and-for-each/)
+- [Terraform v12 Changes](https://www.hashicorp.com/blog/hashicorp-terraform-0-12-preview-for-and-for-each/)
 
 ### Get AWS Account ID
 
-- [Doc](https://www.terraform.io/docs/providers/aws/d/caller_identity.html)
+- [Terraform AWS Caller Identity](https://www.terraform.io/docs/providers/aws/d/caller_identity.html)
 
 ```hcl
 data "aws_caller_identity" {}

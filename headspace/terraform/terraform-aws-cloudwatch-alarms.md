@@ -1,12 +1,8 @@
 # TERRAFORM AWS CLOUDWATCH ALARMS
 
-## Summary
-
-Notes on using terraform with AWS Cloudwatch Alarms
-
 ## Resources
 
-- [Resource Docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm#datapoints_to_alarm)
+- [Terraform CloudWatch Alarm Resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm#datapoints_to_alarm)
 
 ### SQS Queue Alarm
 

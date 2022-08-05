@@ -12,3 +12,7 @@
 ## Static IP Address
 
 if a static IP address is a requirement, setup an NLB for the static IP, then hook it up to an ALB
+
+## Network Load Balancer (NLB)
+
+do not do termination (wrong layer for that anyways)

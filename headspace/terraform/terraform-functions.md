@@ -6,7 +6,7 @@ Notes on using functions in terraform templates
 
 ## Resources
 
-- [Docs](https://www.terraform.io/docs/configuration/functions.html)
+- [Terraform Function Docs](https://www.terraform.io/docs/configuration/functions.html)
 
 ## Grab First Element
 

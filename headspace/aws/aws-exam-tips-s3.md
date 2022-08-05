@@ -38,3 +38,15 @@ valid strategy is to create an IAM user for each client and set the IAM policy t
 ## Parallel Querying
 
 - keep the file sizes at least 128MB!!
+
+## Access Points
+
+- used for separate permissions per accessor
+- separate DNS and separate bucket policy
+- helpful to avoid complex s3 bucket policy
+
+## Cross Account Access Point to Shared S3 Bucket
+
+- create vpc gateway endpoint in Account A
+- create vpc access point in Account B where s3 bucket lives
+- point vpc gateway endpoint in Account A to vpc access point in Account B

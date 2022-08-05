@@ -1,12 +1,8 @@
 # TERRAFORM BACKEND
 
-## Summary
-
-Notes on backend configuration and use in Terraform
-
 ## Assume Role With S3 Remote Backend
 
-- [Github Issue](https://github.com/hashicorp/terraform/issues/13690)
+- [Terraform S3 Backend Github Issue](https://github.com/hashicorp/terraform/issues/13690)
 
 ```hcl
 terraform {

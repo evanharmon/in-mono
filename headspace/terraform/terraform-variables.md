@@ -1,12 +1,8 @@
 # TERRAFORM VARIABLES
 
-## Summary
-
-Notes on using Terraform variables
-
 ## Resources
 
-- [Docs](https://www.terraform.io/docs/configuration/variables.html)
+- [Terraform Variables Docs](https://www.terraform.io/docs/configuration/variables.html)
 
 ## Variable Types
 
@@ -44,5 +40,6 @@ setting = var.feature_flags.flag1
 ```
 
 ## Sensitive Values
+
 No way to avoid printing sensitive outputs in logs. Make sure to encrypt the
 s3 backend

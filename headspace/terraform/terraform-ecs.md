@@ -1,9 +1,5 @@
 # TERRAFORM ECS
 
-## Summary
-
-Notes on using terraform with AWS ECS
-
 ## Error Decoding JSON
 
 Task definition expects a container definition like below.

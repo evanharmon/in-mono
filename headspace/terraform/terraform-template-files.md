@@ -1,9 +1,5 @@
 # TERRAFORM TEMPLATE_FILE
 
-## Summary
-
-Notes on working with the data "template_file" in Terraform
-
 ## Review Rendering
 
 ```console

@@ -1,9 +1,5 @@
 ## TERRAFORM VPNS
 
-## Summary
-
-Notes on managing AWS VPNs with terraform
-
 ## VPN Connections
 
 #### aws_vpn_connection_route

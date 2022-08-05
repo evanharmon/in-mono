@@ -1,12 +1,5 @@
 # TERRAFORM NAMING AND SORTING
 
-## Summary
-
-Naming and sorting conventions while terraforming planets in the Milky Way
-Galaxy. Or using Hashicorp's Terraform for Infrastructure as Code.
-
-## Naming
-
 ## Sorting
 
 #### Alphabetical To A Point

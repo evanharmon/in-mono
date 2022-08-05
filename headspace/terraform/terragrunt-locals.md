@@ -1,19 +1,15 @@
 # TERRAGRUNT LOCALS
 
-## Summary
-
-Notes on working with terragrunt local variables
-
 ## Resources
 
-- [Docs](https://terragrunt.gruntwork.io/docs/features/locals/)
+- [Terragrunt Docs](https://terragrunt.gruntwork.io/docs/features/locals/)
 
 ### Scope
 
 `locals` variables declared in a terragrunt `hcl` file are only available
 for reference in that single file
 
-```hc
+```hcl
 locals {
   aws_region = "us-east-1"
 }

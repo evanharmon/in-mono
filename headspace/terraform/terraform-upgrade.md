@@ -1,12 +1,8 @@
 # TERRAFORM UPGRADE
 
-## Summary
-
-Notes on upgrading terraform resources
-
 ## Resources
 
-- [Upgrade to v0.12](https://www.terraform.io/upgrade-guides/0-12.html)
+- [Terraform Upgrade to v0.12](https://www.terraform.io/upgrade-guides/0-12.html)
 
 ## Modules
 

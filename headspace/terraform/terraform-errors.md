@@ -1,9 +1,5 @@
 # TERRAFORM ERRORS
 
-## Summary
-
-Notes on common terraform errors
-
 ## `terraform init` Error Loading Modules during CI / CD
 
 You must delete the `.terraform` directory in between CI / CD stages.
@@ -12,7 +8,7 @@ You must delete the `.terraform` directory in between CI / CD stages.
 artifacts:
   # BAD BAD DO NOT COPY OVER .TERRAFORM
   files:
-    - "**/*"
+    - '**/*'
   # yamllint disable-line rule:truthy
   discard-paths: no # keep folder structure inside artifact
 ```
@@ -39,6 +35,7 @@ resource "aws_api_gateway_integration" "options" {
 ```
 
 ## Unsupported Attribute
+
 Instance data.aws_region.cross-account data could not be decoded from the
 state: unsupported attribute "current".
 

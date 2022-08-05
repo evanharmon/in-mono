@@ -1,14 +1,10 @@
 # TERRAFORM AWS IAM
 
-## Summary
-
-Notes on using terraform with AWS IAM service
-
 ## Resources
 
 ### Attach Managed Policy To Role
 
-- [SO](https://stackoverflow.com/questions/45002292/terraform-correct-way-to-attach-aws-managed-policies-to-a-role)
+- [SO Terraform Managed Policy](https://stackoverflow.com/questions/45002292/terraform-correct-way-to-attach-aws-managed-policies-to-a-role)
 
 ```hcl
 data "aws_iam_policy" "ReadOnlyAccess" {
@@ -22,7 +18,7 @@ resource "aws_iam_role_policy_attachment" "sto-readonly-role-policy-attach" {
 
 ### Potential Cause aws_iam_role Continually Updated
 
-- [GH Issue](https://github.com/hashicorp/terraform/issues/11873)
+- [Terraform GH aws_iam_role Issue](https://github.com/hashicorp/terraform/issues/11873)
 
 Multiple role policy attachments can clobber?
 
