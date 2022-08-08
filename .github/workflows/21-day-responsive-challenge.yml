@@ -5,22 +5,50 @@ on:
   push:
     branches:
       - 'main'
-      - '34-21-day-responsive-challenge-s3-ci-cd' # REMOVE BEFORE MERGE - TESTING
+      - '34-21-day-responsive-challenge-s3-ci-cd' # TODO REMOVE BEFORE MERGE - TESTING
     paths:
-      - '.github/workflows/21-day-responsive-challenge.yml' # REMOVE BEFORE MERGE - TESTING
+      - '.github/workflows/21-day-responsive-challenge.yml' # TODO REMOVE BEFORE MERGE - TESTING
       - 'apps/21-day-challenge-responsive-layouts/**'
       - '!apps/21-day-challenge-responsive-layouts/*.md'
 
 jobs:
   # uses turborepo
-  buildAndDeploy:
+  # TODO UNCOMMENT AFTER TESTING AWS CREDS
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18.4.0
+  #     - name: NPM clean install
+  #       run: npm ci
+  #     - name: Build static export using turbo.json run commands
+  #       run: npx turbo run export --filter='21-day-challenge-responsive-layouts...'
+  #     - name: Archive export directory
+  #       uses: actions/upload-artifact@v3
+  #       with: ls -la out
+  #         name: nextjs-static-export
+  #         path: ./apps/21-day-challenge-responsive-layouts/out
+
+  deploy:
     runs-on: ubuntu-latest
+    # necessary for Github OIDC
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      # - name: Download export artifact
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: nextjs-static-export
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          node-version: 18.4.0
-      - run: npm ci
-      - run: npx turbo run export --filter='21-day-challenge-responsive-layouts...'
-      - run: ls -la out
-        working-directory: ./apps/21-day-challenge-responsive-layouts
+          role-to-assume: ${{ secrets.AWS_GITHUB_ACTIONS_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Test S3 access
+        env:
+          BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET_21_DAY_CHALLENGE }}
+        run: |
+          aws s3 ls "$BUCKET_NAME"
