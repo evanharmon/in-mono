@@ -1,9 +1,5 @@
 # APT
 
-## Summary
-
-Notes on using apt with packages
-
 # Search For A Package
 
 ```console

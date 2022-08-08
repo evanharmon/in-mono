@@ -6,8 +6,8 @@ Notes on certs
 
 ## Resources
 
-- [Chain Of Trust](https://letsencrypt.org/certificates/)
-- [Best Practices](https://spaces.internet2.edu/display/InCFederation/X.509+Certificates+in+Metadata)
+- [SSL TLS Chain Of Trust](https://letsencrypt.org/certificates/)
+- [SSL TLS Best Practices](https://spaces.internet2.edu/display/InCFederation/X.509+Certificates+in+Metadata)
 
 ## Create Self Signed Keys/Cert for Metadata
 

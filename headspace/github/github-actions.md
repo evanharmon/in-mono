@@ -16,22 +16,3 @@ run in parallel by default
 used for serial tasks
 run in their own process with access to workspace and filesystem
 Changes to environment variables are NOT preserved between steps
-
-## Use env var in another workflow
-
-```yaml
-env:
-  NVMRC_NODE_VERSION: 18
-```
-
-...
-
-```yaml
-- name: Install node.js / npm
-  id: install
-  uses: actions/setup-node@v2
-  with:
-    node-version: ${{ env.NVMRC_NODE_VERSION }}
-    registry-url: https://npm.pkg.github.com/
-    scope: '@evanharmon'
-```

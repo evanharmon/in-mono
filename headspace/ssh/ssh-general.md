@@ -1,6 +1,8 @@
 # SSH
 
-- [AWS Guide](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
+## Resources
+
+- [SSH AWS Guide](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
 
 ## .SSH Folder
 
@@ -29,25 +31,4 @@ ssh -A ec2-user@54.0.0.123
 ```console
 ssh-add -c mykeypair.pem
 ssh -A ec2-user@54.0.0.123
-```
-
-## Generate Public Key from Private Key
-
-```console
-ssh-keygen -y \
-  -f ~/Downloads/mykeypair.pem \
-  > ~/Downloads/mykeypair.pub
-```
-
-## Generate Public Key for Amazon from Private Key
-
-```console
-ssh-keygen -e -m RFC4716 -f ~/Downloads/mykeypair.pem
-```
-
-## Generate User public key for SSH connections
-
-```console
-cd $HOME/.ssh
-ssh-keygen -t rsa -b 4096
 ```

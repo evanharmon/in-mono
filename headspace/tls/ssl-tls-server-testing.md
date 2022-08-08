@@ -1,2 +1,5 @@
 # SSL TLS SERVER TESTING
-[Free Tool](https://www.ssllabs.com/ssltest/)
+
+## Resources
+
+- [SSL TLS Test Free Tool](https://www.ssllabs.com/ssltest/)
