@@ -5,9 +5,7 @@ on:
   push:
     branches:
       - 'main'
-      - '34-21-day-responsive-challenge-s3-ci-cd' # TODO REMOVE BEFORE MERGE - TESTING
     paths:
-      - '.github/workflows/21-day-responsive-challenge.yml' # TODO REMOVE BEFORE MERGE - TESTING
       - 'apps/21-day-challenge-responsive-layouts/**'
       - '!apps/21-day-challenge-responsive-layouts/*.md'
 
