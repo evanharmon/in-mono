@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: '21 day responsive challenge deploy'
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'apps/21-day-challenge-responsive-layouts/**'
+      - '!apps/21-day-challenge-responsive-layouts/*.md'
+
+jobs:
+  # uses turborepo
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.4.0
+      - name: NPM clean install
+        run: npm ci
+      - name: Build static export using turbo.json run commands
+        run: npx turbo run export --filter='21-day-challenge-responsive-layouts...'
+      - name: Archive export directory
+        uses: actions/upload-artifact@v3
+        with:
+          name: nextjs-static-export
+          path: ./apps/21-day-challenge-responsive-layouts/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # necessary for Github OIDC
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Download export artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: nextjs-static-export
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.AWS_GITHUB_ACTIONS_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Sync to S3
+        env:
+          BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET_21_DAY_CHALLENGE }}
+        # run delete sync AFTER to avoid potential for intermittent outage
+        run: |
+          aws s3 sync ./ "s3://$BUCKET_NAME"
+          aws s3 sync ./ "s3://$BUCKET_NAME" --delete
