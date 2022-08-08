@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: '21 day responsive challenge deploy'
+
+on:
+  push:
+    branches:
+      - 'main'
+      - '34-21-day-responsive-challenge-s3-ci-cd' # TESTING
+    paths:
+      - 'apps/21-day-challenge-responsive-layouts/**'
+      - '!apps/21-day-challenge-responsive-layouts/*.md'
+
+jobs:
+  buildAndDeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.4.0
+      - run: npm ci
+      - run: npx turbo run export --filter='21-day-challenge-responsive-layouts...'
