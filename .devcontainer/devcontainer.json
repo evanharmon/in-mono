@@ -41,6 +41,7 @@
   "remoteUser": "node",
   "features": {
     "aws-cli": "latest",
-    "github-cli": "latest"
+    "github-cli": "latest",
+    "golang": "latest"
   }
 }
