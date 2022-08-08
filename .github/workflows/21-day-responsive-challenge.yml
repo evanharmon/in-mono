@@ -7,10 +7,12 @@ on:
       - 'main'
       - '34-21-day-responsive-challenge-s3-ci-cd' # TESTING
     paths:
+      - '.github/workflows/21-day-responsive-challenge.yml' # TESTING
       - 'apps/21-day-challenge-responsive-layouts/**'
       - '!apps/21-day-challenge-responsive-layouts/*.md'
 
 jobs:
+  # uses turborepo
   buildAndDeploy:
     runs-on: ubuntu-latest
     steps:
@@ -20,3 +22,5 @@ jobs:
           node-version: 18.4.0
       - run: npm ci
       - run: npx turbo run export --filter='21-day-challenge-responsive-layouts...'
+      - run: ls -la .out
+        working-directory: ./apps/21-day-challenge-responsive-layouts
