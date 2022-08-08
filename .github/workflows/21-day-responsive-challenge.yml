@@ -5,9 +5,9 @@ on:
   push:
     branches:
       - 'main'
-      - '34-21-day-responsive-challenge-s3-ci-cd' # TESTING
+      - '34-21-day-responsive-challenge-s3-ci-cd' # REMOVE BEFORE MERGE - TESTING
     paths:
-      - '.github/workflows/21-day-responsive-challenge.yml' # TESTING
+      - '.github/workflows/21-day-responsive-challenge.yml' # REMOVE BEFORE MERGE - TESTING
       - 'apps/21-day-challenge-responsive-layouts/**'
       - '!apps/21-day-challenge-responsive-layouts/*.md'
 
@@ -22,5 +22,5 @@ jobs:
           node-version: 18.4.0
       - run: npm ci
       - run: npx turbo run export --filter='21-day-challenge-responsive-layouts...'
-      - run: ls -la .out
+      - run: ls -la out
         working-directory: ./apps/21-day-challenge-responsive-layouts
