@@ -14,5 +14,4 @@
 
 ## Root User
 
-- [AWS Organizations accessing a member account as root user](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
-  to login as root user, password recovery must be completed
+- [AWS Organizations accessing a member account as root user](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html) to login as root user, password recovery must be completed
