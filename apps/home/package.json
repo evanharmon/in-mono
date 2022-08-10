@@ -1,22 +1,19 @@
 {
-  "name": "music",
+  "name": "home",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3003",
+    "dev": "next dev -p 3000",
     "build": "next build",
-    "export": "next export -o out",
     "start": "next start",
     "lint": "next lint",
+    "export": "next export -o out",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next && rm -rf out"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^1.8.0",
     "next": "12.2.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-transition-group": "^4.4.2",
-    "styled-components": "^5.3.5"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@evanharmon/config": "*",
@@ -24,11 +21,8 @@
     "@types/node": "18.0.5",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
-    "@types/react-transition-group": "^4.4.4",
     "eslint": "8.20.0",
-    "next-compose-plugins": "^2.2.1",
-    "next-plugin-svgr": "^1.1.1",
-    "next-transpile-modules": "^9.0.0",
+    "eslint-config-next": "12.2.2",
     "typescript": "4.7.4"
   }
 }
