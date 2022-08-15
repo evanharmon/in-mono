@@ -1,15 +1,15 @@
-# APPSYNC VTL
+# AWS APPSYNC VTL
 
 ## Resources
 
-- [Resolver VTL Programming](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-programming-guide.html)
-- [VTL Utility Functions](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-util-reference.html)
+- [AWS AppSync Resolver VTL Programming](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-programming-guide.html)
+- [AWS AppSync VTL Utility Functions](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-util-reference.html)
 
 ## Request Mapping
 
 #### Check For Input Field And Throw Error
 
-```
+```vtl
 #if( $util.isNullOrEmpty($context.args.input.id) )
   $util.error("input object missing required field: id")
 #end
@@ -36,7 +36,7 @@
 
 #### Query Partition Key And Sort / Range Key
 
-[SO](https://stackoverflow.com/questions/52580083/aws-app-sync-dynamodb-resolver-usage-with-begin-with-expression-in-sort-key-not)
+- [AWS AppSync DynamoDB Query SO](https://stackoverflow.com/questions/52580083/aws-app-sync-dynamodb-resolver-usage-with-begin-with-expression-in-sort-key-not)
 
 ```vtl
 https://stackoverflow.com/questions/52580083/aws-app-sync-dynamodb-resolver-usage-with-begin-with-expression-in-sort-key-not{
@@ -73,7 +73,7 @@ attribute_exists
 
 #### Prevent Overwriting Create Timestamp Type Field
 
-[SO](https://stackoverflow.com/questions/53666369/how-to-upsert-item-in-dynamodb-and-maintain-createdat-and-updatedat-fields)
+- [AWS AppSync DynamoDB Upsert SO](https://stackoverflow.com/questions/53666369/how-to-upsert-item-in-dynamodb-and-maintain-createdat-and-updatedat-fields)
 
 ```vtl
 // use if_not_exists()
@@ -132,7 +132,7 @@ $util.typeOf("$context.identity.groups")
 
 ## Return Null
 
-- [Appsync Directives](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-util-reference.html#aws-appsync-directives)
+- [AWS Appsync Directives](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-util-reference.html#aws-appsync-directives)
 
 ```vtl
 #if ($context.result.isEmpty()

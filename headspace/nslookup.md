@@ -1,3 +1,5 @@
+# NSLOOKUP
+
 # DNS LOOKUP / check dns resolve
 
 ```

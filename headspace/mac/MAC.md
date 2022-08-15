@@ -1,9 +1,5 @@
 # MAC OS X
 
-## Summary
-
-General notes on working with MAC OS X
-
 ### FINDER
 
 #### Show Hidden Files in Finder

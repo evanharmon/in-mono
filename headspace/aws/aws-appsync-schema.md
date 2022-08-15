@@ -1,6 +1,7 @@
 # AWS APPSYNC SCHEMA
 
 ## Refactoring
+
 ### Review Schema Use
 
 - Web Apps
@@ -29,7 +30,7 @@ Internal only API:
 
 #### ERROR Invalid Output Type
 
-- [Github Issue](https://github.com/aws-amplify/amplify-js/issues/2257)
+- [AWS Amplify AppSync Github Issue](https://github.com/aws-amplify/amplify-js/issues/2257)
   subscriptions must return the same output type as the mutation
 
 Contrived example

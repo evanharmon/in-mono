@@ -2,7 +2,7 @@
 
 ## Resources
 
-- [AWS Bottom Of Page](https://docs.aws.amazon.com/appsync/latest/devguide/configuring-resolvers.html)
+- [AWS AppSync Configuring Resolvers](https://docs.aws.amazon.com/appsync/latest/devguide/configuring-resolvers.html)
 
 ## Returning Multiple Items Via Connection
 

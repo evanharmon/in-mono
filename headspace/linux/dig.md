@@ -1,9 +1,5 @@
 # DIG
 
-## Summary
-
-Notes on using the cli tool `dig`
-
 ## Test AWS Service Discovery From EC2 Instance
 
 ```console
@@ -14,4 +10,10 @@ dig +short myapplication.local
 
 ```console
 dig trace myapplication.local
+```
+
+## Check NS records for a domain
+
+```console
+dig -t ns evanharmon.link +short
 ```

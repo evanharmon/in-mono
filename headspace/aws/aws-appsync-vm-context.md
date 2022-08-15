@@ -2,7 +2,7 @@
 
 ## Resources
 
-- [Context](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-context-reference.html)
+- [AWS AppSync Context](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-context-reference.html)
 
 ### Cognito Identity Shape
 
@@ -10,22 +10,22 @@
 
 AWS_IAM
 
-```
+```json
 {
-    "accountId" : "string",
-    "cognitoIdentityPoolId" : "string",
-    "cognitoIdentityId" : "string",
-    "sourceIp" : ["string"],
-    "username" : "string", // IAM user principal
-    "userArn" : "string",
-    "cognitoIdentityAuthType" : "string", // authenticated/unauthenticated based on the identity type
-    "cognitoIdentityAuthProvider" : "string" // the auth provider that was used to obtain the credentials
+  "accountId": "string",
+  "cognitoIdentityPoolId": "string",
+  "cognitoIdentityId": "string",
+  "sourceIp": ["string"],
+  "username": "string", // IAM user principal
+  "userArn": "string",
+  "cognitoIdentityAuthType": "string", // authenticated/unauthenticated based on the identity type
+  "cognitoIdentityAuthProvider": "string" // the auth provider that was used to obtain the credentials
 }
 ```
 
 AMAZON_COGNITO_USER_POOLS
 
-```
+```json
 {
     "sub" : "uuid",
     "issuer" : "string",
@@ -56,9 +56,7 @@ request headers must be passed thru vtl in to lambda
 ```javascript
 exports.handler = async (event, context) => {
   console.log(event.headers)
-  return {
-    id: '1234goodforme',
-  }
+  return { id: '1234goodforme' }
 }
 ```
 
@@ -66,4 +64,4 @@ exports.handler = async (event, context) => {
 
 potentially write single VTL resolver code that can handle create / update / delete
 
-- [Info](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-context-reference.html#aws-appsync-resolver-context-reference-info)
+- [AWS AppSync Context Reference Info](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-context-reference.html#aws-appsync-resolver-context-reference-info)

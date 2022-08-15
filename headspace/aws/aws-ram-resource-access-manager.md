@@ -1,16 +1,19 @@
 # AWS RESOURCE ACCESS MANAGER
 
-securely share AWS resources from one account to other accounts
-
 ## Resources
 
 - [AWS Resource Access Manager Docs](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html)
 - [AWS RAM Shareable Resource](https://docs.aws.amazon.com/ram/latest/userguide/shareable.html)
 
+## Features
+
+- securely share AWS resources from one account to other accounts
+
 ## Limitations
 
 - cannot share security groups or default VPC
 - VPC subnet sharing limited to accounts within same organization
+- only ACM Private Certs can be shared
 
 ## Benefits
 

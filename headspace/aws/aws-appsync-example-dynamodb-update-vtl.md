@@ -1,3 +1,6 @@
+# AWS APPSYNC DYNAMODB UPDATE VTL EXAMPLE
+
+```vtl
 #set($authCondition = {
   "expression": "#userId = :userId",
   "expressionNames": {},
@@ -16,14 +19,18 @@ $util.qr($condition.expressionNames.put("#id", "id"))
 "expressionValues": {}
 } )
 #end
+```
 
 ## Automatically set the updatedAt timestamp. \*\*
 
+```vtl
 $util.qr($context.args.input.put("updatedAt", $util.time.nowISO8601()))
 $util.qr(\$context.args.input.put("\_\_typename", "Collection"))
+```
 
 ## Update condition if type is @versioned \*\*
 
+```vtl
 #if( $versionedCondition )
   $util.qr($condition.put("expression", "($condition.expression) AND $versionedCondition.expression"))
   $util.qr($condition.expressionNames.putAll($versionedCondition.expressionNames))
@@ -35,24 +42,24 @@ $util.qr($condition.expressionValues.putAll($versionedCondition.expressionValues
 #set( $expAdd = {} )
 #set( $expRemove = [] )
 #foreach( $entry in $util.map.copyAndRemoveAllKeys($context.args.input, ["id"]).entrySet() )
-  #if( $util.isNull($entry.value) )
-    #set( $discard = $expRemove.add("#$entry.key") )
+#if( $util.isNull($entry.value) )
+#set( $discard = $expRemove.add("#$entry.key") )
 $util.qr($expNames.put("#$entry.key", "$entry.key"))
 #else
 $util.qr($expSet.put("#$entry.key", ":$entry.key"))
 $util.qr($expNames.put("#$entry.key", "$entry.key"))
 $util.qr($expValues.put(":$entry.key", $util.dynamodb.toDynamoDB($entry.value)))
-  #end
+#end
 #end
 #set( $expression = "" )
 #if( !$expSet.isEmpty() )
-  #set( $expression = "SET" )
+#set( $expression = "SET" )
 #foreach( $entry in $expSet.entrySet() )
 #set( $expression = "$expression $entry.key = $entry.value" )
 #if( $foreach.hasNext() )
       #set( $expression = "$expression," )
-    #end
-  #end
+#end
+#end
 #end
 #if( !$expAdd.isEmpty() )
 #set( $expression = "$expression ADD" )
@@ -60,8 +67,8 @@ $util.qr($expValues.put(":$entry.key", $util.dynamodb.toDynamoDB($entry.value)))
 #set( $expression = "$expression $entry.key $entry.value" )
 #if( $foreach.hasNext() )
       #set( $expression = "$expression," )
-    #end
-  #end
+#end
+#end
 #end
 #if( !$expRemove.isEmpty() )
 #set( $expression = "$expression REMOVE" )
@@ -78,5 +85,6 @@ $util.qr($update.put("expression", "$expression"))
   $util.qr($update.put("expressionNames", $expNames))
 #end
 #if( !$expValues.isEmpty() )
-  $util.qr($update.put("expressionValues", $expValues))
+$util.qr($update.put("expressionValues", $expValues))
 #end
+```

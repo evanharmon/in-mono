@@ -4,15 +4,19 @@ transfer an AWS managed domain from one account to another
 
 ## Resources
 
+- [AWS Route 53 Tranfer Domain to a different AWS Account](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-between-aws-accounts.html)
 - [AWS Route 53 Transfer Domain](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html)
 - [AWS route53domains CLI](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/route53domains/index.html)
 - [AWS Route 53 Migrate Hosted Zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-migrating.html)
+- [AWS Route53 Change Name Servers to new hosted zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-name-servers-glue-records.html#domain-name-servers-glue-records-adding-changing)
 
 ## Limitations
 
 - must be accepted within 3 days
 - can only be done via CLI, SDK, or APIs
 - hosted zone must be transferred separately
+- remember to update NS records on Route53 to new hosted zone!
+- takes about 2 days to update cache
 
 ## TransferDomainToAnotherAwsAccount
 
@@ -70,4 +74,4 @@ aws route53domains get-operation-detail --operation-id aaaaaaaa-aaaa-aaaa-aaaa-a
 
 very tricky process that can have bad implications - follow the instructions above!!
 
-not necessary for NS and SOA records
+not necessary for NS and SOA records - but the records on domain will still point to OLD NS records
