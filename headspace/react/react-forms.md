@@ -53,3 +53,12 @@ function myApp() {
   )
 }
 ```
+
+## Input value not clearing
+
+- remember to set the state back to `''` on submit / button click
+- use `value` prop in addition to `defaultValue`
+
+```jsx
+<input type='text' defaultValue='' onChange={onChange} value={inputVal} />
+```

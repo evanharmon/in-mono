@@ -31,10 +31,9 @@ Check out [Kevin Powell's Youtube Channel](https://www.youtube.com/kevinpowell)!
 this app is parked and not being worked on. I've had to switch to studying for AWS exams,
 code challenges, etc for my next job.
 
-## [Kent C Dodds Epic React](./apps/epic-react-exercises/)
+## [React Exercises](./apps/react-exercises/)
 
-Great course by Kent C Dodds! I'm on the `advanced react hooks` part and hope to save some examples
-for future reference.
+generic exercises in React. I can't keep them all in memory so it's a good reference.
 
 ## Running `./apps`
 
