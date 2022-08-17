@@ -22,6 +22,10 @@ function WeatherDashboard() {
     setZipcodes(prevState => [...prevState, inputVal])
   }
 
+  function removeZip(zipcode: string) {
+    setZipcodes(prevState => prevState.filter(i => i !== zipcode))
+  }
+
   return (
     <>
       <div>
@@ -35,7 +39,10 @@ function WeatherDashboard() {
         <ul>
           {zipcodes.map(zip => (
             <>
-              <li>{zip}</li>
+              <li>
+                <p>{zip}</p>
+                <button onClick={() => removeZip(zip)}>remove</button>
+              </li>
             </>
           ))}
         </ul>
