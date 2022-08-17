@@ -1,11 +1,14 @@
 import { ChangeEvent, useState } from 'react'
 
-/*
-  Step 1 Basic UI
-    - [x] show zip codes
-    - [x] user can add a zip code
-    - [x] user can remove a zip code
+/* Step 1 Basic UI
+  - [x] show zip codes
+  - [x] user can add a zip code
+  - [x] user can remove a zip code
 */
+
+/* Step 2 Integrate API
+  - [ ] fetch and store data for all zip codes
+ */
 
 function WeatherDashboard() {
   const [zipcodes, setZipcodes] = useState<Array<string>>(['29464', '12112'])

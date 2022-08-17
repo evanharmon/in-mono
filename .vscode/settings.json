@@ -21,6 +21,7 @@
     "typescript": "typescriptreact"
   },
   "emmet.triggerExpansionOnTab": true,
+  "emmet.showSuggestionsAsSnippets": true,
   "reactSnippets.settings.importReactOnTop": false,
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
