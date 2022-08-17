@@ -21,7 +21,14 @@ const Home: NextPage = () => {
         <div className={styles.grid}>
           <Link href='/add-remove-zip-codes-list'>
             <a className={styles.card}>
-              <h2>Add / Remove Zip Codes&rarr;</h2>
+              <h2>Add / Remove Zip Codes &rarr;</h2>
+            </a>
+          </Link>
+        </div>
+        <div className={styles.grid}>
+          <Link href='/weather-dashboard'>
+            <a className={styles.card}>
+              <h2>Weather Dashboard &rarr;</h2>
             </a>
           </Link>
         </div>
