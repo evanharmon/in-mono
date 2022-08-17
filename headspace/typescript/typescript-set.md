@@ -10,7 +10,13 @@
 let directions = new Set<string>()
 ```
 
-## SEt Methods
+## Set with initial values
+
+```typescript
+new Set(['96411', '06811'])
+```
+
+## Set Methods
 
 - set.add(v) – adds values into the Set.
 - set.has(v) – checks the existence of a value in the Set.
