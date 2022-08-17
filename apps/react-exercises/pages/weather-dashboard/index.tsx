@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from 'react'
   Step 1 Basic UI
     - [x] show zip codes
     - [x] user can add a zip code
-    - [ ] user can remove a zip code
+    - [x] user can remove a zip code
 */
 
 function WeatherDashboard() {
@@ -20,6 +20,7 @@ function WeatherDashboard() {
     if (zipcodes.find(i => i === inputVal)) return
 
     setZipcodes(prevState => [...prevState, inputVal])
+    setInputVal('') // clear input
   }
 
   function removeZip(zipcode: string) {
