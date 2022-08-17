@@ -1,0 +1,39 @@
+/* CSS HSL */
+/* .zipcodes {
+  --viridian-green: hsla(183, 81%, 35%, 1);
+  --teal-blue: hsla(190, 84%, 29%, 1);
+  --midnight-green-eagle-green: hsla(189, 65%, 22%, 1);
+  --rich-black-fogra-39: hsla(0, 0%, 2%, 1);
+  --timberwolf: hsla(71, 13%, 83%, 1);
+} */
+
+.container {
+  padding: 2rem 0;
+  background: hsla(183, 81%, 35%, 1);
+  margin: 0 auto;
+  border: 2px solid yellow;
+}
+
+.introContainer {
+  text-align: center;
+}
+
+.inputContainer {
+  text-align: center;
+}
+
+.zipcodesContainer {
+  text-align: center;
+}
+
+.zipcodesContainer p {
+  display: inline;
+  padding: 0 0.5em;
+}
+
+.btn {
+  margin: 1em 1em 0 0;
+  padding: 0.5em 0.5em;
+  border-radius: 0.5em;
+  background-color: #d7d9ce;
+}
