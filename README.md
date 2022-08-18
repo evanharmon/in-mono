@@ -51,6 +51,14 @@ run a single app with package dependencies
 npx turbo run dev --filter=music...
 ```
 
+## Dependencies
+
+install package to a single app
+
+```console
+npm install usehooks-ts -w=react-exercises
+```
+
 ## Deployment
 
 :construction: In the process of setting up deployment for each of the apps with:
