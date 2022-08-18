@@ -1,4 +1,5 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react'
+import { ChangeEvent, FC, useCallback, useEffect, useState } from 'react'
+import { useInterval } from 'usehooks-ts'
 import { Weather } from './types'
 
 /* Step 1 Basic UI
@@ -16,11 +17,12 @@ import { Weather } from './types'
 
 /* Step 3: Improvements
   - [x] show humidity (AQI not available on that api anymore)
-  - [ ] periodically update api data
+  - [x] periodically update api data
   - [ ] prevent double api calls with react 18 useEffect
 */
 const API_KEY = process.env.NEXT_PUBLIC_OPEN_WEATHER_API_KEY as string
 const OPEN_WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather'
+const REFRESH_INTERVAL_MS = 10000
 
 async function getWeatherDataByZip(
   zip: string,
@@ -50,34 +52,45 @@ const ZipCodeWeather: FC<ZipCodeWeatherProps> = (
   props: ZipCodeWeatherProps,
 ) => {
   const [data, setData] = useState<Weather | null>(null)
+  const [error, setError] = useState<string | null>(null)
+
+  const updateWeatherDataByZip = useCallback(async () => {
+    const data = await getWeatherDataByZip(props.zipcode)
+    if (data?.cod === '404') {
+      setError(data.message)
+      return
+    }
+    setData(data)
+  }, [props.zipcode])
+
+  useInterval(
+    updateWeatherDataByZip,
+    error === null ? REFRESH_INTERVAL_MS : null,
+  )
 
   useEffect(() => {
-    async function getData() {
-      const data = await getWeatherDataByZip(props.zipcode)
-      setData(data)
-    }
-    if (props.zipcode !== '') {
-      getData()
-    }
-
-    return () => {}
-  }, [props.zipcode])
+    updateWeatherDataByZip()
+  }, [updateWeatherDataByZip])
 
   return (
     <>
       <button onClick={() => props.removeZip(props.zipcode)}>remove</button>
-      <div>
-        <h2>Zipcode</h2>
-        <p>{props.zipcode}</p>
-        <h2>Temp</h2>
-        <p>{data?.main.temp}</p>
-        <h2>High</h2>
-        <p>{data?.main.temp_max}</p>
-        <h2>Low</h2>
-        <p>{data?.main.temp_min}</p>
-        <h2>Humidity</h2>
-        <p>{data?.main.humidity}</p>
-      </div>
+      {error === null ? (
+        <div>
+          <h2>Zipcode</h2>
+          <p>{props.zipcode}</p>
+          <h2>Temp</h2>
+          <p>{data?.main?.temp}</p>
+          <h2>High</h2>
+          <p>{data?.main?.temp_max}</p>
+          <h2>Low</h2>
+          <p>{data?.main?.temp_min}</p>
+          <h2>Humidity</h2>
+          <p>{data?.main?.humidity}</p>
+        </div>
+      ) : (
+        <p>invalid zip code</p>
+      )}
     </>
   )
 }
