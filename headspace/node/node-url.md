@@ -1,12 +1,8 @@
 # NODE URL
 
-## Summary
-
-Notes on working with URL objects in nodejs
-
 ## Resources
 
-- [URL Docs](https://nodejs.org/api/url.html)
+- [NODE.JS URL Docs](https://nodejs.org/api/url.html)
 
 ## URL Object Shape
 
@@ -40,7 +36,7 @@ const url = new URL('https://www.myapi.com/graphql')
 const url = URL.parse(res.headers.location, true)
 ```
 
-# Create URL with only Path/query/search ending
+## Create URL with only Path/query/search ending
 
 ```javascript
 const url = URL.format({ pathname: /test/deinnopt, query: { user: '555' } })

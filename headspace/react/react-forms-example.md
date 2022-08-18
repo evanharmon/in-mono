@@ -37,5 +37,3 @@ function UsernameForm({ onSubmit }) {
   )
 }
 ```
-
-## Example with useRef

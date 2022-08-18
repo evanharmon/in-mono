@@ -1,14 +1,18 @@
-# REACT HOOKS USE CALLBACK
+# REACT USEHOOKS-TS USEINTERVAL
 
 ## Resources
 
-- [React Hooks useCallback](https://reactjs.org/docs/hooks-reference.html#usecallback)
+- [USEHOOKS-TS useInterval](https://usehooks-ts.com/react-hook/use-interval)
+- [Paige's blog on polling with useInterval](https://blog.bitsrc.io/polling-in-react-using-the-useinterval-custom-hook-e2bcefda4197)
 
 ## Features
 
-- prevents unnecessary re-renders
+- can pass `null` to stop interval updates
 
-## Re-use API call with setState
+## Polling Example
+
+call an api on an interval to update
+BONUS still makes initial call to fetch api data
 
 ```tsx
 const ZipCodeWeather: FC<ZipCodeWeatherProps> = (
@@ -25,6 +29,7 @@ const ZipCodeWeather: FC<ZipCodeWeatherProps> = (
 
   useEffect(() => {
     updateWeatherDataByZip()
+    return () => {}
   }, [updateWeatherDataByZip])
 
   return <>...</>

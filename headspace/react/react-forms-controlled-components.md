@@ -1,23 +1,22 @@
-# REACT FORMS
+# REACT FORMS CONTROLLED COMPONENTS
 
 ## Resources
 
 - [React Kent C Dodds Example Form](https://kentcdodds.com/blog/understanding-reacts-key-prop)
-- [React Uncontrolled Components Docs](https://reactjs.org/docs/uncontrolled-components.html)
+- [React Controlled Components Docs](https://reactjs.org/docs/forms.html#controlled-components)
+
+## Features
+
+- form data handled by React
+- React acts as single source of truth
+
+## Limitations
+
+- DO NOT use `value` prop with controlled components
 
 ## Best Practices
 
-Use `key` prop as described in Kent C Dodds Example Form in Resources
-
-## Input Value Not Changing
-
-Use `defaultValue` instead of `value` attribute which will be overridden
-
-correct use
-
-```jsx
-<input defaultValue={name} onChange=(e => setName(e.target.value)) />
-```
+- use `key` prop as described in Kent C Dodds Example Form in Resources
 
 ## Input Losing Focus On Form
 
@@ -52,13 +51,4 @@ function myApp() {
     </form>
   )
 }
-```
-
-## Input value not clearing
-
-- remember to set the state back to `''` on submit / button click
-- use `value` prop in addition to `defaultValue`
-
-```jsx
-<input type='text' defaultValue='' onChange={onChange} value={inputVal} />
 ```

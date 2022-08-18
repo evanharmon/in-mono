@@ -1,11 +1,5 @@
 # VISUAL STUDIO CODE SHORTCUTS
 
-## Summary
-
-Shortcuts and keyboard commands in visual studio code
-
-## Resources
-
 ## Open New File In Split Window
 
 ```
@@ -13,3 +7,7 @@ Shortcuts and keyboard commands in visual studio code
 select file
 <CMD+enter>
 ```
+
+## Auto import package
+
+`⌥⌘.`
