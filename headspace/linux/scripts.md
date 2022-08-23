@@ -1,15 +1,11 @@
 # UNIX LINUX SCRIPTS
 
-## Summary
-
-Notes on writing linux scripts
-
 ## Resources
 
-- [Linter](http://www.shellcheck.net)
-- [Single Quote Double Quote In Scripts](http://mywiki.wooledge.org/Quotes)
-- [Exit Status](https://www.tldp.org/LDP/abs/html/exit-status.html)
-- [Bash One Liners](https://github.com/onceupon/Bash-Oneliner)
+- [Script Linter](http://www.shellcheck.net)
+- [Script Single Quote Double Quote](http://mywiki.wooledge.org/Quotes)
+- [Script Exit Status](https://www.tldp.org/LDP/abs/html/exit-status.html)
+- [Script Bash One Liners](https://github.com/onceupon/Bash-Oneliner)
 
 ## Safe Way To Run Bash
 
@@ -162,4 +158,28 @@ result="$(rg 'awscli')"
 if [${#result} > 0]; then
 	echo "found it"
 fi
+```
+
+## Check directory exists
+
+```bash
+if [ -d $HOME/.local ]; then
+	# something something
+fi
+```
+
+## Check file exists
+
+```bash
+if [ -f $HOME/.zshrc ]; then
+	# something something
+fi
+```
+
+## Check if environment variable is set
+
+beware don't do something like `-v $CODESPACES`
+
+```bash
+[ -v CODESPACES ];
 ```

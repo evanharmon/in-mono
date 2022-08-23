@@ -1,11 +1,5 @@
 # ZSH
 
-## Summary
-
-General notes on ZSH shell
-
-## Resources
-
 ## Idempotent Append To Path
 
 Only Append To PATH if not in path yet
@@ -16,15 +10,19 @@ if [[ ":$PATH:" != *":$HOME/.rbenv/shims:$HOME/.rbenv/bin:"* ]]; then
 fi
 ```
 
-# History Search
+## History Search
 
 CTRL+R to auto-complete search history
 ex: doc then CTRL+R
 
-# List Recent Directories
+## List Recent Directories
 
-`$ dirs -v`
+```zsh
+dirs -v
+```
 
-# Go To Home Directory
+## Go To Home Directory
 
-`$ cd`
+```zsh
+cd
+```

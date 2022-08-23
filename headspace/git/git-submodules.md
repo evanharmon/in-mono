@@ -1,9 +1,5 @@
 # GIT SUBMODULES
 
-## Summary
-
-Notes on working with git submodules
-
 ## Add Submodule To Repo
 
 ```console
@@ -38,7 +34,7 @@ cat .git/modules/mysubmodule/HEAD
 
 ## Move / Rename Submodule Folder on Mac
 
-- [SO](https://stackoverflow.com/questions/4526910/rename-a-git-submodule)
+- [Git Submodules move and rename Stack Overflow](https://stackoverflow.com/questions/4526910/rename-a-git-submodule)
 
 do a temporary move
 

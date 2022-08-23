@@ -1,12 +1,8 @@
 # NMAP
 
-## Summary
-
-Notes on using the nmap cli tool
-
 ## Resources
 
-- [Common Scan Commands](https://www.cyberciti.biz/tips/linux-scanning-network-for-open-ports.html)
+- [NMAP Common Scan Commands](https://www.cyberciti.biz/tips/linux-scanning-network-for-open-ports.html)
 
 ## Install Mac OS X
 

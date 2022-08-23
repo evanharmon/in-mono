@@ -1,11 +1,5 @@
 # UNIX LINUX SHELLS
 
-## Summary
-
-Notes on working with unix / linux shells and associated variables
-
-## Resources
-
 ## Interpreters
 
 Always declare an interpeter at top of shell scripts!
@@ -14,35 +8,13 @@ Always declare an interpeter at top of shell scripts!
 #!/usr/bin/env bash
 ```
 
-### `sh` Command
+## `sh` Command
 
 `sh` command overrides script interpreter set in a file!
 call the script directly to use the declared interpreter
 
 ```sh
 ./my-script.sh
-```
-
-## Built In Shell Variables
-
-### Check What Shell is Being Used
-
-```console
-echo $0
-```
-
-### Reference Current Working Directory
-
-Current working directory is an OS level concept
-
-```console
-${CWD}
-```
-
-### Reference Present Working Directory
-
-```console
-${PWD}
 ```
 
 ## Change Shell Preference
@@ -69,80 +41,6 @@ touch date +%Y%m%d%H%M%S`-add-fields-idptable.js`
 
 env variables inherited by child processes
 shell variables not inherited
-
-## Assign Variable
-
-```console
-a=879
-```
-
-## Assign Path To Variable
-
-```console
-Vf=./Container-Files/Vim-7.4.Tar.Bz2
-```
-
-## Assign Command To A Variable
-
-```console
-a=ls -la``
-```
-
-## Remove An Env Variable
-
-```console
-unset NODE_ENV
-```
-
-## View Shell Variables
-
-```console
-set | less
-```
-
-## View Env Variables
-
-`env`
-or
-`printenv`
-
-## Export Env Variable To Shell (Case Sensitive)
-
-```console
-export NVIM_TUI_ENABLE_TRUE_COLORS=1
-```
-
-## Single Env Variable For Command
-
-```console
-CID=$(docker ps -lq)
-```
-
-## Use Env Variable In Command Line
-
-```console
-docker stats $CID
-```
-
-## Command Substitution
-
-Pipe output to a variable
-
-```console
-var4=$(aws ec2 describe-vpcs)
-```
-
-fancy
-
-```console
-stackid=$(cat test.log|jq '.Stacks[0].StackId')
-```
-
-## Mix Shell Variables And Text In Command Line
-
-```console
-aws s3 cp testfile.txt ${BUCKET}base/{FILE}
-```
 
 ## Script Date in New Date().toJSON() Format
 
@@ -194,12 +92,6 @@ basename "$PWD"
 printf "%X\n" 1675637
 ```
 
-## Set Variable On Command Line And Use In Command
-
-```console
-PROJECT_DIR="$(basename "$PWD")"; echo "$PROJECT_DIR"
-```
-
 ## Avoid Duplicating \$PATH Entries Between Bash & Zsh
 
 ```console
@@ -210,14 +102,14 @@ fi
 
 ## Check What Shell Is Being Used
 
-helpful to check for /bin/dash on debian, etc
+check current shell
+
+```console
+echo $0
+```
+
+or for /bin/dash on debian, etc
 
 ```console
 readlink -f $(which sh)
-```
-
-## See All Environment Variables
-
-```console
-declare -p
 ```
