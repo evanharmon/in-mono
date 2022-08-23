@@ -42,7 +42,7 @@
   "features": {
     "aws-cli": "latest",
     "github-cli": "latest",
-	"golang": "latest",
-	"rust": "latest"
+    "golang": "latest",
+    "rust": "latest"
   }
 }
