@@ -1,8 +1,20 @@
 {
+  "editor.acceptSuggestionOnEnter": "on",
   "editor.autoClosingBrackets": "always",
   "editor.autoClosingQuotes": "always",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.folding": false,
   "editor.formatOnSave": true,
+  "editor.glyphMargin": false,
+  "editor.minimap.enabled": false,
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "on"
+  },
+  "editor.snippetSuggestions": "top",
+  "editor.suggest.preview": true,
+  "editor.suggest.showMethods": true,
   "editor.tabSize": 2,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
@@ -15,8 +27,13 @@
   "gitlens.statusBar.enabled": false,
   "gitlens.plusFeatures.enabled": false,
   "reactSnippets.settings.importReactOnTop": false,
+  "terminal.integrated.defaultProfile.linux": "zsh",
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "vim.smartRelativeLine": true,
+  "window.zoomLevel": 3,
+  "workbench.activityBar.visible": false,
+  "workbench.startupEditor": "none",
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   }
