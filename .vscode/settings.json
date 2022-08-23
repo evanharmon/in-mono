@@ -1,30 +1,23 @@
 {
-  "editor.tabSize": 2,
-  "breadcrumbs.enabled": false,
-  "gitlens.statusBar.enabled": false,
-  "gitlens.plusFeatures.enabled": false,
-  "liveshare.audio.startCallOnShare": true,
-  "editor.minimap.enabled": false,
   "editor.autoClosingBrackets": "always",
   "editor.autoClosingQuotes": "always",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.folding": false,
   "editor.formatOnSave": true,
-  "editor.glyphMargin": false,
-  "editor.quickSuggestions": {
-    "other": "on",
-    "comments": "off",
-    "strings": "on"
-  },
+  "editor.tabSize": 2,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
   },
-  "emmet.triggerExpansionOnTab": true,
   "emmet.showSuggestionsAsSnippets": true,
+  "emmet.triggerExpansionOnTab": true,
+  "git.autofetch": true,
+  "gitlens.showWelcomeOnInstall": false,
+  "gitlens.statusBar.enabled": false,
+  "gitlens.plusFeatures.enabled": false,
   "reactSnippets.settings.importReactOnTop": false,
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "workbench.sideBar.location": "right",
-  "workbench.activityBar.visible": false
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
 }
