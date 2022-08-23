@@ -4,11 +4,9 @@
 ARG VARIANT="18-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
-# EH: BELOW is completely wrong, this is alpine so use `apk`
 # [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive &&
-#     apt-get -y install --no-install-recommends <packages>
-RUN apk add ripgrep
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && apt-get -y install --no-install-recommends <your-package-list-here>
 
 # [Optional] Uncomment if you want to install an additional version of node using nvm
 # ARG EXTRA_NODE_VERSION=10
