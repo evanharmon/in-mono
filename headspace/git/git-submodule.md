@@ -48,3 +48,9 @@ git mv commontemp common
 ```console
 git submodule update --init --recursive
 ```
+
+## Check submodule path for errors
+
+```console
+git submodule status
+```

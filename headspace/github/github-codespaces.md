@@ -12,3 +12,7 @@
 ## Default Cargo Location
 
 `/usr/local/cargo`
+
+## Creation Log
+
+located at `/workspaces/.codespaces/.persistedshare/creation.log`
