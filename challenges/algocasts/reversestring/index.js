@@ -1,3 +1,5 @@
+// https://github.com/StephenGrider/AlgoCasts/tree/master/exercises/reversestring
+
 // attempt 1: Array.from() style
 // function reverse(s) {
 //   return Array.from(s).reverse().join('')

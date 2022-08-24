@@ -176,10 +176,20 @@ if [ -f $HOME/.zshrc ]; then
 fi
 ```
 
-## Check if environment variable is set
+## Check if environment variable is not set
 
-beware don't do something like `-v $CODESPACES`
+`-n` checks if not an empty string
 
 ```bash
-[ -v CODESPACES ];
+if [ -z "$CODESPACES" ] ; then
+fi
+```
+
+## Check if environment variable is not set
+
+`-n` checks if string is not null
+
+```bash
+if test -n "${CODESPACES+x}" ; then
+fi
 ```
