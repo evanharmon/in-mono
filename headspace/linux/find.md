@@ -14,8 +14,6 @@ find . -name "login*"
 
 ## Find by date time by Days
 
-### Access Time -atime
-
 ### Modification Time -mtime
 
 Change Time -ctime
@@ -78,4 +76,10 @@ delete
 
 ```console
 find ./folder-name -maxdepth 1 -type f -name ".env" -prune -exec rm -rf {} \;
+```
+
+## Recursively count files in a directory
+
+```console
+find . -type f | wc -l
 ```

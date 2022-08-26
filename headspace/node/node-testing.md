@@ -9,12 +9,6 @@ const errCheck = /Error/g.exec(key)
 should.exist(errCheck)
 ```
 
-## MOCHA stop early on failures
-
-```console
---bail
-```
-
 ## Run a Single Describe or It test
 
 Do not have more than one .only in your file - you'll get errors and die
@@ -55,11 +49,4 @@ should(errMsg).be.greaterThan(0)
 ## Variable Shadowing Errors
 
 Make sure object properties are set in `before()` or inside `it()`
-Ex: settings.defaultUrl
-
-## ShouldJS Check Query Param
-
-```javascript
-const url = URL.parse(res.headers.location, true)
-should(url.query).have.ownProperty('SAMLRequest')
-```
+Ex: `settings.defaultUrl`

@@ -1,22 +1,21 @@
 # JAVASCRIPT MAP
+
 Must use return or map will not be returned!
 
-## Good way to grab nested property values of an array of objects
-example: need Order.Customer.Id array
-`Orders.map(o => o.Customer.Id);`
+## Resources
 
-## Return early and break map process
-not possible to return early
+- [MDN Map Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 
-## In Browser, download scripts in parallel and execute them in order
+## Create Map
+
+```javascript
+const m = new Map()
 ```
-function inject(src) {
-  var script = document.createElement('script');
-  script.src = src;
-  // Load dynamically injected scripts async, execute them sync
-  script.async = false;
-  document.body.appendChild(script);
-}
 
-['thirdparty', 'shared', 'app'].map(getModuleSrc).forEach(inject);
+## Conditionally Increment map key value
+
+works if key not defined yet
+
+```javascript
+m.set('a', m.get('a') + 1 || 0)
 ```

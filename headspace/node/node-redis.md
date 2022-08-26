@@ -1,13 +1,9 @@
 # NODE REDIS
 
-## Summary
-
-Notes on using the redis package in node
-
 ## Resources
 
-- [Github](https://github.com/NodeRedis/node_redis)
-- [Docs](http://redis.js.org/)
+- [Nodejs Redis Github](https://github.com/NodeRedis/node_redis)
+- [Nodejs Redis Docs](http://redis.js.org/)
 
 ## Client Setup
 
@@ -27,6 +23,6 @@ const hsetAsync = promisify(client.hset).bind(client)
 const res = await hsetAsync(
   id,
   event.input.process.id,
-  event.input.process.status
+  event.input.process.status,
 )
 ```

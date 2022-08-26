@@ -1,6 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "test": "node --no-warnings --experimental-specifier-resolution=node test.js"
+    "test": "node --no-warnings --experimental-specifier-resolution=node test.js",
+    "test:only": "node --test-only --no-warnings --experimental-specifier-resolution=node test.js"
   }
 }
