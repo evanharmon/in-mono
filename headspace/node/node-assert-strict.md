@@ -10,3 +10,7 @@
 const res = palindrome('aba')
 assert.ok(res)
 ```
+
+## strict
+
+without `strict` `1 === '1'` is true
