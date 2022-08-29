@@ -40,6 +40,6 @@ function reverseInt(n) {
 // from terminal, run `node inspect index.js`
 // uncomment direct function call below
 // console.log(reverseInt(1234))
-reverseInt(1234)
+// reverseInt(1234)
 
 export default reverseInt
