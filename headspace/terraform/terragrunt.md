@@ -1,9 +1,5 @@
 # TERRAGRUNT
 
-## Summary
-
-Notes on working with terragrunt
-
 ## Resources
 
 - [Terragrunt Docs](https://terragrunt.gruntwork.io/docs)
