@@ -1,5 +1,12 @@
 # CODE CHALLENGES RECURSION
 
+## Tips
+
+- what are the bare minimum info needed to represent the problem
+- give defaults to these bare minimum info
+- check the base case to ensure exit
+- call function again with some modification of arguments
+
 ## Incrementing Recursion
 
 Count UP and still exit early. console log happens AFTER recursion call
