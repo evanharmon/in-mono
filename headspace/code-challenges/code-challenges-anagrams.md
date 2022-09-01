@@ -5,7 +5,9 @@
 - consider lowercase and uppercase letters the same
 - ignore non-whitespace characters like spaces, punctuation
 
-## Character map strategy
+## Strategies
+
+### Character map
 
 do any sanitizing / cleaning copies of strings necessary
 

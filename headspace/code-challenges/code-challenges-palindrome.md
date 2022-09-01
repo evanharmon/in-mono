@@ -8,12 +8,14 @@
 
 - a one character string is still a palindrome
 
-## Simple reverse string strategy
+## Strategies
+
+### Simple reverse string
 
 - reverse string
 - iterate and compare each string
 
-## Iterator without reverse strategy
+### Iterator without reverse
 
 - iterate through string and check opposing char at end
 

@@ -1,6 +1,8 @@
 # CODE CHALLENGES ARRAY CHUNK
 
-## Strategy focusing on last of chunked array
+## Strategies
+
+### Focusing on last of chunked array
 
 adds to chunk group on every iteration
 focuses more on tracking new chunk array (chunked) instead of original array
@@ -13,7 +15,7 @@ tracks the length of the `new group array` instead maintaining a group counter
   - push new chunk in to chunked with array containing current element
 - else add current element to chunk
 
-## Strategy using slice
+### Using slice
 
 improvement as iteration goes by desired size of new chunk.
 incrementing the index by itself + size is the magic.

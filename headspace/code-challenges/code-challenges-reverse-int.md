@@ -1,6 +1,8 @@
 # CODE CHALLENGES REVERSE INT
 
-## Convert to string and reverse strategy
+## Strategies
+
+### Convert to string and reverse
 
 - check and track sign for negatives
 - reverse string

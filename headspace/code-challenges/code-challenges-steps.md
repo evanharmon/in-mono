@@ -20,14 +20,16 @@ steps(3)
 // '### '
 ```
 
-## Strategy with for loop and helpers
+## Strategies
+
+### For loop and helpers
 
 pretty simple because of string helpers
 
 - use for loop starting at 1 to iterate over input `n`
   - create repeated string with padding such as `'#'.repeat(i).padEnd(3, ' ')`
 
-## Strategy iteratively build staircase
+### Iteratively build staircase
 
 from algocasts
 
@@ -38,7 +40,7 @@ from algocasts
     - else add space ` ` to stair string
   - console log the stair string back in row for loop
 
-## Strategy recursion
+### Recursion
 
 recursion solution doesn't increment n but instead manages
 incrementing through row parameter
@@ -48,8 +50,9 @@ default parameters to add:
 - `row = 0`
 - `stair = ''`
 
-steps:
+Base Case: `if (row === n) return`
 
-- if (row === n) then we hit the end and return
-- if stair string has length === n, then end of row
-- if stair string length <= row, add `#`, otherwise ` `
+Steps:
+
+- if `stair` string length === n, then end of row
+- if `stair` string length <= row, add `#`, otherwise ` `

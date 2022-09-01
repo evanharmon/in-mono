@@ -24,7 +24,7 @@ or alternative
     - use formulas above to calculate distance and append `#` or ` `
   - console.log `level` string
 
-## Recursion
+### Recursion
 
 recursion solution doesn't increment n but instead manages
 incrementing through row parameter

@@ -1,6 +1,8 @@
 # CODE CHALLENGES CAPITALIZE
 
-# Strategy build a new string
+## Strategies
+
+### Build a new string
 
 focus on building up a new string and checking if it's last char is a space or empty
 
@@ -11,7 +13,7 @@ focus on building up a new string and checking if it's last char is a space or e
   - if last char is empty or a space, add current character to string as uppercase
   - else add current character to return string
 
-# Strategy split string by spaces
+### Split string by spaces
 
 use of `slice` makes this easy to read
 

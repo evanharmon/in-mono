@@ -8,7 +8,9 @@ from 1 to n. But for multiples of three print
 of five print “buzz”. For numbers which are multiples
 of both three and five print “fizzbuzz”
 
-## Recursion
+## Strategies
+
+### Recursion
 
 key is to decrement until zero
 
@@ -17,7 +19,7 @@ key is to decrement until zero
 - console.log input AFTER recursion call
 - modulo checks to print correct string or input
 
-## For loop
+### For loop
 
 avoids building up a stack
 

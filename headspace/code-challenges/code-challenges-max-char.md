@@ -6,7 +6,9 @@
 - do both string A and string B have the same characters
 - does the string have any repeated characters
 
-## Hash map strategy
+## Strategies
+
+### Character map
 
 - build up hash map from string with count of occurrences
 - track maxCount value
