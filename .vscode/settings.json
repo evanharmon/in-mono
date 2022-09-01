@@ -13,6 +13,8 @@
     "strings": "on"
   },
   "editor.snippetSuggestions": "top",
+  "editor.stickyScroll.enabled": true,
+  "editor.suggest.matchOnWordStartOnly": true,
   "editor.suggest.preview": true,
   "editor.suggest.showMethods": true,
   "editor.tabSize": 2,
