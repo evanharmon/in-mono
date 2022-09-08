@@ -31,6 +31,7 @@ class Node {
 ## Breadth First Traversal Strategies
 
 good for hierarchy searches
+use whenever you see `width` type questions
 
 - starts at top and iterate left to right per children level
 - ignores sibling relationships
@@ -58,3 +59,23 @@ tries to get to the bottom of the tree as quickly as possible
   - make copy of first array `node` via `shift()`
   - add children back to front of `arr` with `unshift()`
   - call function with node as arg
+
+## Level Width
+
+## Algocast counters array with 'EOL' char
+
+maintains two separate arrays `counters` and typical `arr` of traversal
+`counters` array holds width value of each level in tree
+
+- init `counters` array to zero with `counters.push(0)`
+- init `arr` with root node
+- push in to `arr` an end of line (EOL) char `s`
+- while loop has more than one element `s` will always be there
+  - remove first element from `arr` with `shift()`
+  - if element is a node
+    - add element's children to end of `arr` with `push()`
+    - increment counter at end of `counters` array
+  - otherwise element is EOL char
+    - `push()` char back at end of `arr`
+    - add new level counter=0 at end of `arr` with `push(0)`
+- return `counters` array
