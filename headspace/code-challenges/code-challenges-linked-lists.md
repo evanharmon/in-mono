@@ -22,6 +22,12 @@ class Node {
 }
 ```
 
+## Linked List Class
+
+(not shown as quite large)
+
+- in charge of inserts and removals and managing linked nodes
+
 ## Find Midpoint Strategies
 
 ### My Slow / Fast
