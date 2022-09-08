@@ -67,3 +67,20 @@ use similar slow / fast technique. Eventually fast will catch up with slow if ci
   - advance fast to fast.next.next
   - check if slow === fast same object in memory, if yes, return true
 - return false as loop was able to exit
+
+## FromLast Strategies
+
+`fromLast(list, n)`
+
+### Algocast Slow / Fast
+
+works by setting `fast` ahead by `n`, so when last is reached, `slow` is `n` back from end
+
+initalize `slow` to head but do not increment
+initalize `fast` to head
+
+- loop over list
+  - increment `fast` ahead by `n` on first iteration
+  - increment `slow` and `fast` by 1
+  - check if `fast` is pointing at last element
+- return `slow`
