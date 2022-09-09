@@ -1,9 +1,10 @@
 {
+  "debug.javascript.autoAttachFilter": "onlyWithFlag",
   "editor.acceptSuggestionOnEnter": "on",
   "editor.autoClosingBrackets": "always",
   "editor.autoClosingQuotes": "always",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.folding": false,
+  "editor.folding": true,
   "editor.formatOnSave": true,
   "editor.glyphMargin": true,
   "editor.minimap.enabled": false,
@@ -22,8 +23,8 @@
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
   },
-  "emmet.showSuggestionsAsSnippets": true,
-  "emmet.triggerExpansionOnTab": true,
+  "emmet.showSuggestionsAsSnippets": false,
+  "emmet.triggerExpansionOnTab": false,
   "git.autofetch": true,
   "gitlens.showWelcomeOnInstall": false,
   "gitlens.statusBar.enabled": false,
@@ -34,6 +35,9 @@
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.smartRelativeLine": true,
+  "vim.sneak": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  "vim.useSystemClipboard": true,
   "window.zoomLevel": 2,
   "workbench.activityBar.visible": false,
   "workbench.sideBar.location": "right",
@@ -43,5 +47,7 @@
   },
   "[docker]": {
     "editor.defaultFormatter": null
-  }
+  },
+  "emmet.showAbbreviationSuggestions": false,
+  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly"
 }
