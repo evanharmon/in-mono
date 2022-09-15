@@ -6,7 +6,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.folding": true,
   "editor.formatOnSave": true,
-  "editor.glyphMargin": true,
+  "editor.glyphMargin": false,
   "editor.minimap.enabled": false,
   "editor.quickSuggestions": {
     "other": "on",
@@ -38,7 +38,7 @@
   "vim.sneak": true,
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "vim.useSystemClipboard": true,
-  "window.zoomLevel": 3,
+  "window.zoomLevel": 2,
   "workbench.activityBar.visible": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
