@@ -38,7 +38,7 @@
   "vim.sneak": true,
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "vim.useSystemClipboard": true,
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 3,
   "workbench.activityBar.visible": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
@@ -49,5 +49,6 @@
     "editor.defaultFormatter": null
   },
   "emmet.showAbbreviationSuggestions": false,
-  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly"
+  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
