@@ -6,7 +6,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.folding": true,
   "editor.formatOnSave": true,
-  "editor.glyphMargin": true,
+  "editor.glyphMargin": false,
   "editor.minimap.enabled": false,
   "editor.quickSuggestions": {
     "other": "on",
@@ -49,5 +49,6 @@
     "editor.defaultFormatter": null
   },
   "emmet.showAbbreviationSuggestions": false,
-  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly"
+  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

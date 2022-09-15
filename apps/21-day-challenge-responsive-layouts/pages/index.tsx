@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>21 day conquering responsive layouts </h1>
 
         <p className={styles.description}>
-          My work going through Kevin Powell's challenges
+          My work going through Kevin Powell&apos;s challenges
         </p>
 
         <div className={styles.grid}>
@@ -47,6 +47,22 @@ const Home: NextPage = () => {
           <Link href='/day05'>
             <a className={styles.card}>
               <h2>Day 5 &rarr;</h2>
+            </a>
+          </Link>
+
+          <Link href=''>
+            <a className={styles.card}>
+              <h2 style={{ opacity: '.50' }}>Day 6</h2>
+            </a>
+          </Link>
+          <Link href=''>
+            <a className={styles.card}>
+              <h2 style={{ opacity: '.50' }}>Day 7</h2>
+            </a>
+          </Link>
+          <Link href='/day08'>
+            <a className={styles.card}>
+              <h2>Day 8 &rarr;</h2>
             </a>
           </Link>
         </div>
