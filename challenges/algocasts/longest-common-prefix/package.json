@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "scripts": {
+    "test": "node --no-warnings --experimental-specifier-resolution=node test.js"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^7.5.0"
+  }
+}
