@@ -7,6 +7,9 @@
     "ms-vsliveshare.vsliveshare",
     "ms-vscode-remote.remote-containers",
     "styled-components.vscode-styled-components",
-    "vscodevim.vim"
+    "vscodevim.vim",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-mysql",
+    "mtxr.sqltools-driver-pg"
   ]
 }
