@@ -1,8 +1,4 @@
-# MYSQL
-
-## Default Port
-
-3306
+# MYSQL USER MANAGEMENT
 
 ## Log In As Root
 
@@ -23,18 +19,4 @@ mysqladmin -u root -pcurrentpassword password 'newpassword'
 ```sql
 use mysql;
 UPDATE user SET password=PASSWORD('newpassword') WHERE user='root';
-```
-
-## Copy A Database <name>
-
-```console
-mysqldump -u root <database_local> > dump.sql
-mysqladmin -u root create <new_database_name>
-mysql -u root <new_database_name> < dump.sql
-```
-
-## Show Variables Example
-
-```console
-show variables like 'char%';
 ```

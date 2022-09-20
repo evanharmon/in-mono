@@ -11,6 +11,12 @@ sudo tar -xzvf greengrass-OS-architecture-1.10.0.tar.gz -C /
 --append
 -r
 
+## Extract files to current directory
+
+```console
+tar -xf archive.tar
+```
+
 ## Extract Tar To Another Directory
 
 ```console

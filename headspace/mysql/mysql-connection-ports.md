@@ -1,5 +1,9 @@
 # MYSQL CONNECTION PORTS
 
+## Default Port
+
+3306
+
 ## Check Port
 
 ```console

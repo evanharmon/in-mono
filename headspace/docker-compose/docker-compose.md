@@ -1,16 +1,12 @@
 # DOCKER COMPOSE
 
-## Summary
+## Resources
 
-Notes on using the `docker-compose` tool
-
-## Standard YML File Name
-
-docker-compose.yml
+- [Docker Compose Docs](https://docs.docker.com/compose/)
 
 ## Use Links Instead Of Ports
 
-```YAML
+```YML
 links:
 - mysql
 - redis
@@ -18,7 +14,7 @@ links:
 
 ## Example Compose file
 
-```YAML
+```YML
 ---
 version: '3.2'
 
@@ -35,15 +31,9 @@ services:
       - "4984-4985:4984-4985”
 ```
 
-## Bash In To Compose Service
-
-```console
-$ docker-compose exec service_name bash
-```
-
 ## Environment Variables
 
-```
+```YML
 services:
   master:
     image: jenkins-master:latest
@@ -52,15 +42,9 @@ services:
       GITHUB_TOKEN: ${GITHUB_TOKEN}
 ```
 
-## Tail And Follow Logs
+## Persistent Volumes Example
 
-```console
-$ docker-compose logs --tail 50 -f hss-sync-gateway
-```
-
-## Persisent Volumes Example
-
-```YAML
+```YML
 version: '3.2'
 services:
   database:
@@ -72,12 +56,10 @@ volumes:
   db-data
 ```
 
-## Destroy Persistent Volumes
+## Expose
 
-```console
-$ docker-compose down -v
-```
+exposes ports to other containers but NOT to host
 
-## Force Exit On Container Exit
+## Ports
 
-`docker-compose up --abort-on-container-exit`
+exposes ports to HOST AND other containers
