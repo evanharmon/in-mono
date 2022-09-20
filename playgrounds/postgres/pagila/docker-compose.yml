@@ -1,0 +1,20 @@
+version: '3.8'
+
+volumes:
+  pgdata:
+    driver: local
+
+services:
+  pagila:
+    image: postgres:latest
+    container_name: pagila
+    environment:
+      POSTGRES_PASSWORD: not_a_secret_password
+      POSTGRES_USER: postgres
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/001-init.sql
+      - ./pagila-schema.sql:/docker-entrypoint-initdb.d/002-pagila-schema.sql
+      - ./pagila-data.sql:/docker-entrypoint-initdb.d/003-pagila-data.sql
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
