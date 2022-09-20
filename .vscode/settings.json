@@ -1,12 +1,17 @@
 {
+  "breadcrumbs.enabled": false,
   "debug.javascript.autoAttachFilter": "onlyWithFlag",
   "editor.acceptSuggestionOnEnter": "on",
   "editor.autoClosingBrackets": "always",
   "editor.autoClosingQuotes": "always",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.folding": true,
+  "editor.fontFamily": "'Fira Code Retina', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.fontWeight": "normal",
   "editor.formatOnSave": true,
-  "editor.glyphMargin": false,
+  "editor.glyphMargin": true,
   "editor.minimap.enabled": false,
   "editor.quickSuggestions": {
     "other": "on",
@@ -29,10 +34,11 @@
   "gitlens.showWelcomeOnInstall": false,
   "gitlens.statusBar.enabled": false,
   "gitlens.plusFeatures.enabled": false,
-  "reactSnippets.settings.importReactOnTop": false,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.fontFamily": "'Fira Code Retina', Menlo, Monaco, 'Courier New', monospace",
   "typescript.suggest.completeFunctionCalls": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.smartRelativeLine": true,
   "vim.sneak": true,
@@ -48,7 +54,20 @@
   "[docker]": {
     "editor.defaultFormatter": null
   },
-  "emmet.showAbbreviationSuggestions": false,
-  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "xprotocol"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 33060,
+      "driver": "MySQL",
+      "name": "playground",
+      "database": "my_test_db",
+      "username": "root",
+      "password": "not_a_secret_password",
+      "connectionTimeout": 30
+    }
+  ]
 }
