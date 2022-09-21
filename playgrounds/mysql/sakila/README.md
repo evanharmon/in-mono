@@ -6,10 +6,43 @@ MYSQL PLAYGROUND
 - [VSCode SQLTools Extension](https://vscode-sqltools.mteixeira.dev/)
 - [MySQL Mac Drivers Extension](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools-driver-mysql)
 
+## Download and Setup Sakila Seed
+
+```console
+./setup.sh
+```
+
 ## Start MySQL in Docker
 
 ```console
 docker-compose up
+```
+
+detached
+
+```console
+docker-compose up --detach
+```
+
+## Stop detached Docker compose
+
+```console
+docker-compose down
+```
+
+## Remove container and database volume on compose down
+
+```console
+docker-compose down -v
+```
+
+## Delete database volume manually
+
+Remove container then delete volume
+
+```console
+docker rm sakila
+docker volume rm sakila_sakiladata
 ```
 
 ## Exec in to container and run MySQL CLI
