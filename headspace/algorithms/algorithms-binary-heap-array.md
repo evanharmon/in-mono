@@ -1,7 +1,7 @@
-# ALGORITHMS - BINARY HEAP ARRAY
-(http://www.geeksforgeeks.org/binary-heap/)
+# ALGORITHMS BINARY HEAP ARRAY
 
-## functions
+## Common Methods
+
 PercolateDown
 PercolateUp
 CreateHeap
