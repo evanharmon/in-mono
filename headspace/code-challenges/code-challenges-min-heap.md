@@ -1,8 +1,4 @@
-# CODE CHALLENGES MAX HEAP
-
-## Resources
-
-- [Stackabuse Javascript Max Heap and Heapsort](https://stackabuse.com/heap-sort-in-javascript/)
+# CODE CHALLENGES MIN HEAP
 
 ## Storage
 
@@ -11,7 +7,7 @@ Heap is often stored in an array. This necessitates reordering the heap on add /
 ## Class with helpers
 
 ```js
-class MaxHeap {
+class MinHeap {
   constructor() {
     this.heap = []
   }
@@ -23,6 +19,11 @@ class MaxHeap {
   }
   rightChild(index) {
     return 2 * index + 2
+  }
+  swap(a, b) {
+    const temp = this.heap[a]
+    this.heap[a] = this.heap[b]
+    this.heap[b] = temp
   }
 }
 ```
@@ -36,14 +37,14 @@ steps:
 - append new element to end of array
 - mark last element (the new element just added) as index
 - get parent index of last element
-- while parent element exists and is less than index element
+- while parent element exists and is greater than index element
   - swap parent element and index element
 
 ## `Delete()`
 
 Element is popped off end of array and returned at end of function.
 End item of array is popped and off placed at front of array.
-Heap is reordered to move lower values to the bottom as necessary
+Heap is reordered to move higher values to the bottom as necessary
 
 steps:
 
@@ -52,12 +53,12 @@ steps:
 - set `index` to 0
 - set pointers for `leftChildIndex` and `rightChildIndex`
 - while leftChild exists and leftChild less than index element
-  OR rightChild exists and rightChild greater than index element
-  - set `max` to `leftChildIndex` as default for swap
-  - if rightChild exists AND rightChild greater than leftChild
-    - set `max` to `rightChildIndex` for swap
-  - swap `max` and `index` elements
-  - increment `index` by setting to new `max` value
-  - increment `leftChildIndex` equal to `this.leftChildIndex(max)`
-  - increment `rightChildIndex` equal to `this.rightChildIndex(max)`
+  OR rightChild exists and rightChild less than index element
+  - set `min` to `leftChildIndex` as default for swap
+  - if rightChild exists AND rightChild less than leftChild
+    - set `min` to `rightChildIndex` for swap
+  - swap `min` and `index` elements
+  - increment `index` by setting to new `min` value
+  - increment `leftChildIndex` equal to `this.leftChildIndex(min)`
+  - increment `rightChildIndex` equal to `this.rightChildIndex(min)`
 - return `item`
