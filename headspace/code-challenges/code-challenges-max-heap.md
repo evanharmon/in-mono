@@ -48,6 +48,7 @@ Heap is reordered to move lower values to the bottom as necessary
 steps:
 
 - set `item` return value using `shift()`
+- return `item` early if heap array now empty
 - pop last element off heap and add to front of heap array via `unshift()`
 - set `index` to 0
 - set pointers for `leftChildIndex` and `rightChildIndex`

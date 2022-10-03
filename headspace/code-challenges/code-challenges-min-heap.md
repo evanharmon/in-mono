@@ -36,9 +36,11 @@ steps:
 
 - append new element to end of array
 - mark last element (the new element just added) as index
-- get parent index of last element
+- get `parentindex` of last element
 - while parent element exists and is greater than index element
   - swap parent element and index element
+  - update `index` to equal `parentIndex`
+  - recalculate `parentIndex` with helper
 
 ## `Delete()`
 
@@ -49,6 +51,7 @@ Heap is reordered to move higher values to the bottom as necessary
 steps:
 
 - set `item` return value using `shift()`
+- return item early if heap array now empty
 - pop last element off heap and add to front of heap array via `unshift()`
 - set `index` to 0
 - set pointers for `leftChildIndex` and `rightChildIndex`
