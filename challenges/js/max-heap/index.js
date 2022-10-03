@@ -50,6 +50,8 @@ class MaxHeap {
   // should only allow delete from root
   delete() {
     const item = this.heap.shift()
+    if (this.heap.length === 0) return item
+
     this.heap.unshift(this.heap.pop())
     let index = 0
     let leftChildIndex = this.leftChildIndex(index)
@@ -65,7 +67,7 @@ class MaxHeap {
         this.heap[rightChildIndex] &&
         this.heap[rightChildIndex] > this.heap[leftChildIndex]
       )
-        max = this.heap[rightChildIndex]
+        max = rightChildIndex
       this.swap(max, index)
       index = max
       leftChildIndex = this.leftChildIndex(max)
@@ -76,9 +78,9 @@ class MaxHeap {
 }
 
 // DEBUGGING
-const getMaxArray = () => [50, 43, 38, 22, 39, 27, 1, 3, 12]
-const mh = new MaxHeap()
-for (const item of getMaxArray()) mh.insert(item)
-mh.delete()
+// const getMaxArray = () => [50, 43, 38, 22, 39, 27, 1, 3, 12]
+// const mh = new MaxHeap()
+// for (const item of getMaxArray()) mh.insert(item)
+// mh.delete()
 
 export default MaxHeap

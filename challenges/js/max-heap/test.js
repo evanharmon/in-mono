@@ -46,8 +46,16 @@ describe('MaxHeap: delete', () => {
   test('returns max value and reorders', () => {
     const mh = new MaxHeap()
     for (const item of getMaxArray()) mh.insert(item)
+    const beforeLn = mh.heap.length
     const result = mh.delete()
     assert.strictEqual(result, 50)
     assert.strictEqual(mh.heap[0], 43)
+    assert.strictEqual(beforeLn - 1, mh.heap.length)
+  })
+  test('emptying heap results in empty heap', () => {
+    const mh = new MaxHeap()
+    for (const item of getMaxArray()) mh.insert(item)
+    while (mh.heap.length > 0) mh.delete()
+    assert.deepStrictEqual(mh.heap, [])
   })
 })

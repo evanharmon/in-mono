@@ -45,12 +45,14 @@ describe('MinHeap: delete', () => {
   test('returns min value and reorders', () => {
     const mh = new MinHeap()
     for (const item of getMinArray()) mh.insert(item)
+    const beforeLn = mh.heap.length
     const result = mh.delete()
     assert.strictEqual(result, 1)
     assert.strictEqual(mh.heap[0], 3)
     assert.strictEqual(mh.heap[mh.heap.length - 1], 50)
+    assert.strictEqual(beforeLn - 1, mh.heap.length)
   })
-  test('emptying array results in empty heap', () => {
+  test('emptying heap results in empty heap', () => {
     const mh = new MinHeap()
     for (const item of getMinArray()) mh.insert(item)
     while (mh.heap.length > 0) mh.delete()

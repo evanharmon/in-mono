@@ -45,6 +45,7 @@ class MinHeap {
   delete() {
     // shift first element and save for return
     const item = this.heap.shift()
+    if (this.heap.length === 0) return item
     // take last element and unshift to start of heap
     this.heap.unshift(this.heap.pop())
     // set index to start of heap for traversal
