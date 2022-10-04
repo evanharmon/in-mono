@@ -1,4 +1,6 @@
-# AWS CLOUDFRONT ORIGINS S3 Bucket
+# AWS CLOUDFRONT ORIGIN ACCESS IDENTITY S3
+
+now legacy - use origin access controls instead
 
 ## Resources
 
@@ -7,5 +9,5 @@
 
 ## Private S3 Bucket
 
-provide access by creating an origin access identity
-adjust bucket policy
+- provide access by creating an origin access identity
+- adjust bucket policy

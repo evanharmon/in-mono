@@ -4,18 +4,21 @@
 
 - [Docker Compose Docs](https://docs.docker.com/compose/)
 
+## Network
+
+docker compose automatically creates and tears down a network
+
 ## Use Links Instead Of Ports
 
-```YML
+```yml
 links:
-- mysql
-- redis
+  - mysql
+  - redis
 ```
 
 ## Example Compose file
 
-```YML
----
+```yml
 version: '3.2'
 
 services:
@@ -31,31 +34,6 @@ services:
       - "4984-4985:4984-4985”
 ```
 
-## Environment Variables
-
-```YML
-services:
-  master:
-    image: jenkins-master:latest
-    environment:
-      GITHUB_USER: ${GITHUB_USER}
-      GITHUB_TOKEN: ${GITHUB_TOKEN}
-```
-
-## Persistent Volumes Example
-
-```YML
-version: '3.2'
-services:
-  database:
-    build: docker-database
-    ...
-    volumes:
-     - db-data:/data
-volumes:
-  db-data
-```
-
 ## Expose
 
 exposes ports to other containers but NOT to host
@@ -63,3 +41,19 @@ exposes ports to other containers but NOT to host
 ## Ports
 
 exposes ports to HOST AND other containers
+
+## Interactive equivalent
+
+`it` flag is equivalent to `tty` and `stdin_open` options.
+Good for react / hot reloading
+
+```yml
+react:
+  build: ./frontend
+  ports:
+    - '3000:3000'
+  volumes:
+    - ./frontend/src:/app/src
+  stdin_open: true
+  tty: true
+```

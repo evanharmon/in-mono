@@ -1,12 +1,10 @@
 # PYTHON HEX
 
-## Summary
+## Resources
 
-Notes on working with hex in python
+- [Python Hex SO how to read](https://stackoverflow.com/questions/34687516/how-to-read-binary-files-as-hex-in-python)
 
 ## Read Binary File And Print As Hex
-
-[SO](https://stackoverflow.com/questions/34687516/how-to-read-binary-files-as-hex-in-python)
 
 ```python
 import binascii

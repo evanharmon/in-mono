@@ -1,11 +1,13 @@
 # RUST DOCS
 
-## Summary
-Notes on using rust docs syntax
+## Resources
+
+- [Rust Docs SO Unresolved Example](https://stackoverflow.com/questions/31638263/unresolved-import-in-documentation-example)
 
 ## Unresolved Import In Doc Example
-[SO](https://stackoverflow.com/questions/31638263/unresolved-import-in-documentation-example)
+
 rust is adding a main like so
+
 ```rust
 fn main() {
    extern crate bignum;

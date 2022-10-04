@@ -1,4 +1,4 @@
-# SQL TABLEs
+# SQL TABLES
 
 ## Create Table
 
@@ -15,4 +15,11 @@ CREATE TABLE public.customer (
     last_update timestamp with time zone DEFAULT now(),
     active integer
 );
+```
+
+## Create Table from query
+
+```sql
+CREATE TABLE films_recent AS
+  SELECT * FROM films WHERE date_prod >= '2002-01-01';
 ```

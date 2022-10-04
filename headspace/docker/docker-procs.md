@@ -1,9 +1,5 @@
 # DOCKER PROCS
 
-## Summary
-
-Notes on working with processes inside a docker container
-
 ## List Processes
 
 ```console

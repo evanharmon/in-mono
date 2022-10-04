@@ -26,10 +26,10 @@ docker-credential-desktop executable file not found in $PATH
 
 adjust `~/.docker/config.json` and delete `credsStore` property
 
-```
+```json
 {
-	"auths": {},
-	"credsStore": "desktop",
-	"currentContext": "colima"
+  "auths": {},
+  "credsStore": "desktop",
+  "currentContext": "colima"
 }
 ```

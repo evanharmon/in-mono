@@ -1,12 +1,9 @@
 # DOCKER BUILD
 
-## Summary
-
-Notes on building docker images
-
 ## Resources
 
-- [ARG in Dockerfile FROM](https://www.jeffgeerling.com/blog/2017/use-arg-dockerfile-dynamic-image-specification)
+- [Docker Build ARG in Dockerfile FROM](https://www.jeffgeerling.com/blog/2017/use-arg-dockerfile-dynamic-image-specification)
+- [Docker Best Practices for STDIN](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#pipe-dockerfile-through-stdin)
 
 ## Build Image
 
@@ -15,8 +12,6 @@ docker build -t "neovim-docker" .
 ```
 
 ## Build Docker Image From STDIN, Local Build Context
-
-- [Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#pipe-dockerfile-through-stdin)
 
 ```bash
 docker build -t -f- . <<EOF

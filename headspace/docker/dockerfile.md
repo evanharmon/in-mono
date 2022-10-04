@@ -1,20 +1,18 @@
 # DOCKERFILE
 
-## Summary
-
-Notes on working with Dockefiles
-
 ## Resources
 
-[Docs](https://docs.docker.com/engine/reference/builder/)
-[Multistage Builds](https://docs.docker.com/develop/develop-images/multistage-build/)
-[Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+- [Dockerfile Docs](https://docs.docker.com/engine/reference/builder/)
+- [Dockerfile Multistage Builds](https://docs.docker.com/develop/develop-images/multistage-build/)
+- [Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+- [Dockerfile ENV Docs](https://docs.docker.com/engine/reference/builder/#arg)
+- [Dockerfile Args Docs](https://docs.docker.com/engine/reference/builder/#arg)
+- [Dockerfile Add Docs](https://docs.docker.com/engine/reference/builder/#add)
+- [Dockerfile Copy Docs](https://docs.docker.com/engine/reference/builder/#copy)
 
 ## Quiet Front-End no prompts
 
-```
-RUN DEBIAN_FRONTEND=noninteractive apt-get update
-```
+`RUN DEBIAN_FRONTEND=noninteractive apt-get update`
 
 ## Send Arguments to Dockerfile on Build
 
@@ -22,12 +20,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update
 docker build --build-arg userHome=$HOME .
 ```
 
-## ARG In Dockerfiles
-
-[Docs](https://docs.docker.com/engine/reference/builder/#arg)
-ENV overrides ARG
-
-#### Use Argument in DockerFile
+## Use ARG Argument in DockerFile
 
 ```
 ARG userHome
@@ -44,7 +37,6 @@ ADD $userHome/.config /home/dev
 
 ## ENV In Dockerfiles
 
-[Docs](https://docs.docker.com/engine/reference/builder/#arg)
 ENV overrides ARG
 
 #### Set Environment Variable In Dockerfile
@@ -57,7 +49,7 @@ ENV overrides ARG
 
 ## Leveraging Build Cache / COPY
 
-[Docker](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache)
+- [Dockerfile Leverage Build Cache / Copy](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache)
 
 ```
 For the ADD and COPY instructions, the contents of the file(s) in the image are
@@ -74,7 +66,9 @@ Trailing slash is considered a directory
 `COPY hss-cfg/ .hss-cfg/`
 
 ## Keep Container Running
+
 extend to a docker run with entrypoint flag
+
 ```
 FROM ubuntu:latest
 
@@ -83,15 +77,11 @@ ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 ## Extend \$PATH
 
-```
-ENV PATH="/root/go/bin:${PATH}"
-```
+`ENV PATH="/root/go/bin:${PATH}"`
 
 ## Expose Port
 
-```
-EXPOSE 8080/tcp
-```
+`EXPOSE 8080/tcp`
 
 ## Multistage Builds
 
@@ -106,14 +96,15 @@ COPY --from=bins /root/bins /root/bins
 ## Set ENV Variable From ARG
 
 ```docker
-ARG A_VARIABLE
-ENV an_env_var=$A_VARIABLE
+ARG DEFAULT_PORT
+ENV PORT $DEFAULT_PORT
 ```
 
 ## Build Dockerfile From Std In With No Build Context
 
-[Guide](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#pipe-dockerfile-through-stdin)
 can speed up builds by not using files in the directory
+
+- [Dockerfile Best Practices speed up build](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#pipe-dockerfile-through-stdin)
 
 ```console
 cat Dockerfile | docker build my-image/base:latest -
@@ -121,11 +112,9 @@ cat Dockerfile | docker build my-image/base:latest -
 
 ## Fail On Any Stage In Pipe Command
 
-```
 If you want the command to fail due to an error at any stage in the pipe, prepend set -o pipefail && to ensure that an unexpected error prevents the build from inadvertently succeeding. For example:
 
-RUN set -o pipefail && wget -O - https://some.site | wc -l > /number
-```
+`RUN set -o pipefail && wget -O - https://some.site | wc -l > /number`
 
 ## Unset ENV Variables Not To Persist In Container
 
@@ -141,8 +130,9 @@ RUN export ADMIN_USER="mark" \
 
 ## Inspect `.dockerignore` And Build Context
 
-[SO](https://stackoverflow.com/questions/43808558/docker-command-option-to-display-or-list-the-build-context)
 Note: won't show dotfiles
+
+- [SO](https://stackoverflow.com/questions/43808558/docker-command-option-to-display-or-list-the-build-context)
 
 install `ncdu`. `brew install ncdu` or `yum install -y ncdu`
 
@@ -152,9 +142,4 @@ ncdu -X .dockerignore
 
 ## Add vs Copy
 
-- [Add Docs](https://docs.docker.com/engine/reference/builder/#add)
-- [Copy Docs](https://docs.docker.com/engine/reference/builder/#copy)
-
-```
 Note: If you build using STDIN (docker build - < somefile), there is no build context, so COPY can’t be used
-```

@@ -1,7 +1,11 @@
 # PIP ENV
-[GITHUB](https://github.com/pypa/pipenv)
+
+## Resources
+
+- [Pip Env Github](https://github.com/pypa/pipenv)
 
 ## Install
+
 ```console
-$ brew install pipenv
+brew install pipenv
 ```

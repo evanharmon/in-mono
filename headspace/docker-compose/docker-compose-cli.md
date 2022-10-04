@@ -29,3 +29,9 @@ docker-compose down -v
 ```console
 docker-compose up --abort-on-container-exit
 ```
+
+## Force rebuild of dockerfiles
+
+```console
+docker-compose up --build
+```
