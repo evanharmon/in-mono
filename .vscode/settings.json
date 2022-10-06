@@ -34,6 +34,8 @@
   "gitlens.showWelcomeOnInstall": false,
   "gitlens.statusBar.enabled": false,
   "gitlens.plusFeatures.enabled": false,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.fontFamily": "'Fira Code Retina', Menlo, Monaco, 'Courier New', monospace",
@@ -56,6 +58,16 @@
   },
   "sqltools.connections": [
     {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "pagila",
+      "database": "pagila",
+      "username": "postgres",
+      "password": "not_a_secret_password"
+    },
+    {
       "mysqlOptions": {
         "authProtocol": "xprotocol"
       },
@@ -63,8 +75,8 @@
       "server": "localhost",
       "port": 33060,
       "driver": "MySQL",
-      "name": "playground",
-      "database": "my_test_db",
+      "name": "sakila",
+      "database": "sakila",
       "username": "root",
       "password": "not_a_secret_password",
       "connectionTimeout": 30

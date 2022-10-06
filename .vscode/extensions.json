@@ -4,6 +4,7 @@
     "eamodio.gitlens",
     "esbenp.prettier-vscode",
     "github.codespaces",
+    "ms-python.python",
     "ms-vsliveshare.vsliveshare",
     "ms-vscode-remote.remote-containers",
     "styled-components.vscode-styled-components",
