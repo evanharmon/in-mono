@@ -16,9 +16,9 @@ steps:
 - create private s3 bucket
 - create CloudFront distribution
 - make sure to use FULL s3 domain for bucket like `eph-music.webapp-pocs.21-day-challenge-us-east-1.s3.us-east-1.amazonaws.com`
-- add OAC permissions to S3 bucket via bucket policy
 - create Origin Access
-- update CloudFront origin to use OAC
+- add OAC permissions to S3 bucket via bucket policy
+- update CloudFront distribution origin to use OAC
 
 example read only s3 bucket policy
 

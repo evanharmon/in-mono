@@ -41,3 +41,8 @@ Arrays are known as Lists
 ## Remove specific element from list
 
 `li.remove(5)`
+
+## Sum
+
+equivalent of js `reduce`
+`sum([0,1,2])`

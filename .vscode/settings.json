@@ -1,6 +1,6 @@
 {
   "breadcrumbs.enabled": false,
-  "debug.javascript.autoAttachFilter": "onlyWithFlag",
+  "debug.javascript.autoAttachFilter": "disabled",
   "editor.acceptSuggestionOnEnter": "on",
   "editor.autoClosingBrackets": "always",
   "editor.autoClosingQuotes": "always",

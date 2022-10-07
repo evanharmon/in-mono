@@ -19,3 +19,17 @@
 ## Placeholder for future code
 
 `pass`
+
+## Global variable
+
+to use a global variable, have to explicitly tell python to do so
+
+```python
+name = 'evan'
+def get_name():
+  global name
+  name = input('Your name: ')
+
+get_name()
+print(name)
+```
