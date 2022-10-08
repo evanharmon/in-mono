@@ -2,7 +2,7 @@ import { describe, test } from 'node:test'
 import assert from 'node:assert/strict'
 import MaxHeap from './index.js'
 
-const getMaxArray = () => [50, 43, 38, 22, 39, 27, 1, 3, 12]
+const getMaxArray = () => [22, 38, 43, 39, 27, 1, 3, 12, 50]
 
 describe('MaxHeap: index helpers', () => {
   test('gets parent index from child', () => {
@@ -28,7 +28,7 @@ describe('MaxHeap: swap', () => {
   test('swap should work', () => {
     const mh = new MaxHeap()
     const arr = getMaxArray()
-    for (const item of Array.from({ length: 2 }, (v, i) => arr[i]))
+    for (const item of Array.from({ length: 2 }, (_, i) => arr[i]))
       mh.insert(item)
   })
 })
@@ -38,7 +38,6 @@ describe('MaxHeap: insert', () => {
     const mh = new MaxHeap()
     for (const item of getMaxArray()) mh.insert(item)
     assert.strictEqual(mh.heap[0], 50)
-    assert.strictEqual(mh.heap[mh.heap.length - 1], 12)
   })
 })
 
@@ -55,7 +54,13 @@ describe('MaxHeap: delete', () => {
   test('emptying heap results in empty heap', () => {
     const mh = new MaxHeap()
     for (const item of getMaxArray()) mh.insert(item)
-    while (mh.heap.length > 0) mh.delete()
+    const sortedArr = Array.from({ length: mh.heap.length }, () => mh.delete())
     assert.deepStrictEqual(mh.heap, [])
+    let priorVal = sortedArr[0]
+    for (let i = 1; i < sortedArr.length; i++) {
+      const currVal = sortedArr[i]
+      assert.ok(priorVal > currVal)
+      priorVal = currVal
+    }
   })
 })

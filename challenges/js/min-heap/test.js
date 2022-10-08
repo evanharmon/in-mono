@@ -55,7 +55,14 @@ describe('MinHeap: delete', () => {
   test('emptying heap results in empty heap', () => {
     const mh = new MinHeap()
     for (const item of getMinArray()) mh.insert(item)
-    while (mh.heap.length > 0) mh.delete()
+    const sortedArr = Array.from({ length: mh.heap.length }, () => mh.delete())
     assert.deepStrictEqual(mh.heap, [])
+    // check sorting
+    let priorVal = sortedArr[0]
+    for (let i = 1; i < sortedArr.length; i++) {
+      const currVal = sortedArr[i]
+      assert.ok(priorVal < currVal)
+      priorVal = currVal
+    }
   })
 })
