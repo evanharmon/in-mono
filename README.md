@@ -12,8 +12,11 @@ The `./headspace` folder contains tons of information from my experiences as a L
 
 ## Challenges
 
-I would much rather be doing POCs and learning new tech to help my future teammates.
-I guess I have to do `./challenges` though as well. :stuck_out_tongue_closed_eyes:
+Code challenges in various languages `./challenges`
+
+## Playgrounds
+
+`./playgrounds` docker playgrounds for various languages, frameworks, databases, etc
 
 ## [Reactified MDN WebAudio Examples](./apps/mdn-webaudio-examples/)
 
