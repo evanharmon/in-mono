@@ -46,3 +46,9 @@ Arrays are known as Lists
 
 equivalent of js `reduce`
 `sum([0,1,2])`
+
+## Unpack
+
+MUST unpack all elements in list
+
+`a, b, c = [1,2,3]`
