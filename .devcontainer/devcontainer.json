@@ -50,7 +50,7 @@
   // "forwardPorts": [],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "pipenv install pytest pytest-cov",
+  "postCreateCommand": "pipenv install pytest pytest-cov pytest-cache pytest-subtests",
 
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   // python setup uses `vscode` as remoteUser - not sure it matters

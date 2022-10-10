@@ -34,3 +34,6 @@ yarn-error.log*
 
 # Temporary directories
 .cache
+
+# PYTHON
+.pytest_cache/
