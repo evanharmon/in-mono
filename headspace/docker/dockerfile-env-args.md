@@ -11,11 +11,17 @@
 docker build --build-arg userHome=$HOME .
 ```
 
-## Use ARG Argument in DockerFile
+## Use ARG Argument
 
 ```dockerfile
 ARG userHome
 ADD $userHome/.config /home/dev
+```
+
+with default
+
+```dockerfile
+ARG VERSION=18
 ```
 
 ## ENV In Dockerfiles

@@ -1,4 +1,4 @@
-# PYTHON ARRAYS / LISTS
+# PYTHON LISTS
 
 Arrays are known as Lists
 
@@ -11,6 +11,8 @@ Arrays are known as Lists
 `print names[3:0:-1]`
 
 ## Reverse
+
+mutates
 
 `li.reverse()`
 

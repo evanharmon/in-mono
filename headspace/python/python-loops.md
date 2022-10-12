@@ -40,3 +40,23 @@ my_list = ['apple', 'banana', 'grapes', 'pear']
 for c, value in enumerate(my_list, 1):
     print(c, value)
 ```
+
+## Iterate over string
+
+```python
+number_string = str(153)
+for s in number_string:
+    print(s)
+```
+
+## While loop
+
+```python
+cnt = 0
+while number != 1:
+    cnt += 1
+    if number % 2 == 0:
+        number = number / 2
+    else:
+        number = 3 * number  + 1
+```

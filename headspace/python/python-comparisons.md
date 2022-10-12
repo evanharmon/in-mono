@@ -26,7 +26,13 @@ checks if a member, subset, or element is NOT in container
 
 ## Any
 
-`any(set((True, False, True))) // True`
+check if word has any vowels
+
+```python
+vowels = ["a", "e", "i", "o", "u", "a", "e", "i", "o", "u"]
+if any(char in vowels for char in word):
+   pass
+```
 
 ## All
 

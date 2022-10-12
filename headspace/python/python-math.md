@@ -37,3 +37,11 @@ write it the usual way `a += 1` `b -= 1`
 
 example: make sure the sum of the lengths of any two sides of a triangle are greater than or equal to third side
 `max([1,1,3]) < sum([1,1,3]) - max([1,1,3])`
+
+## Sum range of numbers
+
+sum 1 through 10
+
+```python
+sum(range(1, 11))
+```

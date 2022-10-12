@@ -1,5 +1,9 @@
 # PYTHON STRINGS
 
+## Resources
+
+- [Python string methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
+
 ## Convert
 
 ```python
@@ -33,9 +37,16 @@ c = a.join(b)
 
 ## Split String By Separator
 
+note `split` is greedy and will ignore ALL characters of the split
+
 ```python
-keyPath = "my/file/path.txt"
-print(keyPath.split("/"))
+'school'.split('o') # output: ['sch','','l']
+```
+
+split only first instance
+
+```python
+'school'.split('o',1) # output: ['sch','ol']
 ```
 
 ## Reverse string
@@ -45,23 +56,9 @@ string = "hello world"
 print string[::-1]
 ```
 
-## check if digit
-
-```python
-string = "5"
-string.isdigit()
-```
-
-## check if number
-
-```python
-num = "5"
-num.isnumeric()
-```
-
 ## Compare strings
 
-### returns index
+returns index
 
 ```python
 string = "hello world"
@@ -69,22 +66,35 @@ lookfor = "hello"
 string.find(lookfor)
 ```
 
-## Title Case
-
-`string.title()`
-
-## Check Uppercase
-
-`string.isupper()`
-
-## Switch Case
-
-`string.swapcase()`
-
-## Check if alphabet letter
-
-`string.isalpha()`
-
 ## f-strings
 
 `f'One for {name}, one for me.'`
+
+## Trim / Strip whitespace
+
+returns a copy
+
+strip left: `' hi'.lstrip()`
+strip right: `' hi'.rstrip()`
+strip left and right: `' hi '.strip()`
+
+## Substring
+
+```python
+string = "freeCodeCamp"
+print(string[0:5])
+```
+
+## Search start of string
+
+simple:
+
+```python
+'square'.startswith('sq')
+```
+
+start search at index. 1 based index argument
+
+```python
+'square'.startswith('qu', 1)
+```

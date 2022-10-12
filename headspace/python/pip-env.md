@@ -4,8 +4,14 @@
 
 - [Pip Env Github](https://github.com/pypa/pipenv)
 
-## Install
+## Install with pipx
 
 ```console
-brew install pipenv
+pipx install pipenv
+```
+
+## Use pipenv with pipx
+
+```console
+pipenv shell
 ```
