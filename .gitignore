@@ -37,3 +37,4 @@ yarn-error.log*
 
 # PYTHON
 .pytest_cache/
+__pycache__/
