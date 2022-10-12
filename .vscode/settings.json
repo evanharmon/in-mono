@@ -1,5 +1,7 @@
 {
   "breadcrumbs.enabled": false,
+  "debug.console.fontSize": 14,
+  "debug.internalConsoleOptions": "neverOpen",
   "debug.javascript.autoAttachFilter": "disabled",
   "editor.acceptSuggestionOnEnter": "on",
   "editor.autoClosingBrackets": "always",
@@ -39,6 +41,7 @@
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.fontFamily": "'Fira Code Retina', Menlo, Monaco, 'Courier New', monospace",
+  "terminal.integrated.fontSize": 14,
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.updateImportsOnFileMove.enabled": "always",
