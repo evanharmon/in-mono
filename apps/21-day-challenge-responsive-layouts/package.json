@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export -o out",
+    "export": "next export -o out/21-day-challenge",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next && rm -rf out"
   },
   "dependencies": {
