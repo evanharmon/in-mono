@@ -21,14 +21,19 @@ const withTM = require('next-transpile-modules')([
 ])
 const withSvgr = require('next-plugin-svgr')
 
-const nextConfig = withPlugins([
-  withTM({
-    reactStrictMode: true,
-    compiler: {
-      styledComponents: true,
-    },
-  }),
-  withSvgr,
-])
+const nextConfig = withPlugins(
+  [
+    withTM({
+      reactStrictMode: true,
+      compiler: {
+        styledComponents: true,
+      },
+    }),
+    withSvgr,
+  ],
+  {
+    basePath: '/21-day-challenge',
+  },
+)
 
 module.exports = nextConfig
