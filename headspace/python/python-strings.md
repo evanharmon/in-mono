@@ -4,6 +4,14 @@
 
 - [Python string methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
 
+## Declare multi-line string
+
+```python
+text = '''line one
+line two
+'''
+```
+
 ## Convert
 
 ```python
@@ -19,7 +27,7 @@ y = 'world'
 print x + y
 ```
 
-## Join strings
+## Join strings using iterable
 
 ```python
 a = "hello"
@@ -30,24 +38,6 @@ c = a.join(b)
 ## Repeat string
 
 `print x + 4`
-
-## Split string to array
-
-`sen = list("hello World")`
-
-## Split String By Separator
-
-note `split` is greedy and will ignore ALL characters of the split
-
-```python
-'school'.split('o') # output: ['sch','','l']
-```
-
-split only first instance
-
-```python
-'school'.split('o',1) # output: ['sch','ol']
-```
 
 ## Reverse string
 
@@ -70,14 +60,6 @@ string.find(lookfor)
 
 `f'One for {name}, one for me.'`
 
-## Trim / Strip whitespace
-
-returns a copy
-
-strip left: `' hi'.lstrip()`
-strip right: `' hi'.rstrip()`
-strip left and right: `' hi '.strip()`
-
 ## Substring
 
 ```python
@@ -97,4 +79,19 @@ start search at index. 1 based index argument
 
 ```python
 'square'.startswith('qu', 1)
+```
+
+## Reference char by index
+
+returns new string of course
+
+```python
+text = 'school'
+text[0] # 's'
+```
+
+## Replace chars in string
+
+```python
+'3-598-21508-8'.replace('-','') # '3598215088'
 ```

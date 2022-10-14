@@ -1,17 +1,16 @@
 # KUBERNETES SERVICES
 
-## Summary
-
-Notes on using services in Kubernetes. Services provide communication between
-pods. Deployments can create and destroy Pods dynamically, so services provide
-an abstraction known as `selectors`.
-
 ## Resources
 
-[Connecting Pods](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/)
-[Connecting Client Side / Server Side](https://kubernetes.io/docs/tasks/access-application-cluster/connecting-frontend-backend/)
-[Multi Port Support](https://kubernetes.io/docs/concepts/services-networking/service/#multi-port-services)
-[Tutorial](https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/)
+- [Kubernetes Services Docs](https://kubernetes.io/docs/concepts/services-networking/service)
+- [Kubernetes Services Connecting Pods](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/)
+- [Kubernetes Services Connecting Client Side / Server Side](https://kubernetes.io/docs/tasks/access-application-cluster/connecting-frontend-backend/)
+- [Kubernetes Services Multi Port Support](https://kubernetes.io/docs/concepts/services-networking/service/#multi-port-services)
+- [Kubernetes Services Tutorial](https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/)
+
+## Features
+
+- types: `ClusterIP`, `NodePort`, and `LoadBalancer`
 
 ## Check For DNS Addon Service
 
@@ -31,4 +30,10 @@ kubectl run curl --image=radial/busyboxplus:curl -i --tty
 
 ```console
 kubectl get ep my-nginx
+```
+
+## Delete service
+
+```console
+kubectl delete service my-app
 ```

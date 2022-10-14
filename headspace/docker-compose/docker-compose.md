@@ -2,7 +2,8 @@
 
 ## Resources
 
-- [Docker Compose Docs](https://docs.docker.com/compose/)
+- [Docker Compose docs](https://docs.docker.com/compose/)
+- [Docker Compose compose file docs](https://docs.docker.com/compose/compose-file/)
 
 ## Network
 
@@ -56,4 +57,14 @@ react:
     - ./frontend/src:/app/src
   stdin_open: true
   tty: true
+```
+
+## Keep container running
+
+```yml
+services:
+  app:
+    build:
+      context: .
+    command: sleep infinity
 ```

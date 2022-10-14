@@ -1,39 +1,41 @@
 # KUBERNETES CONFIGURATION FILES
 
-## Summary
-
-Notes on yaml configuration files for k8s
-
 ## Resources
 
-[Env Vars](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)
+- [Kubernetes Service file Docs](https://kubernetes.io/docs/concepts/services-networking/service/)
+- [Kubernetes Deployment file Docs](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+- [Kubernetes Configuration Files Env Vars](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)
+
+## Features
+
+- resources created top to bottom in config file
 
 ## Single Deployment Configuration
 
-[Example](https://raw.githubusercontent.com/mhausenblas/kbe/master/specs/pods/constraint-pod.yaml)
+- [Kubernetes Configuration Files Single Deployment Example](https://raw.githubusercontent.com/mhausenblas/kbe/master/specs/pods/constraint-pod.yaml)
 
-```YML
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
   name: constraintpod
 spec:
   containers:
-  - name: sise
-    image: mhausenblas/simpleservice:0.5.0
-    ports:
-    - containerPort: 9876
-    resources:
-      limits:
-        memory: "64Mi"
-        cpu: "500m"
+    - name: sise
+      image: mhausenblas/simpleservice:0.5.0
+      ports:
+        - containerPort: 9876
+      resources:
+        limits:
+          memory: '64Mi'
+          cpu: '500m'
 ```
 
 ## Access Denied Pulling Image
 
 If using local docker images that are pre-built, use the `imagePullPolicy: Never` setting
 
-```console
+```yaml
 spec:
   containers:
     - name: uses-local-image
@@ -43,8 +45,7 @@ spec:
 
 ## Share Local Machine Folder As Volume
 
-```console
-...
+```yaml
 spec:
   containers:
     - name: worker
@@ -56,4 +57,16 @@ spec:
     - name: awscredentials
       hostPath:
         path: /Users/myusername/.aws
+```
+
+## Store multiple objects in same file
+
+use yaml convention `---`
+
+```yaml
+apiVersion: v1
+kind: Service
+---
+apiVersion: apps/v1
+kind: Deployment
 ```

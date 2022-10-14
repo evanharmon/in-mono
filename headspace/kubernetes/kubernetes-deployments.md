@@ -1,21 +1,33 @@
 # KUBERNETES DEPLOYMENTS
 
-## Summary
-
-Notes on working with k8s deployments and associated yaml config files
-
 ## Resources
 
-[Docs](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+- [Kubernetes Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
 ## Create Deployment
+
+```console
+kubectl create deployment my-app --image=
+```
+
+## Create deployment from file
 
 ```console
 kubectl apply -f my-deployment.yaml
 ```
 
-## Check Deployments
+## check deployments
 
 ```console
 kubectl get deployments
+```
+
+## Delete deployment
+
+```console
+kubectl delete deployment my-app
+```
+
+```console
+kubectl delete -f=my-deployment.yaml
 ```

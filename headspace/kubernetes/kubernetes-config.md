@@ -1,12 +1,8 @@
 # KUBERNETES CONFIG
 
-## SUMMARY
-
-Notes on configuring kubernetes
-
 ## Resources
 
-[Docs](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
+- [Kubernetes Config Docs](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
 
 ## View Config
 
@@ -28,38 +24,38 @@ development.
 Example use case: developing inside a docker container for linux with Neovim on
 a mac which has docker community edition / k8s support turned on.
 
-~/.kube/config example with additional cluster and context
+`~/.kube/config` example with additional cluster and context
 
-```
+```yaml
 apiVersion: v1
 clusters:
-- cluster:
-    insecure-skip-tls-verify: true
-    server: https://127.0.0.1:6443
-  name: docker-desktop
-- cluster:
-    insecure-skip-tls-verify: true
-    server: https://docker.for.mac.localhost:6443
-  name: docker-for-mac
+  - cluster:
+      insecure-skip-tls-verify: true
+      server: https://127.0.0.1:6443
+    name: docker-desktop
+  - cluster:
+      insecure-skip-tls-verify: true
+      server: https://docker.for.mac.localhost:6443
+    name: docker-for-mac
 contexts:
-- context:
-    cluster: docker-desktop
-    user: docker-desktop
-  name: docker-desktop
-- context:
-    cluster: docker-desktop
-    user: docker-desktop
-  name: docker-for-desktop
-- context:
-    cluster: docker-for-mac
-    user: docker-desktop
-  name: docker-for-mac
+  - context:
+      cluster: docker-desktop
+      user: docker-desktop
+    name: docker-desktop
+  - context:
+      cluster: docker-desktop
+      user: docker-desktop
+    name: docker-for-desktop
+  - context:
+      cluster: docker-for-mac
+      user: docker-desktop
+    name: docker-for-mac
 current-context: docker-for-mac
 kind: Config
 preferences: {}
 users:
-- name: docker-desktop
-  user:
-    client-certificate-data: REDACTED
-    client-key-data: REDACTED
+  - name: docker-desktop
+    user:
+      client-certificate-data: REDACTED
+      client-key-data: REDACTED
 ```

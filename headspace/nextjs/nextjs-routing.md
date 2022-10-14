@@ -16,6 +16,8 @@
 
 ## Custom Anchor Tag Styling
 
+`Link` is only for use INSIDE the specific app - not across apps in turborepos
+
 ```jsx
 <>
   <Link href='mylink'>

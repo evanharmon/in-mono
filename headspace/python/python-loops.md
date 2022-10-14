@@ -9,6 +9,7 @@
 ## For in specific range
 
 Range acts like slice and DOES NOT include the last item
+range does not provide current index
 
 ```python
 for x in range(0, 3):
@@ -59,4 +60,14 @@ while number != 1:
         number = number / 2
     else:
         number = 3 * number  + 1
+```
+
+## Loop counting down with index
+
+```python
+letters = '3598215088'
+for index, num in enumerate(letters, start=-isbn_len):
+    # adjust for negative index counting
+    range_sum = abs(index) + int(num)
+    total += total * range_sum
 ```

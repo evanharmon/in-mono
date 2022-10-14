@@ -1,11 +1,5 @@
 # KUBERNETES LOGS
 
-## Summary
-
-Notes on examining logs in Kubernetes
-
-## Resources
-
 ## View Logs By Selector
 
 Example Selector YML:

@@ -1,14 +1,10 @@
 # KUSTOMIZE
 
-## Summary
-
-Notes on working with kustomize and K8s.
-
 ## Resources
 
-[GH Docs](https://github.com/kubernetes-sigs/kustomize/tree/master/docs)
-[GH Examples](https://github.com/kubernetes-sigs/kustomize/tree/master/examples)
-[More Docs](https://kubectl.docs.kubernetes.io/pages/reference/kustomize.html)
+- [Kustomize GH Docs](https://github.com/kubernetes-sigs/kustomize/tree/master/docs)
+- [Kustomize GH Examples](https://github.com/kubernetes-sigs/kustomize/tree/master/examples)
+- [Kustomize More Docs](https://kubectl.docs.kubernetes.io/pages/reference/kustomize.html)
 
 ## Installation
 

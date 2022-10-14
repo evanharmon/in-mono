@@ -1,13 +1,9 @@
 # KUBERNETES NETWORKING
 
-## Summary
-
-General notes on networking in K8S
-
 ## Resources
 
-[Networking Guide](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
-[Service Networking](https://kubernetes.io/docs/concepts/services-networking/service/)
+- [Kubernetes Networking Guide](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
+- [Kubernetes Service Networking](https://kubernetes.io/docs/concepts/services-networking/service/)
 
 ## Pods
 

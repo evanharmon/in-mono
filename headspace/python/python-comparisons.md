@@ -37,3 +37,9 @@ if any(char in vowels for char in word):
 ## All
 
 `all([True,True,True]) // True`
+
+## Simplify if statement return
+
+```python
+return bool(123 === 0)
+```

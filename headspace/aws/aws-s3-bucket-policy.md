@@ -23,7 +23,7 @@ differs from IAM!
 
 S3 Buckets can be locked out by incorrect / inadvertent changes to the bucket policy
 
-#### Testing / Debugging Best Practices
+## Testing / Debugging Best Practices
 
 - Keep a base policy in at all times to prevent lockout
 - Use a separate AWS account for testing where you have ROOT access
