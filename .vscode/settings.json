@@ -53,10 +53,15 @@
   "workbench.activityBar.visible": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
-  "[shellscript]": {
+  "[docker]": {
     "editor.defaultFormatter": null
   },
-  "[docker]": {
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "[shellscript]": {
     "editor.defaultFormatter": null
   },
   "sqltools.connections": [
