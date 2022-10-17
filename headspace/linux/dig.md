@@ -1,5 +1,11 @@
 # DIG
 
+domain information groper. Interrogate those DNS name servers!
+
+## Resources
+
+- [Linux Die dig man docs](https://linux.die.net/man/1/dig)
+
 ## Test AWS Service Discovery From EC2 Instance
 
 ```console

@@ -1,6 +1,15 @@
 # HOST
 
-check DNS records
+DNS lookup utility
+
+## Resources
+
+- [Linux Die host man docs](https://linux.die.net/man/1/host)
+
+## Flags
+
+`-a` all
+`-t` type
 
 ## Resolving Check
 

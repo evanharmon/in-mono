@@ -1,11 +1,5 @@
 # VIM VISUAL MODE
 
-## Summary
-
-Notes on using visual mode in vim
-
-## Resources
-
 ## Virtual Replace
 
 `gR`
@@ -25,3 +19,20 @@ Notes on using visual mode in vim
 ## Highlight Range by Line
 
 `810GV813V`
+
+## Select current indentation level
+
+`vii`
+
+## Select inside paragraph
+
+selects content between empty lines
+`vip`
+
+## Select inner block
+
+`vib`
+
+## Select a content block
+
+`vai`
