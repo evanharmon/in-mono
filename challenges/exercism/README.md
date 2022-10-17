@@ -37,7 +37,22 @@ exercism configure --workspace=/workspaces/in-mono/challenges/exercism
 
 ## Running a Challenge
 
+node:
+
 `npm test`
+
+python:
+
+`pytest`
+
+cpp:
+
+```console
+mkdir build
+cd build
+cmake -G "Unix Makefiles" ..
+make
+```
 
 ## Submit Challenge
 
