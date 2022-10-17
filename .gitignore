@@ -38,3 +38,7 @@ yarn-error.log*
 # PYTHON
 .pytest_cache/
 __pycache__/
+
+# EXERCISM
+# CPP catch file is huge - don't commit and instead use a script to copy over before running `cmake`
+challenges/exercism/cpp/**/test/catch.hpp
