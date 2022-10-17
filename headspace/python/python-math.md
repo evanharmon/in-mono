@@ -1,5 +1,9 @@
 # PYTHON MATH
 
+## Resources
+
+- [RealPython sum](https://realpython.com/python-sum-function/)
+
 ## Convert float to int
 
 `int(5.2)`
@@ -44,4 +48,11 @@ sum 1 through 10
 
 ```python
 sum(range(1, 11))
+```
+
+## Concatentate sequence of numbers
+
+```python
+num_lists = [[1, 2, 3], [4, 5, 6]]
+sum(num_lists, start=[]) # [1, 2, 3, 4, 5, 6]
 ```

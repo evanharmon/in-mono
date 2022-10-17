@@ -16,3 +16,10 @@ print(duplicates)
 ## Unpack
 
 `a, b, c = {'Evan', 1, 3}`
+
+## Create set from list
+
+```python
+list_one = [1,2,3,4]
+set(list_one)
+```

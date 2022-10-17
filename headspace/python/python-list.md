@@ -54,3 +54,19 @@ equivalent of js `reduce`
 MUST unpack all elements in list
 
 `a, b, c = [1,2,3]`
+
+## Shallow Copy
+
+```python
+list_one = [1,2,3,4]
+list_copy = list_one.copy()
+```
+
+## Access part of a list
+
+like a slice, stop index element NOT included
+
+```python
+list_one = [15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51]
+list_one[4:8] # [27, 30, 33, 36]
+```

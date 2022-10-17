@@ -25,3 +25,9 @@ def test1():
 ```console
 pytest -x
 ```
+
+## Run single named test
+
+```console
+pytest -k 'test_non_empty_list_contains_empty_list'
+```

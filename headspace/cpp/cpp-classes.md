@@ -1,10 +1,8 @@
 # CPP CLASSES
 
-## Summary
-
-Notes on using classes in c++
-
 ## Resources
+
+- [Cpp cpp reference classes](https://en.cppreference.com/w/cpp/language/classes)
 
 ## Errors
 
