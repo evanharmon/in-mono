@@ -4,6 +4,11 @@
 
 - [Python string methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
 
+## Limitations
+
+- immutable
+- primitive
+
 ## Declare multi-line string
 
 ```python
@@ -55,10 +60,6 @@ string = "hello world"
 lookfor = "hello"
 string.find(lookfor)
 ```
-
-## f-strings
-
-`f'One for {name}, one for me.'`
 
 ## Substring
 

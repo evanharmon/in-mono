@@ -30,3 +30,32 @@ def team(name, project):
 
 team(project = "Edpresso", name = 'FemCode')
 ```
+
+## Unlimited function arguments with `*args`
+
+```python
+def unlimited_arguments(*args):
+  for argument in args:
+    print(argument)
+
+unlimited_arguments(*[1,2,3,4])
+```
+
+## Unpack function arguments
+
+ends up passed to function as Tuple
+
+```python
+my_function(*[1,2,3,4])
+```
+
+## unpack dictionary with `**keyword_args`
+
+```python
+def unlimited_arguments(*args, **kargs):
+  print(kargs)
+  for argument in args:
+    print(argument)
+
+unlimited_arguments(*[1,2,3,4], name='Evan', age=17)
+```

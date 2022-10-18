@@ -1,16 +1,14 @@
 # VISUAL STUDIO CODE
 
-## Summary
-
 ## Resources
 
-- [DOCS Integrated Terminals](https://code.visualstudio.com/docs/editor/integrated-terminal)
-- [Master The Terminal](https://www.growingwiththeweb.com/2017/03/mastering-vscodes-terminal.html)
-- [CPP Settings](https://code.visualstudio.com/docs/cpp/customize-default-settings-cpp)
-- [Clang On Mac](https://code.visualstudio.com/docs/cpp/config-clang-mac#_configure-the-compiler-path)
-- [Go Config & Debugging](https://github.com/Microsoft/vscode-go/wiki/Debugging-Go-code-using-VS-Code)
-- [Developing Inside A Container](https://code.visualstudio.com/docs/remote/containers-advanced)
-- [Docker Tasks](https://code.visualstudio.com/docs/containers/reference)
+- [VSCODE DOCS Integrated Terminals](https://code.visualstudio.com/docs/editor/integrated-terminal)
+- [VSCODE Master The Terminal](https://www.growingwiththeweb.com/2017/03/mastering-vscodes-terminal.html)
+- [VSCODE CPP Settings](https://code.visualstudio.com/docs/cpp/customize-default-settings-cpp)
+- [VSCODE Clang On Mac](https://code.visualstudio.com/docs/cpp/config-clang-mac#_configure-the-compiler-path)
+- [VSCODE Go Config & Debugging](https://github.com/Microsoft/vscode-go/wiki/Debugging-Go-code-using-VS-Code)
+- [VSCODE Developing Inside A Container](https://code.visualstudio.com/docs/remote/containers-advanced)
+- [VSCODE Docker Tasks](https://code.visualstudio.com/docs/containers/reference)
 
 ## View DotFiles
 

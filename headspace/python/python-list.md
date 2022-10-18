@@ -70,3 +70,13 @@ like a slice, stop index element NOT included
 list_one = [15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51]
 list_one[4:8] # [27, 30, 33, 36]
 ```
+
+## Pass list as individual elements to function
+
+```python
+def unlimited_arguments(*args):
+  for argument in args:
+    print(argument)
+
+unlimited_arguments(*[1,2,3,4])
+```

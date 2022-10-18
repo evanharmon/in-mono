@@ -7,12 +7,19 @@
     "ms-python.python",
     "ms-vsliveshare.vsliveshare",
     "ms-azuretools.vscode-docker",
+    "ms-vscode.cmake-tools",
     "ms-vscode.cpptools-extension-pack",
+    "ms-vscode.cpptools",
+    "ms-vscode.cpptools-themes",
     "ms-vscode-remote.remote-containers",
-    "styled-components.vscode-styled-components",
-    "vscodevim.vim",
     "mtxr.sqltools",
     "mtxr.sqltools-driver-mysql",
-    "mtxr.sqltools-driver-pg"
+    "mtxr.sqltools-driver-pg",
+    "rust-lang.rust-analyzer",
+    "serayuzgur.crates",
+    "styled-components.vscode-styled-components",
+    "twxs.cmake",
+    "vadimcn.vscode-lldb",
+    "vscodevim.vim"
   ]
 }
