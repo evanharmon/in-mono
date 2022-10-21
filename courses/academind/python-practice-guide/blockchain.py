@@ -1,11 +1,17 @@
 """ Blockchain """
+import json
+from hashlib import sha256
+from functools import reduce
+from collections import OrderedDict
+
 MINING_REWARD = 10
 
 # Starting block for blockchain
 genesis_block = {
     'previous_hash': '',
     'index': 0,
-    'transactions': []
+    'transactions': [],
+    'proof': 100
 }
 # Initialize empty blockchain list
 blockchain = [genesis_block]
@@ -24,7 +30,38 @@ def hash_block(block):
     :param block: block to hash
     :return string: hash
     """
-    return '-'.join([str(block[key]) for key in block])
+    # return '-'.join([str(block[key]) for key in block])
+    encoded_str = json.dumps(block, sort_keys=True).encode()
+    return sha256(encoded_str).hexdigest()
+
+
+def valid_proof(transactions, last_hash, proof):
+    """
+    Validate with proof of work
+
+    :param transactions: list - transactions
+    :param last_hash: str
+    :param proof: number
+    :return bool:
+    """
+    guess = (str(transactions) + str(last_hash) + str(proof)).encode()
+    # calculate hash - DIFFERENT than blockchain previous_hash
+    guess_hash = sha256(guess).hexdigest()
+    # check that hash fulfills condition
+    # should start with n leading zeros
+    print(guess_hash)
+    return guess_hash[0:2] == '00'
+
+
+def proof_of_work():
+    """ Proof of work """
+    last_block = blockchain[-1]
+    last_hash = hash_block(last_block)
+    # Nonce
+    proof = 0
+    while not valid_proof(open_transactions, last_hash, proof):
+        proof += 1
+    return proof
 
 
 def get_balance(participant):
@@ -43,19 +80,16 @@ def get_balance(participant):
     open_tx_sender = [tx['amount']
                       for tx in open_transactions if tx['sender'] == participant]
     tx_sender.append(open_tx_sender)
-    amount_sent = 0
     # Calculate total amount of coins sent
-    for transaction in tx_sender:
-        if len(transaction) > 0:
-            amount_sent += transaction[0]
+    amount_sent = reduce(
+        lambda tx_sum, tx_amt: tx_sum + tx_amt[0] if len(tx_amt) > 0 else 0, tx_sender, 0)
     # Fetch received coin amounts of transactions already included in blocks of blockchain
     # ignore open transactions as coins are not settled
     tx_recipient = [[tx['amount'] for tx in block['transactions']
                      if tx['recipient'] == participant] for block in blockchain]
-    amount_received = 0
-    for transaction in tx_recipient:
-        if len(transaction) > 0:
-            amount_received += transaction[0]
+    # Calculate total amount of coins received
+    amount_received = reduce(lambda tx_sum, tx_amt: tx_sum +
+                             tx_amt[0] if len(tx_amt) > 0 else 0, tx_recipient, 0)
     # return total balance
     return amount_received - amount_sent
 
@@ -96,6 +130,8 @@ def add_transaction(recipient, sender=OWNER, amount=1.0):
         'recipient': recipient,
         'amount': amount
     }
+    transaction = OrderedDict(
+        [('sender', sender), ('recipient', recipient), ('amount', amount)])
     if verify_transaction(transaction):
         open_transactions.append(transaction)
         participants.add(sender)
@@ -107,12 +143,15 @@ def add_transaction(recipient, sender=OWNER, amount=1.0):
 def mine_block():
     """
     Create new block and add open transactions to it
+
     :return bool: whether or not the mining was successful
     """
     # Fetch current last block of blockchain
     last_block = blockchain[-1]
     # hash last block for comparison
     hashed_block = hash_block(last_block)
+    #  calculate proof without reward
+    proof = proof_of_work()
     # Create reward transaction to reward miner
     reward_transaction = {
         'sender': 'MINING',
@@ -126,7 +165,8 @@ def mine_block():
     block = {
         'previous_hash': hashed_block,
         'index': len(blockchain),
-        'transactions': copied_transactions
+        'transactions': copied_transactions,
+        'proof': proof
     }
     blockchain.append(block)
     return True
@@ -166,6 +206,11 @@ def verify_chain():
         if index == 0:
             continue
         if block['previous_hash'] != hash_block(blockchain[index - 1]):
+            return False
+        # check proof of work to prevent hacking
+        # be sure to not include reward
+        if not valid_proof(block['transactions'][:-1], block['previous_hash'], block['proof']):
+            print('Proof of work is invalid')
             return False
         return True
 
