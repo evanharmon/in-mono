@@ -8,3 +8,7 @@
 - [System Design learning course by K Singh](https://github.com/karanpratapsingh/system-design)
 - [System Design AKF Partners Scale Cube](https://akfpartners.com/growth-blog/scale-cube)
 - [System Design AKF Partners Availability Cube](https://akfpartners.com/growth-blog/akf-availability-cube)
+
+## Videos
+
+- [System Design interview.io breakdown](https://youtu.be/oHyaRvnX2G8)

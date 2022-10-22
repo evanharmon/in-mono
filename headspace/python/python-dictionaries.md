@@ -4,6 +4,10 @@
 
 - [Python dictionary methods w3Schools](https://www.w3schools.com/python/python_ref_dictionary.asp)
 
+## Features
+
+- unordered map
+
 ## Create key / value dictionary
 
 `counts = dict()` or `d = {"name": "daniel", "age": 100}`

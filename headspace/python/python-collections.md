@@ -19,11 +19,15 @@ colours = (
 )
 
 favs = Counter(name for name, colour in colours)
-print(favs)
-# Output: Counter({
-#    'Yasoob': 2,
-#    'Ali': 2,
-#    'Arham': 1,
-#    'Ahmed': 1
-# })
+print(favs) # Output: Counter({ 'Yasoob': 2, 'Ali': 2, 'Arham': 1, 'Ahmed': 1 })
+```
+
+## Ordered Dictionary
+
+constructor takes in a list of tuples
+
+```python
+from collections import OrderedDict
+transaction = OrderedDict(
+    [('sender', 'Evan'), ('recipient', 'Alan'), ('amount', '50')])
 ```
