@@ -1,7 +1,8 @@
-# PYTHON TRY EXCEPT
+# PYTHON ERRORS TRY EXCEPT
 
 ## Resources
 
+- [Python errors](https://docs.python.org/3/tutorial/errors.html)
 - [Python exception handling](https://docs.python.org/3/tutorial/errors.html#handling-exceptions)
 
 ## Example
