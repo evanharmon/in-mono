@@ -1,8 +1,9 @@
 """ Block module """
 from time import time
+from printable import Printable
 
 
-class Block():
+class Block(Printable):
     """ Block class """
 
     def __init__(self, index, previous_hash, transactions, proof, timestamp=None):
