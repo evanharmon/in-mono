@@ -15,6 +15,9 @@ def hash_block(block):
     :param block: block to hash
     :return string: hash
     """
-    # return '-'.join([str(block[key]) for key in block])
-    encoded_str = json.dumps(block, sort_keys=True).encode()
+    # get copy of object as dictionary
+    hashable_block = block.__dict__.copy()
+    hashable_block['transactions'] = [tx.to_ordered_dict()
+                                      for tx in hashable_block['transactions']]
+    encoded_str = json.dumps(hashable_block, sort_keys=True).encode()
     return sha256(encoded_str).hexdigest()
