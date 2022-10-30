@@ -48,7 +48,7 @@ class Verification:
         :param get_balance: function - get_balance
         :return bool: whether or not transaction is valid
         """
-        sender_balance = get_balance(transaction.sender)
+        sender_balance = get_balance()
         return sender_balance >= transaction.amount
 
     def verify_transactions(self, open_transactions, get_balance):

@@ -15,6 +15,7 @@
   "editor.formatOnSave": true,
   "editor.glyphMargin": true,
   "editor.minimap.enabled": false,
+  "editor.parameterHints.enabled": true,
   "editor.quickSuggestions": {
     "other": "on",
     "comments": "off",
@@ -36,8 +37,10 @@
   "gitlens.showWelcomeOnInstall": false,
   "gitlens.statusBar.enabled": false,
   "gitlens.plusFeatures.enabled": false,
+  "python.analysis.completeFunctionParens": true,
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
+  "python.terminal.executeInFileDir": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.fontFamily": "'Fira Code Retina', Menlo, Monaco, 'Courier New', monospace",
