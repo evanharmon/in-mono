@@ -15,3 +15,9 @@ pipx install pipenv
 ```console
 pipenv shell
 ```
+
+## Install local package
+
+```console
+pipenv install utility
+```

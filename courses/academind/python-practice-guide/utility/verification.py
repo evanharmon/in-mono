@@ -1,5 +1,5 @@
 """ verification module """
-from hash_util import hash_string_256, hash_block
+from utility.hash_util import hash_string_256, hash_block
 
 
 class Verification:
