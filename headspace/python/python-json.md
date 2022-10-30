@@ -25,3 +25,13 @@ json.dumps(data).encode()
 data = dict({"name": "daniel", "age": 100})
 json.dumps(data, sort_keys=True).encode()
 ```
+
+## Convert Object to JSON
+
+use copy to avoid getting a reference and changing data
+
+```python
+# block is a class
+hashable_block = block.__dict__.copy()
+encoded_str = json.dumps(hashable_block, sort_keys=True).encode()
+```

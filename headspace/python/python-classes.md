@@ -4,6 +4,10 @@
 
 - [Python classes](https://docs.python.org/3/tutorial/classes.html)
 
+## Features
+
+- supports instance, class, or static attributes and methods
+
 ## Special methods
 
 called by Python internally and can be overridden
@@ -43,4 +47,14 @@ prefix with double underscore
 ```python
 def __init__(self):
     self.__data = []
+```
+
+## Return a copy to prevent changes to class object
+
+```python
+class Blockchain:
+    def __init__(self):
+        self.__chain = []
+    def get_chain(self):
+        return self.__chain[:]
 ```

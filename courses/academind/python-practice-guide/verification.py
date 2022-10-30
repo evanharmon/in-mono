@@ -5,7 +5,8 @@ from hash_util import hash_string_256, hash_block
 class Verification:
     """ verification helpers """
 
-    def valid_proof(self, transactions, last_hash, proof):
+    @staticmethod
+    def valid_proof(transactions, last_hash, proof):
         """
         Validate with proof of work
 
@@ -22,7 +23,8 @@ class Verification:
         # should start with n leading zeros
         return guess_hash[0:2] == '00'
 
-    def verify_chain(self, blockchain):
+    @classmethod
+    def verify_chain(cls, blockchain):
         """
         Verify current blockchain and return whether or not valid
 
@@ -35,12 +37,13 @@ class Verification:
                 return False
             # check proof of work to prevent hacking
             # be sure to not include reward
-            if not self.valid_proof(block.transactions[:-1], block.previous_hash, block.proof):
+            if not cls.valid_proof(block.transactions[:-1], block.previous_hash, block.proof):
                 print('Proof of work is invalid')
                 return False
             return True
 
-    def verify_transaction(self, transaction, get_balance):
+    @staticmethod
+    def verify_transaction(transaction, get_balance):
         """
         Verify transaction by checking whether the sender has sufficient coins.
 
@@ -51,11 +54,12 @@ class Verification:
         sender_balance = get_balance()
         return sender_balance >= transaction.amount
 
-    def verify_transactions(self, open_transactions, get_balance):
+    @classmethod
+    def verify_transactions(cls, open_transactions, get_balance):
         """
         Verifies all open transactions.
 
         :param open_transactions: list - open transactions
         :param get_balance: function - get_balance
         """
-        return all(self.verify_transaction(tx, get_balance) for tx in open_transactions)
+        return all(cls.verify_transaction(tx, get_balance) for tx in open_transactions)
