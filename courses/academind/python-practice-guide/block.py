@@ -4,7 +4,7 @@ from utility.printable import Printable
 
 
 class Block(Printable):
-    """ Block class """
+    """ Single Block for the Blockchain """
 
     def __init__(self, index, previous_hash, transactions, proof, timestamp=None):
         self.index = index

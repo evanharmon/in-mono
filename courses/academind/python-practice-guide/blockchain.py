@@ -7,12 +7,13 @@ from block import Block
 from transaction import Transaction
 from utility.hash_util import hash_block
 from utility.verification import Verification
+from wallet import Wallet
 
 MINING_REWARD = 10
 
 
 class Blockchain:
-    """ Blockchain class """
+    """ Blockchain class manages the chain of blocks, open transactions, and node """
 
     def __init__(self, hosting_node_id):
         # Starting block for blockchain
@@ -59,13 +60,13 @@ class Blockchain:
                 file_content = file.readlines()
 
                 if len(file_content) > 1:
-                    self.__chain = json.loads(file_content[0][:-1])  # avoid \n
+                    blockchain = json.loads(file_content[0][:-1])  # avoid \n
                     # load blockchain as OrderedDict
                     updated_blockchain = []
-                    for block in self.__chain:
+                    for block in blockchain:
                         converted_tx = [
                             Transaction(
-                                tx['sender'], tx['recipient'], tx['amount'])
+                                tx['sender'], tx['recipient'], tx['signature'], tx['amount'])
                             for tx in block['transactions']]
                         updated_block = Block(
                             block['index'],
@@ -76,11 +77,14 @@ class Blockchain:
                         updated_blockchain.append(updated_block)
                     self.__chain = updated_blockchain
                     # load open_transactions as OrderedDict
-                    self.__open_transactions = json.loads(file_content[1])
+                    open_transactions = json.loads(file_content[1])
                     updated_transactions = []
-                    for op_tx in self.__open_transactions:
+                    for op_tx in open_transactions:
                         updated_transaction = Transaction(
-                            op_tx['sender'], op_tx['recipient'], op_tx['amount'])
+                            op_tx['sender'],
+                            op_tx['recipient'],
+                            op_tx['signature'],
+                            op_tx['amount'])
                         updated_transactions.append(updated_transaction)
                     self.__open_transactions = updated_transactions
         except (IOError, IndexError):
@@ -130,11 +134,11 @@ class Blockchain:
             file.write(pickle.dumps(data))
 
     def proof_of_work(self):
-        """ Proof of work """
+        """ Generate proof of work for open transactions, hash of previous block, and a random number """
         last_block = self.__chain[-1]
         last_hash = hash_block(last_block)
-        # Nonce
-        proof = 0
+        proof = 0  # Nonce
+        # Try different PoW numbers and return the first valid one
         while not Verification.valid_proof(self.__open_transactions, last_hash, proof):
             proof += 1
         return proof
@@ -158,7 +162,7 @@ class Blockchain:
         tx_sender.append(open_tx_sender)
         # Calculate total amount of coins sent
         amount_sent = reduce(
-            lambda tx_sum, tx_amt: tx_sum + tx_amt[0] if len(tx_amt) > 0 else 0, tx_sender, 0)
+            lambda tx_sum, tx_amt: tx_sum + sum(tx_amt) if len(tx_amt) > 0 else tx_sum + 0, tx_sender, 0)
         # Fetch received coin amounts of transactions already included in blocks of blockchain
         # ignore open transactions as coins are not settled
         tx_recipient = [[tx.amount for tx in block.transactions
@@ -175,16 +179,19 @@ class Blockchain:
             return None
         return self.__chain[-1]
 
-    def add_transaction(self, recipient, sender, amount=1.0):
+    def add_transaction(self, recipient, sender, signature, amount=1.0):
         """
         Append a new value along with last blockchain value to blockchain
 
         :param recipient: str - recipient of the coins
         :param sender: str - sender of the coins
+        :param signature: str - signature for transaction
         :param amount: number - amount of coins sent with transaction (default = 1.0)
         :return bool: whether or not add transaction was successful
         """
-        transaction = Transaction(sender, recipient, amount)
+        if self.hosting_node is None:
+            return False
+        transaction = Transaction(sender, recipient, signature, amount)
         if Verification.verify_transaction(transaction, self.get_balance):
             self.__open_transactions.append(transaction)
             self.save_json_data()
@@ -197,6 +204,8 @@ class Blockchain:
 
         :return bool: whether or not the mining was successful
         """
+        if self.hosting_node is None:
+            return False
         # Fetch current last block of blockchain
         last_block = self.__chain[-1]
         # hash last block for comparison
@@ -204,18 +213,18 @@ class Blockchain:
         #  calculate proof without reward
         proof = self.proof_of_work()
         # Create reward transaction to reward miner
+        # no need to sign transaction
         reward_transaction = Transaction(
-            'MINING', self.hosting_node, MINING_REWARD)
+            'MINING', self.hosting_node, '', MINING_REWARD)
         # Copy transaction instead of mutating original open_transactions list
         # ensures reward transaction not stored in open transactions on a failure
         copied_transactions = self.__open_transactions[:]
+        for copied_tx in copied_transactions:
+            if not Wallet.verify_transaction(copied_tx):
+                return False
         copied_transactions.append(reward_transaction)
         block = Block(
-            len(self.__chain),
-            hashed_block,
-            copied_transactions,
-            proof
-        )
+            len(self.__chain), hashed_block, copied_transactions, proof)
         self.__chain.append(block)
         self.__open_transactions = []
         self.save_json_data()

@@ -1,5 +1,5 @@
 {
-  "breadcrumbs.enabled": false,
+  "breadcrumbs.enabled": true,
   "debug.console.fontSize": 14,
   "debug.internalConsoleOptions": "neverOpen",
   "debug.javascript.autoAttachFilter": "disabled",
@@ -52,7 +52,7 @@
   "vim.sneak": true,
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "vim.useSystemClipboard": true,
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1,
   "workbench.activityBar.visible": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",

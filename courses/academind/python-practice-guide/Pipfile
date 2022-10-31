@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 utility = "*"
+pylint = "*"
+pycryptodome = "*"
 
 [dev-packages]
 

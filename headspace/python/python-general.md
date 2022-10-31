@@ -33,3 +33,13 @@ def get_name():
 get_name()
 print(name)
 ```
+
+## Check for main
+
+only run code when called directly by Python and NOT imported
+
+```python
+if __name__ == '__main__':
+    node = Node()
+    node.listen_for_input()
+```
