@@ -13,7 +13,9 @@ MINING_REWARD = 10
 
 
 class Blockchain:
-    """ Blockchain class manages the chain of blocks, open transactions, and node """
+    """
+    Blockchain class manages the chain of blocks, open transactions, and node
+    """
 
     def __init__(self, hosting_node_id):
         # Starting block for blockchain
@@ -66,8 +68,10 @@ class Blockchain:
                     for block in blockchain:
                         converted_tx = [
                             Transaction(
-                                tx['sender'], tx['recipient'], tx['signature'], tx['amount'])
-                            for tx in block['transactions']]
+                                tx['sender'],
+                                tx['recipient'],
+                                tx['signature'],
+                                tx['amount']) for tx in block['transactions']]
                         updated_block = Block(
                             block['index'],
                             block['previous_hash'],
@@ -104,11 +108,13 @@ class Blockchain:
             with open('blockchain.txt', mode='w', encoding='utf8') as file:
                 # copy object as dictionary
                 saveable_chain = [
-                    block.__dict__ for block in [Block(
-                        block_el.index,
-                        block_el.previous_hash,
-                        [tx.__dict__ for tx in block_el.transactions],
-                        block_el.proof, block_el.timestamp) for block_el in self.__chain
+                    block.__dict__ for block in [
+                        Block(
+                            block_el.index,
+                            block_el.previous_hash,
+                            [tx.__dict__ for tx in block_el.transactions],
+                            block_el.proof, block_el.timestamp)
+                        for block_el in self.__chain
                     ]
                 ]
                 file.write(json.dumps(saveable_chain))
@@ -134,7 +140,10 @@ class Blockchain:
             file.write(pickle.dumps(data))
 
     def proof_of_work(self):
-        """ Generate proof of work for open transactions, hash of previous block, and a random number """
+        """
+        Generate proof of work for open transactions, hash of previous block,
+        and a random number
+        """
         last_block = self.__chain[-1]
         last_hash = hash_block(last_block)
         proof = 0  # Nonce
@@ -152,24 +161,28 @@ class Blockchain:
         """
         participant = self.hosting_node
         # Fetch list of all sent coin amounts for given participant
-        # represents sent amounts of transactions already included in blocks of blockchain
+        # represents sent amounts of transactions already included in blocks
         tx_sender = [[tx.amount for tx in block.transactions
                       if tx.sender == participant] for block in self.__chain]
 
         # Fetch sent amounts of open transactions to avoid double spending
-        open_tx_sender = [tx.amount
-                          for tx in self.__open_transactions if tx.sender == participant]
+        open_tx_sender = [
+            tx.amount
+            for tx in self.__open_transactions if tx.sender == participant]
         tx_sender.append(open_tx_sender)
         # Calculate total amount of coins sent
         amount_sent = reduce(
-            lambda tx_sum, tx_amt: tx_sum + sum(tx_amt) if len(tx_amt) > 0 else tx_sum + 0, tx_sender, 0)
-        # Fetch received coin amounts of transactions already included in blocks of blockchain
+            lambda tx_sum, tx_amt: tx_sum +
+            sum(tx_amt) if len(tx_amt) > 0 else tx_sum + 0, tx_sender, 0)
+        # Fetch received transaction amounts already included in blocks
         # ignore open transactions as coins are not settled
-        tx_recipient = [[tx.amount for tx in block.transactions
-                        if tx.recipient == participant] for block in self.__chain]
+        tx_recipient = [
+            [tx.amount for tx in block.transactions
+             if tx.recipient == participant] for block in self.__chain]
         # Calculate total amount of coins received
-        amount_received = reduce(lambda tx_sum, tx_amt: tx_sum +
-                                 tx_amt[0] if len(tx_amt) > 0 else 0, tx_recipient, 0)
+        amount_received = reduce(
+            lambda tx_sum, tx_amt: tx_sum +
+            tx_amt[0] if len(tx_amt) > 0 else 0, tx_recipient, 0)
         # return total balance
         return amount_received - amount_sent
 
@@ -186,7 +199,7 @@ class Blockchain:
         :param recipient: str - recipient of the coins
         :param sender: str - sender of the coins
         :param signature: str - signature for transaction
-        :param amount: number - amount of coins sent with transaction (default = 1.0)
+        :param amount: number - amount of coins sent (default = 1.0)
         :return bool: whether or not add transaction was successful
         """
         if self.hosting_node is None:
@@ -205,7 +218,7 @@ class Blockchain:
         :return bool: whether or not the mining was successful
         """
         if self.hosting_node is None:
-            return False
+            return None
         # Fetch current last block of blockchain
         last_block = self.__chain[-1]
         # hash last block for comparison
@@ -217,15 +230,15 @@ class Blockchain:
         reward_transaction = Transaction(
             'MINING', self.hosting_node, '', MINING_REWARD)
         # Copy transaction instead of mutating original open_transactions list
-        # ensures reward transaction not stored in open transactions on a failure
+        # ensures reward transaction not stored in open transactions on failure
         copied_transactions = self.__open_transactions[:]
         for copied_tx in copied_transactions:
             if not Wallet.verify_transaction(copied_tx):
-                return False
+                return None
         copied_transactions.append(reward_transaction)
         block = Block(
             len(self.__chain), hashed_block, copied_transactions, proof)
         self.__chain.append(block)
         self.__open_transactions = []
         self.save_json_data()
-        return True
+        return block

@@ -7,6 +7,8 @@ name = "pypi"
 utility = "*"
 pylint = "*"
 pycryptodome = "*"
+flask = "*"
+flask-cors = "*"
 
 [dev-packages]
 

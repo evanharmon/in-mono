@@ -27,8 +27,10 @@ class Wallet:
                     file.write(self.public_key)
                     file.write('\n')
                     file.write(self.private_key)
+                return True
             except (IOError, IndexError):
                 print('Saving wallet failed...')
+                return False
 
     def load_keys(self):
         """ load keys """
@@ -39,8 +41,10 @@ class Wallet:
                 private_key = keys[1]
                 self.public_key = public_key
                 self.private_key = private_key
+                return True
         except (IOError, IndexError):
             print('Loading wallet failed...')
+            return False
 
     def generate_keys(self):
         """ generate a new pair of private and public keys """
@@ -74,6 +78,8 @@ class Wallet:
         verifier = PKCS1_v1_5.new(public_key)
         payload_hash = SHA256.new((
             str(transaction.sender) +
-            str(transaction.recipient) + str(transaction.amount)).encode('utf8'))
+            str(transaction.recipient) +
+            str(transaction.amount)).encode('utf8'))
         # pylint: disable=not-callable # VSCODE issue
-        return verifier.verify(payload_hash, binascii.unhexlify(transaction.signature))
+        return verifier.verify(
+            payload_hash, binascii.unhexlify(transaction.signature))
