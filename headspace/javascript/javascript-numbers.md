@@ -1,17 +1,17 @@
 # JAVASCRIPT NUMBERS
 
-## Summary
-
-Notes on working with javascript numbers
-
 ## Resources
+
+- [Javascript 32bit Int Stack Overflow](https://stackoverflow.com/questions/47600096/what-is-32-bit-integer-in-javascript)
+
+## Limitations
+
+- all primitive numbers are treated as Floats
 
 ## Check For 32bit Overflow
 
-[SO](https://stackoverflow.com/questions/47600096/what-is-32-bit-integer-in-javascript)
-
 ```javascript
 if (myInt > Math.pow(2, 31) - 1) {
-  return 0;
+  return 0
 }
 ```
