@@ -1,6 +1,5 @@
 """ verification module """
 # pylint: disable=import-error # VSCODE issue
-from tabnanny import check
 from utility.hash_util import hash_string_256, hash_block
 from wallet import Wallet
 
@@ -55,7 +54,7 @@ class Verification:
         :return bool: whether or not transaction is valid
         """
         if check_funds is True:
-            sender_balance = get_balance()
+            sender_balance = get_balance(transaction.sender)
             return sender_balance >= transaction.amount and Wallet.verify_transaction(transaction)
         return Wallet.verify_transaction(transaction)
 

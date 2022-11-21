@@ -9,6 +9,7 @@ pylint = "*"
 pycryptodome = "*"
 flask = "*"
 flask-cors = "*"
+requests = "*"
 
 [dev-packages]
 
