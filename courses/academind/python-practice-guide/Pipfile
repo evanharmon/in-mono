@@ -5,13 +5,21 @@ name = "pypi"
 
 [packages]
 utility = "*"
-pylint = "*"
 pycryptodome = "*"
 flask = "*"
 flask-cors = "*"
 requests = "*"
 
 [dev-packages]
+pylint = "*"
+autopep8 = "*"
+black = "*"
+yapf = "*"
+bandit = "*"
+flake8 = "*"
+mypy = "*"
+pycodestyle = "*"
+pydocstyle = "*"
 
 [requires]
 python_version = "3.9"
