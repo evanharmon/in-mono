@@ -27,6 +27,7 @@ class Blockchain:
         self.public_key = public_key
         self.__peer_nodes = set()
         self.node_id = node_id
+        self.resolve_conflicts = False
         self.load_json_data()
 
     @property
@@ -281,6 +282,8 @@ class Blockchain:
                                          'block': converted_block})
                 if response.status_code == 400 or response.status_code == 500:
                     print('Block declined, needs resolving.')
+                if response.status_code == 409:
+                    self.resolve_conflicts = True
             except requests.exceptions.ConnectionError:
                 continue
         return block
@@ -321,6 +324,38 @@ class Blockchain:
                         print('Item was already removed')
         self.save_json_data()
         return True
+
+    def resolve(self):
+        winner_chain = self.chain
+        replace = False
+        for node in self.__peer_nodes:
+            url = f'http://{node}/chain'
+            try:
+                response = requests.get(url, timeout=10000)
+                node_chain = response.json()
+                node_chain = [Block(
+                    block['index'],
+                    block['previous_hash'],
+                    [Transaction(
+                        tx['sender'],
+                        tx['recipient'],
+                        tx['signature'],
+                        tx['amount']) for tx in block['transactions']],
+                    block['proof'],
+                    block['timestamp']) for block in node_chain]
+                node_chain_length = len(node_chain)
+                local_chain_length = len(winner_chain)
+                if node_chain_length > local_chain_length and Verification.verify_chain(node_chain):
+                    winner_chain = node_chain
+                    replace = True
+            except requests.exceptions.ConnectionError:
+                continue
+        self.resolve_conflicts = False
+        self.chain = winner_chain
+        if replace is True:
+            self.__open_transactions = []
+        self.save_json_data()
+        return replace
 
     def add_peer_node(self, node):
         """ adds a new node to peer node set
