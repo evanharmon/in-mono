@@ -51,6 +51,7 @@ Safely check for multi word command
 
 ```bash
 if [ -x "$(command -v yarn)" ]; then
+fi
 ```
 
 ### Script Error Unary Operator Expected

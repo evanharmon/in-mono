@@ -10,7 +10,7 @@
 psql --username postgres
 ```
 
-## Get List Of Roles
+## List Roles
 
 ```console
 \du
@@ -32,4 +32,16 @@ psql --username postgres
 
 ```console
 \c pagila
+```
+
+## Show config file location
+
+```console
+SHOW config_file
+```
+
+## List catalog schemas
+
+```console
+\dn
 ```

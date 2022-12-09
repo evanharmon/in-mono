@@ -1,10 +1,10 @@
 # XCODE-SELECT
 
-## Summary
+## Install tools
 
-Notes on using the `xcode-select` CLI tool
-
-## Resources
+```console
+xcode-select --install
+```
 
 ## Check Path of Xcode Tools
 

@@ -1,16 +1,20 @@
 # MARKDOWN
 
 ## Bold
+
 **bold**
 
 ## Italics
-*italic*
+
+_italic_
 
 ## List
+
 ### Add two spaces after item name
 
 ## Unordered List
-  *
+
+-
 
 ## Ordered List
 
@@ -18,7 +22,9 @@
 - Item Two
 
 ## Link
-[link to Google!](http://google.com)
+
+`[link to Google!](http://google.com)`
 
 ## Embed
-![link to Google!](http://google.com)
+
+`![link to Google!](http://google.com)`

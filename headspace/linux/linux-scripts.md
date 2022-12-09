@@ -1,9 +1,5 @@
 # LINUX SCRIPTS
 
-## Summary
-
-## Resources
-
 ## Get First Character
 
 ```sh
