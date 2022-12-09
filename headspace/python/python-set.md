@@ -23,3 +23,12 @@ print(duplicates)
 list_one = [1,2,3,4]
 set(list_one)
 ```
+
+## Remove / Discard
+
+safe to call if item not in set. Fails silently
+
+```python
+my_set = {'apple', 'banana', 'cherry'}
+my_set.discard('apple')
+```

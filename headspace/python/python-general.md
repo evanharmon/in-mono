@@ -10,7 +10,9 @@
 
 ## Install Python
 
-`brew install python3`
+```console
+brew install python3
+```
 
 ## Null
 

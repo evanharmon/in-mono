@@ -21,3 +21,11 @@ pipenv shell
 ```console
 pipenv install utility
 ```
+
+## Install development package
+
+for linters, formatters, etc
+
+```console
+pipenv install --dev pylint
+```
