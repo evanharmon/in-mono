@@ -10,5 +10,3 @@ container storage interface
 
 - out of tree volume
 - removes the need for Kubes team to create new storage types per cloud provider
-
-## Limitations

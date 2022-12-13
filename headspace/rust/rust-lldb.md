@@ -1,9 +1,5 @@
 # RUST LLDB
 
-## Summary
-
-RUST LLDB Compiler / Debugger
-
 ## Start The Debugger
 
 ```console
@@ -38,13 +34,13 @@ Print out variable from frame list
 p filename
 ```
 
-View source code
+## View source code
 
 ```console
 list
 ```
 
-Step out
+## Step out
 
 ```console
 

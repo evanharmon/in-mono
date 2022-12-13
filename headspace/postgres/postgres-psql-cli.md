@@ -10,6 +10,12 @@
 psql --username postgres
 ```
 
+## Login with database url
+
+```console
+
+```
+
 ## List Roles
 
 ```console

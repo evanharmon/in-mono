@@ -1,4 +1,5 @@
 # AUTH0
+
 notes on using auth0
 
 ## Resources
@@ -10,6 +11,8 @@ notes on using auth0
 - [Auth0 OpenId Cognito Identity Pool Authentication Provider Guide](https://auth0.com/docs/customize/integrations/aws/amazon-cognito#create-a-new-openid-connect-provider)
 
 ## Create Cookie Secret
+
+generate secret with node
 
 ```console
 node -e "console.log(crypto.randomBytes(32).toString('hex'))"

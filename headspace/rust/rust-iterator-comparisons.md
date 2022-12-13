@@ -29,3 +29,17 @@ let mut iter = a.into_iter().filter(|&&x| x > 1); // two &s
 Borrow reference to item `iter()`
 Editable borrowed reference to item `iter_mut()`
 Take / Consume ownership `into_iter()`
+
+## Check if iterators are equal
+
+good to compare two collections for equality
+
+```rust
+let check = _first_list.iter().eq(_second_list.iter());
+```
+
+## Check if sublist of another list
+
+```rust
+[1, 2, 3].starts_with(&[1, 2]);
+```

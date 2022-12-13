@@ -1,0 +1,9 @@
+# VSCODE THUNDER CLIENT
+
+## Resources
+
+- [Thunder Client Github Docs](https://github.com/rangav/thunder-client-support#environments)
+
+## Global Environment
+
+located in `Library/Application Support/Code/User/globalStorage/rangav.vscode-thunder-client/thunderEnvironment.json`
