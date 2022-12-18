@@ -1,3 +1,4 @@
+mod get_json;
 mod hello_world;
 mod mirror_body_json;
 mod mirror_body_string;
@@ -11,15 +12,17 @@ use axum::{
     routing::{get, post},
     Router,
 };
+use path_variables::hard_coded_path;
+use path_variables::path_variables;
+use query_params::query_params;
+use tower_http::cors::{Any, CorsLayer};
+
+use get_json::get_json;
 use hello_world::hello_world;
 use mirror_body_json::mirror_body_json;
 use mirror_body_string::mirror_body_string;
 use mirror_custom_header::mirror_custom_header;
 use mirror_user_agent::mirror_user_agent;
-use path_variables::hard_coded_path;
-use path_variables::path_variables;
-use query_params::query_params;
-use tower_http::cors::{Any, CorsLayer};
 
 // ordering doesn't matter - most exact route match wins
 pub fn create_routes() -> Router {
@@ -35,5 +38,6 @@ pub fn create_routes() -> Router {
         .route("/query_params", get(query_params))
         .route("/mirror_user_agent", get(mirror_user_agent))
         .route("/mirror_custom_header", get(mirror_custom_header))
+        .route("/get_json", get(get_json))
         .layer(cors)
 }
