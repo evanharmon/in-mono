@@ -10,10 +10,9 @@ mod query_params;
 mod validate_with_serde;
 
 use axum::{
-    extract::FromRef,
     http::Method,
     routing::{get, post},
-    Router,
+    Extension, Router,
 };
 use path_variables::hard_coded_path;
 use path_variables::path_variables;
@@ -29,7 +28,7 @@ use mirror_custom_header::mirror_custom_header;
 use mirror_user_agent::mirror_user_agent;
 use validate_with_serde::validate_with_serde;
 
-#[derive(Clone, FromRef)]
+#[derive(Clone)]
 pub struct SharedData {
     pub message: String,
 }
@@ -55,6 +54,6 @@ pub fn create_routes() -> Router {
         .route("/middleware_message", get(middleware_message))
         .route("/validate_data", post(validate_with_serde))
         // .route("/custom_json_extractor", post(custom_json_extractor)) // could not get to work on 0.6 so abandoned files
-        .with_state(shared_data)
         .layer(cors)
+        .layer(Extension(shared_data))
 }

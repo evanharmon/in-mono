@@ -1,4 +1,4 @@
-use routing::run;
+use axum_0_5::run;
 
 #[tokio::main]
 async fn main() {
