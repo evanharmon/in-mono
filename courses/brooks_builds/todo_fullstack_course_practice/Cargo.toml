@@ -1,0 +1,6 @@
+[workspace]
+members = [
+  "axum_0_5",
+  "axum_0_6",
+  "data",
+]
