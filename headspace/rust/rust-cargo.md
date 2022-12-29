@@ -40,6 +40,9 @@ cargo build
 
 ## Use Private Crate
 
+can use a workspace package from another directory
+supports using unpublished crates in same workspace
+
 in Cargo.toml
 
 ```toml

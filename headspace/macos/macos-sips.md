@@ -1,4 +1,4 @@
-# SIPS
+# MACOS SIPS
 
 cli tool for resizing images
 

@@ -17,5 +17,11 @@ cargo install cargo-watch
 ## Use
 
 ```console
-cargo watch -x run
+cargo-watch -x run
+```
+
+## Watch cargo test
+
+```console
+cargo-watch -x test
 ```

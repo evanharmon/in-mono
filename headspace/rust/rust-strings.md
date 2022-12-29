@@ -17,3 +17,9 @@ b"RIFF"
 ```rust
 assert_eq!(&buffer, b"RIFF");
 ```
+
+## Create &str from String
+
+```rust
+"Hello World".to_owned();
+```

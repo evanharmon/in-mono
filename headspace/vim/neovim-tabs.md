@@ -1,19 +1,25 @@
 # NEOVIM TABS
 
 ## Create New Tab
+
 `:tabe`
 
 ## Move Current File to New Tab
+
 <ctrl>WT
 
 ## Go To Specific Tab
-1gt
+
+`1gt`
 
 ## Go To Next Tab
-gt
+
+`gt`
 
 ## Go To Previous Tab
-gT
+
+`gT`
 
 ## Set Tabline Tab Names Back to Default
+
 `:set all&`

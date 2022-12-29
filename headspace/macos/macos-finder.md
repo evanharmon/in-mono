@@ -1,4 +1,4 @@
-# FINDER
+# MACOS FINDER
 
 ## Show hidden files MacOS Ventura
 
@@ -20,4 +20,11 @@ can help with slowdowns / crashing of finder
 
 ```console
 rm ~/Library/Preferences/com.apple.finder.plist
+```
+
+## Show / Hide Finder
+
+```console
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 ```

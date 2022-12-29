@@ -7,8 +7,9 @@ Notes on rust error handling
 - [Rust By Example option](https://doc.rust-lang.org/rust-by-example/std/option.html)
 - [Rust docs option type](https://doc.rust-lang.org/1.5.0/book/error-handling.html#the-option-type)
 - [Rust medium dealing with option](https://medium.com/adventures-in-rust/deal-with-it-option-type-in-rust-4246e1dd9e47)
+- [Rust by example unpack option ?](https://doc.rust-lang.org/rust-by-example/error/option_unwrap/question_mark.html)
 
-### Using `std::option`
+## Using `std::option`
 
 option expresses the possibility of absence
 
@@ -34,19 +35,16 @@ match find_index(names, element) {
 }
 ```
 
-### Idiomatic Option Handler
+## Idiomatic Option Handler
+
+avoid using unwraps if you can
 
 ```rust
 find_index(names, name_not_in_names).unwrap();
-```
-
-or
-
-```rust
 find_index(names, name_not_in_names).unwrap_or(0);
 ```
 
-### Unwrap or else
+## Unwrap or else
 
 - [Rust BurntSushi error handling](https://blog.burntsushi.net/rust-error-handling/)
 
@@ -62,7 +60,7 @@ fn main() {
 }
 ```
 
-### Ignore `Some` Value
+## Ignore `Some` Value
 
 ```rust
 match x {
@@ -71,11 +69,24 @@ match x {
 }
 ```
 
-### Ignore `None` Value
+## Ignore `None` Value
 
 ```rust
 match x {
   Some(y) => { *y },
   None => {}
+}
+```
+
+## Unpack options
+
+avoids match statements, just requires an Option return type
+
+```rust
+fn next_birthday(current_age: Option<u8>) -> Option<String> {
+	// If `current_age` is `None`, this returns `None`.
+	// If `current_age` is `Some`, the inner `u8` gets assigned to `next_age`
+    let next_age: u8 = current_age? + 1;
+    Some(format!("Next year I will be {}", next_age))
 }
 ```

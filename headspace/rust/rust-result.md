@@ -1,22 +1,16 @@
 # RUST RESULT
 
-## Summary
-Notes on rust error handling
+## Resources
 
-[Rust By Example](https://doc.rust-lang.org/rust-by-example/std/result.html)
-result expresses the possibility of error
+- [Rust By Example result error handling](https://doc.rust-lang.org/rust-by-example/std/result.html)
 
-## unused `std::result::Result`
-code with warning
+## Unwrap with default
+
+unwraps and sets a default value if the Result is an error
+
 ```rust
-for _frame in frames.clone() {
-    writeln!(file, "{:?}", _frame);
-}
-```
-
-need to use an expect()
-```rust
-for _frame in frames.clone() {
-    writeln!(file, "{:?}", _frame).expect("write line to file");
+pub fn color_to_value(_color: ResistorColor) -> u32 {
+    let color = ResistorColor::try_from(_color).unwrap_or(ResistorColor::Black);
+    color.int_value()
 }
 ```

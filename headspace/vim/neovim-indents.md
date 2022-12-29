@@ -49,3 +49,7 @@ Highlight all
 ## Turn On Indent Guides Plug
 
 <spacebar>ig
+
+## Set indent to 4 spaces
+
+`:set ts=4 sw=4`

@@ -76,3 +76,9 @@ resource "aws_autoscaling_group" "my-group" {
 ```console
 terraform show tfplan
 ```
+
+## Clear Cache
+
+```console
+find . -type d -name ".terraform" -prune -exec rm -rf {} \;
+```

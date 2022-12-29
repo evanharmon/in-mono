@@ -4,6 +4,7 @@
 
 - [Thunder Client Github Docs](https://github.com/rangav/thunder-client-support#environments)
 
-## Global Environment
+## Config files location
 
-located in `Library/Application Support/Code/User/globalStorage/rangav.vscode-thunder-client/thunderEnvironment.json`
+global environment, local environment, custom-filter.js, etc lives here:
+MacOS `/Users/{{userName}}/Library/Application Support/Code/User/globalStorage/rangav.vscode-thunder-client/`
