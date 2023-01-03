@@ -1,4 +1,5 @@
 mod custom_json_extractor;
+mod event_mapper;
 mod get_json;
 mod hello_world;
 mod middleware_message;
@@ -23,6 +24,7 @@ use tower_http::cors::{Any, CorsLayer};
 use validate_with_serde::validate_with_serde;
 
 use custom_json_extractor::custom_json_extractor;
+use event_mapper::event_mapper;
 use get_json::get_json;
 use hello_world::hello_world;
 use middleware_message::middleware_message;
@@ -58,6 +60,7 @@ pub fn create_routes() -> Router<Body> {
         .route("/middleware_message", get(middleware_message))
         .route("/validate_data", post(validate_with_serde))
         .route("/custom_json_extractor", post(custom_json_extractor))
+        .route("/event_mapper", post(event_mapper))
         .layer(cors)
         .layer(Extension(shared_data))
 }
