@@ -1,15 +1,17 @@
 mod create_task;
 mod database;
-mod get_one_task;
+mod get_tasks;
 
 use axum::{body::Body, routing::{post, get}, Extension, Router};
 use sea_orm::{Database, DatabaseConnection};
 
 use create_task::create_task;
-use get_one_task::get_one_task;
+use get_tasks::get_one_task;
+use get_tasks::get_all_tasks;
 
 fn create_routes_with_db(db_conn: DatabaseConnection) -> Router<Body> {
     Router::new()
+        .route("/tasks", get(get_all_tasks))
         .route("/tasks", post(create_task))
         .route("/tasks/:id", get(get_one_task))
         .layer(Extension(db_conn))

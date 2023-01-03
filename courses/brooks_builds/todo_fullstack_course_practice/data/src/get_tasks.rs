@@ -26,3 +26,22 @@ pub async fn get_one_task(Path(id): Path<i32>, Extension(db_conn): Extension<Dat
         Err(StatusCode::NOT_FOUND)
     }
 }
+
+pub async fn get_all_tasks(Extension(db_conn): Extension<DatabaseConnection>) -> Result<Json<Vec<ResponseTask>>, StatusCode> {
+    let tasks = Tasks::find()
+        .all(&db_conn)
+        .await
+        .map_err(|_err| StatusCode::INTERNAL_SERVER_ERROR)?
+        .into_iter()
+        .map(|db_task| {
+            ResponseTask {
+                id: db_task.id,
+                title: db_task.title,
+                priority: db_task.priority,
+                description: db_task.description
+            }
+          }
+        )
+        .collect();
+    Ok(Json(tasks))
+}
