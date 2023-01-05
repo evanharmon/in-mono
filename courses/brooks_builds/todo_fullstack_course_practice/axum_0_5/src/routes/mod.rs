@@ -10,6 +10,7 @@ mod mirror_user_agent;
 mod path_variables;
 mod query_params;
 mod validate_with_serde;
+mod global_data;
 
 use axum::{
     body::Body,
@@ -32,6 +33,7 @@ use mirror_body_json::mirror_body_json;
 use mirror_body_string::mirror_body_string;
 use mirror_custom_header::mirror_custom_header;
 use mirror_user_agent::mirror_user_agent;
+use global_data::get_region;
 
 #[derive(Clone)]
 pub struct SharedData {
@@ -61,6 +63,7 @@ pub fn create_routes() -> Router<Body> {
         .route("/validate_data", post(validate_with_serde))
         .route("/custom_json_extractor", post(custom_json_extractor))
         .route("/event_mapper", post(event_mapper))
+        .route("/global_data/region", get(get_region))
         .layer(cors)
         .layer(Extension(shared_data))
 }

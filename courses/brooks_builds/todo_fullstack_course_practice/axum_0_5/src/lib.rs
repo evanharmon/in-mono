@@ -1,12 +1,13 @@
-pub mod routes;
-
-use routes::create_routes;
-
 #[macro_use]
 extern crate lazy_static;
 
-use std::collections::HashMap;
+pub mod routes;
 
+use std::collections::HashMap;
+use routes::create_routes;
+
+
+// downside here is lazy_static static ref has to be declared at root of crate
 lazy_static! {
     static ref EVENT_MAP: HashMap<&'static str, &'static str> = {
         let mut m = HashMap::new();
