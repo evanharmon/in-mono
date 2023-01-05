@@ -14,14 +14,20 @@
 cargo install cargo-watch
 ```
 
-## Use
+## Run
 
 ```console
-cargo-watch -x run
+cargo watch -x run
 ```
 
 ## Watch cargo test
 
 ```console
-cargo-watch -x test
+cargo watch -x test
+```
+
+## Run binary with cli flags
+
+```console
+cargo watch -x "run --bin my-package-bin-name -- --env-1=$ENV_1 --env-2=$ENV_2"
 ```

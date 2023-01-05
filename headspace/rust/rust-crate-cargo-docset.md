@@ -7,3 +7,9 @@
 ## Features
 
 - generates Dash and Zeal compatible docs
+
+## Install
+
+```console
+cargo install cargo-docset
+```

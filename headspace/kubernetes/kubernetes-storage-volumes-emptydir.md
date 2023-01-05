@@ -1,8 +1,8 @@
-# KUBERNETES VOLUMES EMPTYDIR
+# KUBERNETES STORAGE VOLUMES EMPTYDIR
 
 ## Resources
 
-- [Kubernetes Volumes emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir)
+- [Kubernetes storage volumes emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir)
 
 ## Features
 

@@ -1,10 +1,10 @@
-# KUBERNETES VOLUMES HOSTPATH
+# KUBERNETES STORAGE VOLUMES HOSTPATH
 
 avoid where possible due to security risks
 
 ## Resources
 
-- [Kubernetes Volumes hostPath](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
+- [Kubernetes storage volumes hostPath](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
 
 ## Features
 
