@@ -1,8 +1,8 @@
-use axum::{extract::Path, Extension, http::StatusCode, Json};
-use sea_orm::{DatabaseConnection, EntityTrait};
-use serde::Serialize;
+use axum::{extract::Path, extract::Query, Extension, http::StatusCode, Json};
+use sea_orm::{ColumnTrait, DatabaseConnection, EntityTrait, QueryFilter, Condition};
+use serde::{Deserialize, Serialize};
 
-use crate::database::tasks::Entity as Tasks;
+use crate::database::tasks::{Entity as Tasks, self};
 
 #[derive(Serialize)]
 pub struct ResponseTask {
@@ -12,7 +12,10 @@ pub struct ResponseTask {
     description: Option<String>,
 }
 
-pub async fn get_one_task(Path(id): Path<i32>, Extension(db_conn): Extension<DatabaseConnection>) -> Result<Json<ResponseTask>, StatusCode> {
+pub async fn get_one_task(
+    Path(id): Path<i32>,
+    Extension(db_conn): Extension<DatabaseConnection>
+) -> Result<Json<ResponseTask>, StatusCode> {
     let task = Tasks::find_by_id(id).one(&db_conn).await.unwrap();
 
     if let Some(task) = task {
@@ -27,8 +30,25 @@ pub async fn get_one_task(Path(id): Path<i32>, Extension(db_conn): Extension<Dat
     }
 }
 
-pub async fn get_all_tasks(Extension(db_conn): Extension<DatabaseConnection>) -> Result<Json<Vec<ResponseTask>>, StatusCode> {
+#[derive(Deserialize)]
+pub struct GetTaskQueryParams {
+    priority: Option<String>,
+}
+
+pub async fn get_all_tasks(
+    Extension(db_conn): Extension<DatabaseConnection>,
+    Query(query_params): Query<GetTaskQueryParams>,
+    ) -> Result<Json<Vec<ResponseTask>>, StatusCode> {
+    let mut priority_filter = Condition::all();
+    if let Some(priority) = query_params.priority {
+        priority_filter = if priority.is_empty() {
+            priority_filter.add(tasks::Column::Priority.is_null())
+        } else {
+            priority_filter.add(tasks::Column::Priority.eq(priority))
+        };
+    }
     let tasks = Tasks::find()
+        .filter(priority_filter)
         .all(&db_conn)
         .await
         .map_err(|_err| StatusCode::INTERNAL_SERVER_ERROR)?
