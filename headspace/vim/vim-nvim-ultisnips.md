@@ -1,10 +1,4 @@
-# ULTISNIPS
-
-## Summary
-
-Notes on working with ultisnips snippets
-
-## Resources
+# VIM NVIM ULTISNIPS
 
 ### Snippet Format
 

@@ -1,12 +1,10 @@
 # NVIM CONFIGURATION
 
-## Summary
-
-Notes on settings for `init.vim`
+non-lua
 
 ## Persistent Undo
 
-[jovicailic.org](https://jovicailic.org/2017/04/vim-persistent-undo/)
+- [jovicailic.org](https://jovicailic.org/2017/04/vim-persistent-undo/)
 
 ```console
 mkdir ~/.config/nvim/undodir

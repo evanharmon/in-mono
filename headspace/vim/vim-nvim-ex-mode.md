@@ -1,11 +1,5 @@
 # VIM EX MODE
 
-## Summary
-
-Notes on using vim execute mode
-
-## Resources
-
 ### Copy
 
 :t address

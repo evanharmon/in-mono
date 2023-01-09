@@ -1,4 +1,4 @@
-# NEOVIM
+# VIM NEOVIM
 
 ## Resources
 

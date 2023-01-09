@@ -1,5 +1,9 @@
 # CURL
 
+## Resources
+
+- [Curl docs](https://curl.se/docs/)
+
 ## Send Post with Form Data
 
 remember to URL encode with % symbols where necessary
@@ -20,15 +24,10 @@ curl \
 
 ## Follow Redirects
 
+also ensures correct file type
+
 ```console
 curl -L
-```
-
-## Save As File
-
-```console
-curl -Lo \ $HOME/.cache
-    https://download.docker.com/mac/stable/Docker.dmg
 ```
 
 ## Insecure Mode
@@ -85,14 +84,3 @@ curl -u <my-api-token>: \
 ```console
 curl -u <my-api-token>: -H 'Content-Type: '$TYPE''
 ```
-
-## Create Directories On File Save
-
-```console
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
-
-## Malformed URL On File Download
-
-try `curl -Lo` instead of `curl -LO`

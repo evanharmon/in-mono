@@ -7,6 +7,9 @@
 
 ## Install
 
+starship requires a NerdFont - so visit [this download link](https://www.nerdfonts.com/font-downloads)
+Download the FiraCode NerdFont with ligatures. Install in macOS fontbook
+
 ```console
 mkdir -p ~/.local/bin && cd ~/.local/bin
 export BIN_DIR="$HOME/.local/bin"

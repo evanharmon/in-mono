@@ -1,8 +1,4 @@
-# SED
-
-## Summary
-
-Notes on using SED
+# LINUX SED
 
 ## Search and Replace
 

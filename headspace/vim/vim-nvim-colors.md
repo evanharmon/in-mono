@@ -1,4 +1,6 @@
 # NEOVIM COLORS
+
+```
 hi x016_Grey0 ctermfg=16 guifg=#000000 "rgb=0,0,0
 hi x017_NavyBlue ctermfg=17 guifg=#00005f "rgb=0,0,95
 hi x018_DarkBlue ctermfg=18 guifg=#000087 "rgb=0,0,135
@@ -239,3 +241,4 @@ hi x252_Grey82 ctermfg=252 guifg=#d0d0d0 "rgb=208,208,208
 hi x253_Grey85 ctermfg=253 guifg=#dadada "rgb=218,218,218
 hi x254_Grey89 ctermfg=254 guifg=#e4e4e4 "rgb=228,228,228
 hi x255_Grey93 ctermfg=255 guifg=#eeeeee "rgb=238,238,238
+```

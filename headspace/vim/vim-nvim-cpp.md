@@ -1,6 +1,5 @@
 # NEOVIM CPP
 
-## Summary
 
 Setting up Neovim for cpp development
 

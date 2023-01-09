@@ -1,14 +1,10 @@
-# COC SNIPPETS
-
-## Summary
-
-Notes on using snippets with COC in neovim
+# VIM NVIM COC SNIPPETS
 
 ## Resources
 
-- [GH](https://github.com/neoclide/coc-snippets)
+- [Nvim COC](https://github.com/neoclide/coc-snippets)
 
-### Support React
+## Support React
 
 add to `~/.config/nvim/coc-settings.json`
 
@@ -20,7 +16,7 @@ add to `~/.config/nvim/coc-settings.json`
 },
 ```
 
-### Support vim-go
+## Support vim-go
 
 add to `~/.config/nvim/coc-settings.json`
 
@@ -31,10 +27,10 @@ snippets.ultisnips.directories: [
 ],
 ```
 
-### Add Custom Snippets
+## Add Custom Snippets
 
 add snippet files to `$VIMCONFIG/coc/ultisnips`
 
-### Edit Snippets For Filetype
+## Edit Snippets For Filetype
 
 in neovim run `:CocCommand snippets.editSnippets`

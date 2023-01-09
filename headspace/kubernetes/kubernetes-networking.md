@@ -3,14 +3,7 @@
 ## Resources
 
 - [Kubernetes Networking Guide](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
-- [Kubernetes Service Networking](https://kubernetes.io/docs/concepts/services-networking/service/)
 
-## Pods
+## Features
 
-Every POD gets it's own IP address. No need to create links across containers
-like in Docker. No need to map container / host ports.
-
-## Pods Localhost
-
-IP-per-Pod model. All containeirs within the same pod can communicate with each other over
-localhost. Containers must coordinate port usage.
+- kubernetes is an IP-per-pod model

@@ -1,13 +1,9 @@
-# COC
-
-## Summary
-
-Notes on using COC in neovim
+# VIM NVIM COC
 
 ## Resources
 
-- [Github](https://github.com/neoclide/coc.nvim)
-- [Language Servers Wiki](https://github.com/neoclide/coc.nvim/wiki/Language-servers)
+- [Nvim coc Github](https://github.com/neoclide/coc.nvim)
+- [Nvim coc Language Servers Wiki](https://github.com/neoclide/coc.nvim/wiki/Language-servers)
 
 ## CLANGD Setup
 

@@ -1,4 +1,4 @@
-# WC
+# LINUX WC
 
 ## Get count of files in a directory
 

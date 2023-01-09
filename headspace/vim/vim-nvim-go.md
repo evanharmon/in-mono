@@ -1,4 +1,4 @@
-# VIM GO
+# VIM NVIM GO
 
 ## Show Declarations With FZF
 
