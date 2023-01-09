@@ -1,14 +1,20 @@
 mod create_task;
 mod database;
 mod get_tasks;
+mod partial_update_tasks;
 mod update_tasks;
 
-use axum::{body::Body, routing::{post, get, put}, Extension, Router};
+use axum::{
+    body::Body,
+    routing::{get, patch, post, put},
+    Extension, Router,
+};
 use sea_orm::{Database, DatabaseConnection};
 
 use create_task::create_task;
-use get_tasks::get_one_task;
 use get_tasks::get_all_tasks;
+use get_tasks::get_one_task;
+use partial_update_tasks::partial_update;
 use update_tasks::atomic_update;
 
 fn create_routes_with_db(db_conn: DatabaseConnection) -> Router<Body> {
@@ -17,6 +23,7 @@ fn create_routes_with_db(db_conn: DatabaseConnection) -> Router<Body> {
         .route("/tasks", post(create_task))
         .route("/tasks/:id", get(get_one_task))
         .route("/tasks/:id", put(atomic_update))
+        .route("/tasks/:id", patch(partial_update))
         .layer(Extension(db_conn))
 }
 
