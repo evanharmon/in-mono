@@ -1,7 +1,5 @@
 # KUBERNETES NETWORKING POD CONTAINERS
 
-## Resources
-
 ## Features
 
 - containeirs within pod can communicate with each other over localhost

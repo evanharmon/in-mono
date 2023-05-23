@@ -90,3 +90,12 @@ fn next_birthday(current_age: Option<u8>) -> Option<String> {
     Some(format!("Next year I will be {}", next_age))
 }
 ```
+
+## Return early if Option::None
+
+```rust
+"my_first_string.my_second_string"
+  .split('.')
+  .nth(2)
+  .ok_or_else(|| "failed to parse and retrieve string part".to_owned())?;
+```

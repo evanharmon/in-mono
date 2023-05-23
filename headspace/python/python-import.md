@@ -4,6 +4,13 @@
 
 - [Python standard library](https://docs.python.org/3/library)
 
+## Import python file with no **init**
+
+```python
+# example: mypackage.py
+from .mypackage import my_special_func
+```
+
 ## Import entire package / module
 
 ```python
@@ -30,7 +37,7 @@ from random import shuffle
 from random import shuffle as shuf
 ```
 
-# Do not import in to global namespace
+## Do not import in to global namespace
 
 who knows what packages / modules have the same named functions
 
