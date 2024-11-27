@@ -4,30 +4,40 @@
 
 - [Kubernetes Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
-## Create Deployment
+## Features
 
-```console
-kubectl create deployment my-app --image=
-```
+- rolling updates
+- rollbacks
+- handles replicasets internally
 
-## Create deployment from file
+## Practice
 
-```console
-kubectl apply -f my-deployment.yaml
-```
+### Get deployments
+`kubectl get deployments` or `kubectl get deploy`
 
-## check deployments
+### Create Deployment
 
-```console
-kubectl get deployments
-```
+`kubectl create deployment my-app --image=nginx`
 
-## Delete deployment
+### Create deployment from file
 
-```console
-kubectl delete deployment my-app
-```
+`kubectl apply -f my-deployment.yaml`
 
-```console
-kubectl delete -f=my-deployment.yaml
-```
+### Generate deployment yaml file
+
+`kubectl create deploy nginx --image=nginx --dry-run=client -o yaml`
+
+### check deployments
+
+`kubectl get deploy`
+
+### Delete deployment
+
+`kubectl delete deploy my-app`
+
+`kubectl delete -f my-deployment.yaml`
+
+### Get all deploy / replicaset / pods
+`kubectl get all -l app=my-app`
+
+## Common Issues
