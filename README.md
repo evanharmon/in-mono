@@ -14,9 +14,9 @@ The `./headspace` folder contains tons of information from my experiences as a L
 
 Code challenges in various languages `./challenges`
 
-## Playgrounds
+## Docker Playgrounds
 
-`./playgrounds` docker playgrounds for various languages, frameworks, databases, etc
+`./docker_playgrounds` docker playgrounds for various languages, frameworks, databases, etc
 
 ## [Reactified MDN WebAudio Examples](./apps/mdn-webaudio-examples/)
 
