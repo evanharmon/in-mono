@@ -45,8 +45,12 @@ Generic `kubectl` command, no need to change namespace, etc on docker mac
 
 `kubectl get endpoints my-nginx` or `kubectl get ep my-nginx`
 
-## Get ports for a service
+### Get ports for a service
 `kubectl get svc -o jsonpath='{..ports}'`
+
+### Create and expose a service on `kubectl run`
+
+`kubectl run httpd --image=httpd:alpine --port=80 --expose=true`
 
 ## Common Issues
 
