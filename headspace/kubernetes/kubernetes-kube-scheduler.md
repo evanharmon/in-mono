@@ -12,6 +12,7 @@ Handles scheduling containers. Continually polls the kube-apiserver. Responds ba
 - determines which nodes to place Pods
 - doesn't ACTUALLY place nodes - kubelet does that
 - supports custom schedulers
+- sets the `nodeName` on the Pod resource
 
 Pays attention to:
 - resource requirements and limits
@@ -39,3 +40,45 @@ Settings are viewable at:
 
 Settings are viewable at:
 `cat /etc/systemd/system/kube-scheduler.service`
+
+## Practice
+
+### Manually schedule via pod spec
+set `nodeName` in the pod definition yml
+
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+      - containerPort: 8080
+  nodeName: node02
+```
+
+
+### Manually schedule via pod binding and curl request
+```yml
+apiVersion: v1
+kind: Binding
+metadata:
+  name: nginx
+target:
+  apiVersion: v1
+  kind: Node
+  name: node02
+```
+
+```sh
+curl \
+  --header "Content-Type:application/json" \
+  --request POST \
+  --data @binding-spec.json \
+  http://$SERVER/api/v1/namespaces/default/pods/$PODNAME/binding/
+```
