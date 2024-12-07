@@ -10,6 +10,12 @@
 - rollbacks
 - handles replicasets internally
 
+
+## Rollout strategies
+
+- Recreate: leads to downtime
+- RollingUpdate: default, uses replicasets under the hood
+
 ## Practice
 
 ### Get deployments
@@ -27,7 +33,11 @@
 
 `kubectl create deploy nginx --image=nginx --dry-run=client -o yaml`
 
-### check deployments
+### Generate deployment yaml from existing deployment
+
+`kubectl get deployment <deployment-name> -o yaml | sed '/status:/,$d' > deployment.yaml`
+
+### Check deployments
 
 `kubectl get deploy`
 
@@ -40,4 +50,20 @@
 ### Get all deploy / replicaset / pods
 `kubectl get all -l app=my-app`
 
-## Common Issues
+### Get rollout status
+`kubectl rollout status deployment/myapp-deployment`
+
+### Get rollout history
+`kubectl rollout history deployment/myapp-deployment`
+
+### Set image and trigger deployment update
+
+`kubectl set image deployment/mydeployment nginx=nginx:1.9.1`
+
+or `kubectl edit deployment/mydeployment`
+
+### Rollout new deployment update
+`kubectl apply -f deployment-definition.yml`
+
+### Rollback
+`kubectl rollout undo deployment/myapp-deployment`

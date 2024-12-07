@@ -28,6 +28,7 @@ USER dev2
 
 provides default arguments to ENTRYPOINT
 overriden by user arguments in `docker run`
+for `CMD ["", ""]` format, first item must be the binary
 
 ```dockerfile
 CMD ["/bin/zsh"]
@@ -37,6 +38,21 @@ CMD ["/bin/zsh"]
 
 configure a container that will be run as an executable
 arguments added to `docker run` are appended
+
+useful example of CMD / ENTRYPOINT
+
+```dockerfile
+FROM Ubuntu
+
+ENTRYPOINT ["sleep"]
+
+CMD ["5"]
+```
+
+run `docker run ubuntu-sleeper 10` for override / customization
+
+override entrypoint:
+`docker run -it --entrypoint="" ubuntu-sleeper sh`
 
 ## Keep Container Running
 

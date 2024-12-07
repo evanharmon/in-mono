@@ -37,3 +37,23 @@
 $ etcdctl get mykey -w=json
 {"header":{"cluster_id":14841639068965178418,"member_id":10276657743932975437,"revision":15,"raft_term":4}}
 ```
+
+## Get secret
+
+```sh
+ETCDCTL_API=3 etcdctl \
+   --cacert=/etc/kubernetes/pki/etcd/ca.crt   \
+   --cert=/etc/kubernetes/pki/etcd/server.crt \
+   --key=/etc/kubernetes/pki/etcd/server.key  \
+   get /registry/secrets/default/secret1 | hexdump -C
+```
+
+## get list of members
+
+```sh
+ETCDCTL_API=3 etcdctl \
+  --cacert /etc/etcd/pki/ca.pem \
+  --cert /etc/etcd/pki/etcd.pem \
+  --key /etc/etcd/pki/etcd-key.pem \
+  member list -w table
+```

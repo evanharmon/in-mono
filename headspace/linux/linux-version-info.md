@@ -4,8 +4,10 @@
 uname -a
 ```
 
-# Check Version
+# Check Version / Release
 
 ```console
 lsb_release -r
 ```
+
+or `cat /etc/*release*`

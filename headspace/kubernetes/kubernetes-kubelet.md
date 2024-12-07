@@ -24,3 +24,12 @@ Does NOT deploy kubelets. Must always manually install and run service.
 
 Settings are viewable at:
 `cat /etc/systemd/system/kube-apiserver.service`
+
+## Practice
+
+### Install kubelet
+`apt-get install -y kubelet=1.31.0-00`
+
+### Upgrade kubelet
+`apt-get upgrade -y kubelet=1.31.0-00`
+`systemctl restart kubelet`

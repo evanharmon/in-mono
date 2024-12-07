@@ -10,6 +10,9 @@
 kubectl config view
 ```
 
+## List contexts
+`kubectl config get-contexts`
+
 ## Change Current Context
 
 ```console

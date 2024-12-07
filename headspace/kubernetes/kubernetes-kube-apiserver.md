@@ -28,3 +28,13 @@ Settings are viewable at:
 
 Settings are viewable at:
 `cat /etc/systemd/system/kube-apiserver.service`
+
+## Practice
+
+### Check if encryption at rest is enabled
+
+`ps -aux | grep kube-apiserver` and look for flag `--encryption-provider-config`
+
+on kubeadm setups
+
+`cat /etc/kubernetes/manifests/kube-apiserver.yml`

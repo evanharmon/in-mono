@@ -33,3 +33,6 @@ apt-get upgrade --dry-run
 # Package not found errors
 
 Try `sudo apt-get update` first
+
+## List versions of a package
+`sudo apt list -a kubeadm`

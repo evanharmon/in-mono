@@ -10,7 +10,6 @@
 - contains services to run pods
 - worker machines
 
-
 ## Node Types
 
 - `master`
@@ -41,3 +40,27 @@ Manages containers.
 Runs:
 - kubelet
 - kube-proxy
+
+## Practice
+
+### Cordon node
+marks node as Unschedulable
+`kubectl cordon node01`
+
+### Drain node
+`kubectl drain node01`
+
+may need to adjust if daemonsets exist
+
+`kubectl drain node01 --ignore-daemonsets`
+
+if non-replicaset pod exists, you can forcefully drain the node.
+Beware though - those pods will be lost! Probably better to delete the pods to get them to reschedule first
+`kubectl drain node01 --force`
+
+### Uncordon node
+`kubectl uncordon node01`
+
+### List all pods on a specific node
+
+`kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=node1`
