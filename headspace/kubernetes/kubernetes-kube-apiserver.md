@@ -16,6 +16,10 @@ Primary control server for kubernetes. Only component that communicates with ETC
 
 Can always check options with `ps -aux | grep kube-apiserver`
 
+## Networking
+
+service that runs at `kubernetes.default.svc.cluster.local`
+
 ### Kubeadm
 Deploys kube-apiserver for you and it's visible as a pod on the master node
 

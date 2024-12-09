@@ -1,16 +1,17 @@
 # SSL TLS SYMMETRIC ENCRYPTION
 
-Single key encryption
 
 ## Benefits
 
-Handles large amounts of data at great speeds
+- single key encryption
+- handles large amounts of data at great speeds
 
 ## Cons
 
-Less secure when number of parties involved increases
-Cannot be used on unattended s ystems to secure data. Process can be easily
-reversed by using same key
+- same key is used to encrypt and decrypt
+- less secure when number of parties involved increases
+- cannot be used on unattended systems to secure data. Process can be easily
+  reversed by using same key
 
 ## Requirements
 

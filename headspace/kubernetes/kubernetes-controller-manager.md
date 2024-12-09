@@ -18,6 +18,7 @@ Daemon that embeds the core control loops shipped with kubernetes. Manages the d
 - endpoint-controller
 - pv-protection-controller
 - replicaset
+- etc..
 
 ## Controller Sets
 enabled controllers can be limited with `--controllers` flag
@@ -38,3 +39,12 @@ Settings are viewable at:
 
 Settings are viewable at:
 `cat /etc/systemd/system/kube-controller-manager.service`
+
+## Practice
+
+### Flags for certificate controllers
+
+```sh
+--cluster-signing-cert-file='/etc/kubernetes/pki/ca.crt' \
+--cluster-signing-key-file='/etc/kubernetes/pki/ca.key' \
+```

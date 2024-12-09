@@ -7,7 +7,7 @@
 ## Download file without specifying filename
 
 ```console
-curl -Lo \ $HOME/.cache
+curl -Lo $HOME/.cache
     https://download.docker.com/mac/stable/Docker.dmg
 ```
 

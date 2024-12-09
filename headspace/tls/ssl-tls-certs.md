@@ -1,9 +1,5 @@
 # SSL TLS CERTIFICATES
 
-## Summary
-
-Notes on certs
-
 ## Resources
 
 - [SSL TLS Chain Of Trust](https://letsencrypt.org/certificates/)

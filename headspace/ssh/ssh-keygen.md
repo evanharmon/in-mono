@@ -26,3 +26,8 @@ ssh-keygen -t rsa -b 4096
 ```console
 ssh-keygen -lf /path/to/key.pub
 ```
+
+## Add public key for SSH access
+`cat id_rsa.pub >> ~/.ssh/authorized_keys`
+or
+`ssh-copy-id -i id_rsa.pub user@host.com`
