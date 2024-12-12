@@ -1,6 +1,7 @@
 # KUBERNETES KUBE APISERVER SECURITY
 
 ## Resources
+- [Kubernetes authorization](https://kubernetes.io/docs/reference/access-authn-authz/authorization/)
 
 ## Features
 kube-apiserver stands in front of many other kube components. It's the first line of defense
@@ -14,11 +15,35 @@ kube-apiserver stands in front of many other kube components. It's the first lin
 - service accounts (machine-to-machine communication)
 
 ## Authorization
+list of authorizers available
 
 - role based access control (RBAC)
 - attribute based access control (ABAC)
 - node
 - webhook
+- AlwaysAllow (bypasses checks)
+- AlwaysDeny (bypasses checks)
+
+### Authorization Mode
+set on the kube-apiserver with the flag `--authorization-mode`
+supports comma-separated list like:
+`--authorization-mode=Node,RBAC,Webhook`
+
+order of evaluation is as specified in the flag
+as soon as one module approves, all checks end
+
+### Attribute based access control (ABAC)
+associate group of users with a set of permissions
+cumbersome because any edits to the policy file require a restart of the kube-apiserver
+
+### Role based access control (RBAC)
+standard approach. Much easier to use as role is an object and has permissions associated with it.
+changes occur immediately. users / groups get associated with the role
+
+### Webhook
+allows outsourcing of authorization to external systems
+
+example: third-party `open policy agent`
 
 ## TLS Components
 TODO - which components like kubelet are done via TLS certs?

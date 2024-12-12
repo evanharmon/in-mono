@@ -9,13 +9,12 @@
 
 - scope for Object Names
 - mechanism to attach authorization and policy to a subsection of cluster
-- 
 
 ## Common Namespaces
 
 - kube-system is used by kubernetes
 - kube-public is another common NS
-- default is available but not optimal
+- default is available but not optimal as it becomes a garbage pile
 
 ## Practice
 

@@ -16,9 +16,9 @@
 ## Limitations
 based on Kube-apiserver version
 
-- Controller-manager, kube-scheduler can be up to 1 minor version behind
-- Kubelet can be up to 2 minor versions behind
-- Kube-proxy can be up to 2 minor versions behind
+- controller-manager, kube-scheduler can be up to 1 minor version behind
+- kubelet can be up to 2 minor versions behind
+- kube-proxy can be up to 2 minor versions behind
 
 ## Worker node upgrade strategies
 
@@ -123,7 +123,6 @@ sudo systemctl restart kubelet
 ```
 
 uncordon the node: `kubectl uncordon node01`
-
 
 ## Common issues
 

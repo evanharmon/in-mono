@@ -26,10 +26,8 @@ ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 \
   --cacert=/etc/kubernetes/pki/etcd/ca.crt \ 
   --cert=/etc/kubernetes/pki/etcd/server.crt \ 
   --key=/etc/kubernetes/pki/etcd/server.key \ 
-  snapshot save /opt/snapshot-pre-boot.db 
+  snapshot save /opt/snapshot.db 
 ```
-
-location will be on the `--data-dir` flag for the `etcd.service`
 
 verify snapshot: `etcdutl --write-out=table snapshot status snapshot.db`
 
@@ -38,8 +36,8 @@ verify snapshot: `etcdutl --write-out=table snapshot status snapshot.db`
 ```sh
 ETCDCTL_API=3 etcdctl \
   --endpoints https://127.0.0.1:2379 \
-  --cacert /etc/etcd/pki/ca.pem \
-  --cert /etc/etcd/pki/etcd.pem \
+  --cacert=/etc/etcd/pki/ca.pem \
+  --cert=/etc/etcd/pki/etcd.pem \
   --key /etc/etcd/pki/etcd-key.pem \
   snapshot save /opt/snapshot.db
 ```
@@ -51,8 +49,7 @@ ETCDCTL_API=3 etcdctl \
 ### Stacked etcd restore
 
 ```sh
-# kube-apiserver MUST be stopped - obv
-service kube-apiserver stop
+# kube-apiserver should be stopped
 
 # verify backup
 etcdutl --data-dir /var/lib/etcd-from-backup snapshot restore snapshot.db
@@ -64,34 +61,23 @@ ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 \
   --cacert=/etc/kubernetes/pki/etcd/ca.crt \ 
   --cert=/etc/kubernetes/pki/etcd/server.crt \ 
   --key=/etc/kubernetes/pki/etcd/server.key \ 
-  --name=master \
-  --data-dir=/var/lib/etcd-from-backup \
-  --initial-cluster=master=https://127.0.0.1:2380 \
-  --inital-cluster-token=etcd-cluster-1 \
-  --initial-advertise-peer-urls=master=https://127.0.0.1:2380 \
   snapshot restore /opt/snapshot-pre-boot.db 
 ```
 
 # edit /etc/kubernetes/manifests/etcd.yaml
-# update --data-dir arg for /var/lib/etcd-from-backup
 # update volumes: /var/lib/etcd-from-backup
-# update cluster token for new cluster: --initial-cluster-token etcd-cluster-1
-
-# update etcd.service to use the new backup location from above
 # if cluster api has changed, update kube-apiserver.yml config
 # --etcd-servers=$NEW_ETCD_CLUSTER
 # note for kodekloud - i had to delete the etcdctl-controlplane
 ```sh
-systemctl daemon-reload
-service etcd restart
 
-service kube-apiserver start
+# start kube-apiserver
 ```
 
 ### External etcd restore
 
 ```sh
-# kube-apiserver MUST be stopped - obv
+# kube-apiserver MUST be stopped
 service kube-apiserver stop
 
 # verify backup
@@ -104,18 +90,17 @@ ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 \
   --cacert=/etc/etcd/pki/ca.pem \ 
   --cert=/etc/etcd/pki/etcd.pem \ 
   --key=/etc/etcd/pki/etcd-key.pem \ 
-  --name=master \
   --data-dir=/var/lib/etcd-from-backup \
-  --initial-cluster=master=https://127.0.0.1:2380 \
-  --inital-cluster-token=etcd-cluster-1 \
-  --initial-advertise-peer-urls=master=https://127.0.0.1:2380 \
-  snapshot restore /opt/snapshot-pre-boot.db 
+  snapshot restore /opt/snapshot.db 
 ```
 
-update etcd.service: update --data-dir arg for /var/lib/etcd-from-backup
+```sh
+# make sure etcd owns the new restore directory!
+chown -R etcd:etcd /var/lib/etcd-from-backup
+
+# update etcd.service: update --data-dir arg for /var/lib/etcd-from-backup
 `vi /etc/systemd/system/etcd.service`
 
-```sh
 systemctl daemon-reload
 systemctl restart etcd
 

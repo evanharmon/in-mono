@@ -10,6 +10,7 @@ Network proxy service running on each node. Pod networking solution.
 Virtual network across all nodes.
 
 - can do this using iptables rules
+- can be used locally to directly curl kube-apiserver without specifying certs
 
 ## Deployment
 
