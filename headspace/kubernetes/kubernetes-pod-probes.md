@@ -4,11 +4,32 @@
 
 - [Kubernetes Pods Liveness, Readiness, Startup Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
 
+
+## Readiness HTTP probe
+
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+    - image: nginx
+      name: nginx
+      readinessProbe:
+        httpGet:
+          path: /
+          port: 80
+          scheme: HTTP
+```
+
 ## Liveness command check
 
-example
-
 ```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
 spec:
   containers:
     - name: liveness

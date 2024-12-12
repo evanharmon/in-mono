@@ -97,16 +97,14 @@ sudo apt-get update && sudo apt-get install -y kubeadm='1.31.x-*' && \
 sudo apt-mark hold kubeadm
 
 kubeadm version # verify
+# drain the node: 
+kubectl drain node1
+# upgrade worker node:
+sudo kubeadm upgrade node
 ```
 
-upgrade worker node:
-`sudo kubeadm upgrade node`
-
-drain the node: `kubectl drain node1`
-
-upgrade kubelet to new k8s version:
-
 ```sh
+# upgrade kubelet:
 # replace x in 1.31.x-* with the latest patch version
 sudo apt-mark unhold kubelet kubectl && \
 sudo apt-get update && sudo apt-get install -y kubelet='1.31.x-*' kubectl='1.31.x-*' && \
@@ -115,14 +113,12 @@ sudo apt-mark hold kubelet kubectl
 # verify
 kubelet version
 kubectl version
-```
 
-```sh
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
+# uncordon the node: 
+kubectl uncordon node01
 ```
-
-uncordon the node: `kubectl uncordon node01`
 
 ## Common issues
 

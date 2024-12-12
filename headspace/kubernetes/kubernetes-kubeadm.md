@@ -21,3 +21,7 @@
 ### Upgrade kubernetes version
 Remember kubeadm does NOT upgrade kubelet's
 `kubeadm upgrade plan`, `kubeadm upgrade apply`
+
+### Create join token and print command
+
+`kubeadm create token --print-join-command`
