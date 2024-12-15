@@ -12,7 +12,7 @@
 - not intended for sharing across containers?
 
 ## Remove Anonymous volume automatically
-
-```console
-docker run --rm -v /foo busybox top
+leaving `source` empty leads to anonymous volume
+```sh
+docker run --rm --mount type=bind,source=,target=/foo busybox top
 ```

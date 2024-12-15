@@ -16,6 +16,7 @@ avoid where possible due to security risks
 
 - files and directories created by underlying host only writable by root
 - files and directories may need to be adjusted for access beyond root
+- not suitable for sharing data on multiple hosts or multiple clusters
 
 ## Example
 

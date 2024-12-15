@@ -10,7 +10,7 @@
 echo '{"some": "event"}' |\
   docker run \
     --rm \
-    -v "$PWD":/var/task \
+    --mount type=bind,source="$PWD",target=/var/task \
     -i \
     -e DOCKER_LAMBDA_USE_STDIN=1 \
     lambci/lambda:nodejs8.10
@@ -20,7 +20,7 @@ echo '{"some": "event"}' |\
 
 ```console
 cat sample-api-gateway-request-event.json |\
-docker run -v ${PWD}:/go/src/github.com/my-go-project \
+docker run -mount type=bind,source="${PWD}",target=/go/src/github.com/my-go-project \
  -p 40000:40000 -i --rm --security-opt seccomp=unconfined \
  -e DOCKER_LAMBDA_USE_STDIN=1 lambci/lambda:build-go1.x \
  /go/src/github.com/my-go-project/bin/dlv debug \

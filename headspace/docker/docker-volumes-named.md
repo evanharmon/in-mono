@@ -10,9 +10,3 @@
 
 - volume deleted when container is deleted
 - not intended for sharing across containers?
-
-## Remove Anonymous volume automatically
-
-```console
-docker run --rm -v /foo busybox top
-```

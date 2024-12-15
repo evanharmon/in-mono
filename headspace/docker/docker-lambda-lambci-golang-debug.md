@@ -21,7 +21,7 @@ requires unconfined security
 
 ```console
 docker run \
-  -v ${PWD}:/go/src/github.com/evanharmon/my-go-project \
+  --mount type=bind,source="${PWD}",target=/go/src/github.com/evanharmon/my-go-project \
   -p 40000:40000 \
   --security-opt seccomp=unconfined \
   -it --rm \
@@ -34,7 +34,7 @@ requires unconfined security
 
 ```console
 docker run \
-  -v ${PWD}:/go/src/github.com/evanharmon/my-go-project \
+  --mount type=bind,source="${PWD}",target=/go/src/github.com/evanharmon/my-go-project \
   -p 40000:40000 \
   --security-opt seccomp=unconfined \
   -it --rm \
