@@ -1,21 +1,48 @@
 # LINUX ROUTES
 
-## Summary
+## Limitations
 
-Notes on working with routes in linux
+- remember the routes need to exist on EACH system
 
-## List Routes
+## Commands
 
-`$ route`
+### List routes
 
-## Add Default Gateway
+`ip route`
 
-`$ sudo route add default gw 192.168.0.254`
+### Add default gateway
+routing to external networks
 
-## List IP Routing Without Resolves
+`ip route add default via 192.168.1.1 dev eth0`
 
-`$ route -n`
+same as: `ip route add 0.0.0.0 via dev eth0`
 
-## Edit Resolve Routes
+### Add static route
+Configure a gateway to reach another network
 
-`$ vi /etc/resolv.conf`
+`ip route add 192.168.2.0/24 via 192.168.1.1`
+
+### Example setup with internal / external routers
+
+```sh
+ip route add 192.168.1.0/24 via 192.168.2.2
+ip route add default via 192.168.1.1 dev eth0
+```
+
+### Delete a route
+
+`ip route del 192.68.1.0/24`
+
+### List IP routing without resolves
+
+`ip route show`
+
+### Add policy based routing
+```sh
+ip rule add from 192.168.2.0/24 table 200`
+ip rule add default via 192.168.2.1 table 200`
+```
+
+### Edit resolve routes
+
+`vi /etc/resolv.conf`

@@ -1,22 +1,27 @@
-# Search for String in Files in Directory
+# GREP
 
-`$ grep -r "user" ./lib`
+## Ignore case sentivity
+`netstat -npl | grep -i scheduler`
 
-# Search string in File show only filename
+## Search for String in Files in Directory
 
-`$ grep -rl "uib-typeahead" ./app`
+`grep -r "user" ./lib`
 
-# Search for Filename in Directory
+## Search string in File show only filename
 
-`$ use find not grep`
+`grep -rl "uib-typeahead" ./app`
 
-# Show Line Numbers
+## Search for Filename in Directory
 
-`$ grep -n`
+`use find not grep`
 
-# Search for String but Exclude a Directory
+## Show Line Numbers
 
-`$ grep -R --exclude-dir=node_modules 'some pattern' /path/to/search`
+`grep -n`
+
+## Search for String but Exclude a Directory
+
+`grep -R --exclude-dir=node_modules 'some pattern' /path/to/search`
 
 ## Find Matching Strings Between Files
 
@@ -27,6 +32,4 @@ example format of txt files
 1235
 ```
 
-```console
-grep -f file1.txt file2.txt | tee matches.txt
-```
+`grep -f file1.txt file2.txt | tee matches.txt`

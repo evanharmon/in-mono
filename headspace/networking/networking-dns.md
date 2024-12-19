@@ -1,51 +1,55 @@
 # NETWORKING DNS
 
-## Top Level Domains
+## Features
+
+- dns servers run on port 53
+
+### Top Level Domains
 Controlled by IANA in a root zone database http://www.iana.org/domains/root/db
 .com
 .edu
 .gov
 etc
 
-## Domain Names
+### Domain Names
 Domain registrars assign domain names directly under one or more top-level
 domains. Registered with InterNIC, a service of ICANN to enforce uniqueness
 Central database is WhoIS
 
-## Second Level Domain Name
+### Second Level Domain Name
 co.uk
 gov.uk
 .com.au
 
-## DNS Records are Cached
+### DNS Records are Cached
 Depends how long based on TTL value
 
-## Address (A) Record
+### Address (A) Record
 This is the most important record, resolvers see this record. Used to translate
 human readable name to specific ip address
 
-## Alias Records - AWS Route53
+### Alias Records - AWS Route53
 NOT visible to resolvers
 used to map resource record sets in your hosted zone to ELBs, CloudFront
 distributions, or S3 buckets
 
-## Time to Live (TTL)
+### Time to Live (TTL)
 always measured in seconds
 
-## Canonical Name (CNAME) Record
+### Canonical Name (CNAME) Record
 resolves one domain name to another domain name
 ex www.acloud.guru resolves to acloud.guru
 
-## Name Server (NS) Record
+### Name Server (NS) Record
 Used by top level domain servers to direct traffic to the Content DNS server
 which contains the authoritative DNS records
 
-## MX Record
+### MX Record
 Mail Record
 
-## PTR Record
+### PTR Record
 
-## Start of Authority (SOA) Record
+### Start of Authority (SOA) Record
 DNS zone always starts with a single SOA Record
 SOA Stores:
 - Name of Server
@@ -58,14 +62,14 @@ SOA Stores:
   be refreshed or expired
 - Default number of seconds for TTL file on resource records
 
-## Root Servers
+### Root Servers
 13 Root servers exist around the world
 Managed by ICANN (US based company)
 
-## Resolving DNS Server
+### Resolving DNS Server
 Saves authoritative record locally per TTL so it can cache instead of query
 
-## Example DNS flow
+### Example DNS flow
 User Browser queries Resolving DNS Server
 Resolving DNS Server queries Root DNS Server
 Resolving DNS Server queries TLD Servers

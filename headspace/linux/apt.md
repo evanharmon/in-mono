@@ -1,38 +1,35 @@
 # APT
 
-# Search For A Package
+## Search For A Package
 
-```console
-apt-cache search zsh
-```
+`apt-cache search zsh`
 
-# Get Dependencies of a Package
+## Get Dependencies of a Package
 
-```console
-apt-cache depends vim
-```
+`apt-cache depends vim`
 
-# Install Package
+## Install Package
 
-```console
-apt-get install vim
-```
+`apt-get install vim`
 
-# Download Package
+## Download Package
 
-```console
-apt-get download vim
-```
+`apt-get download vim`
 
-# See What updates are needed
+## See What updates are needed
 
-```console
-apt-get upgrade --dry-run
-```
+`apt-get upgrade --dry-run`
 
-# Package not found errors
+## Package not found errors
 
-Try `sudo apt-get update` first
+Try `apt-get update` first
 
 ## List versions of a package
-`sudo apt list -a kubeadm`
+
+`apt list -a kubeadm`
+
+## List packages installed
+`apt list --installed`
+
+## Clear out local repo of retrieved package files
+`apt-get clean`

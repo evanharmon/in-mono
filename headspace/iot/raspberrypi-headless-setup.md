@@ -1,9 +1,5 @@
 # RASPBERRY PI HEADLESS SETUP
 
-## Summary
-
-Notes on setting up a raspberry pi headless
-
 ## Resources
 
 - [Official WiFi Setup](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md)
@@ -21,6 +17,14 @@ The NOOB out of the box setup isn't helpful when no monitor / keyboard / mouse
 is being used.
 
 Follow the instructions for [PiBakery](https://www.pibakery.org/docs/create.html)
+
+## Launch rasp-config CLI tool TUI
+configuration UI for wifi, network, change password, etc.
+`raspi-config`
+
+### Locale issues
+My raspberrypi was set to EN_GB. Had to use raspi-config to set it back to EN_US.UTF8
+This is why the `@` was coming up as `"`
 
 ## Enable SSH
 
@@ -47,7 +51,8 @@ network={
 }
 ```
 
-## Login Over WIFI
+## Login Over WIFI via SSH passwordless
+adjust for actual hostname `hostname -I` on rasbpi
 
 ```console
 ssh-keygen -R raspberrypi.local
@@ -55,3 +60,22 @@ ssh pi@raspberrypi.local
 ```
 
 default password should be `raspberry`
+
+## Scan wifi networks
+`iwlist wlan0 scan`
+
+## Check raspi firmware version
+`vcencmd version`
+
+## Update raspi firmare
+this is like beta - don't use if you aren't willing to revert
+`rpi-update`
+
+## Check for updates on raspi
+`rpi-eeprom-update`
+
+## Update linux
+`apt update` to update 
+
+## Upgrade linux
+`apt full-upgrade`

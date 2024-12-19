@@ -3,6 +3,7 @@
 ## Resources
 
 - [Kubernetes networking DNS for services and pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
+- [Kubernetes DNS-Based Service Discovery](https://github.com/kubernetes/dns/blob/master/docs/specification.md)
 
 ## Features
 

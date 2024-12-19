@@ -1,29 +1,25 @@
-# See Folder Tree 2 Levels Deep
+# LINUX FILES AND FOLDERS
 
-```console
-tree -L 2
-```
+## See folder tree 2 levels deep
 
-# List Directories
+`tree -L 2`
 
-```console
-ls -d */
-```
+## List directories
 
-# Get the size of a folder
+`ls -d */`
 
-```console
-du -sh dist
-```
+## List only hidden files
 
-# list directory by time stamp
+`ls -d .*`
 
-```console
-ls -lart
-```
+## Get the size of a folder
 
-# view end of a file
+`du -sh dist`
 
-```console
-tail log.txt
-```
+## List directory by time stamp
+
+`ls -lart`
+
+## View end of a file
+
+`tail log.txt`

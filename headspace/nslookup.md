@@ -1,13 +1,17 @@
 # NSLOOKUP
 
-# DNS LOOKUP / check dns resolve
+## Features
 
-```
-nslookup harmonsoftwaresolutions.com
-```
+- query a hostname from a dns server
 
-# Linux Equivalent
+## Limitations
 
-```console
-getent hosts unix.stackexchange.com
-```
+- doesn't respect entries in /etc/hosts
+
+## DNS LOOKUP / check dns resolve
+
+`nslookup harmonsoftwaresolutions.com`
+
+## Linux Equivalent
+
+`getent hosts unix.stackexchange.com`
