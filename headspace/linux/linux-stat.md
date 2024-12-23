@@ -6,12 +6,11 @@
 
 ## Display Information About A File
 
-```console
-stat -x myfile.txt
-```
+`stat myfile.txt`
+
+more verbose with labels:
+`stat -x myfile.txt`
 
 ## Get file size in bytes
 
-```console
-alias fs="stat -f \"%z bytes\""
-```
+`alias fs="stat -f \"%z bytes\""`

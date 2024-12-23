@@ -10,15 +10,11 @@ echo $0
 
 Current working directory is an OS level concept
 
-```console
-${CWD}
-```
+`echo ${CWD}`
 
 ## Reference Present Working Directory
 
-```console
-${PWD}
-```
+`echo ${PWD}`
 
 ## Assign Variable
 

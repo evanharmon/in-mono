@@ -15,6 +15,8 @@
 - if no nodePort is set, a one will be generated between 30000-32767
 - if no targetPort is given, defaults to match targetPort
 - within own namespace, other pods can access service just by name
+- clusterwide object
+- virtual object that only exist in memory
 
 ## Practice
 

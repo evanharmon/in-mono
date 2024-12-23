@@ -1,8 +1,10 @@
 # LINUX CP
 
-## Summary
 
-Notes on using the linux copy command
+## Copy file and preserve special attributes
+good for context, links, xattr, etc. `all` is default
+
+`cp --preserve ~/special_file.txt ~/other_dir/`
 
 ## Copy Range Of Numbered Files
 

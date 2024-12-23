@@ -6,11 +6,20 @@
 - [Kubernetes kube-proxy](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)
 
 ## Features
-Network proxy service running on each node. Pod networking solution.
-Virtual network across all nodes.
+provides network connectivity for kubernetes services.
 
-- can do this using iptables rules
+- network proxy service running on each node
+- pod networking solution.
+- virtual network across all nodes.
+- traffic forwarding
+- load balancing
+- supports service discovery
 - can be used locally to directly curl kube-apiserver without specifying certs
+
+## Modes
+- iptables (IP over Pod) is default mode
+- IPVS mode for advanced load balancing
+- userspace mode is legacy and rarely used
 
 ## Deployment
 
@@ -32,3 +41,7 @@ Settings are viewable at:
 
 Settings are viewable at:
 `cat /etc/systemd/system/kube-proxy.service`
+
+### View ip rules created
+
+`iptables -L -t nat | grep <service_name>`

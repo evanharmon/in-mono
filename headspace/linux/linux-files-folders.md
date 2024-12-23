@@ -12,6 +12,11 @@
 
 `ls -d .*`
 
+## List files in human readable sizes
+
+`-l` flag is for long form and required
+`ls -ahl`
+
 ## Get the size of a folder
 
 `du -sh dist`

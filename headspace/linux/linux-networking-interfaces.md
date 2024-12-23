@@ -44,7 +44,7 @@ CIDR Block determines Submask
 `ip addr add 192.168.0.150/24 dev eth0`
 
 ### Add additional local loopback ip address
-`ifconfig lo0 alias 127.0.0.2 up`
+`ip address add 127.0.0.2/8 dev lo`
 
 ### Automatically bring up interface on startup
 in /etc/network/interfaces
@@ -58,13 +58,9 @@ in /etc/network/interfaces
 wpa_passphrase ssid password
 `vi /etc/network/interfaces` # change ssid and wpa-psk
 
-### restart an interface
-`ifup wlan0`
-
 ### Check IP ports
-`/sbin/ifconfig`
-or
-`/sbin/ifconfig -a`
+`ip addr`
+`netstat -an | grep '<port_number>'
 
 ### Add a loopback alias
 `ip address add 127.0.0.2/8 dev lo`

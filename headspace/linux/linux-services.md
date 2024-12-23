@@ -1,5 +1,7 @@
-# List services running
-`$ sudo service --status-all`
+# Linux service
 
-# Check if service is running
-`$ sudo service httpd --status`
+## List services running
+`service --status-all`
+
+## Check if service is running
+`service httpd --status`
