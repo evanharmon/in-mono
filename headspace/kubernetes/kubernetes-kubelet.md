@@ -12,6 +12,7 @@ kube-scheduler info passed back to kube-apiserver is stored in ETC, then passed 
 - pulls images
 - creates pods
 - monitors Node & Pods
+- sets dns nameserver on pods
 
 ## Deployment
 

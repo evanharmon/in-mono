@@ -23,6 +23,11 @@ Daemon that embeds the core control loops shipped with kubernetes. Manages the d
 ## Controller Sets
 enabled controllers can be limited with `--controllers` flag
 
+## High availability
+runs in active-standby. Uses leader election process with leases.
+
+- attempts to take the lock on an `kube-controller-manager` api object 
+
 ## Deployment
 
 Can always check options with `ps -aux | grep kube-controller-manager`
@@ -40,7 +45,7 @@ Settings are viewable at:
 Settings are viewable at:
 `cat /etc/systemd/system/kube-controller-manager.service`
 
-## Practice
+## Commands
 
 ### Flags for certificate controllers
 

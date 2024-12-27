@@ -23,37 +23,41 @@
 --key /etc/kubernetes/pki/etcd/server.key
 ```
 
-## Put key value
+## Commands
+### Put key value
 
 `etcdctl put foo bar`
 
-## Put key value with TTL
+### Put key value with TTL
 
 `etcdctl put --lease=32695410dcc0ca06 foo bar`
 
-## Get key value
+### Get key value
 
 ```sh
 $ etcdctl get mykey -w=json
 {"header":{"cluster_id":14841639068965178418,"member_id":10276657743932975437,"revision":15,"raft_term":4}}
 ```
 
-## Get secret
+### Get secret
 
 ```sh
-ETCDCTL_API=3 etcdctl \
+etcdctl \
    --cacert=/etc/kubernetes/pki/etcd/ca.crt   \
    --cert=/etc/kubernetes/pki/etcd/server.crt \
    --key=/etc/kubernetes/pki/etcd/server.key  \
    get /registry/secrets/default/secret1 | hexdump -C
 ```
 
-## get list of members
+### get list of members
 
 ```sh
-ETCDCTL_API=3 etcdctl \
+etcdctl \
   --cacert /etc/etcd/pki/ca.pem \
   --cert /etc/etcd/pki/etcd.pem \
   --key /etc/etcd/pki/etcd-key.pem \
   member list -w table
 ```
+
+### get all key names
+`etcdctl get / --prefix --keys-only`

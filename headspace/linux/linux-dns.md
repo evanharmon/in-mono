@@ -14,3 +14,10 @@ hosts:      files dns
 
 ### Name server
 name servers can be specified in `/etc/resolv.conf`
+
+### Search entries
+example in `/etc/resolv.conf`
+
+```
+search 55834cbb51724bfd.svc.cluster.local svc.cluster.local cluster.local
+```

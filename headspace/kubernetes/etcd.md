@@ -12,6 +12,24 @@ consistent distributed key-value store for distributed systems.
 
 - stores as docs / pages
 - listens on port 2379 for clients, 2380 for server to server
+- only communicates with kube-apiserver
+
+## Install
+```sh
+ETCD_VER=v3.5.17
+DOWNLOAD_URL=https://storage.googleapis.com/etcd
+wget -q --https-only \
+  "${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-arm64.tar.gz"
+# or curl
+curl \
+  -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-arm64.tar.gz \
+  -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+
+tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1
+mv /tmp/etcd-3.5.17-linux-amd64.tar.gz /usr/local/bin
+mkdir -p /etc/etcd /var/libetcd
+cp ca.pem kubernetes-key.pem kubernetes.pem /etc/etcd/
+```
 
 ## Deployment types
 

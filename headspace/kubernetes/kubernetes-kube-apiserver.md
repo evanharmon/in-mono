@@ -42,3 +42,9 @@ Settings are viewable at:
 on kubeadm setups
 
 `cat /etc/kubernetes/manifests/kube-apiserver.yml`
+
+## High availability
+use a loadBalancer in front to split / control traffic
+
+- able to run in active-active mode
+- clients point at load-balancer

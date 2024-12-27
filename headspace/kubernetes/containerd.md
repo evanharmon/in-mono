@@ -11,3 +11,8 @@ Now separate from docker.
 
 - `ctr` binary used for debugging but more limited
 - `nerdctl` is more fully featured for a `docker` command alternative for talking to containerd
+
+## Commands
+
+### Show default config
+`containerd config default`

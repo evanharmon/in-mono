@@ -30,3 +30,19 @@ ClusterFirst is the default NOT default. 🤯
 - ClusterFirst
 - ClusterFirstWitHostNet
 - None
+
+## Services dns resolustion
+
+FQDN format: <hostname>.<namespaces>.<type>.<root>
+example `my-svc.apps.svc.cluster.local`
+
+`curl http://my-svc.apps.svc.cluster.local`
+
+## Enable pod dns resolution
+dns records for pods are not created by default. Can be enabled in coreDNS config.
+created in the format of `10-244-2-5` replacing `.` with `-` in IP addresses.
+pod name is NOT used
+
+FQDN format: <hostname>.<namespaces>.<type>.<root>
+
+`curl http://10-244-2-5.apps.pod.cluster.local`

@@ -7,6 +7,11 @@
 - [Kubernetes connecting frontend to backend with services](https://kubernetes.io/docs/tasks/access-application-cluster/connecting-frontend-backend/)
 - [Kubernetes use service to access app in cluster](https://kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/)
 
+## Features
+Common solutions are kube-proxy, etc.
+
+- ip forwarding address/port rules are created on each node
+
 ## Service Types
 
 - ClusterIP
@@ -16,11 +21,24 @@
 
 ## ClusterIP
 
-Default
+Default. Meant just for communication within the cluster
 
 - default if no `type` specified
 - exposes service on a cluster-internal IP
 - service only reachable within Cluster
+
+## Set services ip range
+
+set on kube-api-server with the flag `--service-cluster-ip-range`
+default is `10.0.0.0/24`
+
+## FQDN
+services are resolved like the below.
+
+format: <hostname>.<namespaces>.<type>.<root>
+example `my-svc.apps.svc.cluster.local`
+
+this can be looked up via `host <service>`
 
 ## NodePort
 

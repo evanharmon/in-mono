@@ -46,6 +46,11 @@ some example plugins:
 - NodePorts
 - NodeAffinity
 
+## High availability
+runs in active-standby. Uses leader election process with leases.
+
+- attempts to take the lock on an `kube-controller-manager` api object 
+
 ## Scheduling
 Queue's, Filters, scores / rank, binds pod to a Node
 

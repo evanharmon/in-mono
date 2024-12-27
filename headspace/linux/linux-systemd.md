@@ -1,4 +1,6 @@
 # SYSTEMD
+
+## Features
 can shutdown short / long - running processes
 
 ## System Scripts
@@ -15,3 +17,6 @@ Run Level 3: runlevel3.target, multi-user.target
 Run Level 5: runlevel5.target, graphical.target
 Run Level 6: runlevel6.target, reboot.target
 emergency: emergency.target
+
+## Check init system
+`ps -p 1`
