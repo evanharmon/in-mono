@@ -4,26 +4,24 @@
 
 - [NMAP Common Scan Commands](https://www.cyberciti.biz/tips/linux-scanning-network-for-open-ports.html)
 
-## Install Mac OS X
+## Install
 
-```console
-brew install nmap
-```
+mac: `brew install nmap`
+linux: `apt-get install nmap`
 
-## Scan Services Ports
+## Commands
 
-```console
-nmap -sO 10.10.100.254
-```
+### Scan Services Ports
 
-## Scan TCP Ports
+`nmap -sO 10.10.100.254`
 
-```console
-nmap -PS 10.10.100.254
-```
+### Scan TCP Ports
 
-## Scan UDP Ports
+`nmap -PS 10.10.100.254`
 
-```console
-nmap -sU 10.10.100.254
-```
+### Scan UDP Ports
+
+`nmap -sU 10.10.100.254`
+
+### Scan for connectable ports
+`nmap -sC 10.0.0.0/24`

@@ -4,6 +4,9 @@
 
 - [Linux stat GeekStuff](https://www.thegeekstuff.com/2009/07/unix-stat-command-how-to-identify-file-attributes/)
 
+## Features
+- shows octal format permissions as well
+
 ## Display Information About A File
 
 `stat myfile.txt`

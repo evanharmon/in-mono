@@ -1,13 +1,10 @@
 ## LINUX GROUPS
 
-## Summary
+## Commands
 
-Notes on managing groups in linux
+### Create Group
 
-## Resources
+`sudo addgroup mygroup`
 
-## Create Group
-
-```console
-sudo addgroup mygroup
-```
+### Check what groups user is a member of
+`groups`

@@ -1,39 +1,26 @@
 ## LINUX USERS
 
-## Summary
 
-Notes on managing users in linux
+## Commands
 
-## Resources
+### Check user
 
-## Check user
-
-```console
-whoami
-```
+`whoami` or `users`
 
 ## Change Password
 
-```console
-passwd
-```
+`passwd`
 
 ## create user
 
-```console
-usermod -aG nvm root
-```
+`usermod -aG nvm root`
 
 ## List users
 
-```console
-cat /etc/passwd
-```
+`cat /etc/passwd`
 
 ## Add User
 
-creates home directory as well
+- creates home directory as well
 
-```console
-sudo adduser evanharmon
-```
+`sudo adduser evanharmon`
