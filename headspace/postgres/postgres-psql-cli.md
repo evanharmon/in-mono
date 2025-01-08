@@ -6,48 +6,35 @@
 
 ## Login with username
 
-```console
-psql --username postgres
-```
+`psql --username postgres`
 
 ## Login with database url
 
-```console
+## PSQL commands
 
-```
+### List Roles
 
-## List Roles
+`\du`
 
-```console
-\du
-```
+### List Databases
 
-## List Databases
+`\l`
 
-```console
-\l
-```
+### Quit
 
-## Quit
+`\q`
 
-```console
-\q
-```
+### Connect to database
 
-## Connect to database
+`\c pagila`
 
-```console
-\c pagila
-```
+### Show config file location
 
-## Show config file location
+`SHOW config_file`
 
-```console
-SHOW config_file
-```
+### List catalog schemas
 
-## List catalog schemas
+`\dn`
 
-```console
-\dn
-```
+### Show hostname
+`show hostname`

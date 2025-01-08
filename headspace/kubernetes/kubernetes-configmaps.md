@@ -21,7 +21,6 @@ data:
   # property-like keys; each key maps to a simple value
   player_initial_lives: "3"
   ui_properties_file_name: "user-interface.properties"
-
   # file-like keys
   game.properties: |
     enemy.types=aliens,monsters
@@ -34,7 +33,7 @@ data:
 
 ### Use config map in a pod spec
 
- ```yml
+```yml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -62,10 +61,8 @@ spec:
         mountPath: "/config"
         readOnly: true
   volumes:
-  # You set volumes at the Pod level, then mount them into containers inside that Pod
   - name: config
     configMap:
-      # Provide the name of the ConfigMap you want to mount.
       name: game-demo
       # An array of keys from the ConfigMap to create as files
       items:

@@ -9,12 +9,15 @@
 provides network connectivity for kubernetes services.
 
 - network proxy service running on each node
-- pod networking solution.
-- virtual network across all nodes.
+- pod networking solution
+- virtual network across all nodes
 - traffic forwarding
+- responsible for sending traffic to actual pods
+- watches services and endpoints associated
 - load balancing
 - supports service discovery
 - can be used locally to directly curl kube-apiserver without specifying certs
+- runs as daemonset
 
 ## Modes
 - iptables (IP over Pod) is default mode
