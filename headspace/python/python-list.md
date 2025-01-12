@@ -1,14 +1,23 @@
 # PYTHON LISTS
 
+## Features
 Arrays are known as Lists
+- mutable collection of items in a __sequence__
+- implemented as dynamic arrays
 
 ## Access last item in array
 
-`print names[-1]`
+`print(names[-1])`
 
 ## Access items in array in reverse
 
-`print names[3:0:-1]`
+`print(names[3:0:-1])`
+
+## Get even number indexed items in list
+`list[0::2]`
+
+## Get odd number indexed items in list
+`list[1::2]`
 
 ## Reverse
 
@@ -38,7 +47,10 @@ mutates
 
 ## Check if element in list
 
-`print 100 in li`
+```python
+li = [100,101,102]
+print 100 in li
+```
 
 ## Remove specific element from list
 
@@ -79,4 +91,26 @@ def unlimited_arguments(*args):
     print(argument)
 
 unlimited_arguments(*[1,2,3,4])
+```
+
+## Merge lists and create a new list
+```python
+r1 = [1,2,3]
+r2 = [4,5,6]
+return r1 + r2
+```
+
+## Add a list to another
+```python
+r1 = [1,2,3]
+r2 = [4,5,6]
+r1.extend(r2)
+```
+
+## Get the midpoint item in a list
+```python
+r = [1,2,3,4,5,6,7]
+# // rounds down (floors)
+mid_idx = len(r) // 2
+print(r[mid_idx])
 ```

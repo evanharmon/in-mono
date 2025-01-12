@@ -24,6 +24,13 @@ becomes
 [print(n) for n in names]
 ```
 
+or
+
+```python
+daily_music = ["classical", "pop", "none", "jazz", "classical"]
+[print(f"{i}: {music}") for i, music in enumerate(daily_music)]
+```
+
 ## Conditionals
 
 ```python

@@ -5,6 +5,9 @@
 - [PyEnv Github](https://github.com/pyenv/pyenv)
 - [Pyenv Virtualenv Install](https://github.com/pyenv/pyenv-virtualenv)
 
+## Features
+good for managing multiple versions of python
+
 ## ZSHRC
 
 ```bash

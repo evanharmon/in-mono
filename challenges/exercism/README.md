@@ -37,15 +37,23 @@ exercism configure --workspace=/workspaces/in-mono/challenges/exercism
 
 ## Running a Challenge
 
-node:
+### node.js
 
 `npm test`
 
-python:
+### python
+setup python / pytest
+```bash
+# cd in to python/<exercise_name> directory
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install pytest
+```
 
-`pytest`
+run pytest and fail early
+`pytest -x`
 
-cpp:
+### CPP
 
 ```console
 mkdir build

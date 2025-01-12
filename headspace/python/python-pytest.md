@@ -7,9 +7,7 @@
 
 ## Install
 
-```console
-pipenv install pytest pytest-cov pytest-cache pytest-subtests
-```
+`pipenv install pytest pytest-cov pytest-cache pytest-subtests`
 
 ## Example
 
@@ -22,9 +20,7 @@ def test1():
 
 ## Exit early on failure
 
-```console
-pytest -x
-```
+`pytest -x`
 
 ## Run single named test
 
