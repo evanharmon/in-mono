@@ -1,0 +1,13 @@
+# this is a playground app - not a secure or hardened set of applications
+# use a .dockerignore to prevent unnecessary rebuilds
+services:
+  go-app:
+    container_name: go-app
+    image: evanharmon/go-app:1.0.0
+    build: .
+    ports:
+      - "8000:8000"
+    develop:
+      watch:
+        - action: rebuild
+          path: .
