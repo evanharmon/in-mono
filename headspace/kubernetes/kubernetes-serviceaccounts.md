@@ -22,6 +22,29 @@ post 1.24 behavior:
 - service account created
 - no token auto-generated
 
+## Common use cases
+
+1. Provide Identity
+assign a unique identity to pod / deployment, for authenticating with other k8s components
+2. Cluster Permissions
+control which cluster resources users can access, so only necessary permissions are assigned
+3. Secure communication
+used for authentication and authorization for communicating between pods
+maintains security / integrity of cluster
+
+
+## Common scenarios
+1. Pod withs external dependencies
+pod access to services like Databases / APIs
+2. Declarative configuration
+ensures necessary permissions to access cluster resources
+3. Rolling updates
+ensure updating pods have necessary permissions
+4. Security Auditing
+audit / track user actions within the cluster
+5. Service-to-Service Communication
+authentication / authorization between two pods for communication
+
 ## Default serviceaccount
 - extremely limited permissions to run basic kubernetes queries
 

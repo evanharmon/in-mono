@@ -68,3 +68,42 @@ services:
       context: .
     command: sleep infinity
 ```
+
+## Wait for a service to be healthy
+helpful for running a command - like making sure postgres is ready
+because it's not enough for the container to be started
+
+```yml
+services:
+  flask_app:
+    container_name: flask_app
+    image: evanharmon/flask_crud_api:1.0
+    build: .
+    ports: ["3000:3000"]
+    environment:
+      - DB_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@flask_db:5432/${POSTGRES_DB}
+    depends_on:
+      flask_db:
+        condition: service_healthy
+
+  flask_db:
+    container_name: flask_db
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 1s
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata: {}
+```

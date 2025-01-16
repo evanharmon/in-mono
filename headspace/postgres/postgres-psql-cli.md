@@ -6,9 +6,10 @@
 
 ## Login with username
 
-`psql --username postgres`
+`psql -U postgres -h localhost -p 5432`
 
-## Login with database url
+## Login with database url and specific db
+`psql postgres://postgres@localhost:5432/postgres`
 
 ## PSQL commands
 
@@ -25,8 +26,9 @@
 `\q`
 
 ### Connect to database
+use / select a specific db
 
-`\c pagila`
+`\c postgres`
 
 ### Show config file location
 
@@ -35,6 +37,11 @@
 ### List catalog schemas
 
 `\dn`
+
+### List table / schemas
+`\d`
+or with additional detail
+`\d+`
 
 ### Show hostname
 `show hostname`

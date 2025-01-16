@@ -10,6 +10,7 @@
 
 ## Use Packages With The Same Name
 ok to have packages with the same name. Use a named import
+
 ```golang
 import (
   "cloud.google.com/go/storage"
@@ -17,14 +18,17 @@ import (
   )
 ```
 
+## Install a package
+`go get github.com/gorilla/mux github.com/lib/pq`
+
 ## Install All Dependencies
-```console
-$ go get -d ./...
+```bash
+go get -d ./...
 ```
 
 ## Install Dependencies Just For Repo
-```console
-$ go get -d .
+```bash
+ go get -d .
 ```
 
 ## Init And Unused Packages

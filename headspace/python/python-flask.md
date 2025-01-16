@@ -9,3 +9,9 @@
 ```console
 FLASK_DEBUG=true python3 node.py
 ```
+
+## CLI commands
+
+### Run in dev server mode
+not production - debug mode
+`flask run --host=0.0.0.0 --port=3000`

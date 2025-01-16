@@ -5,7 +5,13 @@
 - [Docker Compose environment variables](https://docs.docker.com/compose/environment-variables/)
 - [Docker compose env file docs](https://docs.docker.com/compose/env-file/)
 
-## Environment Variables
+## Features
+- docker-compose cli will automatically look for `.env` file
+
+## Specify specific env file in cli
+`docker compose --env-file ./config/.env.dev up`
+
+## Reference environment variables
 
 ```yml
 services:

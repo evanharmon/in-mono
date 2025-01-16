@@ -24,6 +24,9 @@ docker-compose logs --tail 50 -f hss-sync-gateway
 docker-compose down -v
 ```
 
+## Remove orphan containers
+`docker-compose down --remove-orphans`
+
 ## Force Exit On Container Exit
 
 ```console

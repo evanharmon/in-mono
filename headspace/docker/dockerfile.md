@@ -27,7 +27,7 @@ USER dev2
 ## CMD
 
 provides default arguments to ENTRYPOINT
-overriden by user arguments in `docker run`
+overridden by user arguments in `docker run`
 for `CMD ["", ""]` format, first item must be the binary
 
 ```dockerfile
