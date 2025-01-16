@@ -1,0 +1,39 @@
+# this is a playground - not a secure or hardened set of applications
+services:
+  go_db:
+    container_name: go_db
+    image: postgres:16
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "5432:5432" 
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      # improvement: use pg_isready to make sure postgres is ready for connections from app
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 1s
+  go-app:
+    container_name: go-app
+    image: evanharmon/go-app:1.0.0
+    build: .
+    environment:
+      DATABASE_URL: "host=go_db user=${POSTGRES_USER} password=${POSTGRES_PASSWORD} dbname=${POSTGRES_DB} sslmode=disable"
+    ports:
+      - "8000:8000"
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+    depends_on:
+      # improvement: don't start the go app before postgres is ready to accept connections
+      go_db:
+        condition: service_healthy
+  
+volumes:
+  pgdata: {}

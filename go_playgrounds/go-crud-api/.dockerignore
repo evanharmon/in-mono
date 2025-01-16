@@ -1,0 +1,10 @@
+/data
+README.md
+
+# Don't include typical docker files
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# don't include the .env file but instead rely on ENV vars in container
+.env

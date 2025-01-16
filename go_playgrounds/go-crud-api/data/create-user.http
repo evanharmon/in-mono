@@ -1,0 +1,6 @@
+POST http://localhost:8000/users
+Content-Type: application/json; charset=utf-8
+{
+    "name": "Evan Harmon",
+    "email": "evan@noemail.com"
+}
