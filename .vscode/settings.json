@@ -53,7 +53,6 @@
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "vim.useSystemClipboard": true,
   "window.zoomLevel": 2,
-  "workbench.activityBar.visible": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
   "[docker]": {
@@ -95,5 +94,6 @@
       "password": "not_a_secret_password",
       "connectionTimeout": 30
     }
-  ]
+  ],
+  "workbench.activityBar.location": "hidden"
 }
