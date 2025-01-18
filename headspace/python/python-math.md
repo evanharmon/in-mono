@@ -56,3 +56,9 @@ sum(range(1, 11))
 num_lists = [[1, 2, 3], [4, 5, 6]]
 sum(num_lists, start=[]) # [1, 2, 3, 4, 5, 6]
 ```
+
+## Check if a list contains all zeros
+```python
+digits = [0,0,0,0]
+all(d == 0 for d in digits)
+```

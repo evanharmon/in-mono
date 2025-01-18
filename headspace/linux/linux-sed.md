@@ -1,37 +1,59 @@
 # LINUX SED
 
+## Features
+stream editor
+- default is dry-run, no editing of file
+- default is to replace only FIRST occurrence per line
+- line numbering starts at 1
+
+## Flags
+- `-i` flag edits in place
+- `s/` is substitute
+- `s/yes/no/g` g - replace every occurrence on line
+- `I` ignores case: `s/yes/no/Ig`
+- `-n` suppresses automatic printing of all lines
+
 ## Search and Replace
 
-```console
-sed -i .bak 's/hello/bonjour/' file.txt
-```
+### Preview search and replace results
 
-## Search And Replace In A File From Shell Command
+`sed 's/canda/canada' myfile.txt`
 
-```console
+### Edit file in place as backup
+
+replaces `hello` with `bonjour`
+`sed -i .bak 's/hello/bonjour/' file.txt`
+
+### Search And Replace In A File From Shell Command
+
+```bash
 sed -i 's/REPLACE_WITH_INSTANCE_IP/'$INSTANCE_IP'/g' /tmp/init-cluster.sh
 ```
 
-## Print First 10 Lines Of File
+## Search and replace within a range of lines
+`sed '500,2000s/enabled/disabled/g' myfile`
 
-Emulates `head`
+### Replace with case-insensitive
+`sed 's/disabled/enabled/Ig' myfile`
 
-```console
-sed 10q
-```
+## Print style commands
 
-## Print First Line Of File
+### Print first 10 lines of file
+Emulate `head`: `sed 10q`
 
-Emulates `head -1`
+### Print first line of file
+Emulate `head -1`: `sed q`
 
-```console
-sed q
-```
+### Print range of lines in a file
+prints lines 500 to 510
+`sed -n '500,510p' values.conf`
 
-## Find And Replace On Mac OS X
+## Find exec uses
+
+### Find And Replace On Mac OS X
 
 avoids the `invalid command code` error
 
-```console
+```bash
 find ./**/*.tf -type f -exec sed -i '' -e "s/\? false/\? \"false\"/g" {} \;
 ```

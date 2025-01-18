@@ -1,51 +1,50 @@
 # REGULAR EXPRESSIONS
 
-## Syntax
+## Flags
+- `|` or
+- `^` start of line
+- `$` end of line
+- `.` match any single character
+- `?` match 0 or 1 ocurrence
+- `*` match 0 or more occurrence
+- `+` match 1 or more occurrence
+- `{min,max}` brackets operator
 
-### Or
+## Flag Examples
 
-|
-`grey|gray`
+or: `grey|gray`
+start of line: `^begin`
+end of line: `grey$`
+match any single char: `begin.`
+match 0 or 1: `colou?r` matches color or colour
+match 0 or more: `ab*c` matches ac, abc, abbc, etc
+match 1 or more: `ab+c` matches abc, abbc, but not ac
 
-### Start Of Line
+## Brackets operator
+match exactly n times: `{n}`
+match min times, unlimited max: `{min,}`
+match min / max times: `{min,max}`
+match min 1, max unlimited: `{,max}`
 
-^
-`^begin`
+## Ranges
 
-### End Of Line
+### match any single character in set
+matches `cat` or `cut`
+`egrep -r 'c[au]t /etc/`
 
-\$
-`grey$`
+### Match multiple characters in set
+matches `/dev/camera` but not `/dev/tty001`
+`egrep -r '/dev/[a-z]*' /etc/`
 
-### Match Any Single Character
+## Groups / Subexpressions
 
-.
-`begin.` matches begins
-
-### Match 0 Or 1 Occurrence
-
-?
-`colou?r` matches color or colour
-
-### Match 0 Or More Occurrences
-
-- `ab*c` matches ac, abc, abbc, etc
-
-### Match 1 Or More Occurrences
-
-- `ab+c` matches abc, abbc, but not ac
-
-### Match Exactly N Times
-
-`{n}`
-
-### Match Min / Max Times
-
-`{min,max}`
-
-### Groups
-
-#### Capturing Group
+### Capturing Group
 
 ()
 `gr(a|e)y`
+
+### Negate range or set
+match `https` but not `https:`
+`egrep -r 'https[^:]' /etc/`
+match only `http` and not `http:` or `https`
+`egrep -r 'http[^s:] /etc/`

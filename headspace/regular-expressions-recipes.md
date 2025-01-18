@@ -136,3 +136,7 @@ Works if string has multiple dashes / hyphens.
 ### Cognito Identity ID UUID
 
 `[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}`
+
+## Match all devices
+matches `/dev/camera` and `/dev/tty0`
+`egrep -r '/dev/(([a-z]|[A-Z])*[0-9]?)* /etc/`

@@ -4,6 +4,9 @@
 Yank it, bring up cmd mode, paste it
 y :/<C-R>"/
 
+## Search case insensitive
+`/this\c`
+
 ## Movement
 ### Up/down half-page scroll
 <c-u> and <c-d>
