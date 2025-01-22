@@ -18,6 +18,8 @@ NoExecute: pods won't be scheduled and existing pods will get evicted
 
 ### Taint a node
 `kubectl taint nodes node01 app=red:NoSchedule`
+or
+`k taint node node01 env_type=production:NoSchedule`
 
 ## Remove a taint
 `kubectl taint nodes node01 app=red:NoSchedule` or `kubectl taint nodes node01 app:NoSchedule-`

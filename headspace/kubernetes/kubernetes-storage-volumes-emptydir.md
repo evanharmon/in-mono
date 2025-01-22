@@ -14,6 +14,8 @@
 - volume type is ephemeral
 - tied to specific Node running container
 - volume deleted when Pod is removed from node
+- if node has limited disk, emptyDir could be stored in RAM
+- if pod has high memory request, emptyDir may get stored in RAM
 
 ## Example
 
@@ -32,4 +34,13 @@ spec:
   volumes:
     - name: cache-volume
       emptyDir: {}
+```
+
+## Check where emptyDir is stored for a container
+```bash
+# exec in to container and check
+kubectl exec -it redis -- /bin/sh
+df -h
+# /dev/sda1 means on disk
+# tmpfs means it's in memory
 ```

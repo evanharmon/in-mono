@@ -20,6 +20,15 @@ kubectl config view \
   -o jsonpath='{.contexts[?(@.context.user == "aws-user")]}'
 ```
 
+## Find InternalIPs of nodes
+
+```bash
+kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}'
+# or with a range where additional text could be added
+kubectl get nodes \
+  -o jsonpath='{range .items[*]}{.status.addresses[?(@.type=="InternalIP")].address}{" "}{end}'
+```
+
 ## Combine with custom columns and jsonpaths
 ```bash
 kubectl get pv \

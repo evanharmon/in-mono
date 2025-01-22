@@ -4,7 +4,7 @@
 
 - [Kubernetes kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
-## Practice
+## Commands
 
 ### Run proxy locally for curl's without certs specified
 note this has nothing to do with `kube-proxy`
@@ -34,3 +34,6 @@ echo '[[ $commands[kubectl] ]] && source <(kubectl completion zsh)' >> ~/.zshrc 
 alias k=kubectl
 complete -o default -F __start_kubectl k
 ```
+
+### Test config
+`kubectl config use-context evan`

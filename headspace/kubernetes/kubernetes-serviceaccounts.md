@@ -4,6 +4,7 @@
 - [Kubernetes service accounts](https://kubernetes.io/docs/concepts/security/service-accounts/)
 - [Kubernetes manage service accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/)
 - [Kubernetes configuring service accounts](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
+- [Kubernetes configure service account for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
 
 ## Features
 
@@ -135,3 +136,42 @@ metadata:
 ### Generate token for serviceaccount
 
 `kubectl create token my-dashboard-sa`
+
+### Create service account for a pod
+
+create service account:
+`kubectl create serviceaccount pv-lister`
+
+create cluster role to list pv's:
+`kubectl create clusterrole pv-lister-role --resource=pv --verb=list`
+
+create cluster role binding:
+```bash
+kubectl create clusterrolebinding pv-lister-role-binding \
+  --clusterrole=pv-lister \
+  --serviceaccount=default:pv-lister 
+```
+
+confirm service account can list pvs:
+`kubectl auth can-i --as=system:serviceaccount:default:pvlister -n default list pv`
+
+use the service account in a pod:
+```bash
+cat <<EOF | kubectl apply -f -
+apiVersion: v1 
+kind: Pod 
+metadata: 
+  creationTimestamp: null 
+  labels: 
+    run: pv-lister 
+  name: pv-lister 
+spec: 
+  containers: 
+  - image: redis 
+    name: pv-lister
+    resources: {} 
+  dnsPolicy: ClusterFirst 
+  restartPolicy: Always 
+  serviceAccountName: pv-lister
+status: {}
+EOF
