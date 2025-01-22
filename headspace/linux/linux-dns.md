@@ -18,6 +18,14 @@ name servers can be specified in `/etc/resolv.conf`
 ### Search entries
 example in `/etc/resolv.conf`
 
-```
+```conf
 search 55834cbb51724bfd.svc.cluster.local svc.cluster.local cluster.local
 ```
+
+can also support local dns servers for a company
+```
+nameserver      192.168.1.100
+search          mycompany.com
+```
+
+then a `ping web` could turn `web.mycompany.com`

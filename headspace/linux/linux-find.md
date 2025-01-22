@@ -10,6 +10,9 @@
 
 `find -name myfile.txt`
 
+### Search for filename in specific directory
+`find /opt -name my-file.txt`
+
 ### Search for filenames not matching
 `find -not -name "myfile*"`
 or `find \! -name "myfile*"`
@@ -43,3 +46,8 @@ greater than 1M: `find /usr -size +1M`
 ### Recursively count files in a directory
 
 `find -type f | wc -l`
+
+## Exec
+
+### Find filename with grep pattern search
+`find /etc -type f -exec grep -l "search_term" {} +`

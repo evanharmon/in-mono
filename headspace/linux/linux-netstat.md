@@ -1,4 +1,4 @@
-# NETSTAT
+# LINUX NETSTAT
 
 ## Check what is running on a port
 `netstat --all --numeric --programs`

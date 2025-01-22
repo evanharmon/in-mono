@@ -1,0 +1,11 @@
+[Unit]
+Description=Example python app
+
+[Service]
+ExecStart=/usr/bin/python3 app.py
+Restart=on-failure
+WorkingDirectory=/opt/code/app
+User=app
+
+[Install]
+WantedBy=multi-user.target

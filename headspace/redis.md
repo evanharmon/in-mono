@@ -1,18 +1,14 @@
 # REDIS
 
-Key / Value store
-
-## Summary
-
-Notes on working with Redis
-
 ## Resources
 
 - [Command List](https://redis.io/commands)
 
-### Default Port
+## Features
+- default port is `6379`
 
-6379
+## Check that redis is available and listening
+`nc -v --ssl redis.mydomain.com 6379`
 
 ## Types
 
@@ -32,6 +28,7 @@ handle clearing keys to make room for new keys to stay with in maxMemory setting
 ### Check Redis
 
 `redis-cli ping`
+should respond with `pong`
 
 ### Log In
 

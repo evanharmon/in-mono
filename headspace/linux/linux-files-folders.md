@@ -29,6 +29,12 @@ block device        `b`
 `-l` flag is for long form and required
 `ls -ahl`
 
+### List files in order created
+`ls -lt`
+
+### List files in reverse order created
+`ls -ltr`
+
 ### Get the size of a folder
 
 `du -sh dist`
@@ -40,3 +46,7 @@ block device        `b`
 ### View end of a file
 
 `tail log.txt`
+
+### Locate a file
+may have to run `sudo updatedb` to update locate database
+`locate myfile.txt`

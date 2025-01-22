@@ -1,5 +1,10 @@
-# See system messages
-`$ dmesg`
+# LINUX DMESG
 
-# See dates system message
-`$ dmesg -T`
+## Features
+- displays messages from the ring buffer
+
+## See system messages
+`dmesg`
+
+## See dates system message
+`dmesg -T`

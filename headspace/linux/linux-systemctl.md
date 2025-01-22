@@ -1,32 +1,70 @@
-# SYSTEMCTL
+# LINUX SYSTEMCTL
+
+## Features
 used to control systemd
+- manage system state
+- start / stop / restart / reload
+- enable / disable
+- list and manage units
+- list and update targets
+- view information about system state
 
-## Show What Systemd Is Using
-```console
-$ systemctl
-```
+## States
+- Active
+- Inactive
+- Failed
 
-## Check Status Of A Systemd Script
-```console
-$ sudo systemctl status sound.target
-```
+## Commands
 
-## Start A Systemd Script
-```console
-$ sudo systemctl start sound.target
-```
+### Show What Systemd Is Using
+`systemctl`
 
-## Stop A Systemd Script
-```console
-$ sudo systemctl stop sound.target
-```
+### List all the units systemd is attempting to load
+`systemctl list-units --all`
+or for only active units
+`systemctl list-units`
 
-## Enable A Target / Run Level
-```console
-$ sudo systemctl enable multi-user.target
-```
+### Check Status Of A Systemd Script
+`systemctl status sound.target`
 
-## Set Default Run Level
-```console
-$ sudo systemctl default multi-user.target
-```
+### Start A Systemd Script
+`systemctl start sound.target`
+
+### Stop A Systemd Script
+`systemctl stop sound.target`
+
+### Reload
+re-read config files without stopping and restarting service.
+Obviously 
+`systemctl reload docker`
+
+### Enable / Disable
+`systemctl enable docker`
+`systemctl disable docker`
+
+### Enable A Target / Run Level
+`systemctl enable multi-user.target`
+
+### Set Default Run Level
+`systemctl default multi-user.target`
+
+### Check runlevel / target
+`systemctl get-default`
+looks at file: `/etc/systemd/system/default.target`
+which often points to: `/lib/systemd/system/<mode>.target`
+
+### Change runlevel / target
+`systemctl set-default multi-user.target`
+creates new symlink
+
+### Reload system manager configuration / systemd
+necessary for systemd to pick up .service file changes
+- reload systemd units
+- updates systemtd internal config
+- necessary when adding / removing service
+
+`systemctl daemon-reload`
+
+### Edit service file with systemctl
+changes are applied immediately without needing daemon-reload
+`systemctl edit my-project.service --full`

@@ -5,6 +5,9 @@
 - [Postgres Docs](https://www.postgresql.org/docs/)
 - [Postgres Tutorial Site](https://www.postgresqltutorial.com/)
 
+## Features
+- default port is `5432`
+
 ## Install and start on macOS with brew
 
 ```bash

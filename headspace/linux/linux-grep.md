@@ -5,6 +5,8 @@
 - `-w` search for exact word
 - `-r` recursive searching in to directories
 - `-o` only output matching
+- `-A<int>` print x lines after
+- `-B<int>` print x lines before
 - use `-E` for extended regex or use `egrep`
 
 ## Limitations
@@ -57,6 +59,9 @@ note this wouldn't match `passwordAuthentication` because that's a different wor
 
 ## Search for word and only shw matching output
 `grep -oi 'password' /etc/ssh/sshd_config`
+
+## Search and show X lines after
+`grep -A1 Arsenal premier-league-table.txt`
 
 ## Regex Examples
 

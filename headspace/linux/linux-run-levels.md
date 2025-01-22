@@ -1,13 +1,34 @@
-# RUN LEVELS
+# Linux Run Levels
+
+## Old runlevels from sysV INIT
 0 - Halt or shut down system
 1 - Single user mode
 2 - Multi-user mode without networking
-3 - Normal boot
+3 - Normal boot (non-graphical / cli)
 4 - Unused/customizable
 5 - Run Level 3 + GUI display manager
 6 - Reboot
 
-## Old Run Level Script Directories
+## Modern Systemd Targets
+runlevel are known as targets
+
+0 - poweroff.target
+1 - rescue.target
+2 - multi-user.target
+3 - multi-user.target
+4 - multi-user.target
+5 - graphical.target
+6 - reboot.target
+
+### Check run level
+note: runlevel is now replaced with systemctl
+`runlevel`
+or `systemctl get-default`
+
+### Change run level / target
+`systemctl set-default multi-user.target`
+
+### Old Run Level Script Directories
 contains a lot of kill scripts as well
 ```
 /etc/

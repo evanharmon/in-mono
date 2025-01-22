@@ -20,7 +20,14 @@ call the script directly to use the declared interpreter
 ## Change Shell Preference
 
 ```console
+# ZSH
 chsh -s /bin/zsh
+# or bash
+chsh -s /bin/bash
+# or bourne
+chsh -s /bin/sh
+# or fish
+chsh -s /bin/fish
 ```
 
 ## Get Date For Start Of Filename
@@ -104,12 +111,12 @@ fi
 
 check current shell
 
-```console
+```sh
 echo $0
+# or
+echo $SHELL
 ```
 
 or for /bin/dash on debian, etc
 
-```console
-readlink -f $(which sh)
-```
+`readlink -f $(which sh)`

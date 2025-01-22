@@ -1,19 +1,19 @@
-# BASH HISTORY
+# SHELL HISTORY
 
 ## List X number of commands in previous history
 
-```console
+```sh
 history n
 ```
 
 ## Search in History
 
-```console
+```sh
 history 100 | grep ".Web"
 ```
 
 ## Execute Command in history
 
-```console
+```sh
 !15
 ```

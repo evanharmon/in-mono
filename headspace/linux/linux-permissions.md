@@ -85,6 +85,8 @@ r = read, w = write, x = execute
 ### Change Owner
 
 `chown dev package.json`
+or on entire directory
+`chown -R evan ./`
 
 ### Change Group Permissions
 

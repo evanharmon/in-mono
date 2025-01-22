@@ -3,6 +3,7 @@
 ## Feature
 pager with more features than more (:
 - supports `/` searching, `n` / `shift+n` movement like vi
+- up / down arrow to scroll
 
 ## Basic use
 `sudo less /var/log/syslog`
