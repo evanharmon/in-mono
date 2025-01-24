@@ -1,6 +1,20 @@
 # LINUX SCRIPT CONDITIONALS
 
-## If Statements
+## Limitations
+- don't put `*bc*` patterns inside double quotes
+
+## if statements
+- conditional check wrapped in `[ ]`
+- there should be a space between brackets `[ $env_var = 'dev' ]`
+
+```bash
+if [ ]; then
+elif [ ]; then
+else
+fi
+```
+
+## Recipes
 
 ### Safely check for multi word command
 
@@ -20,32 +34,12 @@ if [[ $rv -ne 0 || ! $access_key_id ]]; then
 fi
 ```
 
-### Check If Folder Exists And Remove
-
+### Check if argument not provided
 ```bash
-DIR=/tmp/dir.lock
-if [ -d "$DIR" ]; then
-    printf '%s\n' "Removing Lock ($DIR)"
-    rm -rf "$DIR"
+if [ -z "$1" ]; then
+    echo "Missing first argument."
 fi
 ```
-
-### Check file exists
-
-```bash
-if [ -f $HOME/.zshrc ]; then
-	# something something
-fi
-```
-
-## Check directory exists
-
-```bash
-if [ -d $HOME/.local ]; then
-	# something something
-fi
-```
-
 ### Check if environment variable is not set
 
 `-n` checks if not an empty string
@@ -64,11 +58,11 @@ if test -n "${CODESPACES+x}" ; then
 fi
 ```
 
-## Get Length / Number Of Characters
+### Get Length / Number Of Characters
 
 ```bash
 result="$(rg 'awscli')"
-if [${#result} > 0]; then
+if [ ${#result} > 0 ]; then
 	echo "found it"
 fi
 ```

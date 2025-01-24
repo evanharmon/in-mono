@@ -3,10 +3,11 @@
 ## Resources
 
 - [Python Flask user guide](https://flask.palletsprojects.com/en/2.2.x/#user-s-guide)
+- [Python Flask vscode tutorial](https://code.visualstudio.com/docs/python/tutorial-flask)
 
 ## Reload on changes
 
-```console
+```bash
 FLASK_DEBUG=true python3 node.py
 ```
 

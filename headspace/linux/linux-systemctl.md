@@ -27,6 +27,9 @@ or for only active units
 ### Check Status Of A Systemd Script
 `systemctl status sound.target`
 
+or for scripts - the below is great bc it outputs `active`, `inactive`, or `unknown`
+`systemctl is-active etcd`
+
 ### Start A Systemd Script
 `systemctl start sound.target`
 

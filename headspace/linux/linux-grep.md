@@ -7,7 +7,7 @@
 - `-o` only output matching
 - `-A<int>` print x lines after
 - `-B<int>` print x lines before
-- use `-E` for extended regex or use `egrep`
+- use `-E` for extended regex, `egrep` is deprecated
 
 ## Limitations
 - exact word search only matches punctuation as part of word
@@ -19,6 +19,9 @@
 ## Search for String in Files in Directory
 searches recursively
 `grep -r 'user' ./lib`
+
+## Show only filenames containing pattern
+`grep -r -l 'egrep'`
 
 ## Search string in File show only filename
 
@@ -72,7 +75,7 @@ note this wouldn't match `passwordAuthentication` because that's a different wor
 `grep '7$' /etc/login.defs`
 
 ### Match numbers that begin with a 2
-`egrep -w '^2[0-9]*' myfile`
+`grep -E -w '^2[0-9]*' myfile`
 
 ### Match any ONE character
 matches `cat`, `cut`, `execute`, etc
@@ -87,24 +90,23 @@ have to escape since grep uses basic regex
 `grep -r '0\+' /etc/`
 but better to just use `-E` for extended regex
 `grep -Er '0+' /etc/`
-or just use egrep `egrep -r '0+' /etc/`
 
 ### Match at least three zeros
-`egrep -r '0{3,}' /etc/`
+`grep -E -r '0{3,}' /etc/`
 
 ### Match zero or one time
 makes previous element optional
 matches `disable`, `disabled`, AND `disables`
-`egrep -r 'disabled?' /etc/`
+`grep -E -r 'disabled?' /etc/`
 
 to match just `disable`, `disabled`, use exact word match
-`egrep -wr 'disabled?' /etc/`
+`grep -E -wr 'disabled?' /etc/`
 
 ### Match one thing or the other
-`egrep -r 'enable|disable' /etc/`
+`grep -E -r 'enable|disable' /etc/`
 
 ### Match Uppercase words with three total letters
 other letters are lowercase so this is effectively titlecase
 `[A-Z]` matches a single capital letter
 `[a-z]{2,2}` matches exactly two lowercase letters
-`sudo egrep --color -w '[A-Z][a-z]{2,2}' /etc/nsswitch.conf`
+`sudo grep -E --color -w '[A-Z][a-z]{2,2}' /etc/nsswitch.conf`

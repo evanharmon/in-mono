@@ -2,9 +2,7 @@
 
 ## Resources
 
-- [Script Linter](http://www.shellcheck.net)
 - [Script Single Quote Double Quote](http://mywiki.wooledge.org/Quotes)
-- [Script Exit Status](https://www.tldp.org/LDP/abs/html/exit-status.html)
 - [Script Bash One Liners](https://github.com/onceupon/Bash-Oneliner)
 
 ## Features
@@ -14,14 +12,31 @@
 - when running as command like executable, leave off the extension
 - use `source script` when variables / changes need to be preserved
 - use `./script` or `bash ./script` when script shouldn't affect current shell
+- use `/usr/bin/env` in shebangs
+
+## Common colors
+`NC` is for resetting the color
+```bash
+RED="\033[1;31m"
+YELLOW="\033[1;33m"
+GREEN="\033[1;32m"
+BLUE="\033[1;34m"
+NC="\033[0m"
+```
 
 ## Interpreters
 
 ### Set an interpreter
-Use the `#!` shebang
+Use the `#!` shebang to state what shell / process should be used to run the script
 
 bash: `#!/usr/bin/env bash`
 python: `#!/usr/bin/env python`
+
+`/usr/bin/env` is better than a direct path.
+- more portable across diff systems
+- version of interpeter can be set via environment variable by user
+- `env` locates the first instance of the interpeter from PATH
+- more consistent across containers / vm's, etc
 
 ## Make script executable
 `chmod +x setup-node`
@@ -38,6 +53,12 @@ python: `#!/usr/bin/env python`
 - any variable modifications are lost when script finishes
 
 `./script.sh` or `bash script.sh`
+
+## Run script without executable bit set
+this will run in it's own shell apart from the current one.
+environment's will be isolated
+
+`bash ./script.sh`
 
 ## Writing Scripts
 
@@ -75,21 +96,4 @@ if [[ rv -ne 0 ]]; then
     echo "should be 0" 1>&2
     return exit 1
 fi
-```
-
-## Check Exit Status
-
-```bash
-#!/bin/bash
-
-echo hello
-echo $?    # Exit status 0 returned because command executed successfully.
-
-lskdf      # Unrecognized command.
-echo $?    # Non-zero exit status returned -- command failed to execute.
-
-echo
-
-exit 113   # Will return 113 to shell.
-           # To verify this, type "echo $?" after script terminates.
 ```

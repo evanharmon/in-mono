@@ -29,3 +29,27 @@ or in json format:
 
 ### Stop all instances
 `multipass stop --all`
+
+### Delete instance and snapshot
+`multipass delete node01`
+or all instances and snapshots
+`multipass delete --all`
+or combine and purge immediately
+`multipass delete --all --purge`
+
+### Recover deleted instances and snapshots
+must not have been purged yet!
+`multipass recover node01`
+or all instances and snapshots 
+`multipass recover --all`
+
+### Purge deleted instances and data
+Affects all deleted instances. Deletes all data as well!
+`multipass purge`
+
+
+### List all snapshots
+`multipass list --snapshots`
+
+### List all instances
+`multipass list`

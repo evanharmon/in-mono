@@ -14,14 +14,12 @@
 `find /opt -name my-file.txt`
 
 ### Search for filenames not matching
-`find -not -name "myfile*"`
-or `find \! -name "myfile*"`
+`find . -not -name "myfile*"`
+or `find . \! -name "myfile*"`
 
 ### Search for filename recursively
 
-default is current directory, asterix is important bc it's not regex partial match like grep
-
-`find -name "login*"`
+`find . -name "login*"`
 
 ### Find by change (metadata) time
 think file permissions, etc. Good for finding recent file permission changes.

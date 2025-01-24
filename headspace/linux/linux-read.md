@@ -1,12 +1,34 @@
 # LINUX READ
 
-## Summary
+## Resources
 
-Notes on using the linux `read` command
+- [Guide](https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/)
 
-## Read File Line By Line
+## Features
+read data from a file, device, or terminal
 
-[Guide](https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/)
+## Flags
+- `-r` enable raw mode. Allows reading binary data
+- `-n` specify number of bytes to read from input. Default is 1
+
+## Limitations
+- not using `-r` flag will mangle backslashes
+
+## Commands
+
+### Read from input
+default is to store single line in `$REPLY`
+
+```bash
+read
+> My name is evan
+echo $REPLY
+```
+
+### Read from input and set variable
+`read -r -p "VMs are running. Delete and rebuild them (y/n)? " ans`
+
+### Read File Line By Line
 
 ```bash
 #!/bin/bash
@@ -17,9 +39,7 @@ do
 done < "$input"
 ```
 
-## Read File By Field And Line
-
-[Guide](https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/)
+### Read File By Field And Line
 
 ```bash
 #!/bin/bash
@@ -31,7 +51,7 @@ do
 done < "$file"
 ```
 
-## Use Read To Get Home Directory
+### Use Read To Get Home Directory
 
 ```bash
 IFS=: read -r _ _ _ _ _ homedir _ < <(getent passwd "$username")

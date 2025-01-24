@@ -12,16 +12,26 @@ remember to set interpreter to virtual env for project you are working on
 
 deactivate virtual env automatically activated in terminal
 
-```console
-deactivate
-```
+`deactivate`
 
 ## Local virtual env setup
 
-gets set on local machine User settings
+gets set on local machine User settings. I use a per folder .venv setup though.
 
 ```json
 {
   "python.venvPath": "~/.local/share/virtualenvs"
 }
 ```
+
+## Common issues
+`(venv)` keeps popping up in terminal prompt.
+adjust settings.json
+```json
+{
+  "python.terminal.activateEnvironment": false,
+  "python.terminal.activateEnvInCurrentTerminal": false
+}
+```
+
+Clear the workspace python interpeter cache / settings via CMD + P

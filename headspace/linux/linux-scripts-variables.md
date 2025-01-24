@@ -7,6 +7,7 @@
 - case sensitive
 - must be alphanumeric
 - must use `_` underscores NOT `-` dashes
+- non-local function variables share the same namespace as script
 
 ## Set basic variable
 
