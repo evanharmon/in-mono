@@ -1,5 +1,8 @@
 {
   "breadcrumbs.enabled": true,
+  "chat.commandCenter.enabled": false,
+  "continue.enableTabAutocomplete": false,
+  "continue.telemetryEnabled": false,
   "debug.console.fontSize": 14,
   "debug.internalConsoleOptions": "neverOpen",
   "debug.javascript.autoAttachFilter": "disabled",
@@ -7,13 +10,16 @@
   "editor.autoClosingBrackets": "always",
   "editor.autoClosingQuotes": "always",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.folding": true,
+  "editor.defaultIndentationSize": 4,
+  "editor.folding": false,
   "editor.fontFamily": "'Fira Code Retina', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontLigatures": true,
+  "editor.fontLigatures": false,
   "editor.fontSize": 16,
   "editor.fontWeight": "normal",
   "editor.formatOnSave": true,
-  "editor.glyphMargin": true,
+  "editor.formatOnSaveMode": "modifications",
+  "editor.glyphMargin": false,
+  "editor.lineNumbers": "off",
   "editor.minimap.enabled": false,
   "editor.parameterHints.enabled": true,
   "editor.quickSuggestions": {
@@ -38,13 +44,17 @@
   "gitlens.statusBar.enabled": false,
   "gitlens.plusFeatures.enabled": false,
   "python.analysis.completeFunctionParens": true,
+  "python.experiments.enabled": false,
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
+  "python.terminal.activateEnvironment": false,
+  "python.terminal.activateEnvInCurrentTerminal": false,
   "python.terminal.executeInFileDir": true,
+  "redhat.telemetry.enabled": false,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.fontFamily": "'Fira Code Retina', Menlo, Monaco, 'Courier New', monospace",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 16,
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -58,6 +68,9 @@
   "[docker]": {
     "editor.defaultFormatter": null
   },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[python]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
@@ -65,6 +78,10 @@
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "[shell]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4
   },
   "[shellscript]": {
     "editor.defaultFormatter": null
