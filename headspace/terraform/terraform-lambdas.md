@@ -19,7 +19,7 @@ tracing_config {
 proxy hook up is just an IAM policy. Resource ARN for iam policy can be
 generated from db proxy arn.
 
-```console
+```bash
 terraform console
 > replace("arn:aws:rds:us-east-1:xxxxxxxxxxxx:db-proxy:prx-xxxxxxxxxxxxxxxxx", "db-proxy", "dbuser")
 arn:aws:rds:us-east-1:xxxxxxxxxxxx:dbuser:prx-xxxxxxxxxxxxxxxxx

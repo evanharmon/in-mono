@@ -2,7 +2,7 @@
 
 ## Sorting
 
-#### Alphabetical To A Point
+## Alphabetical To A Point
 
 It is tempting to rigidly sort terraform object properties alphabetically like
 below.

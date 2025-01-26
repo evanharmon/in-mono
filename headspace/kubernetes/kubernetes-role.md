@@ -8,6 +8,9 @@
 - namespace is required
 - supports specific resource name access limits
 
+## Helpers
+api group for a resource can be looked up with `kubectl api-resources | grep 'namespace'`
+
 ## Practice
 
 ### Example role

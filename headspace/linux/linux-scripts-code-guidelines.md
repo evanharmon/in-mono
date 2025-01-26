@@ -22,6 +22,7 @@ make sure `#!/usr/bin/env` is used for interpeter
 code to potentially move in to functions:
 - repeated code
 - code involving checking a status to decide to do work
+- should include a comment block with description and expected arguments / usage
 
 ## Comments
 - each section of work should have a descriptive comment

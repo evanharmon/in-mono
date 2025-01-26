@@ -1,12 +1,9 @@
 # TERRAFORM FUNCTIONS
 
-## Summary
-
-Notes on using functions in terraform templates
-
 ## Resources
 
 - [Terraform Function Docs](https://www.terraform.io/docs/configuration/functions.html)
+- [Flatten Docs](https://www.terraform.io/docs/configuration/functions/flatten.html)
 
 ## Grab First Element
 
@@ -26,19 +23,13 @@ Only use `element()` when wrap-around index behavior is necessary
 
 Uppercase
 
-```hcl
-upper()
-```
+`upper()`
 
 Convert int to string
 
-```hcl
-tostring()
-```
+`tostring()`
 
 ## Flatten
-
-- [Docs](https://www.terraform.io/docs/configuration/functions/flatten.html)
 
 if trying to stringify a list and getting the error 'is tuple with X elements'
 try flattening

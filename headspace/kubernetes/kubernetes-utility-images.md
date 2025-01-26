@@ -8,3 +8,11 @@ various images for achieving tasks quickly in kubernetes
 
 ## Curl
 `kubectl run curl --image alpine/curl`
+
+continuously curl in a sidecar container
+```yaml
+    Command:
+      /bin/sh
+      -c
+      while true; do timeout 3 curl -s http://mysvc || echo Not able to connect to the nginx app on http://mysvc; sleep 3; done
+```

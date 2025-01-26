@@ -35,3 +35,11 @@ kubectl get pv \
   --sort-by={.spec.capacity.storage} \
   -o custom-column=NAME:{.metadata.name},CAPACITY:{.spec.capacity.storage}
 ```
+
+## Get the component label from a kube component
+```bash
+kubectl --context cluster1 get pod \
+  -n kube-system \
+  kube-apiserver-cluster1-controlplane \
+  -o jsonpath='{.metadata.labels.component}'
+```

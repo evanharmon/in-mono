@@ -1,6 +1,6 @@
 # TERRAGRUNT MODULES
 
-### Terragrunt Paths
+## Terragrunt Paths
 
 double backslash `//` denotes the root directory of the repo
 

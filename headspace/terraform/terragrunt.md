@@ -9,21 +9,15 @@
 
 - [Terragrunt Caching](https://terragrunt.gruntwork.io/docs/features/caching/)
 
-```console
-find . -maxdepth 3 -type d -name ".terragrunt-cache" -prune -exec rm -rf {} \;
-```
+`find . -maxdepth 3 -type d -name ".terragrunt-cache" -prune -exec rm -rf {} \;`
 
 ## Debug Error Codes
 
-```console
-terragrunt plan-all --detailed-exitcode
-```
+`terragrunt plan-all --detailed-exitcode`
 
 ## Debug Vars
 
-```console
-terragrunt plan --terragrunt-debug
-```
+`terragrunt plan --terragrunt-debug`
 
 ## Destroy
 
@@ -32,9 +26,7 @@ dependency ordering for destruction. Instead of uses dependency ordering based o
 
 ## Force Destroy Ignoring Dependencies
 
-```console
-terragrunt run-all --terragrunt-ignore-dependency-errors destroy
-```
+`terragrunt run-all --terragrunt-ignore-dependency-errors destroy`
 
 ## null_resource local-exec
 

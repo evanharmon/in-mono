@@ -2,9 +2,7 @@
 
 ## Review Rendering
 
-```console
-tf state show data.template_file.storage_policy
-```
+`tf state show data.template_file.storage_policy`
 
 ## Conditional If Statement
 
@@ -24,7 +22,7 @@ resource "null_resource" "debug_policy" {
 
 ## Inspect Rendering
 
-```console
+```bash
 tf plan --var-file ../../.env.dev.tfvars -out=tfplan -target=module.service.null_resource.debug
 tf apply tfplan
 tf state show module.mymodule.template_file.policy

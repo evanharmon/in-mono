@@ -5,7 +5,7 @@
 default is `Username` attribute section. To use `Email Address or phone number`
 attribute setting, use `username_attributes` property in the resource as below
 
-```terraform
+```hcl
 resource "aws_cognito_user_pool" "mycribspool" {
   name = "mycribspool"
 

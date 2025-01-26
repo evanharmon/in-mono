@@ -1,129 +1,62 @@
 # TERRAFORM CLI
 
 ## Resources
+- [Terraform Download](https://www.terraform.io/downloads.html)
+- [Terraform CLI](https://developer.hashicorp.com/terraform/cli/commands)
+- [Terraform GH Releases](https://github.com/hashicorp/terraform/releases)
 
-- [Terraform State Move Blog](https://ryaneschinger.com/blog/terraform-state-move/)
-- [Terraform Plan Docs](https://www.terraform.io/docs/commands/plan.html)
+## Installation
 
-## State
-
-#### Remove Root Level Resource
-
-```console
-terraform state rm aws_iam_service_linked_role.autoscaling
+### Mac install
+```bash
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
 ```
 
-#### Remove Entire Module
-
-```console
-terraform state rm module.mymod
+### Debian install
+```bash
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
 ```
 
-#### Remove Module Resource
-
-```console
-terraform state rm "module.mymodule.aws_cloudfront_distribution.mycdn[0]"
+### Manual install
+```bash
+wget https://releases.hashicorp.com/terraform/1.10.5/terraform_1.10.5_linux_arm64.zip
+# or
+wget https://releases.hashicorp.com/terraform/1.10.5/terraform_1.10.5_linux_amd64.zip
+unzip terraform_1.10.5_linux_amd64.zip
+mv terraform /usr/local/bin
 ```
 
-#### Taint Module
+## Install Terraform Version Manager
 
-```console
-terraform taint --module=my-module aws_iam_role.my_role
+`brew install warrensbox/tap/tfswitch`
+
+## Getting started
+
+```bash
+# create a terraform file with provider / resources
+vi main.tf
+cat > main.tf <<-EOF
+resource "local_file" "config_data" {
+  filename = "test.txt"
+  content = "this is some config"
+}
+EOF
+# Init project
+terraform init
+# Run plan
+terraform plan -out tfplan
+# Run apply
+terraform apply tfplan
+# Run destroy
+terraform destroy
 ```
 
-#### Move To Another State File
 
-Note: Be careful not to have a resource controlled by two state files!
-Terraform does not support moving modules or resources between two s3 tfstate
-files. Copy the state file to the new location in s3 and remove any modules
-or resources not in use.
+## Common issues
 
-## Resources
+### Clear Cache
 
-#### Destroy Entire Module
-
-```console
-terraform destroy --target=module.mymod
-```
-
-#### Move `main.tf` Resources To Modules
-
-Remove resource from main.tf file, add to `modules/mymodule/main.tf` file, then:
-
-```console
-terraform state mv aws_elb.weblb module.web.aws_elb.weblb
-```
-
-## Show Details Of Resource
-
-```console
-terraform state show module.storage.aws_iam_role_policy.auth
-```
-
-## Pass Variables To Plan
-
-```console
-terraform plan -out=tfplan -var env=sandbox
-```
-
-## Limit Plan To Modules
-
-```console
-terraform plan -out=tfplan --target=module.appsync
-```
-
-## Outputs Not Updating
-
-`terraform plan` will show no changes. Instead run `terraform refresh`
-
-## Import
-
-#### Import User Pool
-
-```console
-terraform import aws_cognito_user_group.my_group us-east-1_vG78M4goG/user-group
-```
-
-#### Import IAM Policy
-
-```console
-terraform import aws_iam_policy.my_policy arn:aws:iam::123456789012:policy/UsersManageOwnCredentials
-```
-
-#### Import IAM Role
-
-```console
-terraform import aws_iam_role.my_role role_name
-```
-
-#### Import Attached Role Policy
-
-```console
-terraform import aws_iam_role_policy_attachment.my_role role_name
-```
-
-#### Cannot Import Non-Existent Remote Object
-
-Sometimes the provider needs to be added explicitly in the CLI call
-
-```console
-terraform import -provider=aws.my-custom aws_iam_policy.my_policy arn:aws:iam::aaaaaaaaaaaa:policy/my-policy
-```
-
-## Force Serial Deployment
-
-helps avoid lambda permission resource exception issues
-
-```console
-terraform apply --parallelism=1 tfplan
-```
-
-## Init
-
-### Reconfigure State File
-
-disregards any existing configuration of state
-
-```console
-terraform init -reconfigure
-```
+`find . -type d -name ".terraform" -prune -exec rm -rf {} \;`

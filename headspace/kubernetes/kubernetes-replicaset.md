@@ -14,6 +14,12 @@ Maintains a stable set of replica Pods.
 
 ## Practice
 
+### Create replicaset
+create via yaml. It's possible do it imperatively but I've never tried - requires an annotation
+```bash
+kubectl run my-replicaset --image=nginx --replicas=3 --port=80 --overrides='{"apiVersion": "apps/v1", "kind": "ReplicaSet", "metadata": {"annotations":{"template.kubernetes.io/cloned-from":"deployment/my-replicaset"}}}'
+```
+
 ### Get
 `kubectl get replicaset` or shorthand `kubectl get rs`
 

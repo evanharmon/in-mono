@@ -12,6 +12,36 @@
 - use the `function` keyword even tho its not required
 = try to avoid functions with side effects
 
+## Typical comment block
+
+```bash
+########################################################################
+# Function: function_name
+#
+# Description:
+#   A brief explanation of the function's purpose.
+#
+# Usage:
+#   How to call the function and any specific requirements.
+#
+# Arguments:
+#   $1: Description of the first argument.
+#   $2: Description of the second argument, and so on.
+#
+# Returns:
+#   Description of the return value or exit status.
+#
+# Globals modified:
+#   List any global variables that the function modifies.
+#
+# Example:
+#   A simple example of how to use the function.
+########################################################################
+function function_name {
+  # Function implementation
+  return 0
+}
+```
 ## Return statement
 used to return exit status only - has to return a number
 
