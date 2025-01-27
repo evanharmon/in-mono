@@ -57,3 +57,18 @@ avoids the `invalid command code` error
 ```bash
 find ./**/*.tf -type f -exec sed -i '' -e "s/\? false/\? \"false\"/g" {} \;
 ```
+
+## Common issues
+
+### macOS
+beware on macOS the `-i` flag requires an argument.
+Otherwise you'll see errors like:
+```bash
+sed -E -i 's/replicas: 5/replicas: 3/g' *.yaml
+# sed: 1: "cache-patch.yaml": command c expects \ followed by text
+# or
+find . -type f -name "*.yaml" -exec sed -i 's/replicas: 5/replicas: 3/g' {} + 
+# sed: 1: "./cache-patch.yaml": invalid command code .
+# correct syntax
+sed -E -i '' 's/replicas: 5/replicas: 3/g' *.yaml
+```  

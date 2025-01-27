@@ -1,4 +1,6 @@
-# PROCFS
+# LINUX PROCFS
+
+## Features
 - similar to sysfs
 - presents info about processes
 - presents info about system information
@@ -7,16 +9,10 @@
 - change parameters on the fly
 
 ## View
-```console
-$ cd /proc && ls
-```
+`cd /proc && ls`
 
 ## Check Memory
-```console
-$ cat /proc/meminfo
-```
+`cat /proc/meminfo`
 
 ## More Readable Memory Info
-```console
-$ cat /proc/meminfo
-```
+`cat /proc/meminfo`

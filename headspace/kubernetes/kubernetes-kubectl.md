@@ -37,3 +37,6 @@ complete -o default -F __start_kubectl k
 
 ### Test config
 `kubectl config use-context evan`
+
+### Get cluster info
+`kubectl cluster-info`

@@ -16,3 +16,6 @@ continuously curl in a sidecar container
       -c
       while true; do timeout 3 curl -s http://mysvc || echo Not able to connect to the nginx app on http://mysvc; sleep 3; done
 ```
+
+## Stackrox Admission webhook
+`stackrox/admission-controller-webhook-demo:latest`
