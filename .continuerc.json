@@ -60,6 +60,18 @@
       "params": {}
     }
   ],
+  "docs": [
+    {
+        "title": "kubernetes",
+        "startUrl": "https://kubernetes.io/docs/home/",
+        "faviconUrl": "https://kubernetes.io/favicon.ico"
+    },
+    {
+      "title": "helm",
+      "startUrl": "https://helm.sh/docs/",
+      "faviconUrl": "https://helm.sh/favicon.ico"
+    }
+  ],
   "slashCommands": [
     {
       "name": "share",
