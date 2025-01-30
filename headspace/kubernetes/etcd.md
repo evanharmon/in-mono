@@ -53,3 +53,13 @@ example flags:
 --peer-trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
 --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
 ```
+
+## Debugging
+
+### Etcd keeps crashing
+try looking at the kubelet logs as well
+`journalctl -u kubelet -f`
+and check for connection refused as well
+`journalctl -u kubelet -f | grep 'connect: connection refused`
+
+errors starting up can show as `failed to ensure lease exists, etc` across kube components

@@ -43,3 +43,10 @@ kubectl --context cluster1 get pod \
   kube-apiserver-cluster1-controlplane \
   -o jsonpath='{.metadata.labels.component}'
 ```
+
+## Get list of permissions of resources and verbs
+removes the trailing comma as well
+
+```bash
+k get clusterrole red-role-cka23-arch -o jsonpath='{"resource:"}{.rules[*].resources[*]}{"|verbs:"}{range .rules[*].verbs[*]}{@}{","}{end}' | sed 's/,*$//'
+```

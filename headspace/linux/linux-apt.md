@@ -4,6 +4,7 @@
 more fully-featured than `apt-get`
 
 ## Software repositories
+
 located at:
 `/etc/apt/sources.list`
 and
@@ -12,18 +13,23 @@ and
 ## Commands
 
 ### Update packages
+
 `apt update`
 
 ### Upgrade packages
+
 `apt upgrade`
 
 ### Edit Sources
+
 `apt edit-sources`
 
 ### Uninstall package
+
 `apt remove telnet`
 
 ### Search for package
+
 `apt search telnet`
 
 ### List versions of a package
@@ -31,4 +37,10 @@ and
 `apt list -a kubeadm`
 
 ### List packages installed
+
 `apt list --installed`
+
+### Mark equivalents
+
+`apt hold kubectl`
+`apt unhold kubectl`

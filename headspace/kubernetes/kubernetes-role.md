@@ -11,9 +11,9 @@
 ## Helpers
 api group for a resource can be looked up with `kubectl api-resources | grep 'namespace'`
 
-## Practice
+## Example roles
 
-### Example role
+### Pod role with role binding
 
 imperative:
 `kubectl create role mycr --verb=get,list,watch --resource=secrets`
@@ -33,8 +33,6 @@ rules:
   resources: ["ConfigMap"]
   verbs: ["create"]
 ```
-
-### Example rolebinding
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

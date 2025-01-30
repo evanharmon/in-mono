@@ -6,20 +6,14 @@
 
 ## Expose deployment
 
-only to cluster
+only to cluster:
 
-```console
-kubectl expose deployment my-app --type=ClusterIP --port=8080
-```
+`kubectl expose deployment my-app --type=ClusterIP --port=8080`
 
-external via worker node
+external via node:
 
-```console
-kubectl expose deployment my-app --type=NodePort --port=8080
-```
+`kubectl expose deployment my-app --type=NodePort --port=8080`
 
-via load balancer
+via load balancer:
 
-```console
-kubectl expose deployment my-app --type=LoadBalancer --port=8080
-```
+`kubectl expose deployment my-app --type=LoadBalancer --port=8080`

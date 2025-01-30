@@ -48,3 +48,10 @@ use a loadBalancer in front to split / control traffic
 
 - able to run in active-active mode
 - clients point at load-balancer
+
+## Common Issues
+
+### liveness or healthz probe is failing??
+Check kubectl events if you can
+
+`kubectl get event --field-selector involvedObject.name=kube-apiserver-cluster4-controlplane`

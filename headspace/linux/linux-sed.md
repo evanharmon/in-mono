@@ -48,6 +48,9 @@ Emulate `head -1`: `sed q`
 prints lines 500 to 510
 `sed -n '500,510p' values.conf`
 
+### Remove trailing comma from input
+`echo 'get,list,put,' | sed 's/,*$//'`
+
 ## Find exec uses
 
 ### Find And Replace On Mac OS X

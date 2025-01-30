@@ -8,6 +8,8 @@ various images for achieving tasks quickly in kubernetes
 
 ## Curl
 `kubectl run curl --image alpine/curl`
+or
+`docker.io/curlimages/curl`
 
 continuously curl in a sidecar container
 ```yaml
@@ -19,3 +21,7 @@ continuously curl in a sidecar container
 
 ## Stackrox Admission webhook
 `stackrox/admission-controller-webhook-demo:latest`
+
+## Flask demo apps
+
+`poroko/flask-demo-app`

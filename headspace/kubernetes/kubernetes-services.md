@@ -61,3 +61,9 @@ Generic `kubectl` command, no need to change namespace, etc on docker mac
 - endpoints count is zero. The service selectors probably aren't matching any pods.
 - `kubectl create service clusterip redis` uses a default of `app=redis`
 - `kubectl expose pod nginx --type=NodePort` doesn't allow specifying the exact node port
+
+### Endpoints not generated
+I've had problems deleting / re-creating services via yaml when endpoints are missing.
+
+Instead use expose instead:
+simple example: `k expose pod nginx --port 80`

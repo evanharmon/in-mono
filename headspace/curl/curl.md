@@ -8,9 +8,7 @@
 
 remember to URL encode with % symbols where necessary
 
-```console
-curl --data "param1=value1&param2=value2" https://example.com/resource.cgi
-```
+`curl --data "param1=value1&param2=value2" https://example.com/resource.cgi`
 
 ## Send Post Multi-part Form
 
@@ -26,21 +24,15 @@ curl \
 
 also ensures correct file type
 
-```console
-curl -L
-```
+`curl -L`
 
 ## Insecure Mode
 
-```console
-curl -k
-```
+`curl -k`
 
 ## Custom Request Method / POST Data
 
-```console
-curl -XPOST -d'{"s":"hello, world"}' localhost:8080/uppercase
-```
+`curl -XPOST -d'{"s":"hello, world"}' localhost:8080/uppercase`
 
 ## JSON Data As Payload
 
@@ -63,9 +55,7 @@ curl -v \
 
 ## Use Basic Auth
 
-```console
-curl -v -u Administrator:password localhost:8091
-```
+`curl -v -u Administrator:password localhost:8091`
 
 ## Use ENV Variables In Curl
 
@@ -81,6 +71,9 @@ curl -u <my-api-token>: \
 
 ## Use ENV Variables In Curl Without Double Quoting
 
-```console
-curl -u <my-api-token>: -H 'Content-Type: '$TYPE''
-```
+`curl -u <my-api-token>: -H 'Content-Type: '$TYPE''`
+
+
+## Curl with a set timeout in seconds
+3 second timeout
+`curl -m 3 localhost`

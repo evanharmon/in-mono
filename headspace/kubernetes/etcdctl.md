@@ -24,6 +24,7 @@
 ```
 
 ## Commands
+
 ### Put key value
 
 `etcdctl put foo bar`
@@ -61,3 +62,14 @@ etcdctl \
 
 ### get all key names
 `etcdctl get / --prefix --keys-only`
+
+### Verify / look at snapshot
+
+```bash
+ETCDCTL_API=3 etcdctl \
+  --endpoints=https://[127.0.0.1]:2379 \
+  --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+  --cert=/etc/kubernetes/pki/etcd/server.crt \
+  --key=/etc/kubernetes/pki/etcd/server.key \
+  snapshot dump /opt/snapshot.db
+```

@@ -69,3 +69,9 @@ spec:
     path: /tmp
     server: 172.17.0.2
 ```
+
+## Common Issues
+
+### PVC gets wrong PV
+if you are expecting a local / hostPath pv to be claimed by a specific pvc,
+explicitly specify the `volumeName: <pv_name>`!!

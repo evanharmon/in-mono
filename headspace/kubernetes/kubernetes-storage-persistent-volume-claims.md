@@ -12,6 +12,7 @@ kubernetes attempts to find a persistent volume matching criteria
 - bound to a single persistent volume
 - sets access modes, storageClass, name
 - supports selection of specific named persistent volumes
+- `volumeName` can be specified to ensure a pvc uses a specific PV
 
 ## Limitations
 
@@ -33,6 +34,23 @@ spec:
   resources:
     requests:
       storage: 500Mi
+```
+
+### Prebind pvc to persistent volume (PV)
+
+```yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: my-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: my-stc
+  volumeName: my-pv
+  resources:
+    requests:
+      storage: 50Mi
 ```
 
 ### Get persistent volume claim (pvc)
