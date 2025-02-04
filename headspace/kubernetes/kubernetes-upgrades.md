@@ -46,6 +46,9 @@ sudo apt-get update && sudo apt-get install -y kubeadm='1.31.x-*' && \
 sudo apt-mark hold kubeadm
 ```
 
+drain the node for maintenance:
+`kubectl drain <node-to-drain> --ignore-daemonsets`
+
 upgrade kubernetes on node:
 `kubeadm upgrade apply v1.31.0`
 
@@ -56,9 +59,6 @@ note `kubectl get nodes` will still show old version of k8s, until kubelet's are
 not always relevant though since not all controlplane nodes have kubelet installed
 
 Remember to do upgrades for other plugins afterwards
-
-drain the node for maintenance:
-`kubectl drain <node-to-drain> --ignore-daemonsets`
 
 upgrade kubelet to new k8s version:
 
