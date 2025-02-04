@@ -71,3 +71,13 @@ for index, num in enumerate(letters, start=-isbn_len):
     range_sum = abs(index) + int(num)
     total += total * range_sum
 ```
+
+## Get the midpoint of a loop
+works for odd or even length lists
+```python
+# get the length, and add 1 if the length is an odd number
+mid = len("abcdefg") // 2 + len("abcdefg") % 2
+# 4
+mid = len("abcdef") // 2 + len("abcdef") % 2
+# 3
+```

@@ -59,3 +59,20 @@ def unlimited_arguments(*args, **kargs):
 
 unlimited_arguments(*[1,2,3,4], name='Evan', age=17)
 ```
+
+## Call a named function by variables
+
+ex: 
+```python
+from operator import add, mul, sub, floordiv
+
+OPERATIONS = {
+    "plus": add,
+    "minus": sub,
+    "multiplied": mul,
+    "divided": floordiv,
+}
+
+operation = 'plus'
+OPERATIONS['plus'](3,1)
+```

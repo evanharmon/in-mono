@@ -49,6 +49,8 @@ c = a.join(b)
 ```python
 string = "hello world"
 print string[::-1]
+# or
+''.join(reversed(string))
 ```
 
 ## Compare strings
@@ -91,8 +93,10 @@ text = 'school'
 text[0] # 's'
 ```
 
-## Replace chars in string
-
+## Convert to and from ASCII
 ```python
-'3-598-21508-8'.replace('-','') # '3598215088'
+# Convert from letter to ASCII
+ord('E') # 65
+# Convert from ASCII to letter
+chr(69)  # 'E'
 ```

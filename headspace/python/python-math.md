@@ -62,3 +62,56 @@ sum(num_lists, start=[]) # [1, 2, 3, 4, 5, 6]
 digits = [0,0,0,0]
 all(d == 0 for d in digits)
 ```
+
+## Modulo
+
+### Get the last digit in a number
+it's base 10 - so can use modulo!
+
+```python
+4265 % 10
+> 5
+```
+
+then number can be evaluated, etc..
+
+### Remove the last digit in a number
+it's base 10 - so can divide and round down
+```python
+4265 // 10
+> 426
+```
+
+great for iterating through digits in a number
+without converting to string, etc.
+
+### Reverse a number without using strings
+assumes it's base10
+```python
+def reverse_num(n: int):
+    result = 0
+    while n > 0:
+        # grab last digit
+        last_digit = n % 10
+        # handles removing leading zeros as well since 0 * 10 = 0
+        # add a trailing `0` to the result to make room for new number
+        # ex: 123 becomes 1230 and then add last digit on top
+        print(result * 10, result * 10 + last_digit)
+        result = result * 10 + last_digit
+        n //= 10
+    return result
+```
+
+### Duplicate a digit
+```python
+# multiply by 10 to add a place
+3 * 10 + 3
+> 33
+```
+
+### Increment but stay within a range
+for example, jump n chars but stay within the string
+```python
+# Example with a list or string with length of 10, jump 9 items
+next_idx = (9 + 9) % 10
+```
