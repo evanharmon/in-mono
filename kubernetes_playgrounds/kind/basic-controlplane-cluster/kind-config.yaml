@@ -1,0 +1,7 @@
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+name: basic-cluster
+# specify node image to install specific kubernetes version
+nodes:
+- role: control-plane
+  image: kindest/node:v1.31.2@sha256:18fbefc20a7113353c7b75b5c869d7145a6abd6269154825872dc59c1329912e
