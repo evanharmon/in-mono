@@ -1,0 +1,11 @@
+resources:
+  - ../../base
+
+patches:
+  - path: webapp-patch.yaml
+  - path: cache-patch.yaml
+
+configMapGenerator:
+  - name: prod-config
+    literals:
+      - ENV=production
