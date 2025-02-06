@@ -18,6 +18,14 @@ split only first instance
 'school'.split('o',1) # output: ['sch','ol']
 ```
 
+## Split every n chars in a string in to list
+handles leaving any remaining chars in the part of the list
+```python
+s = 'abcdefg'
+chars_per_string = 3
+result = [''.join(s[i:i+chars_per_string]) for i in range(0, len(s), chars_per_string)]
+```
+
 ## Trim / Strip whitespace
 
 returns a copy

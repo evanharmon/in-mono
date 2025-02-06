@@ -11,24 +11,19 @@ good for managing multiple versions of python
 ## ZSHRC
 
 ```bash
-# PY
 if [ -d "$HOME/.pyenv" ]; then
         eval "$(pyenv init -)"
         eval "$(pyenv virtualenv-init -)"
 fi
 ```
 
-## Install Python Versions
+## Install python versions
 
-```console
-pyenv install 2.7.11
-```
+`pyenv install 3.12.8`
 
-## Set Up Virtual Env
+## Set up virtual env
 
-```console
-pyenv virtualenv 2.7.11 gcloud
-```
+`pyenv virtualenv 3.12.8 myenv`
 
 ## Common Errors
 
@@ -40,7 +35,7 @@ ModuleNotFoundError: No module named 'pyexpat'
 
 on MAC OS 10.14
 
-```console
+```bash
 sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
 SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/ pyenv install  3.7.5
 ```

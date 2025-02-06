@@ -27,6 +27,7 @@ based on Kube-apiserver version
 - only new nodes
 
 ## Practice
+no need to cordon controlplane nodes before upgrades
 
 ### Kubeadm upgrades on controlplane nodes
 Remember kubeadm does NOT upgrade kubelet's

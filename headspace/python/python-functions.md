@@ -18,6 +18,8 @@ def add_two(num_one, num_two):
 ```python
 def power_with_default(num_one, num_two=2):
   return num_one ** num_two
+def default_list(arr=[1,2,3]):
+  print(arr)
 ```
 
 ## Use named arguments
