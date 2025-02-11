@@ -11,7 +11,7 @@
 IaC to deploy to multiple clouds or on-prem
 - stores state in files
 - compares infrastructure resources against state files
-- follows an immutable infrastructure approach - recreates resources
+- follows an immutable infrastructure approach - recreates resources to avoid drift
 
 ## Functions
 

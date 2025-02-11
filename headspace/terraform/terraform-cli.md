@@ -29,7 +29,7 @@ unzip terraform_1.10.5_linux_amd64.zip
 mv terraform /usr/local/bin
 ```
 
-## Install Terraform Version Manager
+### Install Terraform Version Manager
 
 `brew install warrensbox/tap/tfswitch`
 
@@ -54,6 +54,22 @@ terraform apply tfplan
 terraform destroy
 ```
 
+## Other commands
+
+### Generate visualizations of resources
+`terraform graph`
+
+### Validate syntax on terraform resource files
+just a general linting / syntax check. Apply could still error as it's not checking values.
+
+`terraform validate`
+
+### Format terraform files
+`terraform fmt`
+
+### Show provider config
+easier than looking in `.terraform` directory
+`terraform providers`
 
 ## Common issues
 

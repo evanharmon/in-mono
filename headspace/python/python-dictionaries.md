@@ -42,7 +42,14 @@ sorted_inv = sorted(inventory.items())
 new_dict = dict(sorted(inventory.items()))
 ```
 
-## Create, update, and change dictionaries
+sort by tuple value in a dict
+```python
+my_dict = {'hey': 1, 'hi': 5, 'hello': 3}
+sorted_tuples = sorted(my_dict.items(), key=lambda x: x[1])
+print(sorted_tuples)  # Output: [('hey', 1), ('hello', 3), ('hi', 5)]
+```
+
+## Basic Operations
 
 ### Create dict from key=value
 
@@ -58,21 +65,10 @@ dict([('name', 'Wombat'),('speed', 23),('land_animal', True)])
 dict(name="Black Bear", speed=40, land_animal=True)
 ```
 
-### Create dict from list
+### Add key
 
 ```python
-names = ['John', 'Mary', 'Bob']
-people_dict = {name: None for name in names}
-print(people_dict)
-# Output: {'John': None, 'Mary': None, 'Bob': None}
-```
-
-or
-
-```python
-names = ['John', 'Mary', 'Bob']
-people_dict = dict((name,0) for name in names)
-print(people_dict)
+d["name"] = "mike"
 ```
 
 ### Update value
@@ -83,40 +79,16 @@ d.update({'name':'evan'})
 d["name"] = "mike"
 ```
 
-### Merge dictionaries with update
-```python
-inventory = {'paper_towels': 5, 'distilled_water': 10}
-shop_inventory = {'screwdriver': 1, 'hammer': 1}
-# dict 2 items will be added to dict 1
-# dict 2 items will OVERWRITE dict 1
-inventory.update(shop_inventory)
-```
-
-### Merge and create new dict with union
-requires python 3.9+
-```python
-house_inventory = {'paper_towels': 5, 'distilled_water': 10}
-shop_inventory = {'screwdriver': 1, 'hammer': 1}
-# Dict 2 takes precedence
-inventory = house_inventory | shop_inventory
-```
-
-or merge dict1 with another dict or iterable of (key,value) pairs
-```python
-inventory = {'paper_towels': 5, 'distilled_water': 10}
-iterable_list = [(k, v) for k, v in [('soda', 1), ('chips', 5)]]
-inventory |= iterable_list
-```
-
-### Merge similar dictionary keys and retain all values
+### Delete key
 
 ```python
-cart = {'Banana': 3, 'Apple': 2, 'Orange': 1, 'Milk': 2}
-aisle_map = {'Banana': ['Aisle 5', False], 'Apple': ['Aisle 4', False], 'Orange': ['Aisle 4', False], 'Milk': ['Aisle 2', True]}
-result = {k: [cart[k]] + v for k, v in aisle_mapping.items() if k in cart}
+my_dict = {"name": "John", "age": 30, "city": "New York"}
+del my_dict["age"]
+print(my_dict)  # Output: {"name": "John", "city": "New York"}
 ```
 
 ### Pop key value pair from dictionary
+alternative to `del`
 ```python
 # returns only value
 # will throw a KeyError if key not found and default not set
@@ -124,8 +96,6 @@ value = d.pop("name")
 # Set default to prevent KeyError
 value = d.pop("name", None)
 ```
-
-## Accessing dictionaries
 
 ### Get value
 
@@ -135,13 +105,6 @@ d.get('name')
 # or
 # throws a `KeyError` if key not found
 d["name"]
-```
-
-### Get value or insert if missing
-
-```python
-inv = {}
-item = inv.setdefault('paper_towels', 0)
 ```
 
 ### Retrieve list of items
@@ -179,36 +142,4 @@ for item in dict({ 1: 1, 2: 1, 3: 3}):
 ```python
 for key, value in dict({ 1: 1, 2: 1, 3: 3}).items():
   print(key, value)
-```
-
-### Populate dictionary from iterable
-
-```python
-items = ['acura', 'honda', 'toyota']
-cars = dict().fromkeys(items, 0)
-```
-
-## Recipes
-
-### Invert dictionary
-
-handy to look up frequencies and then have key as value
-
-`dict((v, k) for k, v in my_map.items())`
-
-### build up histogram from List
-
-```python
-items = [1,1,3,4,5,6]
-counts = dict()
-for i in items:
-  counts[i] = counts.get(i, 0) + 1
-```
-
-or
-```python
-items = ["coal", "wood", "wood", "diamond", "diamond", "diamond"]
-d = dict()
-for item in items:
-  d.update({item: d.get(item, 1) + 1})
 ```
