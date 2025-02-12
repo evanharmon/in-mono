@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "rust_playgrounds/axum_api"
+]
+resolver = "2"
