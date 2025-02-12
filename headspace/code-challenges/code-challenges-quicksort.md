@@ -57,3 +57,36 @@ often a separate function. Iterate through array:
 3. Recursively sort subarrays
 apply same process to left and right partitions until array is fully sorted
 
+### Lomuto-Quicksort optimization notes
+
+```
+In the partition_desc function, setting idx to low - 1 is a common optimization technique for the Lomuto-QuickSort algorithm.
+
+When pivot (the high value) is chosen as the pivot, it's often beneficial to have the elements smaller than the pivot on one side of the partition, and the elements larger than the pivot on the other side. By setting idx to low - 1, we effectively start the iteration from the first element that can be swapped with the pivot (i.e., the one at index low).
+
+This optimization has two benefits:
+
+Fewer swaps: By starting the iteration from low - 1, we reduce the number of swaps needed to move elements around the pivot. This is because elements smaller than the pivot are already in their final position, and we only need to focus on moving larger elements to the right.
+
+Faster partitioning: The partitioning process becomes more efficient since we don't need to iterate over all elements in the range [low, high). We can stop at idx + 1, which is where the pivot will end up after the final swap.
+
+So, setting idx to low - 1 allows for a more efficient partitioning process and reduces the number of swaps needed during the quicksort algorithm.
+```
+
+```
+Swapping the pivot with idx + 1 at the end of the partition_desc function is a crucial step in ensuring that the pivot element ends up in its final sorted position.
+
+Here's what happens when we don't swap the pivot:
+
+Initially, the pivot (high) is chosen as the largest element in the array. During the partitioning process, elements smaller than the pivot are moved to the left of the pivot, and elements larger than the pivot are moved to the right. When idx + 1 points to the position where the pivot should end up (i.e., the largest element), we would normally stop here.
+
+However, if we don't swap the pivot with idx + 1, the pivot will still be at its original position (high), which means it's not yet in its final sorted position. The elements smaller than the pivot are now on one side of the pivot, but the pivot itself is still out of place.
+
+By swapping the pivot with idx + 1, we effectively move the pivot to its correct position among the larger elements. This ensures that the array is partitioned correctly, and the quicksort algorithm can proceed with sorting the subarrays recursively.
+
+In summary, swapping the pivot with idx + 1 at the end of the partition_desc function is necessary because it:
+
+Moves the pivot to its final sorted position among the larger elements.
+Ensures that the array is partitioned correctly, allowing the quicksort algorithm to proceed with sorting the subarrays recursively.
+This swapping step is a critical part of the Lomuto-QuickSort algorithm and is essential for maintaining the correctness and efficiency of the sorting process.
+```

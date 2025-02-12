@@ -56,12 +56,3 @@ tuple('2FA')
 t = tuple('2FA')
 print(''.join(t))
 ```
-
-## Use sorted tuples for checking anagrams
-```python
-list1 = ['silent', 'listen']
-sorted_tuples = [tuple(sorted(word)) for word in list1]
-print(sorted_tuples)
-# Output: [('e', 'i', 'l', 'n', 's', 't'), ('e', 'i', 'l', 'n', 's', 't')]
-# makes it easy to compare words against each other for potential anagrams
-```
