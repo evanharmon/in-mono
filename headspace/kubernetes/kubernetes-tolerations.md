@@ -36,6 +36,23 @@ spec:
 
 ```
 
+### Schedule on controlplane nodes only
+use nodeSelector AND toleration
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: control-plane-pod
+spec:
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
+  tolerations:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/control-plane
+  containers:
+    - name: nginx
+      image: nginx
+```
 ## Common mistakes
 
 - tolerations DO NOT guarantee scheduling
