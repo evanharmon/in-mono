@@ -4,7 +4,6 @@
 
 - [Dockerfile Docs](https://docs.docker.com/engine/reference/builder/)
 - [Dockerfile Multistage Builds](https://docs.docker.com/develop/develop-images/multistage-build/)
-- [Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
 ## Quiet Front-End no prompts
 
@@ -91,9 +90,7 @@ can speed up builds by not using files in the directory
 
 - [Dockerfile Best Practices speed up build](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#pipe-dockerfile-through-stdin)
 
-```console
-cat Dockerfile | docker build my-image/base:latest -
-```
+`cat Dockerfile | docker build my-image/base:latest -`
 
 ## Fail On Any Stage In Pipe Command
 
@@ -111,6 +108,6 @@ Note: wont show dotfiles
 
 install `ncdu`. `brew install ncdu` or `yum install -y ncdu`
 
-```console
+```bash
 ncdu -X .dockerignore
 ```
