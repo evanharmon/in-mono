@@ -58,3 +58,13 @@ Cargo.lock
 
 # MSVC Windows builds of rustc generate these, which store debugging information
 *.pdb
+
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Terraform working directory
+.terraform/
+
+# Ignore lock files in playgrounds
+terraform_playgrounds/**/.terraform.lock.hcl
