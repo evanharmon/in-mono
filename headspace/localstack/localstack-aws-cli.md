@@ -1,11 +1,22 @@
 # LOCALSTACK AWS CLI
 
+## Resources
+- [Localstack aws cli docs](https://docs.localstack.cloud/user-guide/integrations/aws-cli/#aws-cli-v2)
+- [Localstack awslocal wrapper](https://docs.localstack.cloud/user-guide/integrations/aws-cli/#localstack-aws-cli-awslocal)
+
 ## Features
 Use the aws cli against localstack
+- can use direct aws cli or wrapper (untested)
 
 ## Requirements
 
 `--endpoint-url` flag must be passed and point to localstack
+
+## localstack aws cli wrapper
+documenting this but it seems convoluted. UNTESTED
+- avoids needing to set the `--endpoint-url` flag
+
+`pip install awscli-local`
 
 ## Examples
 

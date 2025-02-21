@@ -4,6 +4,11 @@
 use the `list` builtin data type
 - good old 'LIFO' last-in-first-out
 
+## Use cases
+
+- keeping track of matching brackets
+- keeping track of min / max items in a stack
+
 ## Time complexity
 O(1) for push, pop, peek
 

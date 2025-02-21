@@ -6,6 +6,7 @@
     "esbenp.prettier-vscode",
     "fill-labs.dependi",
     "golang.go",
+    "hashicorp.terraform",
     "ms-azuretools.vscode-docker",
     "ms-kubernetes-tools.vscode-kubernetes-tools",
     "ms-python.black-formatter",
