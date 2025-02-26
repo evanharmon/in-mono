@@ -1,5 +1,7 @@
-# ALGORITHMS - DEPTH FIRST TRAVERSAL# link
-(http://www.geeksforgeeks.org/depth-first-traversal-for-a-graph/)
+# ALGORITHMS - DEPTH FIRST TRAVERSAL
+
+## Resources
+- [Geeksforgeeks](http://www.geeksforgeeks.org/depth-first-traversal-for-a-graph/)
 
 ## General
 - Uses stacks

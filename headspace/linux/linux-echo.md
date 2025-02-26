@@ -25,3 +25,7 @@ Outputs:
 # Hello
 # World!
 ```
+
+## Print without adding newline
+often combined with `-e` to escape backslashes. Useful in a loop.
+`for var in $(env); do echo -ne "$var"; done`

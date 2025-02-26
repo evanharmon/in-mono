@@ -1,5 +1,16 @@
 # TERRAFORM CLI IMPORTS
 
+## Features
+Resource can be edited afterwards - just be careful not to force re-creation
+- resource must exist in TF files (can be empty)
+
+### Example
+create an empty resource block
+
+```hcl
+resource "aws_iam_role" "my_role" {}
+```
+
 ## Commands
 
 ### Import User Pool

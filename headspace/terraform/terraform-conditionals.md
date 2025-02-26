@@ -5,11 +5,37 @@
 - [Terraform Conditionals Docs](https://www.terraform.io/docs/configuration-0-11/interpolation.html#conditionals)
 - [Blog on Terraform Dynamic Blocks](https://lgallardo.com/2019/06/14/dynamic-blocks-in-terraform-0.12.x/)
 
-## Example OR
+## AND operation
 
 ```hcl
-name = "${local.env == "sandbox" ? "main-sandbox" : "main"}"
+resource "null_resource" "example" {
+  count = var.example_enabled && var.another_example == true ? 1 : 0
+
+  provisioner "local-exec" {
+    command = "echo This resource will only be created if both conditions are true"
+  }
+}
 ```
+
+## NOT operation
+
+`! var.somevar`
+
+## OR operation
+
+```hcl
+# or
+resource "null_resource" "example" {
+  count = var.example_enabled || var.another_example == true ? 1 : 0
+
+  provisioner "local-exec" {
+    command = "echo This resource will be created if either of the conditions is true"
+  }
+}
+```
+## Conditional block
+
+`name = "${local.env == "sandbox" ? "main-sandbox" : "main"}"`
 
 ## Conditional Dynamic Block
 

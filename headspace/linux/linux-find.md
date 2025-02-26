@@ -41,6 +41,13 @@ greater than 1M: `find /usr -size +1M`
 ### Find files between specific sizes
 `sudo find /usr -type f -size +5M -size -10M`
 
+### Get the list of files and subfiles in a directory
+```bash
+find "/home/myfolder" -type f
+# alternatively - sort as well
+find "/home/myfolder" -type f | sort
+```
+
 ### Recursively count files in a directory
 
 `find -type f | wc -l`

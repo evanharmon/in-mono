@@ -5,7 +5,37 @@
 - parent / child relationship
 - every node has `data` area and `children` array
 
-## Node Class
+## Terms
+- vertex: individual node
+- root: topmost node
+- edge: connection between two nodes (link)
+- leaf: node with no children
+- depth: # of edges from node to tree's root
+- height: max depth of nodes
+- subtree: node and any descendants
+
+## Properties
+- path: sequence of nodes and edges that connect to descendant
+- acyclic: no cycles! paths start and end point are same
+- connected: all nodes connected by paths
+
+from graph theory but applies here for trees:
+`E = V - 1`
+- # of edges (E) always one less than # of vertices (V)
+- shows tree connection has no cycles
+
+## Time complexity
+Binary Tree
+worst-case:
+search / insert / delete is O(n) - number of nodes
+perfectly balanced is O(log n)
+
+Non-binary tree
+worst case:
+search / insert / delete still O(n)
+insert can be O(1) if next insertion point is tracked
+
+## Node class
 
 - handles connection to next node
 
@@ -50,6 +80,14 @@ use whenever you see `width` type questions
 
 tries to get to the bottom of the tree as quickly as possible
 
+time complexity
+general: O(Vertices + Edges) 
+- must visit every edge and vertex at least once
+trees: O(Vertices)
+
+space complexity
+O(Vertices)
+
 ### Algocast array
 
 `traverseDF(fn)`
@@ -60,7 +98,7 @@ tries to get to the bottom of the tree as quickly as possible
   - add children back to front of `arr` with `unshift()`
   - call function with node as arg
 
-## Level Width
+## Level width
 
 ## Algocast counters array with 'EOL' char
 

@@ -37,3 +37,13 @@ resource "aws_iam_user" "the-accounts" {
   name     = each.value
 }
 ```
+
+### Foreach substr
+```hcl
+resource "aws_s3_object" "upload_media" {
+  bucket   = aws_s3_bucket.media.bucket
+  for_each = var.media
+  source   = each.value
+  key      = substr(each.value, 7, 100)
+}
+```

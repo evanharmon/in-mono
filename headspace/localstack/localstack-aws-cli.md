@@ -18,6 +18,39 @@ documenting this but it seems convoluted. UNTESTED
 
 `pip install awscli-local`
 
+## Profile settings
+
+```bash
+export AWS_ACCESS_KEY_ID="test"
+export AWS_SECRET_ACCESS_KEY="test"
+export AWS_DEFAULT_REGION="us-east-1"
+
+aws --endpoint-url=http://localhost:4566 ec2 describe-vpcs
+```
+
+or in `~/.aws/config
+Setup 
+```bash
+mkdir -p ~/.aws && touch ~/.aws/config
+cat > ~/.aws/config <<EOF
+[profile localstack]
+region=us-east-1
+output=json
+endpoint_url = http://localhost:4566
+EOF
+```
+
+and in ~/.aws/credentials
+```bash
+mkdir -p ~/.aws && touch ~/.aws/credentials
+cat > ~/.aws/credentials <<EOF
+[localstack]
+aws_access_key_id=test
+aws_secret_access_key=test
+EOF
+aws --profile localstack ec2 describe-vpcs
+```
+
 ## Examples
 
 #### SQS Create Queue
