@@ -1,13 +1,18 @@
-# LINUX UDEV
+# UDEV
+- device manager
+- low level access to linux device tree
+- handles user space events (aka loading firmware)
+- provided by temporary filesystem (tmpfs)
+- mounted to `/dev`
 
-## Features
-- daemon that runs in User space
-- receives `uevents` from kernel space
-- handles creating device node in `/dev/`
-- `udevadm` cli management tool provided
+## Configuration
+```console
+$ cd /etc/udev
+$ ls
+$ udev.conf
+```
 
-## Get device information
-`udevadm info --query=path --name=/dev/sda5`
-
-## Listen to kernel uevents
-`udevadm monitor`
+# Custom Rules Directory
+```console
+$ cd /etc/udev/rules.d
+```
