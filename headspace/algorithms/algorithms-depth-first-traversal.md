@@ -1,14 +1,20 @@
 # ALGORITHMS - DEPTH FIRST TRAVERSAL
 
 ## Resources
-- [Geeksforgeeks](http://www.geeksforgeeks.org/depth-first-traversal-for-a-graph/)
+- [Geeksforgeeks dft graph](http://www.geeksforgeeks.org/depth-first-traversal-for-a-graph/)
 
-## General
-- Uses stacks
-- Similar to preorder traversal
-- Uses less memory than bfs because it doesn't have to maintain the child
+## Features
+- uses stacks
+- similar to preorder traversal
+- uses less memory than bfs because it doesn't have to maintain the child
 pointers at each level
-- Better at bottom of the tree
+
+## Use cases
+when needing to start the bottom / deepest level of a tree
+
+- finding a path
+- detecting cycles (BFS is usually used though)
+- traversal with memory constraints
 
 ## Edges
 Tree edge: new vertex

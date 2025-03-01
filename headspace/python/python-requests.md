@@ -11,13 +11,18 @@
 pipenv install requests
 ```
 
-## Import
+## Request examples
+
+### Get request
 
 ```python
 import requests
+URL = 'http://127.0.0.1:3000'
+response = requests.get(URL)
+print(response.text)
 ```
 
-## Post request
+### Post request
 
 ```python
 response = requests.post(url, timeout=10000, json={
@@ -30,7 +35,9 @@ if response.status_code in [400, 500]:
     return False
 ```
 
-## Parse JSON from response
+## Parsing
+
+### Parse JSON from response
 
 ```python
 response = requests.get(f'http://{node}/chain')
