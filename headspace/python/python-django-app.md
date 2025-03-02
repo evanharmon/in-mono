@@ -39,7 +39,10 @@ HTML templates specific to the app.
 
 ### static directory
 optional
-serve static files
+serve static files:
+- CSS
+- javascript
+- images
 
 ### __init__.py
 identifies the app as a package.

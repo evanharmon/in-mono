@@ -2,9 +2,10 @@
 
 ## Features
 built-in module to work with min heaps
-- `heapify` converts list to min heap
-- `heappop` removes and returns smallest element
-- `heappush` adds value to heap maintaining heap property
+- `heapify()` converts list to min heap
+- `heappop()` removes and returns smallest element
+- `heappush()` adds value to heap maintaining heap property
+- `heappushpop()` push item to heap, then pop and return smallest
 - `nsmallest()` returns n smallest elements and supports an iterable
 - access min element directly with `heap[0]`
 

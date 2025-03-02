@@ -20,11 +20,13 @@ pub / sub streaming platform for real-time data
 uses a write ahead log (WAL)
 this helps if server crashes
 
-## Producers
+## Producers / Publisher
 produce the messages
 
-## Subscribers
+## Subscribers / Consumers
 clients subscribe to the messages
+multiple consumers can form a `Consumer Group` for load-balancing and parallel data consumption
 
 ## Topics
 messages are organized in to topics
+topics can be divided in to partitions
