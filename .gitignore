@@ -35,10 +35,28 @@ yarn-error.log*
 # Temporary directories
 .cache
 
-# PYTHON
+# tmp files
+*.tmp
+*.log
+
+## https://github.com/github/gitignore/blob/main/Python.gitignore
+# PYTHON - I haven't added them all
 .venv/
 .pytest_cache/
 __pycache__/
+*.py[cod]
+*$py.class
+
+# DJANGO
+*.pot
+*.pyc
+db.sqlite3
+media
+.db-backups/
+migrations/
+
+# Backup files # 
+*.bak 
 
 # EXERCISM
 # CPP catch file is huge - don't commit and instead use a script to copy over before running `cmake`
