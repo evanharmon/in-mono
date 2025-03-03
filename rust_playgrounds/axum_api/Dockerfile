@@ -41,6 +41,6 @@ USER app
 WORKDIR /home/app
 
 # Correctly handle default signal handlers
-ENTRYPOINT ["/usr/bin/tini", "--" ]
+ENTRYPOINT ["/usr/bin/tini", "--"]
 
 CMD ["axum_api"]
