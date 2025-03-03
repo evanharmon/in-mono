@@ -5,6 +5,9 @@
 - [Python django vscode tutorial](https://code.visualstudio.com/docs/python/tutorial-django)
 
 ## Start a project
+WARNING: django auto creates a SECRET_KEY in `settings.py`.
+this really should be done via an ENV and a default value for local dev.
+
 ```bash
 # Setup directory and venv
 mkdir django_playground && cd django_playground 

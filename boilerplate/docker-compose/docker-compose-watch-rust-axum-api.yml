@@ -1,0 +1,12 @@
+services:
+  axum_api:
+    container_name: axum_api
+    image: evanharmon/axum_api
+    build: .
+    command: ["axum_api", "--allow-hostname", "localhost"]
+    ports:
+      - "3000:3000"
+    develop:
+      watch:
+        - path: .
+          action: rebuild

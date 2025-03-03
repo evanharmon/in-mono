@@ -10,33 +10,23 @@
 
 ## Start Project With No .git Folder
 
-```console
-cargo new --vcs none
-```
+`cargo new --vcs none`
 
 ## Start A New Project With Binary
 
-```console
-cargo new hello_world --bin
-```
+`cargo new hello_world --bin`
 
 ## Start A New Project As Library
 
-```console
-cargo new hello_world --lib
-```
+`cargo new hello_world --lib`
 
 ## Add A Package To Cargo.toml
 
-```console
-rustfmt = "0.9.0"
-```
+`rustfmt = "0.9.0"`
 
 ## Install Dependencies
 
-```console
-cargo build
-```
+`cargo build`
 
 ## Use Private Crate
 
@@ -54,26 +44,18 @@ filer = {version = "0.1.0", path = "./filer"}
 
 adds to `Cargo.toml`
 
-```console
-cargo add axum
-```
+`cargo add axum`
 
 ## Add package and specify features
 
 add specific features
 
-```console
-cargo add tokio --features "macros rt-multi-thread fs"
-```
+`cargo add tokio --features "macros rt-multi-thread fs"`
 
 ## Global install
 
-```console
-cargo install cargo-watch
-```
+`cargo install cargo-watch`
 
 ## List global installs
 
-```console
-cargo install --list
-```
+`cargo install --list`

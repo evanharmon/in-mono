@@ -2,6 +2,7 @@
   "breadcrumbs.enabled": true,
   "chat.commandCenter.enabled": false,
   "continue.enableTabAutocomplete": false,
+  "continue.disableQuickFix": true,
   "continue.telemetryEnabled": false,
   "debug.console.fontSize": 14,
   "debug.internalConsoleOptions": "neverOpen",

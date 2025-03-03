@@ -1,10 +1,8 @@
-# LINUX HOSTS
+# LINUX HOSTNAMES
 
-## Summary
+## Features
 
-Notes on hostnames and hosts in Linux
-
-## Resources
+Set hostname for the machine
 
 ## Set Hostname
 
@@ -12,6 +10,6 @@ Requires a reboot. Example is for raspberry pi
 
 edit /etc/hostname
 
-```
+```conf
 raspberrypi1
 ```

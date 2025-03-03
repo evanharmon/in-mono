@@ -15,18 +15,12 @@ DNS lookup utility
 
 Check if DNS records are resolving to NS records
 
-```console
-host -t ns subdomain.mydomain.com
-```
+`host -t ns subdomain.mydomain.com`
 
 ## Comprehensive Lookup
 
-```console
-host -a mydomain.com
-```
+`host -a mydomain.com`
 
 ## CNAME lookup
 
-```console
-host -t CNAME *.evanharmon.link
-```
+`host -t CNAME *.evanharmon.link`

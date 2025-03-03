@@ -2,39 +2,27 @@
 
 ## Start in detached mode
 
-```console
-docker-compose up --detach
-```
+`docker-compose up --detach`
 
 ## Bash In To Compose Service
 
-```console
-docker-compose exec service_name bash
-```
+`docker-compose exec service_name bash`
 
 ## Tail And Follow Logs
 
-```console
-docker-compose logs --tail 50 -f hss-sync-gateway
-```
+`docker-compose logs --tail 50 -f hss-sync-gateway`
 
 ## Destroy Persistent Volumes and containers
 
-```console
-docker-compose down -v
-```
+`docker-compose down -v`
 
 ## Remove orphan containers
 `docker-compose down --remove-orphans`
 
 ## Force Exit On Container Exit
 
-```console
-docker-compose up --abort-on-container-exit
-```
+`docker-compose up --abort-on-container-exit`
 
 ## Force rebuild of dockerfiles
 
-```console
-docker-compose up --build
-```
+`docker-compose up --build`
