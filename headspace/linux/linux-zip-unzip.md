@@ -2,9 +2,12 @@
 
 ## Commands
 
+### Zip a single file
+`zip archive.zip myfile.txt`
+
 ### Zip a directory
 
-`zip -r UI.zip ./UI`
+`zip -r UI.zip ./UI/`
 
 ### Unzip To Specific Directory
 

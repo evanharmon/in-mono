@@ -13,7 +13,7 @@ file="linux-scripts-while-loops.md"
 i=0
 while IFS= read -r line; do
   echo "Line $i: $line"
-  let i+=1
+  let i+=1 # or ((i++))
 done < "$file"
 ```
 

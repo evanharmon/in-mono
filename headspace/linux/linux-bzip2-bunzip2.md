@@ -1,5 +1,12 @@
 # LINUX BZIP2 BUNZIP2
 
+## Flags
+- `--keep`, `-k` to keep the file and don't delete on compress / decompress
+
+## Limitations
+- BEWARE the original file is deleted on compression!
+- BEWARE the compressed file is deleted on decompression!
+
 ## Commands
 
 ### Compress file
