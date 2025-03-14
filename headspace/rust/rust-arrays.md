@@ -1,12 +1,33 @@
 # RUST ARRAYS
 
-## Summary
+## Resources
 
-Notes on Rust arrays, vectors, slices
+- [SO arrays vs slices](https://stackoverflow.com/questions/27554838/what-is-the-difference-between-vecstruct-and-struct)
+- [SO iterate over slice of vector](https://stackoverflow.com/questions/40613725/iterating-over-a-slices-values-instead-of-references-in-rust/40613870)
 
-## Arrays VS Slices
 
-- [SO](https://stackoverflow.com/questions/27554838/what-is-the-difference-between-vecstruct-and-struct)
+## Recipes
+
+### Declare, copy, and iterate over a matrix
+
+```rust
+fn print_pairs(pairs: &Vec<Vec<i32>>) {
+    for pair in pairs {
+        println!("{:?}", pair);
+    }
+}
+
+fn main() {
+    let pairs = vec![
+        vec![1, 2],
+        vec![2, 3],
+        vec![2, 1]
+    ];
+    let pairs_copy = pairs.clone();
+    print_pairs(&pairs);
+    print_pairs(&pairs_copy);
+}
+```
 
 ## Common Mistakes
 
@@ -20,8 +41,6 @@ let trimmed_samples = find_start(frames.as_slice());
 ```
 
 ## Iterate Over Slice Of Vector
-
-- [SO](https://stackoverflow.com/questions/40613725/iterating-over-a-slices-values-instead-of-references-in-rust/40613870)
 
 ```rust
 fn main() {

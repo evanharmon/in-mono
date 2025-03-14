@@ -4,26 +4,34 @@
 
 - [LSOF Guide](http://www.catonmat.net/blog/unix-utilities-lsof/)
 
-## List all Processes Using Ports
+## Features
+list all open files belonging to a process
 
-`$ lsof -i`
+## Commands
 
-## List Processes Listening On Port n
+### List files open by process
+`lsof -p <process_id>`
 
-`$ lsof -i :n`
+### List all Processes Using Ports
 
-## List Processes On Ports By Name
+`lsof -i`
 
-`$ lsof -i | grep <Name>`
+### List Processes Listening On Port n
 
-## List PWD Directory Of A Process
+`lsof -i :<n>`
 
-`$ lsof -p <PID>`
+### List Processes On Ports By Name
 
-## List all open files by program's name
+`lsof -i | grep <Name>`
 
-`$ lsof -c node`
+### List PWD Directory Of A Process
 
-## List all TCP ports open
+`lsof -p <PID>`
 
-`$ lsof -i tcp`
+### List all open files by program's name
+
+`lsof -c node`
+
+### List all TCP ports open
+
+`lsof -i tcp`

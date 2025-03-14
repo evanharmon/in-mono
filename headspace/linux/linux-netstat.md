@@ -4,9 +4,15 @@
 - `-n` don't resolve names - no DNS lookup
 - `-r` show routing tables
 
+## Limitations
+- `-p` flag won't work on macOS as it's a diff implementation
+
 ## Check what is running on a port
-`netstat --all --numeric --programs`
-`netstat -anp | grep 80`
+```bash
+netstat --all --numeric --programs
+netstat -anp | grep 80
+# for macOS - have to use lsof -n -p <pid>
+```
 
 ## Check what is listening on a port
 

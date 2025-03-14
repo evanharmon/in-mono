@@ -110,3 +110,20 @@ list2 = ['tac', 'atc', 'god']
 
 print(find_anagrams(list1, list2))  # Output: ['act', 'cat', 'tac']
 ```
+
+### Find unique referrals
+```python
+def find_unique_referrals(referrals):
+    # so the order doesn't actually matter - reminiscent of anagrams
+    # Use the trick of a sorting as a tuple and adding to a set
+    uniq_refs = set()
+    for ref in referrals:
+        # sort each referral so the order doesn't matter - this way we know uniq ones
+        sorted_ref = tuple(sorted(ref))
+        print(sorted_ref)
+        uniq_refs.add(sorted_ref)
+    return uniq_refs
+
+referrals = [[1,2], [2,3], [2,1]]
+print(find_unique_referrals(referrals))  # Output: [1, 2]
+```

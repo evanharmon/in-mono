@@ -14,7 +14,11 @@ separate from `apt`
 
 ## See What updates are needed
 
-`apt-get upgrade --dry-run`
+```bash
+apt-get upgrade --dry-run
+# or
+apt-get -s upgrade
+```
 
 ## Clear out local repo of retrieved package files
 

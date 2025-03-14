@@ -31,3 +31,23 @@ can be mounted as an ext2
 - backwards compatible
 
 can be mounted as an ext3, or ext2
+
+## Commands
+
+### Check disk free
+check disk space utilization
+```bash
+# all mounted filesystems
+df -h
+# specific filesystem
+df -h /tmp
+```
+
+### Check disk usage
+analyze filesystem trees and identity large files / directories
+```bash
+# human readable
+du -h /tmp
+# summary - does not list individual items
+du -sh /tmp
+```

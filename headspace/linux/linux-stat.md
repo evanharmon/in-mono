@@ -7,13 +7,18 @@
 ## Features
 - shows octal format permissions as well
 
-## Display Information About A File
+## Commands
 
-`stat myfile.txt`
+### Display information about a file
 
-more verbose with labels:
-`stat -x myfile.txt`
+```bash
+stat myfile.txt
+# macOS more verbose with labels:
+stat -x myfile.txt
+```
 
-## Get file size in bytes
+## Recipes
+
+### Get file size in bytes
 
 `alias fs="stat -f \"%z bytes\""`

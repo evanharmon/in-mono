@@ -1,5 +1,8 @@
 # DOCKER GENERAL
 
+## Specify host
+`docker -H <example_host.com> ps`
+
 ## Save Time Docker Files
 
 run as one line to speed it up

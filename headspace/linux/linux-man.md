@@ -1,19 +1,29 @@
-# MAN
+# LINUX MAN
 
-## Search man files
+## Install
+```bash
+sudo apt update -y
+sudo apt install man
+# generate
+sudo mandb
+```
+
+## Commands
+
+### Search man files
 
 `man -k time`
 
-## typical is /usr/share/man
+### typical is /usr/share/man
 
 `manpath ls`
 
-## man of man!
+### man of man!
 good for checking how to reference shell commands vs syscalls, etc
 `man man`
 
-## Get man page of a cli command
+### Get man page of a cli command
 `man 1 printf`
-
-## Get man page of a library call
+ 
+### Get man page of a library call
 `man 3 printf`

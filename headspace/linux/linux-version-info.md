@@ -1,13 +1,19 @@
-# Get Linux OS Type
+# LINUX KERNEL VERSION
 
-```console
-uname -a
-```
+## Features
+show info on the current version of the linux kernel
+- `/proc/version` contains detailed info
 
-# Check Version / Release
+## Get Linux OS Type
 
-```console
+`uname -a`
+
+## Check Version / Release
+
+```bash
 lsb_release -r
+# or
+cat /etc/*release*
+# or
+cat /proc/version
 ```
-
-or `cat /etc/*release*`

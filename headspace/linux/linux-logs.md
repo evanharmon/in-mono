@@ -1,2 +1,2 @@
 # Edit Log Rotation
-`$ vi /etc/logrotate.conf`
+`vi /etc/logrotate.conf`

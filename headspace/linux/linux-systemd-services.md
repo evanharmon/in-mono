@@ -1,6 +1,19 @@
-# Linux Services
+# LINUX SYSTEMD SERVICES
+
+## Features
+- service can start multiple processes, or the process can start sub processes
 
 ## Commands
+
+### Help / man pages
+check the following man pages
+
+```bash
+man systemd.service
+man systemd.unit
+man systemd.exec
+man systemd.kill
+```
 
 ### List services running
 `service --status-all`
@@ -9,6 +22,11 @@
 `service httpd --status`
 
 ## Service files
+
+required sections:
+- unit
+- service
+- install
 
 ### Unit section
 specify dependencies

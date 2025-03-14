@@ -12,10 +12,6 @@ block device        `b`
 
 ## Commands
 
-### See folder tree 2 levels deep
-
-`tree -L 2`
-
 ### List directories
 
 `ls -d */`
@@ -42,10 +38,6 @@ block device        `b`
 ### List directory by time stamp
 
 `ls -lart`
-
-### View end of a file
-
-`tail log.txt`
 
 ### Locate a file
 may have to run `sudo updatedb` to update locate database

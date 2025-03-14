@@ -27,22 +27,24 @@ lists uid, gid, and groups
 record of all logged in users, and last reboot time
 `last`
 
+### Check when users have last logged in
+will show last IP for ssh logins
+
+`lastlog`
+
 ### Check home directory for user
 `grep -i evan /etc/passwd`
 
 ### Check user
-
 `whoami`
 
-### List all users currentl logged in
+### List all users currently logged in
 `users`
 
 ### Change Password
-
 `passwd`
 
 ### List users
-
 `cat /etc/passwd`
 
 ### View who can sudo

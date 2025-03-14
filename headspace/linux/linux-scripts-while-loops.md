@@ -17,6 +17,13 @@ while IFS= read -r line; do
 done < "$file"
 ```
 
+or more simply
+```bash
+while read -r line; do
+  echo "line: $line"
+done < "myfile.txt"
+```
+
 ### Inifite loop to check an api
 
 ```bash
