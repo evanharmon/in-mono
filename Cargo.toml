@@ -1,5 +1,6 @@
 [workspace]
 members = [
-    "rust_playgrounds/axum_api"
-, "rust_playgrounds/empty_playground"]
+    "playgrounds/rust/axum_api",
+    "playgrounds/rust/empty_playground"
+]
 resolver = "2"

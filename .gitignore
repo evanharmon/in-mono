@@ -85,4 +85,4 @@ Cargo.lock
 .terraform/
 
 # Ignore lock files in playgrounds
-terraform_playgrounds/**/.terraform.lock.hcl
+playgrounds/**/*/.terraform.lock.hcl

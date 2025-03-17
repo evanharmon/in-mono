@@ -1,7 +1,9 @@
 # this is a playground app - not a secure, hardened, and productionized app
 # reference the .dockerignore file for the list of files to exclude from docker image
+# SECURITY: would be a SHA normally
 FROM python:3.9.10-slim-buster
 
+# SECURITY: would use /usr/src/app
 WORKDIR /app
 
 # Create non-root user
@@ -14,9 +16,11 @@ COPY requirements.txt ./
 # improvement: don't install python-dotenv or copy .env in the container
 RUN /app/venv/bin/pip install -r requirements.txt
 
+# SECURITY: would use a more explicit copy
 COPY . .
 
 # Set ownership of app directory to non-root
+# SECURITY: would use /usr/src/app with an actual home dir
 RUN chown -R app:app /app
 
 EXPOSE 3000
@@ -26,4 +30,5 @@ USER app
 
 # This is a playground app - so ok to run in dev server mode
 # CMD ["flask", "run", "--host=0.0.0.0", "--port=3000"]
+# SECURITY: would be a distroless sha image as well for final stage
 CMD ["/app/venv/bin/flask", "run", "--host=0.0.0.0", "--port=3000"]
