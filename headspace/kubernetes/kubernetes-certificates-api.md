@@ -6,10 +6,11 @@
 
 ## Features
 API for creating CSRs
-
 - can be reviewed and approved via `kubectl`
+- all certificate steps handled by kube-controller-manager
 
 ## Practice
+
 ### CertificateSigningRequest for a new user
 - user creates their private key
 - user generates a CSR in yaml

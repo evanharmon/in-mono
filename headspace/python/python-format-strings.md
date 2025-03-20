@@ -9,14 +9,16 @@
 
 `f'One for {name}, one for me.'`
 
-## Print as floating point
+## Recipes
+
+### Print as floating point
 
 ```python
 val = 1.02567
 'Value: {0:f}'.format(val)
 ```
 
-## Print floating point with one decimal point
+### Print floating point with one decimal point
 
 ```python
 val = 25
@@ -24,37 +26,41 @@ val = 25
 f'Value: {val:.2f}'
 ```
 
-## Pad left
+### Pad left
 
 ```python
 val = 1.02567
 'Value: {0:10}'.format(val)
 ```
 
-## Align right
+### Pad with zeros
+
+```python
+f"{hours:02d}:{minutes:02d}:{seconds:02d}"
+```
+
+### Align right
 
 ```python
 val = 1.02567
 'Value: {0:>10.1f}'.format(val)
 ```
 
-``
-
-## Align left
+### Align left
 
 ```python
 val = 1.02567
 'Value: {0:<10.1f}'.format(val)
 ```
 
-## Center text
+### Center text
 
 ```python
 val = 1.02567
 'Value: {0:^10.1f}'.format(val)
 ```
 
-## Align and fill in empty spaces
+### Align and fill in empty spaces
 
 ```python
 val = 1.02567

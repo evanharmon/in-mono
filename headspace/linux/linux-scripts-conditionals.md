@@ -40,12 +40,14 @@ if [ -z "$1" ]; then
     echo "Missing first argument."
 fi
 ```
+
 ### Check if environment variable is not set
 
-`-n` checks if not an empty string
+`-z` checks if not an empty string
 
 ```bash
-if [ -z "$CODESPACES" ] ; then
+if [ -z "$CODESPACES" ]; then
+    # do something different since not $CODESPACES
 fi
 ```
 

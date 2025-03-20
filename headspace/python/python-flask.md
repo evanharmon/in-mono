@@ -4,12 +4,15 @@
 
 - [Python Flask user guide](https://flask.palletsprojects.com/en/2.2.x/#user-s-guide)
 - [Python Flask vscode tutorial](https://code.visualstudio.com/docs/python/tutorial-flask)
+- [Flask on local dev with SSL](https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https)
+
+
+## Limitations
+- flask run doesn't work with TLS certs for local dev
 
 ## Reload on changes
 
-```bash
-FLASK_DEBUG=true python3 node.py
-```
+`FLASK_DEBUG=true python3 node.py`
 
 ## CLI commands
 

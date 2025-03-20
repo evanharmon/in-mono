@@ -4,15 +4,15 @@
 
 - [Curl docs](https://curl.se/docs/)
 
-## Send Post with Form Data
+## Send post with form data
 
 remember to URL encode with % symbols where necessary
 
 `curl --data "param1=value1&param2=value2" https://example.com/resource.cgi`
 
-## Send Post Multi-part Form
+## Send post multi-part form
 
-```console
+```bash
 curl \
     --form "fileupload=@my-file.txt;filename=desired-filename.txt" \
     --form param1=value1 \
@@ -20,48 +20,48 @@ curl \
     https://example.com/resource.cgi
 ```
 
-## Follow Redirects
+## Follow redirects
 
 also ensures correct file type
 
 `curl -L`
 
-## Insecure Mode
+## Insecure mode
 
 `curl -k`
 
-## Custom Request Method / POST Data
+## Custom request method / POST data
 
 `curl -XPOST -d'{"s":"hello, world"}' localhost:8080/uppercase`
 
-## JSON Data As Payload
+## JSON data as payload
 
 use json file
 
-```console
+```bash
 curl -vX POST \
     http://server/api/v1/places.json \
     -d @testplace.json \
     --header "Content-Type: application/json"
 ```
 
-## Spoof A Referer
+## Spoof a referer
 
-```console
+```bash
 curl -v \
     http://example-bucket.s3.amazonaws.com/secret-image.jpg \
     -H 'Referer: http://example.com/good-guy.html'
 ```
 
-## Use Basic Auth
+## Use basic auth
 
 `curl -v -u Administrator:password localhost:8091`
 
-## Use ENV Variables In Curl
+## Use ENV variables in curl
 
 shell does not expand env vars in single quotes - have to use double
 
-```console
+```bash
 curl -u <my-api-token>: \
   -X POST https://api.pushbullet.com/v2/pushes \
   --header 'Content-Type: application/json' \
@@ -69,7 +69,7 @@ curl -u <my-api-token>: \
   "body": "'"$TR_TORRENT_NAME completed"'."}'
 ```
 
-## Use ENV Variables In Curl Without Double Quoting
+## Use ENV variables in curl without double quoting
 
 `curl -u <my-api-token>: -H 'Content-Type: '$TYPE''`
 

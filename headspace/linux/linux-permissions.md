@@ -99,3 +99,8 @@ or on entire directory
 ### User Directory should be not writeable by group or other
 
 `chmod go-w ~`
+
+
+### Remove rwx for user and group
+
+`chmod og-rwx /etc/crontab`

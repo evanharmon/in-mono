@@ -14,13 +14,14 @@ verbs available are:
 - watch
 
 ## Core groups
-also known as the legacy groups
+also known as the legacy groups - path is `/api`
 
 all yaml `apiVersion` will simply be `v1`
 
 examples: /pods, /namespaces/, /rc, /events, /nodes, etc.
 
 ## Named groups
+note the path is `apis` for multiple named apis
 found at rest path: `/apis/$GROUP_NAME/$VERSION`
 use `apiVersion: $GROUP_NAME/$VERSION` or `apiVersion: $GROUP_NAME/$VERSION/$RESOURCE
 this is what will be used for new features going forward

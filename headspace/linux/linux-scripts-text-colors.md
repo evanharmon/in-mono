@@ -18,6 +18,16 @@ BLUE="\033[94m"
 NC="\033[0m"
 ```
 
+## Simple print and reset with colors
+```bash
+# Print in green and reset
+echo -e "\033[92m My Message \033[0m"
+# Using color vars
+echo -e "$GREEN My Message $NC"
+# Print all scripts args - using 
+echo -e "${msg}" "$@" "${NC}"
+```
+
 ### Print a color and echo all arguments
 - `tput`: maniuplates terminal
 - `setaf 2`: sets text to ansi green

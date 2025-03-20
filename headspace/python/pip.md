@@ -4,23 +4,18 @@
 
 - [Pypi pip site](https://pypi.org/project/pip/)
 
-## Install in User Directory
+## Install in user directory
+for the rate occasions where this makes sense
+`pip3 install --user neovim`
 
-```console
-pip3 install --user neovim
-```
+## Install from requirements.txt
+`pip3 install -r requirements.txt`
 
-## Update / Upgrade a Package
-
-```console
-pip3 install neovim --upgrade
-```
+## Update / upgrade a package
+`pip3 install neovim --upgrade`
 
 ## Upgrade pip
-
-```bash
-python -m pip install --upgrade pip
-```
+`python -m pip install --upgrade pip`
 
 ## List dependencies of a package
 

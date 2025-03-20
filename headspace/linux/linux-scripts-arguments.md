@@ -10,6 +10,9 @@
 
 `ARG1=${1:-""}`
 
+## Show error message on missing arg
+`profile="${1:?Missing profile name}"`
+
 ## Set default for an arg from another script variable
 ```bash
 KUBE_LATEST=$(curl -L -s https://dl.k8s.io/release/stable.txt | awk 'BEGIN { FS="." } { printf "%s.%s", $1, $2 }')

@@ -8,6 +8,4 @@
 
 uses pipreq package
 
-```console
-pipreqs .
-```
+`pipreqs .`

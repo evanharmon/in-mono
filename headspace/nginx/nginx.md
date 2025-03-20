@@ -1,35 +1,57 @@
 # NGINX
 
+## Features
+n-g-i-n-x
+
+## Limitations
+- remember on a local OS, running on port 443 will require sudo
+
 ## Commands
 stop, quit, reload, or reopen
-`$ nginx -s {command}`
+`nginx -s {command}`
 
-## Start
-`$ sudo nginx`
+### Start
+`sudo nginx`
 
-## Mac Location
-`/usr/local/etc/nginx`
+### Test config
+`sudo nginx -T`
 
-## Linux Location
+### Restart
+`sudo nginx -t && sudo nginx -s reload`
+
+### Show nginx and config
+`nginx -V`
+
+## Configuration
+
+### Mac Location
+```bash
+# Maybe non-brew?
+/usr/local/etc/nginx
+# Brew
+/opt/homebrew/etc/nginx
+# additional conf files with brew
+/opt/homebrew/etc/nginx/servers/local.mydomain.dev.conf
+# www dir
+/opt/homebrew/var/www
+```
+
+### Linux Location
 `/etc/nginx`
 
-## Permissions issues
+### Permissions issues
 Mac - not sure how secure this is
-`$ sudo chmod -R 777 /usr/local/var/run`
-
-## Show Nginx and Config
-`$ nginx -V`
+`sudo chmod -R 777 /usr/local/var/run`
 
 ## Redirect HTTPS to HTTP
 Edit nginx.conf
-```
+```conf
 upstream localhost {
   server localhost:3000;
 }
 ```
 
-## Nginx Server
-```
+```conf
 server {
   listen       localhost:8081 ssl;
   server_name  localhost;
@@ -64,14 +86,13 @@ server {
 ```
 
 ## Create Servers folder and server config
-```
+```conf
 upstream localhost {
   server localhost:3000;
 }
 ```
 
-## Nginx Server
-```
+```conf
 server {
   listen       localhost:8081 ssl;
   server_name  localhost;
@@ -105,6 +126,8 @@ server {
 }
 ```
 
-## Create / Place SSL Certs
+## Certs
+
+### Create / Place SSL Certs
 `/etc/nginx/ssl/my-server.crt.pem`
 `/etc/nginx/ssl/my-server.key.pem`

@@ -42,6 +42,7 @@ python: `#!/usr/bin/env python`
 `chmod +x setup-node`
 
 ## Run in current shell as child process
+NOTE: using `exit 0` will close the terminal as well
 - variables, functions, changes are preserved after script runs
 - script output can be captured by `tee`, `grep`, etc.
 
@@ -53,6 +54,7 @@ python: `#!/usr/bin/env python`
 - any variable modifications are lost when script finishes
 
 `./script.sh` or `bash script.sh`
+
 
 ## Run script without executable bit set
 this will run in it's own shell apart from the current one.
@@ -66,17 +68,13 @@ environment's will be isolated
 
 Double quote your variables!
 
-```bash
-"$IP"
-```
+`"$IP"`
 
 ## Parameters
 
 #### Append / Pass parameters from script call
 
-```bash
-aws s3 cp . s3://$BUCKET "${@}"
-```
+`aws s3 cp . s3://$BUCKET "${@}"`
 
 ## Operators
 

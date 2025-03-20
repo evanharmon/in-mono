@@ -18,7 +18,12 @@
 
 ## Download Image
 
-`docker pull image-name`
+```bash
+docker pull evanharmon/myimage
+# By SHA
+docker pull \
+  docker.io/library/traefik:sha256:cc11989f418e2cfe5e60fc40c92c1813be847f58eda15eced7d5ac890255ad9e
+```
 
 ## Delete Docker Image <hash> from Downloaded Images
 

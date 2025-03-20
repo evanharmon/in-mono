@@ -8,34 +8,29 @@ Notes on working with unix timestamps / dates
 
 - [Linux Date Formats](https://www.thegeekstuff.com/2013/05/date-command-examples/)
 
-## Convert Unix To String Date Format
+## Recipes
 
-```console
-date -r 1558099332
-```
+### Convert Unix To String Date Format
+`date -r 1558099332`
 
-## MM-DD-YYYY Save File
+### MM-DD-YYYY Save File
+`$(date +%F).csv`
 
-```console
-$(date +%F).csv
-```
+### YYYY-MM-DD_HH-MM-SS file naming
+`file_name="backup_data_$(date '+%Y-%m-%d_%H-%M-%S')"`
 
-## ISO 8601 Date Format
+### ISO 8601 Date Format
 
-```console
-date '+%Y-%m-%d'
-```
+`date '+%Y-%m-%d'`
 
-## UTC Timestamp
+### UTC Timestamp
 
 ```zsh
 date +%FT%T
 ```
 
-## UTC Timestamp + ms
+### UTC Timestamp + ms
 
 example output: `2018-01-24T04:06:51.178Z`
 
-```bash
-date --utc +%FT%T.%3NZ
-```
+`date --utc +%FT%T.%3NZ`

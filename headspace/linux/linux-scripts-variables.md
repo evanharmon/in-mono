@@ -23,6 +23,9 @@ kubeadm_version=$(kubeadm version)
 echo "kubeadm version is: $kubeadm_version"
 ```
 
+## Show error on missing environment variable
+`PROFILE="${PROFILE:?Missing profile name}"`
+
 ## Set variable with default value
 
 ```bash

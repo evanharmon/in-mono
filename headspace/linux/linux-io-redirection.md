@@ -35,7 +35,11 @@ stderr gets sent to stdout
 `2>&1`
 
 ## Silence stderr and stdout
-`redis-server > /dev/null 2>&1`
+```bash
+redis-server > /dev/null 2>&1
+# or more explicitly
+redis-server > /dev/null 2> /dev/null
+```
 
 ## Redirect stderr and stdout to separate files
 `redis-server >> output.txt 2>> errors.txt`
