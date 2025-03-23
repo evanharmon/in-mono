@@ -1,0 +1,27 @@
+---
+services:
+  traefik:
+    # docker.io/library/traefik:v3.3.4
+    image: docker.io/library/traefik@sha256:cc11989f418e2cfe5e60fc40c92c1813be847f58eda15eced7d5ac890255ad9e
+    # Enables the web UI and tells Traefik to listen to docker
+    command: --api.insecure=true --providers.docker
+    container_name: traefik
+    ports:
+      - 80:80
+      - 443:443
+      # Dashboard - DONT ENABLE IN PRODUCTION (enabled by --api.insecure=true)
+      # - 8080:8080
+    volumes:
+      - /run/docker.sock:/run/docker.sock:ro
+      - ./config/:/etc/traefik/:ro
+      - ./certs/:/var/traefik/certs/:rw
+    environment:
+      - CF_DNS_API_TOKEN=value
+    networks:
+      - frontend
+    restart: unless-stopped
+
+# `docker create network frontend` if need to share across multiple compose files
+networks:
+  frontend:
+    external: true # Optional: change to false to create new network

@@ -1,6 +1,9 @@
 [workspace]
 members = [
-    "playgrounds/rust/axum_api",
     "playgrounds/rust/empty_playground"
+]
+# Excluding so I can show single Dockerfile build outside a workspace
+exclude = [
+    "playgrounds/rust/axum_api"
 ]
 resolver = "2"
