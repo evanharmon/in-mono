@@ -23,3 +23,6 @@ debian package manager
 
 ### Verify package
 `dpkg -p <path_to_file>`
+
+### Print architecture info
+`dpkg --print-architecture`

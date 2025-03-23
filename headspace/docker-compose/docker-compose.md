@@ -4,6 +4,7 @@
 
 - [Docker Compose docs](https://docs.docker.com/compose/)
 - [Docker Compose compose file docs](https://docs.docker.com/compose/compose-file/)
+- [Awesome docker compose examples](https://github.com/docker/awesome-compose)
 
 ## Network
 

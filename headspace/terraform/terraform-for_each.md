@@ -13,11 +13,13 @@ Create one or more instances of a resource
 - all values of a set of strings MUST be known values
 - keys CANNOT be result / rely on impure functions like `uuid`, `timestamp`, `bcrypt`
 - sensitive values CANNOT be used as argumnets to `for_each`
+- many modules don't export full resources so can't use this in some cases
 
 ## Examples
 
 ### Map
-```hcl
+
+```conf
 resource "azurerm_resource_group" "rg" {
   for_each = tomap({
     a_group       = "eastus"
@@ -31,7 +33,7 @@ resource "azurerm_resource_group" "rg" {
 ### Set
 shows the use of `each` as well
 
-```hcl
+```conf
 resource "aws_iam_user" "the-accounts" {
   for_each = toset(["Todd", "James", "Alice", "Dottie"])
   name     = each.value

@@ -14,15 +14,3 @@ fi
 
 CTRL+R to auto-complete search history
 ex: doc then CTRL+R
-
-## List Recent Directories
-
-```zsh
-dirs -v
-```
-
-## Go To Home Directory
-
-```zsh
-cd
-```

@@ -17,3 +17,6 @@ cat /etc/*release*
 # or
 cat /proc/version
 ```
+
+## Check ubuntu version
+`lsb_release -cs`

@@ -4,10 +4,18 @@
 - [Terraform module docs](https://developer.hashicorp.com/terraform/language/modules)
 
 ## Features
-modules for re-use in terraform
+modules containing grouped resources for terraform
 - every project has a root module
 - root modules can call child / published modules
 - modules offer standardized config and simplify re-use
+
+## Best practices
+
+## Opinionated modules
+Modules don't have to just be for re-usability.
+A module can be an opinionated grouping of resources with hard-coded values.
+Offers a way to effectively create a `subfolder`.
+Although they often live in a grouped `modules` directory together - not as full subfolders
 
 ## Example
 ```hcl

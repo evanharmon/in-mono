@@ -20,15 +20,15 @@ docker run -t -d -p 4984-4985:4984-4985 "couchbase-mobile"
 docker run --rm --privileged -it ubuntu bash
 ```
 
-## Run Container With Full Color Support
+## Run container with full color support
 
 `docker run -it -e "TERM=xterm-256color" image_name bash -l`
 
-## Docker Bind Container To Host Port / Expose Port
+## Docker bind container to host port / expose port
 
 `docker run -d -p 80:3000`
 
-## Run Docker Container Without Default Seccomp Profile
+## Run docker container without default seccomp profile
 
 Avoids the `could not launch process: fork/exec ...: operation not permitted`
 error
@@ -38,9 +38,20 @@ docker run --rm -it --security-opt seccomp=unconfined debian:jessie \
     unshare --map-root-user --user sh -c whoami
 ```
 
-## Override Entrypoint
+## Override entrypoint
 
 `docker run -it --entrypoint="" mysql bash`
+
+## Customize and override entrypoint
+
+```dockerfile
+ENTRYPOINT ["/usr/bin/tini", "--"]
+```
+
+```bash
+docker run -i --name axum_api -e "entrypoint=/usr/bin/tini --" evanharmon/axum_api \
+axum_api --allow-hostname localhost
+```
 
 ## Docker Run Using Env `.env` File
 

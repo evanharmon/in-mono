@@ -17,7 +17,7 @@ normally stored in a `variables.tf` file
 - include the `type` and `description`
 
 ## Loading order of variables
-1. Environment variables
+1. Environment specific variables
 2. `terraform.tfvars` file
 3. `*.auto.tfvars` files in alphabetical order
 4. `-var` and `-var-file` flags (highest priority as evaluated last)

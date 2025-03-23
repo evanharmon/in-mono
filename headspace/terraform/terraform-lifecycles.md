@@ -11,6 +11,7 @@ Custom rules to fire on creation and destruction
 
 ## Limitations
 - terraform will destroy a resource before creating a new one by default
+- just don't use `prevent_destroy` as it doesn't support any variable interpolation
 
 ## Timeouts
 Handle timeout errors with autoscaling groups
@@ -23,6 +24,11 @@ timeouts {
 ```
 
 ## Prevent Resource Destroy
+there are other options to prevent resources being destroyed like:
+- sentinel policies
+- adjusting assume_role IAM policies for prod / staging not to allow deletion of a resource type
+
+doesn't support variable interpolation. A broken feature compared to pulumi's `protected` property.
 
 ```hcl
 lifecycle {

@@ -7,6 +7,7 @@
 ## Features
 - exit status code stored in `$?` env var
 - exit code `0` is often considered success
+- if `exit #` not provided in script, exits with status of last command
 
 ## Common error codes
 - `1`: general error

@@ -2,8 +2,12 @@
 
 ## Features
 creating a new, separate hosted zone for a subdomain in route53
+- this works cross-account
 
-## new hosted zone for subdomain with managed domain
+## Limitations
+- this is more work than a route53 delegated set (which only work within an account)
+
+## New hosted zone for subdomain with managed domain
 1. create a separate, new hosted zone
 - subdomain like `me.mydomain.com`
 - immediately set a lower TTL like 1 hour on auto-generated NS
@@ -29,7 +33,9 @@ example - for local dev certs
 
 create non-wildcard A record:
 ```
-name: # leave blank for subdomain non-wildcard record
+# `subdomain.mydomain.com A`
+# leave name blank for subdomain non-wildcard record
+name:
 type: A
 value: 127.0.0.1
 ttl: 300s
@@ -37,7 +43,8 @@ ttl: 300s
 
 create wildcard A record:
 ```
-name: # leave blank for subdomain non-wildcard record
+# `*.subdomain.mydomain.com A`
+name: *
 type: A
 value: 127.0.0.1
 ttl: 300s

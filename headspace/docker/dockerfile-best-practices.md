@@ -57,3 +57,14 @@ use a `.dockerignore` file - the `docker build -t myimage .` is common and is th
 
 ## Run commands
 - attempt to combine multiple commands in to a single `RUN` for a clean layer
+
+## Installs
+
+### apt-get
+clean up after installs
+`FROM ubuntu:latest
+
+# Install required packages
+```bash
+RUN apt-get update && apt-get install -y --no-install-recommends <package_name> <another_package> && apt-get clean
+```

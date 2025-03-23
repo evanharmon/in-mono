@@ -47,7 +47,6 @@ or all instances and snapshots
 Affects all deleted instances. Deletes all data as well!
 `multipass purge`
 
-
 ### List all snapshots
 `multipass list --snapshots`
 

@@ -7,6 +7,9 @@
 - `&1` is stdout
 - `&2` is stderr
 
+## Echo an error message
+`echo "Error $DENOMINATOR of 0 is not allowed" >&2`
+
 ## Clear contents of file
 `> myfile.txt`
 

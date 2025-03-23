@@ -10,6 +10,41 @@
 ## Limitations
 - whenever a new provider is added, `terraform init` is required
 
+## Best practices
+- store providers in a dedicated `providers.tf` file
+- store versioned providers in `versions.tf`
+
+### Example providers.tf
+
+```conf
+# single account
+provider "aws" {
+  region = var.aws_region
+}
+```
+
+### Example versions.tf
+```conf
+terraform {
+  required_version = ">= 1.6.0"
+
+  cloud {
+    organization = "my-org"
+
+    workspaces {
+      name = "my-workspace"
+    }
+  }
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+```
+
 ## Provider types
 
 ### Official

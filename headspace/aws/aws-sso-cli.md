@@ -10,6 +10,7 @@ use SSO with the aws cli
 
 ### Configure
 have to configure AWS so use SSO
+re-run the to add other accounts to config
 ```bash
 aws configure sso
 # session name will be the same across accounts

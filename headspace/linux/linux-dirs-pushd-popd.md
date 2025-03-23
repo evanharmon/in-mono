@@ -1,17 +1,51 @@
-# LINUX PUSHD POPD
+# LINUX DIRS PUSHD POPD
 
 ## Features
-push / pop directories on a stack
+dirs / push / pop directories on a stack
+- change dirs with `cd ~<#>` its way easier
+
+## Limitations
+- dirs stack allows duplicates
+
+## Best practices
+don't use in scripts as only supported by `bash`, `zsh`, etc.
 
 ## Commands
 
-### Change dir and push to old dir to stack
-```bash
-# Example - in home dir
-# $HOME gets pushed to stack
-pushd /etc
-```
-then you change `cd` around all you want, then pop back
+### List Recent Directories
+`dirs -v`
 
-### Pop back last dir in stack
-`popd`
+### Clear directory stack
+`dirs -c`
+
+### Change to a numbered directory
+```bash
+# Get the dir #
+dirs -v
+# change to that number
+cd ~6
+```
+
+### Pushd
+
+```bash
+# push current dir
+pushd
+# push specific dir and move to the location
+pushd $HOME/local
+# move dir to top of stack - then change with popd
+pushd +2
+popd
+```
+
+### Pop dir from stack
+default behavior with no args:
+- remove zero item
+- make next item your current working directory
+
+```bash
+# Pop last dir in stack
+popd
+# pop specific dir from stack
+popd +4
+```

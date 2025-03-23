@@ -5,7 +5,21 @@
 - [Dockerfile Add Docs](https://docs.docker.com/engine/reference/builder/#add)
 - [Dockerfile Copy Docs](https://docs.docker.com/engine/reference/builder/#copy)
 
-## Copy a file/directory
+## Limitations
+- source paths are relative to build context
+- only directory contents are copied NOT entire directory
+
+## Copy multiple files / folder contents
+NOTE: use multi-line / layers if you want to copy entire directory
+
+```dockerfile
+# Copy files
+COPY Cargo.toml Cargo.lock ./
+# Copy files and contents of scripts to current WORKDIR
+COPY Cargo.toml Cargo.lock scripts ./
+```
+
+## Copy directory
 
 Trailing slash is considered a directory
 

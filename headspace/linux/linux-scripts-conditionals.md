@@ -3,7 +3,7 @@
 ## Limitations
 - don't put `*bc*` patterns inside double quotes
 
-## if statements
+## If statements
 - conditional check wrapped in `[ ]`
 - there should be a space between brackets `[ $env_var = 'dev' ]`
 
@@ -20,6 +20,14 @@ fi
 
 ```bash
 if [ -x "$(command -v yarn)" ]; then
+fi
+```
+
+### Make a successful command return false
+
+```bash
+if ! cp missing_file.txt file.txt; then
+    echo "Error: failed to copy the file."
 fi
 ```
 
