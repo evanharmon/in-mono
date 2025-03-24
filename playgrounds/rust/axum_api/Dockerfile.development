@@ -64,30 +64,34 @@ RUN --mount=type=bind,source=src,target=src \
     cargo build --locked --release --bins && \
     cp ./target/release/$APP_NAME $BUILD_OUTPUT_PATH/$APP_NAME
 
-# Set the TINI_VERSION environment variable
-ENV TINI_VERSION=v0.19.0
-
-# Download the tini-static binary
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static /usr/local/bin/tini
-RUN chmod +x /usr/local/bin/tini
-
 ################################################################################
-# Runtime - distroless for security
-# SECURITY: minimal, non-root distroless image for final stage
+# Runtime - non-distroless now for development
+# SECURITY: would be a distroless sha image as well for final stage
 
 # SECURITY: would be a SHA normally
-FROM gcr.io/distroless/cc-debian12 AS final
+FROM debian:bookworm-slim AS dev
 ARG APP_NAME
 ARG BUILD_OUTPUT_PATH
+ARG WORKDIR_PATH
 
-# Still need tini for proper signal handling
-COPY --from=builder /usr/local/bin/tini /usr/local/bin/tini
+# Install only runtime dependencies
+RUN apt update && apt install -y --no-install-recommends \
+    ca-certificates tini \
+    && apt clean && rm -rf /var/lib/apt/lists/*
 
 # Copy the binary from builder
-COPY --from=builder $BUILD_OUTPUT_PATH/$APP_NAME /usr/local/bin/$APP_NAME
+COPY --from=builder $BUILD_OUTPUT_PATH/$APP_NAME /usr/local/bin/
 
-# Distroless default user is non-root
-USER nonroot:nonroot
+# Create a non-root user
+RUN useradd \
+    --system \
+    --no-create-home \
+    --home-dir /nonexistent \
+    --shell /sbin/nologin \
+    app
+
+# Run the container as the app user
+USER app
 
 # Correctly handle default signal handlers
-ENTRYPOINT ["/usr/local/bin/tini", "--"]
+ENTRYPOINT ["/usr/bin/tini", "--"]

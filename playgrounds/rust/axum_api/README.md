@@ -1,6 +1,12 @@
 # AXUM_API PLAYGROUND
 
+## Docker images
+`Dockerfile` is meant for production and runs in a distroless container
+`Dockerfile.development` is for dev and has a shell
+
 ## Commands
+default is to use the production / distroless container.
+You can switch to the dev container if you want
 
 ### Build image
 `docker build -t evanharmon/axum_api .`
