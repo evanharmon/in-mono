@@ -1,0 +1,15 @@
+# AWS configuration
+# update below as well for any changes
+environment = "dev"
+project_name = "playground-vpcs"
+region = "us-east-1"
+vpc_cidr = "10.0.0.0/16"
+
+# Tags to automatically apply to all AWS resources
+# update accordingly - tfvars files don't support references
+tags = {
+  Environment = "dev"
+  Project = "playground-vpcs"
+  Owner = "Me"
+  CostCenter = "playground"
+}

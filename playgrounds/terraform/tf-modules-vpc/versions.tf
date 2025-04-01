@@ -1,0 +1,12 @@
+# Evaluated before variables are resolved - so can't use vars here
+terraform {
+
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+
+  required_version = ">= 1.0"
+}

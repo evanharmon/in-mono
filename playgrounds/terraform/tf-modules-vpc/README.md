@@ -2,7 +2,12 @@
 
 ## Features
 playground example for using terraform modules.
+Comment out the named files you don't want to run or just target a named module.
 - localstack / tflocal handles remote backend automatically
+
+## File / folder structure
+- `main.tf` handles minimal locals that can be shared across files
+- different types of VPC's are in named files
 
 ## Requirements
 
