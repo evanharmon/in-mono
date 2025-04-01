@@ -3,11 +3,14 @@
 ## Features
 - `>` overwrites, can also automatically create a file
 - `>>` appends
+- `1>` or `>` is stdout
 - `2>` is stderr
-- `&1` is stdout
-- `&2` is stderr
+- `&` is used to send a specific std io to a diff std io
+- `&1` redirect and send output to stdout
+- `&2` redirect and send output to stderr
 
 ## Echo an error message
+Redirect stdout to stderr
 `echo "Error $DENOMINATOR of 0 is not allowed" >&2`
 
 ## Clear contents of file

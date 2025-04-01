@@ -1,14 +1,13 @@
 # AWS VPC SUBNETS
 
-1 Subnet = 1 AZ
 
 ## Resources
 
 - [AWS VPC Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html)
 
 ## Features
-
 - subnets not assigned to a route table automatically assigned to main route table
+- 1 Subnet = 1 AZ
 
 ## Limitations
 
@@ -16,6 +15,9 @@
 - AWS allows public address range but does not recommend
 - subnet can only be assigned to one ACL at a time
 - subnet must have be associated with a network ACL. Default ACL used if none associated
+
+## Example CIDRS
+`10.0.1.0/24` - 250 Usable IP addresses
 
 ## Route Tables
 
@@ -55,3 +57,8 @@ can access the internet with a route pointing to a NAT (instance or gateway) in 
 
 - create an egress-only internet gateway (IGW) in public subnet
 - add the IPv6 all `::/0` and point to egress-only IGW
+
+
+## Intra subnets
+these are specific subnets with NO internet access - not even egress thru NAT.
+Helpful for lambda or other things that should ONLY be communicating inside VPC

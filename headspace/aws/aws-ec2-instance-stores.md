@@ -4,6 +4,7 @@ highest performance physical disks attached to physical server
 ## Resources
 
 - [AWS EC2 Instance Store Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html)
+- [AWS EC2 SSD instance store volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html)
 
 ## Use Case
 
@@ -27,3 +28,13 @@ highest performance physical disks attached to physical server
 - cannot be increased in size
 - have to do and manage own backups
 - ephemeral Storage - less durability. If host fails, your instance store is lost
+
+## NVMe SSDs
+nvme's are available for low latency / high I/O
+- much faster read / writes than older SSDs
+
+instance types that support them: (as of this writing)
+- I3
+- R6id
+- M7i
+- M7gd

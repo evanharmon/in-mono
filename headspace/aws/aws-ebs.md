@@ -9,7 +9,6 @@
 - [AWS EBS Calculate IOPs used](https://onica.com/blog/managed-services/calculate-aws-ebs-volume-iops/)
 
 ## Features
-
 - stored in multiple physical locations at no addt'l charge
 - can be resized up without un-attaching
 - can be resized down if un-attached

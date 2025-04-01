@@ -2,6 +2,7 @@
 
 ## Operator checks
 true / false if:
+- `-f` check if path is a regular file
 - `-e` file exist
 - `-d` file exist and is a directory
 - `-s` file exists and has size greater than zero

@@ -20,25 +20,9 @@
 
 `cargo new hello_world --lib`
 
-## Add A Package To Cargo.toml
-
-`rustfmt = "0.9.0"`
-
 ## Install Dependencies
 
 `cargo build`
-
-## Use Private Crate
-
-can use a workspace package from another directory
-supports using unpublished crates in same workspace
-
-in Cargo.toml
-
-```toml
-[dependencies]
-filer = {version = "0.1.0", path = "./filer"}
-```
 
 ## Add package via CLI
 
@@ -59,3 +43,15 @@ add specific features
 ## List global installs
 
 `cargo install --list`
+
+## Update dependencies
+
+```bash
+# check to see what would be updated
+cargo update -v --locked
+# Do the updates
+cargo update
+```
+
+## Search for a crate
+`cargo search axum`

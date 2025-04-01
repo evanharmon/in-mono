@@ -4,6 +4,11 @@
 
 - [AWS Tags Tagging Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html?id=docs_gateway)
 - [AWS Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/tag-editor.html)
+- [AWS Tags best practices pdf](https://docs.aws.amazon.com/pdfs/whitepapers/latest/tagging-best-practices/tagging-best-practices.pdf)
+
+## Best practices
+- tag names should be CamelCase
+- don't include any sensitive values
 
 ## Automation Tagging
 

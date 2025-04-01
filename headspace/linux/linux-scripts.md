@@ -13,6 +13,7 @@
 - use `source script` when variables / changes need to be preserved
 - use `./script` or `bash ./script` when script shouldn't affect current shell
 - use `/usr/bin/env` in shebangs
+- use `./scripts/one-offs` for one off scripts
 
 ## Common colors
 `NC` is for resetting the color

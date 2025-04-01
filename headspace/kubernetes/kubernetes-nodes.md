@@ -5,7 +5,7 @@
 - [Kubernetes nodes](https://kubernetes.io/docs/concepts/architecture/nodes/)
 
 ## Features
-
+nodes / machines running on the dataplane
 - run pods
 - contains services to run pods
 - worker machines
@@ -23,7 +23,7 @@ Runs:
 - etcd cluster
 - kube-apiserver
 - kube-scheduler
-- kue controller manager
+- kube controller manager
 
 Other features:
 - control plane
