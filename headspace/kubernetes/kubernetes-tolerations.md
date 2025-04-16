@@ -2,6 +2,7 @@
 
 ## Resources
 - [Kubernetes Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+- [Kubernetes taints and tolerations example blog](https://blog.kubecost.com/blog/kubernetes-taints/)
 
 ## Features
 

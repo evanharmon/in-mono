@@ -3,6 +3,7 @@
 ## Resources
 - [Getting started](https://letsencrypt.org/getting-started/)
 - [Staging API](https://letsencrypt.org/docs/staging-environment/)
+- [LEGO Route53](https://go-acme.github.io/lego/dns/route53/)
 
 ## Features
 free certs!

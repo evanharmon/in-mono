@@ -5,6 +5,11 @@
 - `-w` search for exact word
 - `-r` recursive searching in to directories
 - `-o` only output matching
+- `-n` show line numbers
+- `-c` count # of matches
+- `-v` invert matches
+- `-e` for multiple OR checks
+- `grep 'test' myfile.txt | grep 'test2'` have to pipe for AND
 - `-A<int>` print x lines after
 - `-B<int>` print x lines before
 - use `-E` for extended regex, `egrep` is deprecated
@@ -65,6 +70,13 @@ note this wouldn't match `passwordAuthentication` because that's a different wor
 
 ## Search and show X lines after
 `grep -A1 Arsenal premier-league-table.txt`
+
+## Search with multiple OR
+`grep -e 'Field1' -e 'Field2' myfile.txt`
+
+## Search with multiple AND
+have to pipe
+`grep -i 'Field1' myfile.txt | grep -i 'Field2'`
 
 ## Regex Examples
 

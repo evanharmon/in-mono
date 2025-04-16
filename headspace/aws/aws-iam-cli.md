@@ -1,6 +1,6 @@
 # AWS IAM CLI
 
-## Create Role
+## Create role
 
 ```json
 {
@@ -21,34 +21,39 @@ aws iam create-role \
   --assume-role-policy-document file://policies/cognito-unauthorized-trust.json
 ```
 
-# Attach An Inline Role Policy
+## Attach an inline role policy
 
-```console
+```bash
 aws iam put-role-policy \
   --role-name hss-auth-unauthorized \
   --policy-name unauthorized \
   --policy-document file://policies/cognito-unauthorized.json
 ```
 
-# Attach Role Policy
+## Attach role policy
 
-```console
+```bash
 aws iam attach-role-policy \
   --policy-arn arn:aws:iam::aws:policy/ReadOnlyAccess \
   --role-name LimitCheckRole
 ```
 
-## Change Password
+## Change password
 
-```console
+```bash
 aws iam update-login-profile \
   --user-name myusername \
   --password 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' \
   --no-password-reset-required
 ```
 
-## Get Account Alias
+## Get account alias
 
-```console
-aws sts list-account-aliases
+`aws sts list-account-aliases`
+
+## Create user and access key
+
+```bash
+aws iam create-user --user-name eksuser
+aws iam create-access-key --user-name iamuser-eksuser | tee /tmp/access_output.json
 ```

@@ -14,17 +14,18 @@
 - windows
 - hybrid
 
-## Features
+## Best Practices
 long list but in one place for easier reference
+
+## High availability across a region
+controlplane only gets TWO Eni's in separate AZ
+so even though you should do three AZs, remember your fault tolerance is max ONE AZ going down if it's one of the TWO eni's
 
 ## VPC
 - create vpc's as dual-stack whenever possible! then the EKS will need to be created with IPv6 enabled
 - ipv4: public / private vpc subnets at least `/19`
 - `enableDnsHostNames` and `enableDnsSupport` must be true to use EKS cluster private endpoint
-
-## VPC CNI
-- config: enable env `ENABLE_PREFIX_DELEGATION: "true"`
-- config: enable `enable-network-policy-controller: "true"`
+- use AZ `zone id` instead of name to ensure using same physical location across AWS accounts
 
 ## Cross-VPC access to EKS
 
@@ -40,8 +41,9 @@ best security / performance
 if transitive not needed and only 1/2 VPC's, this is a simple solution
 
 ## Pod security group associations
+shouldn't be using this unless you ABSOLUTELY have to.
+use pod identity and network policies instead where possible
 - use `POD_SECURITY_GROUP_ENFORCING_MODE=standard` with pods associated with SGs
-- use `POD_SECURITY_GROUP_ENFORCING_MODE=standard` 
 - use dedicated subnets for pods? (double check this)
 
 ## IPv6
@@ -52,11 +54,58 @@ if transitive not needed and only 1/2 VPC's, this is a simple solution
 ## SECURITY
 - disable auto provisioning access entry for IAM role creating EKS cluster
 - use network policies to manage access between pods
-- use pod identities instead of iam roles for service accounts (IRSA) unless you have a specific use case
-- use IRSA / OIDC sts for things like EBS CSI? Teleport cloud?
+- use IMDSv2 only so IRSA / EKS pod identity don't inherit role assigned to woreker noder
+- use eks pod identities elsewhere to avoid limitations
+- don't leave role generating EKS cluster as full admin, add additional role(s) via access entries
+- use dedicated serviceaccount for each application (tricky with blue / green though)
+- run apps as non-root user
+
+## Roles
+- use iam roles for service accounts (IRSA) / OIDC where necessary
+- use dedicated IAM role to create EKS clusters
+- use ONE IAM role per application for isolation
+
+## Pod identities
+- use `"aws:SourceOrgId": "${aws:ResourceOrgId}"` string condition to limit within org for trust policy
+
+IAM policies:
+- scope down conditions to to exact service account, namespace, and EKS cluster arn
+
+## Secrets
+- use an external secret store and CSI driver
+- for best security, use aws SDK's in app so secrets are only in memory
 
 ## Addons
 ? not sure about this
 - use managed EKS add-ons
 
+### VPC CNI
+- config: enable env `ENABLE_PREFIX_DELEGATION: "true"`
+- config: enable `enable-network-policy-controller: "true"`
+- use IRSA with new created `aws-node` IAM role
+- assign AmazonEKS_CNI_Policy and/or IPV6 equivalent to separate role instead of Node IAM role
+
+### Karpenter addon
+- never run karpenter on a node managed by Karpenter!!
+- enable interruption handling when using Spot
+- run karpenter controller on EKS Fargate or a worker node in a node group
+- exclude instance types that do not fit your workload
+
+enforce that all workloads have the below:
+- PodDisruptionBudgets
+- Topology spreads
+- resource request / limits
+
+- ONLY ONE security group in account should be tagged with `karpenter.sh/discovery`
+
+### Load balancer controller
+aws-loadbalancer-controller only can have ONE SG with this tag attached to nodes
+- only supports a SINGLE Node SG having the `kubernetes.io/cluster/$CLUSTER_NAME` tag
+- with IMDSv2, set hop limit to 2 or higher
+
 ## Use `hardeneks` cli tool to check compliance
+
+## Auto Mode
+
+- create single `AmazonEKSAutoClusterRole` and `AmazonEKSAutoNodeRole` per account
+- name custom security groups with convention `eks-cluster-sg-` to avoid needing addtl cluster role perms

@@ -1,13 +1,12 @@
 # PULUMI PROJECTS
 
 ## Resources
-
 - [Pulumi projects](https://www.pulumi.com/docs/intro/concepts/project/)
 
 ## Features
-
-- project contains programs and stacks
+project contains programs and stacks
 - declared as `Pulumi.yaml` files
+- can contain multiple stacks
 
 ## File Format
 

@@ -6,6 +6,9 @@ uses eBPF under the hood
 - not a sidecar (:
 - uses standard `NetworkPolicy` crd
 
+## Limitations
+- can't create a network policy limiting access to an AWS arn like RDS
+
 ## Enable
 `--enable-network-policy=true`
 

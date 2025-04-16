@@ -14,6 +14,7 @@ remember if you want ipv6 (dual-stack) - has to be enabled at creation!
 
 ## Limitations
 - you can run out of IP's for nodes / pods as they eat up via ENIs
+- only 2 ENI's exist for controlplane, so only can handle 1 AZ failure!!
 
 ## Example IP limitations
 `10.0.1.0/24` - 250 Usable IP addresses

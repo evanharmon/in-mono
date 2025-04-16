@@ -16,3 +16,14 @@ easy way to learn, test, and demo on EKS. Does a lot more than `eksctl`
 brew tap aws/tap
 brew install eksdemo
 ```
+
+## Commands
+
+### List subnets
+shows free IPs as well
+`eksdemo get subnets`
+
+### List network interfaces
+shows IPs available
+- shows the two controlplane ENI's as well
+`eksdemo get network-interfaces`

@@ -18,15 +18,25 @@ supports:
 
 example: give a single pod access to RDS
 
-### Limitations
+## Limitations
 - additive to existing instance type limits for secondary IP addresses
 - pods using sgs are not accounted for in max-pods formula
 - may need to raise max-pods value
 - requires nitro based instances
 - pods assigned with SGs MUST be on private subnet nodes or can't access internet
+- not all instance types support trunk ports to talk to controlplane EKS
 
 custom networking:
 - sg for pods is used rather than SG specified in ENIConfig - so carefully assess!
+
+## Best practices
+DON'T use this unless you absolutely have to for a specific reason
+
+## Alternatives
+use pod identity and network policies instead where possible
+
+with karpenter, create separate NodeClasses, so those Node's have their own SG.
+Then that SG can allow traffic to RDS on the node level
 
 ## Enforcing mode STRICT
 use strict mode to isolate pod and node traffic:

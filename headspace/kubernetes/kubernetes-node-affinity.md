@@ -4,10 +4,17 @@
 
 - [Kubernetes node affinity](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/)
 - [Kubernetes affinity and anti-affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)
+- [Node / pod affinity and anti-affinity examples blog](https://blog.kubecost.com/blog/kubernetes-node-affinity/)
 
 ## Features
 more advanced features for setting node affinity
+decide which node a pod can be scheduled on based on node labels / values
+- again from the pod perspective
+- more granular control than nodeSelector
 
+## Use cases
+- specific workloads
+- instance with specific features like GPU / nvme SSD / etc
 
 ## Settings
 

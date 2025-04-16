@@ -24,3 +24,9 @@ list(map(multiply, my_list))
 my_list = [1,2,3,4,5]
 list(map(lambda el: el * 2, my_list))
 ```
+
+
+## Split string to map of ints
+```python
+year, month, day = map(int, date.split('-'))
+```

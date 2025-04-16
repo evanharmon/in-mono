@@ -4,13 +4,12 @@
 
 - [Docker images](https://docs.docker.com/engine/reference/commandline/images/)
 
+## Features
+file-system is APPEND only
+
 ## Rename an Image
 
 `docker tag myimage:latest mynewimage:latest`
-
-## Stop Docker Image <hash>
-
-`docker stop <hash>`
 
 ## List Docker Images
 

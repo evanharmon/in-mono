@@ -115,3 +115,8 @@ for example, jump n chars but stay within the string
 # Example with a list or string with length of 10, jump 9 items
 next_idx = (9 + 9) % 10
 ```
+
+or increment a month but always stay within 0-11 index
+```python
+month = (month + 1) % 12
+```

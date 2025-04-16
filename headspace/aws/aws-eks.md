@@ -13,7 +13,16 @@ AWS managed kubernetes
 ## Limitations
 - IPv6 (dual-stack) can only be enabled at cluster creation
 
-## EKS Cluster Creation Via Console
+## Server-side apply
+- only turned on by default for add-ons
+
+## Auto generated resources
+
+### Cluster security group
+allows unfettered communication between the EKS control plane and the nodes from managed node groups
+creating this default cluster SG can be turned off on creation
+
+## EKS cluster creation via console
 
 Important on security / initial login on public access. It's limited to
 IAM user / role used to create cluster on console

@@ -3,7 +3,7 @@
 ## Specify host
 `docker -H <example_host.com> ps`
 
-## Save Time Docker Files
+## Save time docker files
 
 run as one line to speed it up
 
@@ -11,11 +11,11 @@ run as one line to speed it up
 
 `docker ps --filter "name=nvim"`
 
-## View Container Logs
+## View container logs
 
 `docker logs <container name>`
 
-## View log of Docker
+## View log of docker
 
 `systemctl status docker`
 
@@ -23,11 +23,11 @@ run as one line to speed it up
 
 located at `/private/var/run/docker.sock`
 
-## Get Registry Info
+## Get registry info
 
 `docker login | rg registry`
 
-## Limit to # of Cpus
+## Limit to # of cpus
 
 CPUs in which to allow execution (0-3, 0,1)
 

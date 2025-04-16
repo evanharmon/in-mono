@@ -1,15 +1,21 @@
 # AWS IAM
-Notes on AWS Identity And Access Management
 
-## Policies
+## Resources
 
-- [Action Lists per Service](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actionsconditions.html)
-- [Full List](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html)
-- [Policy Evaluation Logic](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policies_evaluation_example)
+- [AWS IAM best practices](http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
+- [AWS IAM policy action lists per service](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actionsconditions.html)
+- [AWS IAM full policy list](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html)
+- [AWS IAM policy evaluation logic](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policies_evaluation_example)
+
+## Features
+Attribute based access control (ABAC)
+- uses attribute / tags
+
+examples:
+- you can read this S3 bucket if it has the right tags
+- you can read this S3 bucket if it has the right path
 
 ## Best Practices
-- [AWS](http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
-
 - lock away your AWS account (root) access keys
 - create individual IAM users
 - use groups to assign permissions to IAM users
