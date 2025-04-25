@@ -6,6 +6,7 @@
 
 ## Best practices
 - always call `self.register_outputs()` at the end of constructors in the class
+- always set parent to `self` for all resources being created
 
 ### Register outputs
 ```python

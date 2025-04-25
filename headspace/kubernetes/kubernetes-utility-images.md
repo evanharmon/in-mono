@@ -23,5 +23,4 @@ continuously curl in a sidecar container
 `stackrox/admission-controller-webhook-demo:latest`
 
 ## Flask demo apps
-
 `poroko/flask-demo-app`

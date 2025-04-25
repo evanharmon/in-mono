@@ -18,7 +18,7 @@
 long list but in one place for easier reference
 
 ## High availability across a region
-controlplane only gets TWO Eni's in separate AZ
+controlplane only gets TWO ENI's in separate AZ
 so even though you should do three AZs, remember your fault tolerance is max ONE AZ going down if it's one of the TWO eni's
 
 ## VPC
@@ -65,6 +65,9 @@ use pod identity and network policies instead where possible
 - use dedicated IAM role to create EKS clusters
 - use ONE IAM role per application for isolation
 
+## KMS Keys
+- manage separate keys per region or use multi-region keys for governance
+
 ## Pod identities
 - use `"aws:SourceOrgId": "${aws:ResourceOrgId}"` string condition to limit within org for trust policy
 
@@ -75,15 +78,34 @@ IAM policies:
 - use an external secret store and CSI driver
 - for best security, use aws SDK's in app so secrets are only in memory
 
+## Services network config
+
+### service_ipv4_cidr
+- defaults to `10.100.0.0/16` or `172.20.0.0/16` 
+- CANNOT be changed after creation
+- should not overlap with resources in other peered networks / resources in VPC
+
+## Logging
+
+### Cloudwatch
+log group name must be in the below format and match EKS cluster name
+basically a well-known resource. :oof:
+`/aws/eks/{cluster_name}/cluster`
+
 ## Addons
-? not sure about this
-- use managed EKS add-ons
+- DONT use managed EKS add-ons - per kodekloud EKS ex AWS employee
+- addon marketplace likely won't have newest versions
 
 ### VPC CNI
 - config: enable env `ENABLE_PREFIX_DELEGATION: "true"`
 - config: enable `enable-network-policy-controller: "true"`
 - use IRSA with new created `aws-node` IAM role
 - assign AmazonEKS_CNI_Policy and/or IPV6 equivalent to separate role instead of Node IAM role
+
+### Load balancer controller
+aws-loadbalancer-controller only can have ONE SG with this tag attached to nodes
+- only supports a SINGLE Node SG having the `kubernetes.io/cluster/$CLUSTER_NAME` tag
+- with IMDSv2, set hop limit to 2 or higher
 
 ### Karpenter addon
 - never run karpenter on a node managed by Karpenter!!
@@ -96,16 +118,14 @@ enforce that all workloads have the below:
 - Topology spreads
 - resource request / limits
 
+# TODO: double check this.. i'm pretty sure i've worked in accounts with multiple SGs like this without issues
 - ONLY ONE security group in account should be tagged with `karpenter.sh/discovery`
-
-### Load balancer controller
-aws-loadbalancer-controller only can have ONE SG with this tag attached to nodes
-- only supports a SINGLE Node SG having the `kubernetes.io/cluster/$CLUSTER_NAME` tag
-- with IMDSv2, set hop limit to 2 or higher
-
-## Use `hardeneks` cli tool to check compliance
 
 ## Auto Mode
 
 - create single `AmazonEKSAutoClusterRole` and `AmazonEKSAutoNodeRole` per account
 - name custom security groups with convention `eks-cluster-sg-` to avoid needing addtl cluster role perms
+
+## Tooling
+
+### Use `hardeneks` cli tool to check compliance

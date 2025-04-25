@@ -69,3 +69,8 @@ NATs use ports 1024 - 65535
 - use traceroute and see if the private ip address of that nat instance comes up
 - use a third-party website to make sure the traffic ip address is the NAT
   public ip address
+
+## IPv6
+Allows IPv6 only clients to communicate with IPv4 only services
+`NAT64_DNS64_RESERVED_PREFIX = "64:ff9b::/96"`
+then NAT gateway has a route with above IPv6 prefix in a dual-stack VPC

@@ -49,6 +49,8 @@ NOTE: using `exit 0` will close the terminal as well
 
 `source script.sh` or `. script.sh`
 
+Check to see if a script was sourced `[[ "${BASH_SOURCE[0]}" != "${0}" ]] && sourced=1 || sourced=0`
+
 ## Run script in new shell as standalone program
 - new shell process is created
 - environment in parent shell is not affected
@@ -70,6 +72,20 @@ environment's will be isolated
 Double quote your variables!
 
 `"$IP"`
+
+### Check if ZSH is shell and script is sourced
+```sh
+# This script is being executed directly or sourced
+if [[ "$0" == "$ZSH" || "$ZSH_VERSION" != "" ]] ; then
+    echo "This script is running directly within zsh or being sourced within zsh."
+    # Check if being sourced
+    if [[ -n "$(typeset -R ZSH_EVAL_CONTEXT)"]] && [[ $(typeset -R ZSH_EVAL_CONTEXT) == *file* ]]; then
+        echo "And is being sourced."
+    fi
+else
+    echo "This script is not running directly within zsh."
+fi
+```
 
 ## Parameters
 

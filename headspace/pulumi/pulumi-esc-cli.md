@@ -4,6 +4,8 @@
 - [Pulumi ESC cli docs](https://www.pulumi.com/docs/esc/cli/)
 
 ## Install
+No need to install if already installed pulumi cli
+
 just use the script `curl -fsSL https://get.pulumi.com/esc/install.sh | sh`
 installs to `~/.pulumi/bin`. Add to Path in `.*rc` file
 

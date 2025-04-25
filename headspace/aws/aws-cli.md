@@ -4,30 +4,16 @@
 
 - [AWS CLI Install V2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
-## V1 CLI INSTALL
+## Install
 
-### Install macOS
+### macOS
+I've just been using the pkg install for all users. See link above
 
-```console
-brew install awscli
-```
-
-### Update
-
-```console
-pip install --upgrade --user awscli
-```
-
-#### Fix Bad Interpreter Error
-
-```console
-brew reinstall awscli
-brew link --overwrite awscli
-```
+## Use
 
 ### CLI Shell Variables
 
-```console
+```sh
 export AWS_DEFAULT_PROFILE='hss-dev'
 export AWS_DEFAULT_REGION='us-east-1'
 export AWS_DEFAULT_OUTPUT='json'
@@ -35,18 +21,12 @@ export AWS_DEFAULT_OUTPUT='json'
 
 ### Check Current Profile
 
-```console
-aws configure list
-```
+`aws configure list`
 
-#### Quick Way To Get Account ID
+### Quick Way To Get Account ID
 
-```console
-aws sts get-caller-identity --query Account --output text
-```
+`aws sts get-caller-identity --query Account --output text`
 
-## Clear CLI Cache
+### Clear CLI Cache
 
-```console
-rm -rf ~/.aws/cli/cache/*
-```
+`rm -rf ~/.aws/cli/cache/*`

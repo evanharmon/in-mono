@@ -6,6 +6,8 @@
 - [AWS EKS vpc cni networking policy config setup blog](https://aws.amazon.com/blogs/containers/amazon-vpc-cni-now-supports-kubernetes-network-policies/#:~:text=To%20enable%20network%20policies%20in,Amazon%20Linux%20AMI%20build%20script.)
 - [AWS EKS vpc cni iam role](https://docs.aws.amazon.com/eks/latest/userguide/cni-iam-role.html)
 - [AWS EKS vpc cni IRSA](https://docs.aws.amazon.com/eks/latest/userguide/cni-iam-role.html?icmpid=docs_eks_help_panel_hp_add_ons_vpc_cni_iam)
+- [AWS EKS vpc cni ipv6](https://docs.aws.amazon.com/eks/latest/userguide/deploy-ipv6-cluster.html)
+- [AWS EKS vpc cni ipv6 policy irsa](https://docs.aws.amazon.com/eks/latest/userguide/cni-iam-role.html)
 
 ## Features
 Handles how IP adresses get assigned on nodes / pods

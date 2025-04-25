@@ -19,3 +19,11 @@ installs to `~/.pulumi/bin`. Add to Path in `.*rc` file
 
 ### Login
 `pulumi login`
+
+### Add brew completions for bash
+```bash
+pulumi gen-completion bash > /opt/homebrew/etc/bash_completion.d/pulumi
+brew completion link
+# restart terminal or source
+. ~/.bash_profile
+```

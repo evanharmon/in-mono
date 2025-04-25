@@ -18,13 +18,43 @@ uv init myproject
 uv init --bare
 ```
 
+## Virtual environment
+
+### Create a custom named venv
+uv uses `.venv` by default but some tools may expect `./venv`
+
+`uv add venv`
+
+### Install to custom named venv
+
+you can source it first to set `VIRTUAL_ENV`
+`source ./venv/bin/activate`
+
+or set a uv env var
+`UV_PROJECT_ENVIRONMENT=venv uv add -r requirements.txt`
+
 ## Package management
 
+### Install from requirements.txt
+`uv add -r requirements.txt`
+
 ### Add a package
-`uv add ruff`
+```bash
+uv add ruff
+# Specific version
+uv add pulumi==3.163.0
+```
 
 ### Lock packages
 `uv lock`
 
 ### Sync packages
 `uv sync`
+
+### Upgrade packages
+`uv lock --upgrade`
+
+## Tools
+
+### Run a cli installed with pip
+`uvx pulumi up`
