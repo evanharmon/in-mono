@@ -92,6 +92,9 @@ log group name must be in the below format and match EKS cluster name
 basically a well-known resource. :oof:
 `/aws/eks/{cluster_name}/cluster`
 
+EKS will create it with a FOREVER retention period
+so better to create it yourself, with a KMS key and encryption
+
 ## Addons
 - DONT use managed EKS add-ons - per kodekloud EKS ex AWS employee
 - addon marketplace likely won't have newest versions

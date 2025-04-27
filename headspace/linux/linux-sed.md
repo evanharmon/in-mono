@@ -7,11 +7,18 @@ stream editor
 - line numbering starts at 1
 
 ## Flags
-- `-i` flag edits in place
+- `-i` in-place in-file substition
 - `s/` is substitute
 - `s/yes/no/g` g - replace every occurrence on line
 - `I` ignores case: `s/yes/no/Ig`
 - `-n` suppresses automatic printing of all lines
+
+## Pattern matchers
+the normal ones
+- `.` single char except a newline
+- `*` zero or more char
+- `[]` match any one of enclosed chars
+- `\b` word boundary
 
 ## Search and Replace
 
@@ -50,6 +57,28 @@ prints lines 500 to 510
 
 ### Remove trailing comma from input
 `echo 'get,list,put,' | sed 's/,*$//'`
+
+## Insert
+macOS makes this a PITA - needs deliberate new lines and diff format
+
+### Insert a line
+
+```sh
+echo -e "Hello World\nAnother Line\nGoodbye World" > file.txt
+sed '/Hello World/a Inserted new line' file.txt 
+# macOS - needs new lines and for `a` to be `a\`
+sed '/Hello World/a\ 
+Inserted new line
+' file.txt 
+```
+
+## Delete
+
+### Delete a line
+```sh
+echo -e "Line 1\nLine 2" > file.txt
+sed '/Line 2/d' file.txt
+```
 
 ## Find exec uses
 

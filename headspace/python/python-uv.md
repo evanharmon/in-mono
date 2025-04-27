@@ -23,7 +23,7 @@ uv init --bare
 ### Create a custom named venv
 uv uses `.venv` by default but some tools may expect `./venv`
 
-`uv add venv`
+`uv venv venv`
 
 ### Install to custom named venv
 
@@ -43,6 +43,8 @@ or set a uv env var
 uv add ruff
 # Specific version
 uv add pulumi==3.163.0
+# Specific version range constraints
+uv add 'pulumi>=3.163.0,<4.0'
 ```
 
 ### Lock packages
