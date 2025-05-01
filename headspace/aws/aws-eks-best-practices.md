@@ -98,6 +98,7 @@ so better to create it yourself, with a KMS key and encryption
 ## Addons
 - DONT use managed EKS add-ons - per kodekloud EKS ex AWS employee
 - addon marketplace likely won't have newest versions
+- for upgrades, have to upgrade them BEFORE new nodes roll out?
 
 ### VPC CNI
 - config: enable env `ENABLE_PREFIX_DELEGATION: "true"`

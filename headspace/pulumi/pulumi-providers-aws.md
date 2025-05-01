@@ -72,3 +72,30 @@ for i, az in enumerate(selected_azs):
 
 pulumi.export("availability_zones", selected_azs)
 ```
+
+## DefaultTags with explicit provider in golang
+```go
+aws_cfg := config.New(ctx, "aws")
+region := aws_cfg.Require("region")
+defaultProfile := aws_cfg.Require("profile")
+var tagsObject struct {
+  Tags map[string]string `json:"tags"`
+}
+aws_cfg.RequireObject("defaultTags", &tagsObject)
+defaultTags := tagsObject.Tags
+
+awsMgmtAcctUsEast1, err := aws.NewProvider(
+  ctx,
+  "aws-provider-mgmt-us-east-1",
+  &aws.ProviderArgs{
+    Region: pulumi.String(region),
+    Profile: pulumi.String(defaultProfile),
+    DefaultTags: aws.ProviderDefaultTagsArgs{
+      Tags: pulumi.ToStringMap(defaultTags),
+    },
+  },
+)
+if err != nil {
+    return err
+}
+```

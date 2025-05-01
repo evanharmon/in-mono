@@ -28,7 +28,7 @@ go get -d ./...
 
 ## Install Dependencies Just For Repo
 ```bash
- go get -d .
+go get -d .
 ```
 
 ## Init And Unused Packages

@@ -41,7 +41,6 @@ output=$(aws configure export-credentials --profile myprofile --format env-no-ex
 
 ### Configure
 have to configure AWS so use SSO
-re-run the to add other accounts to config
 ```bash
 aws configure sso
 # session name will be the same across accounts
@@ -59,6 +58,12 @@ aws configure sso
 # Set profile name if you don't like the default <Role>-AccountID
 # can always change later in the config file
 > Choose CLI profile name...
+```
+
+```sh
+# re-run to add other accounts to config
+aws configure sso --profile my-new-profile-name
+# Follow prompts and choose SSO session name, region, etc
 ```
 
 ### Login

@@ -1,13 +1,16 @@
 # GOlANG STRINGS
 
-## Overview
-
+## Features
 Notes on simple string manipulation in golang
+- strings are immutable
 
 ## Quick Concat
 
 ```golang
 fmt.Sprintf("%s.wav", fname)
+// or even easier
+name := "project-core"
+var prefixed_name = name+"-saturn"
 ```
 
 ## Convert []string To String
@@ -56,4 +59,13 @@ easy!
 ```golang
 myStr := "Test"
 b := []byte(myStr)
+```
+
+## String builder
+```go
+b := &strings.Builder{}
+b.WriteString("Hello ")
+b.WriteString("World ")
+b.PrependString("Goodbye ")
+fmt.Println(b.String())
 ```

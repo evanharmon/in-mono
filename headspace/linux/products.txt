@@ -1,0 +1,6 @@
+Vendor	Product	    Price
+Samsung	GalaxyS23	  899
+Samsung	GalaxyTab	  499
+Google	Pixel7	    599
+Google	Chromebook	349
+Samsung	GalaxyS22	  699

@@ -1,12 +1,10 @@
 # KUBERNETES RESOURCE LIMITS
 
 ## Resources
-
 - [Kubernetes resource requests and limits](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits)
 - [Kubernetes limit ranges](https://kubernetes.io/docs/concepts/policy/limit-range/)
 
 ## Features
-
 - cpu is limited by throttling
 - memory limits are enforced by the kernel and result in OOMs (Out of Memory) kills
 - lowest cpu is 1m
@@ -19,9 +17,10 @@ no limitations on cpu / mem
 ### No requests set, only limits set
 request and limits are set to the same thing
 
-## Practice
+## Examples
 
-## Set default limits for cpu and memory for containers
+### Set default limits for cpu and memory for containers
+via LimitRange crd
 
 ```yml
 apiVersion: v1
@@ -45,7 +44,6 @@ spec:
 `kubectl get po nginx -o jsonpath='{.spec.containers[*].resources}'
 
 ## Common mistakes
-
 - adding or modifying LimitRange doesn't affect existing pods
 - if multiple LimitRanges exist, behavior is non-deterministic
 - only checks for existance of limits NOT the values

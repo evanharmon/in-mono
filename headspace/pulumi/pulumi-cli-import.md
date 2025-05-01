@@ -42,4 +42,3 @@ pulumi import --protect=false aws:eks/accessPolicyAssociation:AccessPolicyAssoci
   eks-ipv6-bp-us-east-1#arn:aws:iam::111111111111:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AdministratorAccess_1111111111111111#arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy \
   --parent 'urn:pulumi:eph::ipv6-eks-blueprint::eph:eks:Cluster::eks-ipv6-bp-us-east-1'
 ```
-
