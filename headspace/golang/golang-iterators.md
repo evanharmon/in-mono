@@ -1,14 +1,16 @@
 # GOLANG ITERATORS
 
-## Summary
-
-Notes on using golang iterators / loops
-
 ## Resources
 
-[For](https://gobyexample.com/for)
+- [Golang for loops examples](https://gobyexample.com/for)
 
-## For Range
+## Features
+loops in golang
+- for loop variants are supported
+
+## For loops
+
+### For Range
 
 ```golang
 for _, e := range os.Environ() {
@@ -16,6 +18,34 @@ for _, e := range os.Environ() {
     fmt.Println(pair[0])
 }
 ```
+
+## While style loops
+
+## Simple while loop using `for`
+```go
+i := 0
+for i < 5 {
+		fmt.Println(i)
+		i++
+}
+```
+
+### While loop conditional check function
+```go
+func checkTrue(i int) bool {
+    return i < 5
+}
+
+func main() {
+    i := 0
+    for checkTrue(i) {
+        fmt.Println(i)
+        i++
+    }
+}
+```
+
+## Recipes
 
 ### Iterating Array Of Strings
 
@@ -25,11 +55,11 @@ returned is of type int (index)
 ```golang
 envs := []string{"GOOGLE_PROJECT_ID", "GOOGLE_APPLICATION_CREDENTIALS"}
 for _, v := envs {
-
+	// additional code here
 }
 ```
 
-## Break Out Of For Loop
+### Break Out Of For Loop
 
 ```golang
 for {
@@ -38,7 +68,7 @@ for {
 }
 ```
 
-## Break But Continue For Loop
+### Break But Continue For Loop
 
 ```golang
 for n := 0; n <= 5; n++ {

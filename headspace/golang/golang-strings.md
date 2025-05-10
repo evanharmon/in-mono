@@ -3,6 +3,19 @@
 ## Features
 Notes on simple string manipulation in golang
 - strings are immutable
+- use `len()` to get length of string
+
+## Escape characters
+- `\t` tab
+- `\n` newline
+- `\\` backslash
+- `\"` for quote, etc
+
+## Printf flags
+- `%s` string
+- `%d` int
+- `%f` or `%.2f` float with decimal places
+- `%t` bool
 
 ## Quick Concat
 

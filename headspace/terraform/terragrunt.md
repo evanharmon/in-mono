@@ -1,35 +1,37 @@
 # TERRAGRUNT
 
 ## Resources
-
 - [Terragrunt Docs](https://terragrunt.gruntwork.io/docs)
+- [Terragrunt with TF cloud / enterprise](https://docs.gruntwork.io/2.0/docs/library/guides/integrate-tfc/#using-tfc-with-terragrunt)
 - [Terragrunt Working With Multiple AWS Accounts](https://terragrunt.gruntwork.io/docs/features/work-with-multiple-aws-accounts/)
-
-## Clear Cache
-
+- [Terragrunt env0 examples](https://www.env0.com/blog/terragrunt#:~:text=Instead%20of%20manually%20running%20terraform,multiple%20Terraform%20modules%20at%20once.)
 - [Terragrunt Caching](https://terragrunt.gruntwork.io/docs/features/caching/)
 
-`find . -maxdepth 3 -type d -name ".terragrunt-cache" -prune -exec rm -rf {} \;`
+## Features
+Terragrunt is a thin wrapper for Terraform that provides extra tools for keeping your configurations DRY, working with multiple Terraform modules, and managing remote state.
+- keeps terraform code DRY
+- manages folder hierarchy / multiple state files and management
+- allows parallel execution of terraform commands across multiple modules
+- simplifies working with multiple cloud accounts / regions
+- built-in debugging and logging capabilities
+- manages dependencies between modules automatically
+- supports any terraform backend, including terraform cloud
 
-## Debug Error Codes
+## Benefits
+- modular configuration
+- variable abstraction: centralized variable management
+- hierarchical configuration: reduces dupe configs / allows inheritance of settings
+- simplified maintenance
 
-`terragrunt plan-all --detailed-exitcode`
+## Install
 
-## Debug Vars
+### macOS
+`brew install terragrunt`
 
-`terragrunt plan --terragrunt-debug`
+### Linux
 
-## Destroy
-
-do NOT use the `terragrunt run-all plan -destroy` syntax. Terragrunt will not examine the
-dependency ordering for destruction. Instead of uses dependency ordering based on creation.
-
-## Force Destroy Ignoring Dependencies
-
-`terragrunt run-all --terragrunt-ignore-dependency-errors destroy`
-
-## null_resource local-exec
-
-Terragrunt runs use the AWS credentials in place from the shell where the
-terragrunt command was called from. An sts assume-role call should only have to
-be made if a separate set of AWS credentials need to be in place.
+```sh
+wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.58.8/terragrunt_linux_amd64
+sudo install terragrunt_linux_amd64 /usr/local/bin/terragrunt
+rm terragrunt_linux_amd64
+```

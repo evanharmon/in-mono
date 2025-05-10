@@ -3,12 +3,79 @@
 ## Resources
 - [Kubernetes pod security standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
 - [Kubernetes configuring security context for a pod / container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
+- [Kubernetes pod security context object](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#podsecuritycontext-v1-core)
+- [Kubernetes container security context object](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#securitycontext-v1-core)
 
 ## Features
-
-- security settings can be configured at the pod or container level
+- different security settings can be configured at the pod or container level
 - pod level settings are placed on all containers
 - capabilities only supported at container level
+- overlapping securityContext settings override Pod security context
+
+## Limitations
+- `privileged` can only be set at container level
+- container securityContext settings do not affect Pod's volumes
+
+## Examples
+
+### PodSecurityContext
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+    supplementalGroups: [4000]
+  volumes:
+  - name: sec-ctx-vol
+    emptyDir: {}
+  containers:
+  - name: sec-ctx-demo
+    image: busybox:1.28
+    command: [ "sh", "-c", "sleep 1h" ]
+    volumeMounts:
+    - name: sec-ctx-vol
+      mountPath: /data/demo
+    securityContext:
+      allowPrivilegeEscalation: false
+```
+
+### Container security context with read only fs
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: read-only-example
+spec:
+  containers:
+  - name: my-container
+    image: ubuntu
+    securityContext:
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true  # Optional, but highly recommended for increased security
+```
+
+### Override pod security context in container
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo-2
+spec:
+  securityContext:
+    runAsUser: 1000
+  containers:
+  - name: sec-ctx-demo-2
+    image: gcr.io/google-samples/hello-app:2.0
+    securityContext:
+      runAsUser: 2000
+      allowPrivilegeEscalation: false
+```
 
 ## Docker security notes
 
@@ -86,5 +153,3 @@ all privileges can be added via:
 ### Drop capabilities
 capabilities can be removed via docker run
 `docker run --cap-drop KILL ubuntu`
-
-### 

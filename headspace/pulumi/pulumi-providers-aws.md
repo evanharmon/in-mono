@@ -4,6 +4,7 @@
 - [Pulumi AWS Cloud Control Provider GA](https://www.pulumi.com/blog/pulumi-aws-cloudcontrol-provider/)
 - [Pulumi standard aws provider](https://www.pulumi.com/registry/packages/aws/)
 - [Pulumi aws cloud control provider](https://www.pulumi.com/registry/packages/aws-native/)
+- [Pulumi aws multi-account provider setup](https://www.pulumi.com/blog/deploy-to-multiple-regions/)
 
 ## Features
 for use with aws resources

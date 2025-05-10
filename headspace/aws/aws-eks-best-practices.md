@@ -2,6 +2,7 @@
 
 ## Resources
 - [AWS EKS best practices](https://docs.aws.amazon.com/eks/latest/best-practices/introduction.html)
+- [Kyverno policy eks best practice sample policies](https://kyverno.io/policies/?policytypes=EKS%2520Best%2520Practices)
 
 ## Sections
 - security
@@ -125,8 +126,14 @@ enforce that all workloads have the below:
 # TODO: double check this.. i'm pretty sure i've worked in accounts with multiple SGs like this without issues
 - ONLY ONE security group in account should be tagged with `karpenter.sh/discovery`
 
-## Auto Mode
+### Admission controller
+- use plugins to enforce different rules on resources
 
+### Policy / Governance enforcement
+- use something like `kyverno` to enforce best practices and compliance on resources
+- `kyverno` has a collection of eks / other best practices policies
+
+## Auto Mode
 - create single `AmazonEKSAutoClusterRole` and `AmazonEKSAutoNodeRole` per account
 - name custom security groups with convention `eks-cluster-sg-` to avoid needing addtl cluster role perms
 
