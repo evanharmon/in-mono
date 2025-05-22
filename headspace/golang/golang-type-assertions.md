@@ -1,21 +1,20 @@
 # GOLANG TYPE ASSERTIONS
 
-## Summary
+## Resources
+- [SO assert nested interface](https://stackoverflow.com/questions/12962634/type-assert-a-nested-interface)
 
-Notes on doing type assertions in Golang
 
 ## Get Type
 
-"reflect"
-`fmt.Printf(reflect.TypeOf(variable))`
+```golang
+value := s.(Model)
+// or reflect
+fmt.Printf(reflect.TypeOf(variable))
+```
 
 ## Assert A Map
 
 `myURL["local"].(string)`
-
-## Assert Nested Interface
-
-- [SO](https://stackoverflow.com/questions/12962634/type-assert-a-nested-interface)
 
 ## Catch Type Assertion Errors
 

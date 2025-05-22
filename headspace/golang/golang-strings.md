@@ -82,3 +82,65 @@ b.WriteString("World ")
 b.PrependString("Goodbye ")
 fmt.Println(b.String())
 ```
+
+## Get index
+
+```golang
+str := "Test string"
+// return first index
+fmt.Println(strings.Index(str, "string"))
+// return last index
+fmt.Println(strings.LastIndex(str, "string"))
+```
+
+## Contains
+- returns new string
+
+```golang
+str := "Test string"
+fmt.Println(strings.Contains(str, "Test"))
+```
+
+## Replace
+- returns new string
+
+```golang
+str := "This is a test with a test string"
+// replace specific # of instances
+fmt.Println(strings.Replace(str, "test", "success", 1))
+// replace all
+fmt.Println(strings.ReplaceAll(str, "test", "success"))
+```
+
+## Split
+
+```golang
+str := "Chicken Banana Poptart"
+words := strings.Split(str, " ")
+// print
+for _, word := range words {
+    fmt.Println(word)
+}
+```
+
+## Join
+
+```golang
+words := []string{"Chicken", "Banana", "Poptart"}
+str := strings.Join(words, " ")
+fmt.Println(str)
+```
+
+## Recipes
+
+### Get last three words in a sentence
+
+```golang
+sentence := "This is a sentence with some words"
+words := strings.Fields(sentence)
+if len(words) < 3 {
+    fmt.Println("Sentence has fewer than three words.")
+    return
+}
+lastThreeWords := words[len(words)-3:]
+```

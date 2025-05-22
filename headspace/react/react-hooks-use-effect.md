@@ -6,8 +6,99 @@
 - [React Hooks KDodds Testing](https://kentcdodds.com/blog/how-to-test-custom-react-hooks?ck_subscriber_id=479255035)
 
 ## Features
+Allows actions to be taken on component renders, updates, or unmounts.
+Covers component lifecycle of `mount`, `update`, and `unmount`
 
 - asynchronous so does not block browser paint
+- no dependencies means it runs on EVERY render
+- empty `[]` dependencies means runs once on mount
+- can specify state fields to dependency array for watching
+- provides a `cleanup` return function for taking actions on unmount
+
+## Examples
+
+### Run on every render
+```jsx
+useEffect(() => {
+  console.log(`Component rendered.`);
+});
+```
+
+### Run only on mount
+```jsx
+useEffect(() => {
+  console.log("Component did mount");
+}, []);
+```
+
+### Clean up on unmount
+```jsx
+useEffect(() => {
+  console.log("Component did mount OR update");
+
+  // cleanup function
+  return () => {
+    console.log("Component will unmount");
+  }
+}, []);
+```
+
+### Async functions
+React warns against `useEffect(async () = {...})`
+- define the async function you need OUTSIDE useEffect
+- define an async function INSIDE useEffect and call the above function
+- do any setState / etc calls INSIDE the result from await inside useEffect
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+function MyComponent() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.example.com/data');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const json = await response.json();
+        setData(json);
+        setLoading(false);
+      } catch (e) {
+        setError(e);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  return (
+    <div>
+      {data && (
+        <ul>
+          {data.map(item => (
+            <li key={item.id}>{item.name}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default MyComponent;
+```
 
 ## When To UseEffect
 

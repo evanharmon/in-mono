@@ -3,6 +3,15 @@
 ## Features
 - uses a `.terragrunt-cache` directory
 
+## Init
+```sh
+# init
+terragrunt init
+# re-configure remote state
+# IGNORES any saved configuration
+terragrunt init --reconfigure
+```
+
 ## Plan
 
 ### Debug Error Codes
@@ -11,9 +20,9 @@
 ### Debug Vars
 `terragrunt plan --terragrunt-debug`
 
-### Destroy
+## Destroy
 
-## Destroy syntax
+### Destroy syntax
 do NOT use the `terragrunt run-all plan -destroy` syntax. Terragrunt will not examine the
 dependency ordering for destruction. Instead of uses dependency ordering based on creation.
 

@@ -18,6 +18,9 @@
 - DO NOT use `defaultValue` prop with controlled components
 - needs a `<form>` tag and `submit` button
 
+## Use cases
+- file uploads
+
 ## Uncontrolled Input Value Not Changing
 
 do not use `value` with an uncontrolled component
@@ -68,4 +71,66 @@ function myApp() {
     </form>
   )
 }
+```
+
+## Examples
+
+### File uploads
+```jsx
+import React, { useRef, useState } from 'react';
+
+const FileUpload = () => {
+  const fileInputRef = useRef(null); // Create a ref for the file input
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileInputClick = () => {
+    // Click the file input when the button is clicked
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFileChange = (e) => {
+    // Get the selected file
+    const file = e.target.files && e.target.files[0];
+    setSelectedFile(file);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Get the selected file using the ref
+    const file = fileInputRef.current?.files[0]; // Access file via ref
+
+    // Access the file using useRef and handle the submission
+    if (file) {
+      console.log('File submitted:', file); // Or send to server
+    } else {
+      console.log('No file selected');
+    }
+
+    return false;
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        style={{ display: 'none' }} // Hide the input field
+      />
+      <button type="button" onClick={handleFileInputClick}>
+        Choose File
+      </button>
+      {selectedFile && (
+        <div>
+          <p>Selected file: {selectedFile.name}</p>
+        </div>
+      )}
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+
+export default FileUpload;
 ```

@@ -6,6 +6,8 @@
 
 ## Stateless function
 
+props.children used to pass children components down
+
 ```jsx
 import Header from './header/app-header'
 export default props => {
