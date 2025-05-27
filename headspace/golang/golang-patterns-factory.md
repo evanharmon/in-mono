@@ -45,6 +45,62 @@ used to create objects
 
 ## Examples
 
+### Simple Animal
+```golang
+package main
+
+import "fmt"
+
+// Product interface
+type Animal interface {
+	Speak() string
+}
+
+// Concrete Product 1
+type Dog struct{}
+
+func (d *Dog) Speak() string {
+	return "Woof!"
+}
+
+// Concrete Product 2
+type Cat struct{}
+
+func (c *Cat) Speak() string {
+	return "Meow!"
+}
+
+// Factory interface
+type AnimalFactory interface {
+	Create() Animal
+}
+
+// Concrete Factory 1
+type DogFactory struct{}
+
+func (df *DogFactory) Create() Animal {
+	return &Dog{}
+}
+
+// Concrete Factory 2
+type CatFactory struct{}
+
+func (cf *CatFactory) Create() Animal {
+	return &Cat{}
+}
+
+func main() {
+    dogFactory := &DogFactory{}
+    catFactory := &CatFactory{}
+
+    dog := dogFactory.Create()
+    cat := catFactory.Create()
+
+    fmt.Println("Dog says:", dog.Speak())
+    fmt.Println("Cat says:", cat.Speak())
+}
+```
+
 ### Different types of documents
 this example uses a nice single method to create the product interface in a switch
 otherwise you end up with lots of factory struct / methods

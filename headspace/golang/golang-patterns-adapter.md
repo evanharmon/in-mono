@@ -22,6 +22,20 @@ structural pattern to integrate classes with incompatible interfaces
 - additional complexity
 - maintenance overhead
 
+## Components
+
+### Existing interface
+existing interface with required methods declared
+
+### Existing structs
+Existing concrete structs with methods
+
+### New interface
+new interface with new methods to be implemented
+
+### New Adapter
+new adapter struct with implemented methods for the new interface
+
 ## Examples
 
 ### Payment processor and legacy

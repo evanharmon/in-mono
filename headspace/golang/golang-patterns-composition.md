@@ -6,6 +6,42 @@ build complex structures by combining simpler ones
 - `has a` type relationship
 - outer struct can access fields and methods on embedded structs
 
+## Best practices
+- keep different responsibilities in different composite objects
+
+## Use cases
+- file systems
+- graphics systems
+- user interfaces
+- e-commerce systems
+
+## Advantages
+- uniformity
+- extensibility
+- simplified code
+
+## Disadvantages
+- additional overhead
+- dependency between leaf / composites
+- generalization could lead to inefficient use of resources
+
+## Gotchas
+- recursive structures can lead to infite loops or excessive memory use
+
+## Components
+
+### Component interface 
+defines common methods for both leaf and composite objects to implement
+
+### Leaf
+basic element without any children
+
+### Composite
+container to hold leaf elements or other composites
+
+### Client
+common interface for client to interact with components
+
 ## Examples
 
 ### Storage example
@@ -58,39 +94,3 @@ func (ms MultiStorage) Write(location string, data string) {
     ms.primary.Write(location, data)
 }
 ```
-
-## Components
-
-### Component interface 
-defines common methods for both leaf and composite objects to implement
-
-### Leaf
-basic element without any children
-
-### Composite
-container to hold leaf elements or other composites
-
-### Client
-common interface for client to interact with components
-
-## Use cases
-- file systems
-- graphics systems
-- user interfaces
-- e-commerce systems
-
-## Advantages
-- uniformity
-- extensibility
-- simplified code
-
-## Disadvantages
-- additional overhead
-- dependency between leaf / composites
-- generalization could lead to inefficient use of resources
-
-## Gotchas
-- recursive structures can lead to infite loops or excessive memory use
-
-## Best practices
-- keep different responsibilities in different composite objects
