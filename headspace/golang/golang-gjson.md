@@ -1,13 +1,24 @@
 # GOLANG JSON
 
-## Summary
-
-Notes on using the tidwall/gjson package
-
 ## Resources
 
 - [Tidwall/gjson](https://github.com/tidwall/gjson)
 - [GJSON Playground](https://gjson.dev/)
+
+## Use GJSON Package
+
+```golang
+package main
+
+import "github.com/tidwall/gjson"
+
+const json = `{"name":{"first":"Janet","last":"Prichard"},"age":47}`
+
+func main() {
+	value := gjson.Get(json, "name.last")
+	println(value.String())
+}
+```
 
 ## Parse JSON
 

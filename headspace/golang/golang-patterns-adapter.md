@@ -94,3 +94,51 @@ func main() {
 	}
 } 
 ```
+
+### New home device
+```golang
+package main
+
+import "fmt"
+
+// OldDevice represents the legacy interface
+type OldDevice struct{}
+
+// SwitchOn is the old method name
+func (d *OldDevice) SwitchOn() {
+	fmt.Println("Switching on the old device...")
+}
+
+// NewDevice represents the new interface we want to use
+type NewDevice interface {
+	TurnOn()
+}
+
+// DeviceAdapter adapts OldDevice to the NewDevice interface
+type DeviceAdapter struct {
+	oldDevice *OldDevice
+}
+
+// NewDeviceAdapter creates a new adapter
+func NewDeviceAdapter(oldDevice *OldDevice) *DeviceAdapter {
+	return &DeviceAdapter{
+		oldDevice: oldDevice,
+	}
+}
+
+// TurnOn implements the NewDevice interface by calling the old SwitchOn method
+func (a *DeviceAdapter) TurnOn() {
+	a.oldDevice.SwitchOn()
+}
+
+func main() {
+	// Create an instance of the old device
+	oldDevice := &OldDevice{}
+
+	// Create an adapter for the old device
+	adapter := NewDeviceAdapter(oldDevice)
+
+	// Use the new interface
+	adapter.TurnOn()
+}
+```

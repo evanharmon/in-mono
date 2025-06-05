@@ -9,7 +9,11 @@
 `psql -U postgres -h localhost -p 5432`
 
 ## Login with database url and specific db
-`psql postgres://postgres@localhost:5432/postgres`
+```sh
+psql postgres://postgres@localhost:5432/postgres
+# or on fresh postgres
+psql postgres://localhost:5432/postgres
+```
 
 ## PSQL commands
 

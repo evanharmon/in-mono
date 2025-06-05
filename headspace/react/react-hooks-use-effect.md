@@ -43,6 +43,69 @@ useEffect(() => {
 }, []);
 ```
 
+### fetch api data with set # of retries
+with exponential backoff as well
+```jsx
+import React, { useState, useEffect } from 'react';
+
+function DataFetcher() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [retries, setRetries] = useState(0);
+  const MAX_RETRIES = 3;
+  const BASE_DELAY = 1000; // Base delay of 1 second
+
+  const delay = (retryCount) => {
+    // Exponential backoff: 2^retryCount * BASE_DELAY
+    return Math.min(2 ** retryCount * BASE_DELAY, 30000); // Cap at 30 seconds
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.example.com/data');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const json = await response.json();
+        setData(json);
+        setError(null);
+      } catch (err) {
+        if (retries < MAX_RETRIES) {
+          const backoffDelay = delay(retries);
+          console.log(`Retry attempt ${retries + 1} of ${MAX_RETRIES} after ${backoffDelay}ms`);
+          
+          // Wait for the backoff delay before retrying
+          await new Promise(resolve => setTimeout(resolve, backoffDelay));
+          setRetries(prevRetries => prevRetries + 1);
+        } else {
+          setError(err.message);
+        }
+      }
+    };
+
+    fetchData();
+  }, [retries]); // Re-run effect when retries changes
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!data) {
+    return <div>Loading... (Retry attempt {retries + 1} of {MAX_RETRIES})</div>;
+  }
+
+  return (
+    <div>
+      <h1>Data Fetched Successfully!</h1>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
+}
+
+export default DataFetcher;
+```
+
 ### Async functions
 React warns against `useEffect(async () = {...})`
 - define the async function you need OUTSIDE useEffect
@@ -98,6 +161,56 @@ function MyComponent() {
 }
 
 export default MyComponent;
+```
+
+### Reuseable custom hook
+```jsx
+import { useState, useEffect } from 'react';
+
+function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const json = await response.json();
+        setData(json);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]); // Re-run effect when URL changes
+
+  return { data, loading, error };
+}
+
+// Example usage:
+function UserProfile({ userId }) {
+  const { data, loading, error } = useFetch(`https://api.example.com/users/${userId}`);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!data) return <div>No data found</div>;
+
+  return (
+    <div>
+      <h1>{data.name}</h1>
+      <p>{data.email}</p>
+    </div>
+  );
+}
 ```
 
 ## When To UseEffect

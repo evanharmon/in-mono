@@ -94,3 +94,86 @@ func (ms MultiStorage) Write(location string, data string) {
     ms.primary.Write(location, data)
 }
 ```
+
+### Nested graphical UI
+```go
+package main
+
+import "fmt"
+
+// Component is the interface that all graphical components must implement
+type Component interface {
+	Draw()
+}
+
+// Circle represents a leaf component
+type Circle struct {
+	name string
+}
+
+func NewCircle(name string) *Circle {
+	return &Circle{name: name}
+}
+
+func (c *Circle) Draw() {
+	fmt.Printf("Drawing circle: %s\n", c.name)
+}
+
+// Square represents a leaf component
+type Square struct {
+	name string
+}
+
+func NewSquare(name string) *Square {
+	return &Square{name: name}
+}
+
+func (s *Square) Draw() {
+	fmt.Printf("Drawing square: %s\n", s.name)
+}
+
+// Window represents a composite component that can contain other components
+type Window struct {
+	name       string
+	components []Component
+}
+
+func NewWindow(name string) *Window {
+	return &Window{
+		name:       name,
+		components: make([]Component, 0),
+	}
+}
+
+func (w *Window) Add(component Component) {
+	w.components = append(w.components, component)
+}
+
+func (w *Window) Draw() {
+	fmt.Printf("Drawing window: %s\n", w.name)
+	for _, component := range w.components {
+		component.Draw()
+	}
+}
+
+func main() {
+	// Create a nested window
+	mainWindow := NewWindow("Main Window")
+	
+	// Create some shapes
+	circle := NewCircle("Red Circle")
+	square := NewSquare("Blue Square")
+	
+	// Create a nested window
+	nestedWindow := NewWindow("Nested Window")
+	nestedWindow.Add(circle)
+	nestedWindow.Add(square)
+	
+	// Add the nested window to the main window
+	mainWindow.Add(nestedWindow)
+	
+	// Draw everything
+	fmt.Println("Drawing the entire composition:")
+	mainWindow.Draw()
+}
+```

@@ -54,6 +54,9 @@ avoids having to set upstream when pushing to new branches
 ## Example git config file
 
 ```
+[user]
+  name = Evan Harmon
+  email = evanharmon@email.com
 [core]
   repositoryformatversion = 0
   filemode = true
@@ -62,7 +65,7 @@ avoids having to set upstream when pushing to new branches
   ignorecase = true
   precomposeunicode = true
   excludesFile = ~/.gitignore
-  editor = nvim
+  editor = vim
   pager = less -F -X
 [submodule]
   recurse = true

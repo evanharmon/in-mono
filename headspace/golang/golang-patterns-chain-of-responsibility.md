@@ -24,12 +24,17 @@ allows a request to pass thru a chain of handlers
 
 ## Components
 
+### Struct of Task / Request / etc
+struct with the fields for the task / request to be processed
+
 ### Handler interface
 common methods for all handlers
 
 ### Basehandler
 implements the Handler interface
 contains the logic to pass the request along
+not meant to be used directly as a handler!
+- doesn't have to implement `Handle` just `SetNext`, etc.
 
 ### Concrete handlers
 specific handlers that extend BaseHandler and implement handle
@@ -130,5 +135,95 @@ func main() {
 	fmt.Println("\n=== Invalid Request ===")
 	req2 := &Request{User: "bob", AuthToken: "invalid", Body: "Delete Data"}
 	auth.Handle(req2)
+}
+```
+
+### Priority
+```golang
+package main
+
+import (
+	"fmt"
+	"log"
+)
+
+// Request represents a task to be processed
+type Request struct {
+	Priority int
+	Message  string
+}
+
+// Handler defines the interface for all handlers
+type Handler interface {
+	SetNext(Handler)
+	Handle(*Request) bool
+}
+
+// BaseHandler provides basic implementation of the Handler interface
+type BaseHandler struct {
+	next Handler
+}
+
+// SetNext sets the next handler in the chain
+func (h *BaseHandler) SetNext(next Handler) {
+	h.next = next
+}
+
+// BasicHandler handles low priority requests
+type BasicHandler struct {
+	BaseHandler
+}
+
+// Handle processes low priority requests
+func (h *BasicHandler) Handle(r *Request) bool {
+	if r.Priority < 5 {
+		fmt.Printf("BasicHandler: Processing low priority request: %s\n", r.Message)
+		return true
+	}
+	if h.next != nil {
+		return h.next.Handle(r)
+	}
+	return false
+}
+
+// AdvancedHandler handles high priority requests
+type AdvancedHandler struct {
+	BaseHandler
+}
+
+// Handle processes high priority requests
+func (h *AdvancedHandler) Handle(r *Request) bool {
+	if r.Priority >= 5 {
+		fmt.Printf("AdvancedHandler: Processing high priority request: %s\n", r.Message)
+		return true
+	}
+	if h.next != nil {
+		return h.next.Handle(r)
+	}
+	return false
+}
+
+func main() {
+	// Create handlers
+	basic := &BasicHandler{}
+	advanced := &AdvancedHandler{}
+
+	// Set up the chain
+	basic.SetNext(advanced)
+
+	// Create some test requests
+	requests := []Request{
+		{Priority: 3, Message: "Low priority task"},
+		{Priority: 7, Message: "High priority task"},
+		{Priority: 1, Message: "Very low priority task"},
+		{Priority: 9, Message: "Critical priority task"},
+	}
+
+	// Process each request
+	for _, req := range requests {
+		if !basic.Handle(&req) {
+			log.Printf("No handler could process request: %s\n", req.Message)
+		}
+	}
 }
 ```

@@ -140,3 +140,106 @@ func main() {
 	fmt.Printf("Undo last command: %d\n", invoker.UndoLastCommand())
 }
 ```
+
+### SmartLamp
+```go
+package main
+
+import "fmt"
+
+// Command interface defines the contract for all commands
+type Command interface {
+	Execute()
+}
+
+// SmartLamp represents a smart home device
+type SmartLamp struct {
+	name string
+}
+
+// NewSmartLamp creates a new SmartLamp instance
+func NewSmartLamp(name string) *SmartLamp {
+	return &SmartLamp{name: name}
+}
+
+// TurnOnCommand represents the command to turn on the lamp
+type TurnOnCommand struct {
+	lamp *SmartLamp
+}
+
+// Execute implements the Command interface for TurnOnCommand
+func (c *TurnOnCommand) Execute() {
+	fmt.Printf("Turning ON the %s lamp\n", c.lamp.name)
+}
+
+// TurnOffCommand represents the command to turn off the lamp
+type TurnOffCommand struct {
+	lamp *SmartLamp
+}
+
+// Execute implements the Command interface for TurnOffCommand
+func (c *TurnOffCommand) Execute() {
+	fmt.Printf("Turning OFF the %s lamp\n", c.lamp.name)
+}
+
+// RemoteControl manages and executes commands
+type RemoteControl struct {
+	commands []Command
+}
+
+// NewRemoteControl creates a new RemoteControl instance
+func NewRemoteControl() *RemoteControl {
+	return &RemoteControl{
+		commands: make([]Command, 0),
+	}
+}
+
+// AddCommand adds a command to the remote control
+func (r *RemoteControl) AddCommand(command Command) {
+	r.commands = append(r.commands, command)
+}
+
+// RemoveCommand removes the last command from the remote control
+func (r *RemoteControl) RemoveCommand() {
+	if len(r.commands) > 0 {
+		r.commands = r.commands[:len(r.commands)-1]
+	}
+}
+
+// ExecuteAll executes all commands in sequence
+func (r *RemoteControl) ExecuteAll() {
+	for _, command := range r.commands {
+		command.Execute()
+	}
+}
+
+func main() {
+	// Create a smart lamp
+	lamp := NewSmartLamp("Living Room")
+
+	// Create commands for the lamp
+	turnOn := &TurnOnCommand{lamp: lamp}
+	turnOff := &TurnOffCommand{lamp: lamp}
+
+	// Create a remote control
+	remote := NewRemoteControl()
+
+	// Add commands to the remote control
+	remote.AddCommand(turnOn)
+	remote.AddCommand(turnOff)
+
+	// Execute all commands
+	fmt.Println("Executing initial commands:")
+	remote.ExecuteAll()
+
+	// Remove the last command (turn off)
+	remote.RemoveCommand()
+
+	// Add a new turn on command
+	remote.AddCommand(turnOn)
+
+	// Execute the modified sequence
+	fmt.Println("\nExecuting modified commands:")
+	remote.ExecuteAll()
+}
+```
